@@ -11,6 +11,6 @@ describe("Admin model", function () {
 
   it("has a userName", function () {
     let admin = new Admin({ userName: "admin" });
-    expect(adin.userName).toEqual("admin");
+    expect(admin.userName).toEqual("admin");
   });
 });
