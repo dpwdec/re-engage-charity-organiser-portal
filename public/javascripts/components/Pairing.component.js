@@ -11,7 +11,7 @@ class Pairing extends React.Component {
 
   render() {
     return (
-      <button id="generate-pairs" onClick={generatePairs}>Generate</button>
+      <button id="generate-pairs" onClick={this.generatePairs}>Generate</button>
     );
   }
 }

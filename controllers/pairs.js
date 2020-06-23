@@ -1,5 +1,7 @@
 var PairController = { 
-  Pairing: function(request, response){
-    response
+  Pairing: (request, response) => {
+    response.send({someData: 'hello'});
   }
 }
+
+module.exports = PairController;
