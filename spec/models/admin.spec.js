@@ -9,9 +9,9 @@ describe("Admin model", function () {
     });
   });
 
-  it("has a userName", function () {
-    let admin = new Admin({ userName: "admin" });
-    expect(admin.userName).toEqual("admin");
+  it("has a adminName", function () {
+    let admin = new Admin({ adminName: "admin" });
+    expect(admin.adminName).toEqual("admin");
   });
 
   it("has a password", function () {
@@ -20,15 +20,15 @@ describe("Admin model", function () {
   });
 
   it("is storing data inside users table", function (done) {
-    let admin = new Admin({ userName: "makers", password: "0000" });
+    let admin = new Admin({ adminName: "makers", password: "0000" });
 
     admin.save(function (err) {
       expect(err).toBeNull();
       Admin.find(function (err, admins) {
         expect(err).toBeNull();
-        expect(admins[0].userName).not.toEqual("maker");
+        expect(admins[0].adminName).not.toEqual("maker");
         expect(admins[0].password).not.toEqual("000");
-        expect(admins[0].userName).toEqual("makers");
+        expect(admins[0].adminName).toEqual("makers");
         expect(admins[0].password).toEqual("0000");
 
         done();

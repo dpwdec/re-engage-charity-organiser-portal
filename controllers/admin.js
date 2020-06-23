@@ -3,16 +3,16 @@ let admin = require("../models/admin"); //db
 let adminController = {
   Login: function (req, res) {
     const { body } = req;
-    const { userName, password } = body;
+    const { adminName, password } = body;
 
-    admin.findOne({ userName: userName }, function (err, existingUser) {
+    admin.findOne({ adminName: adminName }, function (err, existingAdmin) {
       if (err) {
         res.send({
           success: false,
           message: "Datebase error",
         });
-      } else if (existingUser !== null) {
-        if (password == existingUser.password) {
+      } else if (existingAdmin !== null) {
+        if (password == existingAdmin.password) {
           res.send({
             success: true,
             message: "Valid log in",
@@ -26,7 +26,7 @@ let adminController = {
       } else {
         res.send({
           success: false,
-          message: "There is no admin with that username",
+          message: "There is no admin with that adminName",
         });
       }
     });

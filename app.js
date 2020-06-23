@@ -8,7 +8,7 @@ var indexRouter = require("./routes/index");
 var adminRouter = require("./routes/admin");
 
 let Admin = require("./models/admin");
-let admin = new Admin({ userName: "admin", password: "1234" });
+let admin = new Admin({ adminName: "admin", password: "1234" });
 admin.save();
 
 var app = express();

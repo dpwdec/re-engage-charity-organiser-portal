@@ -1,11 +1,13 @@
 let mongoose = require("mongoose");
 
 let adminSchema = new mongoose.Schema({
-  userName: {
+  adminName: {
     type: String,
+    required: true,
   },
   password: {
     type: String,
+    required: true,
   },
 });
 
