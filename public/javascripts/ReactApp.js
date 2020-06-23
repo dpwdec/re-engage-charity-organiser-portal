@@ -10,5 +10,3 @@ class ReactApp extends React.Component {
 }
 
 ReactDOM.render(<ReactApp />, document.getElementById('root'));
-// ReactDOM.render(<ReactApp />, document.body);
-// ReactDOM.render(<DriverList />, document.getElementById('root'));
