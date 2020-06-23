@@ -2,10 +2,28 @@ class DriverList extends React.Component {
 
     constructor() {
       super();
-      // this.state = {
-      //   members: data,
-      // };
+      this.state = {
+        members: [],
+      };
     };
+
+    componentDidMount() {
+      this.fetchData('/');
+    }
+
+    fetchData = (apiToFetch) => {
+      fetch(apiToFetch)
+      .then(response => response.json())
+      .then((data)=> {
+        this.setState({
+          members: data,
+        });
+      });
+    }
+
+    updateState = () => {
+      this.fetchData('/homepage/driverlist')
+    }
 
     render() {
 
