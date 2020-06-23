@@ -1,16 +1,16 @@
 let mongoose = require("mongoose");
 require("../mongodb_helper");
-let User = require("../../models/user.js");
+let Admin = require("../../models/admin.js");
 
-describe("User model", function () {
+describe("Admin model", function () {
   beforeEach(function (done) {
-    mongoose.connection.collections.users.drop(function () {
+    mongoose.connection.collections.admins.drop(function () {
       done();
     });
   });
 
   it("has a userName", function () {
-    let user = new User({ userName: "admin" });
-    expect(user.userName).toEqual("admin");
+    let admin = new Admin({ userName: "admin" });
+    expect(adin.userName).toEqual("admin");
   });
 });
