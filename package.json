@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www"
+    "start": "nodemon ./bin/www",
+    "test:unit": "jest"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
@@ -16,6 +17,7 @@
     "nodemon": "^2.0.4"
   },
   "devDependencies": {
+    "cypress": "^4.8.0",
     "jest": "^26.0.1"
   }
 }
