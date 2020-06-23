@@ -13,4 +13,9 @@ describe("Admin model", function () {
     let admin = new Admin({ userName: "admin" });
     expect(admin.userName).toEqual("admin");
   });
+
+  it("has a password", function () {
+    let admin = new Admin({ password: "1234" });
+    expect(admin.password).toEqual("1234");
+  });
 });
