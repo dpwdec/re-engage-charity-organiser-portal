@@ -1,69 +1,54 @@
 class DriverList extends React.Component {
 
-    constructor() {
-      super();
-      this.state = {
-        members: [],
-      };
+  constructor() {
+    super();
+    this.state = {
+      members: [],
     };
+  };
 
-    componentDidMount() {
-      this.fetchData('/');
-    }
+  componentDidMount() {
+    this.fetchData('/drivers'); // requesting the same route as on updatestate
+  }
 
-    fetchData = (apiToFetch) => {
-      fetch(apiToFetch)
-      .then(response => response.json())
-      .then((data)=> {
-        this.setState({
-          members: data,
-        });
+  fetchData = (apiToFetch) => {
+    fetch(apiToFetch)
+    .then(response => response.json())
+    .then((data)=> {
+      console.log(1);
+      console.log(data);
+      console.log(data.role);
+      this.setState({
+        members: data,
       });
-    }
+    });
+  }
 
-    updateState = () => {
-      this.fetchData('/homepage/driverlist')
-    }
+  updateState = () => {
+    this.fetchData('/drivers') // this argument is passed in above, returns HomepageController.DriverList
+  }
 
-    render() {
+  render() {
 
-      // let data = this.state.members.data;
+    let data = this.state.members;
 
-      // go through members table to get ONLY drivers
-      // when we do 'data.map' need IF statement to match role = 'driver'
-      // if role == 'driver' then we return 
-      // data.name
-      // data.address
+    return(
+      <div>
+        <h3>Drivers List</h3>
+        <section class="driver-list">
 
-      return(
-        <div>
-          <h3>Drivers List</h3>
-          
-          <section class="driver-list">
-            <p>Harry Potter SE3 5JP</p>
-            <p>Neville Longbottom N8 4YX</p>
-          </section>
-          
-
-          {/* <table id="driver-list">
-            <tr>
-              <th>Name</th>
-              <th>Address</th>
-            </tr>
-            <tr>
-              <td>Harry Potter</td>
-              <td>SE3 5JP</td>
-            </tr>
-            <tr>
-              <td>Neville Longbottom</td>
-              <td>N8 4YX</td>
-            </tr>
-          </table> */}
-            
-
-        </div>
-      )
-    }
+            <p>Name</p>
 
 
+          {data.map((driver) => {
+            return(
+
+                <p> { driver.name } </p>
+
+            )
+          })}
+        </section>
+      </div>
+    )
+  }
 }
