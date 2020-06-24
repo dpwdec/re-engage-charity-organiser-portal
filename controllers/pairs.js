@@ -22,11 +22,23 @@ var PairController = {
 
 // UTILITY METHODS
 PairController.generatePairs = (members) => {
-  return [{
-    id: 1,
-    driver: members.drivers[0].name,
-    guest: members.guests[0].name
-  }]
+  // randomise the order of each members and guests array
+  // and then just iterate through them and pair them up
+
+  //array.inject(array, function(driver, guest)
+
+  // members.drivers.foreach(driver, i)
+  // { id: i, drivers: dirver.name, guest, members.guests[i].name}
+
+  
+
+  return members.drivers.map((driver, index) => {
+    return {
+      id: index+1,
+      driver: driver.name,
+      guest: members.guests[index].name
+    }
+  });
 }
 
 module.exports = PairController;
