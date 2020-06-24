@@ -3,6 +3,8 @@ class ReactApp extends React.Component {
     return (
       <div>
         <AdminLogin />
+        <h1>Hello</h1>
+        <Pairing />
       </div>
     );
   }

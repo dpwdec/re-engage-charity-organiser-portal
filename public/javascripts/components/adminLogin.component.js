@@ -40,6 +40,7 @@ class AdminLogin extends React.Component {
       <form id="admin-login-form" className="login" onSubmit={this.login}>
         <label>AdminName:</label>
         <input
+          id="admin"
           type="text"
           placeholder="Admin"
           required
@@ -48,13 +49,14 @@ class AdminLogin extends React.Component {
         ></input>
         <label>Password:</label>
         <input
+          id="password"
           type="password"
           placeholder="Password"
           required
           onChange={this.handleChangePassword}
           value={this.state.password}
         ></input>
-        <input type="submit" value="login"></input>
+        <input type="submit" value="login" id="login"></input>
       </form>
     );
   }
