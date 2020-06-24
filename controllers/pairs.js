@@ -6,6 +6,7 @@ var PairController = {
       drivers: [ {name: 'Bradley'}, {name: 'Zeus'}, {name: 'Kevin'} ],
       guests: [ {name: 'Doris' }, { name: 'Kimothey' }, {name: 'Perry'}]
     }
+    
     // randomly pair drivers and guests
     var pairings = PairController._generatePairs(members);
 
