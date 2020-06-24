@@ -1,12 +1,14 @@
 var Member = require('../models/member');
 
-var Homepage = {
+var HomepageController = {
   DriverList: function(request, response) {
     Member.find(function(err, result) {
-      response.send(result);
+     if (request.member.role === "driver") { 
+       response.send(result); 
+      } 
     });
   },
 
 }
 
-module.exports = Homepage;
+module.exports = HomepageController;
