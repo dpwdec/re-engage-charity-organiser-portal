@@ -11,6 +11,17 @@ var PairController = {
     var pairings = PairController._generatePairs(members);
 
     response.send({ pairs: pairings});
+  },
+  Map: (request, response) => {
+    response.render('map')
+  },
+  Route: (request, response) => {
+    const googleMapsClient = require('@google/maps').createClient({
+      key: 'AIzaSyC9qJYJPqeVBtCCvu68wQ286oyCL8Z5PqQ'
+    });
+    console.log(googleMapsClient)
+    console.log("hello!")
+    response.send({message: "hello"})
   }
 }
 
