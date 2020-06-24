@@ -10,12 +10,13 @@ describe("routes table", () => {
     // cy.get("#pair-3").should('contain', 'Kevin');
     // cy.get("#pair-3").should('contain', 'Perry');
 
-    cy.get('#drivers').should('contain', 'Doris');
-    cy.get('#guests').should('contain', 'Bradley');
-    cy.get('#drivers').should('contain', 'Kimothey');
-    cy.get('#guests').should('contain', 'Zeus');
-    cy.get('#drivers').should('contain', 'Kevin'); 
-    cy.get('#guests').should('contain', 'Perry');
+    cy.get('.guest').should('contain', 'Doris');
+    cy.get('.guest').should('contain', 'Kimothey');
+    cy.get('.guest').should('contain', 'Perry');
+
+    cy.get('.driver').should('contain', 'Zeus');
+    cy.get('.driver').should('contain', 'Bradley');
+    cy.get('.driver').should('contain', 'Kevin');
 
   });
 

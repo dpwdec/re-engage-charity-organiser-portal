@@ -2,8 +2,8 @@ function PairItem (props) {
   return (
     <tr>
       <td>{props.id}</td>
-      <td>{props.driver}</td>
-      <td>{props.guest}</td> 
+      <td className="driver">{props.driver}</td>
+      <td className="guest">{props.guest}</td> 
     </tr>
   );
 }
