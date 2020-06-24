@@ -3,19 +3,12 @@ var PairController = {
     // contact MongoDB
     // sort drivers and guests
     var members = {
-      drivers: [ {name: 'Bradley'}, {name: 'Zeus'}, {driver: 'Kevin'} ],
-      guests: [ {name: 'Doris' }, { name: 'Kimothey' }, {guest: 'Perry'}]
+      drivers: [ {name: 'Bradley'}, {name: 'Zeus'}, {name: 'Kevin'} ],
+      guests: [ {name: 'Doris' }, { name: 'Kimothey' }, {name: 'Perry'}]
     }
-
-
     // randomly pair drivers and guests
-
-    var pairings = [
-      {id: 1, driver: 'Bradley', guest: 'Doris'},
-      {id: 2, driver: 'Zeus', guest: 'Kimothey' },
-      {id: 3, driver: 'Kevin', guest: 'Perry' }
-    ]
-
+    var pairings = PairController.generatePairs(members);
+    
     response.send({ pairs: pairings});
   }
 }
