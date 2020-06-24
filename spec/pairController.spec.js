@@ -1,7 +1,7 @@
 var PairController = require('../controllers/pairs');
 
 describe('Pair Controller', () => {
-  describe('.generatePairs', () => {
+  describe('._generatePairs', () => {
     it('can generate a single pair', () => {
       var data = {
         drivers: [ {name: 'Bradley'} ],
@@ -13,7 +13,7 @@ describe('Pair Controller', () => {
       ]
       
 
-      expect(PairController.generatePairs(data)).toEqual(pairs);
+      expect(PairController._generatePairs(data)).toEqual(pairs);
     });
 
     it('can generate two pairs', () => {
@@ -34,7 +34,7 @@ describe('Pair Controller', () => {
         {id: 2, driver: 'Zeus', guest: 'Kimothey'}
       ]
 
-      expect(PairController.generatePairs(data)).toEqual(pairs);
+      expect(PairController._generatePairs(data)).toEqual(pairs);
     });
 
     it('can generate multiple pairs', () => {
@@ -58,7 +58,7 @@ describe('Pair Controller', () => {
         {id: 3, driver: 'Kevin', guest: 'Doris'}
       ]
 
-      expect(PairController.generatePairs(data)).toEqual(pairs);
+      expect(PairController._generatePairs(data)).toEqual(pairs);
     });
 
     it('Pair controller _mixMembers is called when generating pairs', () => {
@@ -69,7 +69,7 @@ describe('Pair Controller', () => {
         guests: [ {name: 'Doris' } ]
       }
 
-      PairController.generatePairs(data);
+      PairController._generatePairs(data);
 
       expect(mixMemberSpy).toHaveBeenCalled();
     });

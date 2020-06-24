@@ -7,18 +7,18 @@ var PairController = {
       guests: [ {name: 'Doris' }, { name: 'Kimothey' }, {name: 'Perry'}]
     }
     // randomly pair drivers and guests
-    var pairings = PairController.generatePairs(members);
-    
+    var pairings = PairController._generatePairs(members);
+
     response.send({ pairs: pairings});
   }
 }
 
 // UTILITY METHODS
-PairController.generatePairs = (members) => {
+PairController._generatePairs = (members) => {
   // randomise the order of each members and guests array
   var mixedMembers = PairController._mixMembers(members);
-  // and then just iterate through them and pair them up
 
+  //pair up drivers and guests from arrays
   var pairs = mixedMembers.drivers.map((driver, index) => {
     return {
       id: index+1,
@@ -26,8 +26,6 @@ PairController.generatePairs = (members) => {
       guest: mixedMembers.guests[index].name
     }
   });
-
-  console.log(pairs)
   return pairs
 }
 
