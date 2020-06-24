@@ -2,25 +2,25 @@ var Member = require('../models/member');
 
 var HomepageController = {
   DriverList: function(request, response) {
-    //drivers = []
-    console.log(1);
-    Member.find(function(err, result) {
-      console.log(result);
-      console.log(err);
-      //result.foreach
-      //member
-      //if member is driver
-      //drivers.push(member)
+    let drivers = [];
 
-      if (response.members.role === "driver") {
-        console.log(2);
-        console.log(result.body);
-        response.send(result.body);
-      }
+    Member.find(function(err, result) {
+      // console.log("All results")
+      // console.log(result);
+      // console.log(err);
+      result.forEach((member) => {
+        // console.log("Each statement")
+        // console.log(member);
+        if(member.role === 'driver'){
+          drivers.push(member);
+        }
+      });
+      console.log("Drivers only")
+      console.log(drivers);
       return;
     });
 
-    //response.send(drivers)
+    response.send(drivers)
   },
 
 }
