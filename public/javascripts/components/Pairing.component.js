@@ -9,9 +9,9 @@ class Pairing extends React.Component {
 
   generatePairs = () => {
     fetch(`/pairs`)
-    .then(response => response.json())
-    .then((data) => {
-      console.log(data)
+    .then((response) => { 
+      return response.json() 
+    }).then((data) => {
       this.setState({
         pairs: data.pairs
       });

@@ -75,32 +75,3 @@ describe('Pair Controller', () => {
     });
   });
 });
-
-/*
-
-INPUT --> {}
-
-{
-  drivers: [ {name: 'Bradley'} ],
-  guests: [ {name: 'Doris' } ]
-}
-
-{
-  drivers: [ {name: 'Bradley'}, {driver: 'Zeus'} ],
-  guests: [ {name: 'Doris' }, { name: 'Kimothey' } ]
-}
-
-OUTPUT -->
-
-[
-  {id: 1, driver: 'Bradley', guest: 'Doris'}
-]
-
-[
-  {id: 1, driver: 'Bradley', guest: 'Doris'}
-  {id: 1, driver: 'Zeus', guest: 'Kimothey'}
-]
-
-
-
-*/
