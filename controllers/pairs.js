@@ -23,22 +23,35 @@ var PairController = {
 // UTILITY METHODS
 PairController.generatePairs = (members) => {
   // randomise the order of each members and guests array
+  var mixedMembers = PairController._mixMembers(members);
   // and then just iterate through them and pair them up
 
-  //array.inject(array, function(driver, guest)
-
-  // members.drivers.foreach(driver, i)
-  // { id: i, drivers: dirver.name, guest, members.guests[i].name}
-
-  
-
-  return members.drivers.map((driver, index) => {
+  var pairs = mixedMembers.drivers.map((driver, index) => {
     return {
       id: index+1,
       driver: driver.name,
-      guest: members.guests[index].name
+      guest: mixedMembers.guests[index].name
     }
   });
+
+  console.log(pairs)
+  return pairs
+}
+
+PairController._mixMembers = (members) => {
+  members.drivers = PairController._shuffleArray(members.drivers);
+  members.guests = PairController._shuffleArray(members.guests);
+  return members;
+}
+
+PairController._shuffleArray = (array) => {
+  for (var i = array.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var temp = array[i];
+      array[i] = array[j];
+      array[j] = temp;
+  }
+  return array;
 }
 
 module.exports = PairController;
