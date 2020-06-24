@@ -11,16 +11,28 @@ class Pairing extends React.Component {
     fetch(`/pairs`)
     .then(response => response.json())
     .then((data) => {
+      console.log(data)
       this.setState({
-        pairs: data
+        pairs: data.pairs
       });
     })
   }
 
   render() {
-    console.log(this.state)
+    // console.log(this.state)
+    // console.log(this.state.pairs)
     return (
-      <button id="generate-pairs" onClick={this.generatePairs}>Generate</button>
+      <div>
+        <button id="generate-pairs" onClick={this.generatePairs}>Generate</button>
+        <div className="table">
+          { this.state.pairs.map((pair)=> {
+            return (<p> {pair.driver + pair.guest} </p>)
+            })
+          }
+        </div>
+      </div>
+      
+
     );
   }
 }
