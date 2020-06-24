@@ -60,6 +60,19 @@ describe('Pair Controller', () => {
 
       expect(PairController.generatePairs(data)).toEqual(pairs);
     });
+
+    it('Pair controller _mixMembers is called when generating pairs', () => {
+      var mixMemberSpy = jest.spyOn(PairController, '_mixMembers');
+
+      var data = {
+        drivers: [ {name: 'Bradley'} ],
+        guests: [ {name: 'Doris' } ]
+      }
+
+      PairController.generatePairs(data);
+
+      expect(mixMemberSpy).toHaveBeenCalled();
+    });
   });
 });
 
