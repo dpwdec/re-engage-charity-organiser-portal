@@ -1,11 +1,11 @@
 class ReactApp extends React.Component {
   render() {
-    return(
+    return (
       <div>
-        <h1>Hello</h1>
+        <AdminLogin />
       </div>
     );
   }
 }
 
-ReactDOM.render(<ReactApp />, document.getElementById('root'));
+ReactDOM.render(<ReactApp />, document.getElementById("root"));
