@@ -8,16 +8,31 @@ class AdminLogin extends React.Component {
   }
 
   handleChangeName = (e) => {
-    console.log(e.target);
     this.setState({
       adminName: e.target.value,
     });
   };
   handleChangePassword = (e) => {
-    console.log(e.target);
     this.setState({
       password: e.target.value,
     });
+  };
+
+  login = (e) => {
+    e.preventDefault();
+    const admin = {
+      adminName: this.state.adminName,
+      password: this.state.password,
+    };
+    console.log(admin);
+
+    fetch("/admin/login", {
+      method: "post",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(admin),
+    })
+      .then((response) => response.json())
+      .then((data) => console.log(data));
   };
 
   render() {
