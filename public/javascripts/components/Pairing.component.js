@@ -19,15 +19,13 @@ class Pairing extends React.Component {
   }
 
   render() {
-    // console.log(this.state)
-    // console.log(this.state.pairs)
     return (
       <div>
         <button id="generate-pairs" onClick={this.generatePairs}>Generate</button>
         <div className="table">
-          { this.state.pairs.map((pair)=> {
-            return (<p> {pair.driver + pair.guest} </p>)
-            })
+          { this.state.pairs.map((pair)=> (
+            <PairItem driver={pair.driver} guest={pair.guest} key={pair.id} />
+            ))
           }
         </div>
       </div>
