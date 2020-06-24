@@ -11,25 +11,14 @@ class DriverList extends React.Component {
     this.fetchData('/drivers'); // requesting the same route as on updatestate
   }
 
-  // fetchData = (apiToFetch) => {
-  //   fetch(apiToFetch)
-  //   .then(response => response.json())
-  //   .then((data) => {
-  //     console.log("check data")
-  //     console.log(data);
-  //     this.setState({
-  //       drivers: data,
-  //     });
-  //   });
-  // }
-
-  driver = () => {
-    fetch('/drivers')
-    .then((response) => {
-      return response.json()
-    }).then((data) => {
-      console.log(data)
-    })
+  fetchData = (apiToFetch) => {
+    fetch(apiToFetch)
+    .then(response => response.json())
+    .then((data) => {
+      this.setState({
+        drivers: data,
+      });
+    });
   }
 
   // updateState = () => {
@@ -38,27 +27,28 @@ class DriverList extends React.Component {
 
   render() {
 
-    // let data = this.state.drivers;
+    let data = this.state.drivers;
 
     return(
       <div>
         <h3>Drivers List</h3>
-        // <form>
-        //   <input type="submit" value="Submit"></input>
-        // </form>
-        // <section class="driver-list">
-        //
-        //     <p>Name</p>
-        //
-        //
-        //   {data.map((driver) => {
-        //     return(
-        //
-        //         <p> { driver.name } </p>
-        //
-        //     )
-        //   })}
-        // </section>
+        <section>
+          <table>
+            <tr>
+              <th>Name</th>
+              <th>Address</th>
+            </tr>
+
+            {data.map((driver) => {
+              return(
+                <tr class="driver-list">
+                  <td>{driver.name}</td>
+                  <td>{driver.address}</td>
+                </tr>
+              )
+            })}
+          </table>
+        </section>
       </div>
     )
   }
