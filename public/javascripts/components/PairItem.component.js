@@ -8,12 +8,3 @@ function PairItem (props) {
     </tr>
   );
 }
-
-
-//List
-  //PairItem
-    //Row
-      //driver
-    //row
-  //PairItem
-//List

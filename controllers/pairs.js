@@ -1,12 +1,69 @@
+const googleMapsClient = require('@google/maps').createClient({
+  key: 'AIzaSyC9qJYJPqeVBtCCvu68wQ286oyCL8Z5PqQ',
+  Promise: Promise
+});
+
 var PairController = { 
   Pairing: (request, response) => {
     // contact to get members
+    // drivers = members.find(drivers)
+    // guests = members.find(guests)
 
     //sort members into drivers and guest
 
     //contact google maps API and get all driver and guest routes
-
     //sort API return into members format
+    //for each guest make a directions API request for each driver
+
+    var members = [];
+    var guests = [{name: 'Doris', Address: 'SE153XX', role: 'guest'}]
+    var drivers = [{name: 'Zeus', Address: 'SW129PH', role: 'driver'}]
+    
+    //async
+    guests.forEach((guest) => {
+      guestData = {
+        name: guest.name,
+        drivers: []
+      }
+
+      drivers.forEach((driver) => {
+        googleMapsClient.directions({origin: guest.Address, destination: driver.Address, mode: 'driving'})
+        .asPromise()
+        .then((result => {
+          driverData = {
+            name: driver.name,
+            distance: result.routes[0].legs[0].distance.value
+          }
+          guestData.drivers.push(driverData);
+         })
+        );
+      });
+
+      members.push(guestData);
+    });
+    //async
+
+
+    var pairings = PairController._generatePairsByDistance(members);
+
+    // members = []
+
+    // guests, drivers.
+    // guests.forEach((guest) => {
+    //   guestObject;
+    //   drivers.forEach((driver) => {
+    //     makeApiRequest{
+    //       origin = guest
+    //       destion = driver
+    //     }.then{
+    //       result
+    //       guestObject.drivers.push({
+
+    //       })
+    //     }
+
+    //   })
+    // })
 
     // sort drivers and guests
     var members = [ 
@@ -101,11 +158,6 @@ var PairController = {
     response.render('map')
   },
   Route: (request, response) => {
-    const googleMapsClient = require('@google/maps').createClient({
-      key: 'AIzaSyC9qJYJPqeVBtCCvu68wQ286oyCL8Z5PqQ',
-      Promise: Promise
-    });
-
     googleMapsClient.directions({origin: 'SW129PH', destination: 'SE153XX', mode: 'driving'})
     .asPromise()
     .then((result) => {
