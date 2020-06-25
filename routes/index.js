@@ -8,4 +8,5 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/drivers', HomepageController.DriverList);
+router.get('/guests', HomepageController.GuestList);
 module.exports = router;

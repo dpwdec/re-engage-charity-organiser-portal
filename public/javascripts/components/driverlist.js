@@ -8,7 +8,8 @@ class DriverList extends React.Component {
   };
 
   componentDidMount() {
-    this.fetchDrivers('/drivers');  }
+    this.fetchDrivers('/drivers');
+  }
 
   fetchDrivers = () => {
     fetch('/drivers')
@@ -46,8 +47,8 @@ class DriverList extends React.Component {
   }
 }
 
-      
-     
+
+
 
         //   <section className="table">
         //   { <table>

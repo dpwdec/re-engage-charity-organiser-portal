@@ -26,7 +26,7 @@ var HomepageController = {
       result.forEach((member) => {
 
         if(member.role === 'guest'){
-          drivers.push(member);
+          guests.push(member);
         }
       });
       // console.log("Guests only")
@@ -34,7 +34,7 @@ var HomepageController = {
       response.send(guests);
     });
 
-  } 
+  }
 }
 
 module.exports = HomepageController;
