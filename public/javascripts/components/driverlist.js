@@ -21,9 +21,18 @@ class DriverList extends React.Component {
     });
   }
 
+  sortDriversAtoZ() {
+    return this.state.drivers.sort(function(memberA, memberB) {
+    var memberA = memberA.name.toUpperCase();
+    var memberB = memberB.name.toUpperCase();
+    return (memberA < memberB) ? -1 : (memberA > memberB) ? 1 : 0;
+    });
+  }
+
+
   render() {
 
-    let data = this.state.drivers;
+    // let data = this.state.drivers;
 
     return(
       <div>
@@ -33,14 +42,26 @@ class DriverList extends React.Component {
               <th>Name</th>
               <th>Address</th>
             </tr>
-            {data.map((driver) => {
+
+            {this.sortDriversAtoZ().map((driver) => {
+              return(
+                <tr class="driver-list">
+                  <td>{driver.name}</td>
+                  <td>{driver.address}</td>
+                </tr>
+                )
+              })
+            }
+
+{/* 
+            {data.sort().map((driver) => {
               return(
                 <tr class="driver-list">
                   <td>{driver.name}</td>
                   <td>{driver.address}</td>
                 </tr>
               )
-            })}
+            })} */}
         </table>
       </div>
     )
