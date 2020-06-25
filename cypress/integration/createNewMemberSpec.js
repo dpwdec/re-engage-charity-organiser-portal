@@ -11,5 +11,6 @@ describe('Create Member Form', () => {
 
     cy.get('.driver-list').should('contain', 'Himithy');
     cy.get('.driver-list').should('contain', 'S3 4KY');
+
   });
 });

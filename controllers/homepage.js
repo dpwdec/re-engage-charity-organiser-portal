@@ -9,10 +9,10 @@ var HomepageController = {
       role: request.body.role,
       address: request.body.address
     });
-    console.log(member);
+
     member.save(function(err) {
       if (err) { console.log(err) }
-      sendFlashMessage(response, request, '/', 'Member saved!');
+      // sendFlashMessage(response, request, '/', 'Member saved!');
     });
   },
 
@@ -51,9 +51,9 @@ var HomepageController = {
   },
 }
 
-var sendFlashMessage = (response, request, route, message) => {
-  request.session.errorMessage = message;
-  response.redirect(route);
-};
+// var sendFlashMessage = (response, request, route, message) => {
+//   request.session.errorMessage = message;
+//   response.redirect(route);
+// };
 
 module.exports = HomepageController;
