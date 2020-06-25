@@ -37,10 +37,7 @@ class AdminLogin extends React.Component {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(admin),
     })
-      .then((response) => {
-        console.log(response);
-        response.clone().json;
-      })
+      .then((response) => response.json())
       .then((data) => {
         console.log(data);
         if (data.success === true) {
