@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "start": "nodemon ./bin/www",
-    "test:unit": "jest"
+    "test:unit": "jest",
+    "start:test": "PORT=3000 MONGODB_URL='mongodb://localhost/re_engage_test' npm start",
+    "test:integration": "cypress run"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
