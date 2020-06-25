@@ -17,6 +17,7 @@ let adminController = {
           res.send({
             success: true,
             message: "Valid log in",
+            admin: existingAdmin,
           });
         } else {
           res.send({

@@ -1,11 +1,27 @@
 class ReactApp extends React.Component {
+  constructor(props) {
+    super(props);
+    const token = sessionStorage.getItem("token");
+    let loggedIn = true;
+    if (token == null) {
+      loggedIn = false;
+    }
+    this.state = {
+      loggedIn,
+    };
+  }
   render() {
-    return (
-      <div>
-        <h1>Hello</h1>
-        <Pairing />
-      </div>
-    );
+    if (this.state.loggedIn === false) {
+      return window.location.replace("admin/login");
+    } else {
+      return (
+        <div>
+          <h1>Hello</h1>
+          <Pairing />
+          <AdminLogOut />
+        </div>
+      );
+    }
   }
 }
 
