@@ -38,8 +38,11 @@ class AdminLogin extends React.Component {
       body: JSON.stringify(admin),
     })
       .then((response) => {
-        response.json();
-        console.log(response.json());
+        console.log(response);
+        if (response.ok) {
+          console.log(response.json());
+          return response.json();
+        }
       })
       .then((data) => {
         console.log(data);
