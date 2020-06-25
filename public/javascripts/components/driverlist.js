@@ -29,10 +29,7 @@ class DriverList extends React.Component {
     });
   }
 
-
   render() {
-
-    // let data = this.state.drivers;
 
     return(
       <div>
@@ -52,31 +49,9 @@ class DriverList extends React.Component {
                 )
               })
             }
-
-{/* 
-            {data.sort().map((driver) => {
-              return(
-                <tr class="driver-list">
-                  <td>{driver.name}</td>
-                  <td>{driver.address}</td>
-                </tr>
-              )
-            })} */}
         </table>
       </div>
     )
   }
 }
 
-
-
-
-        //   <section className="table">
-        //   { <table>
-        //       { data.map((driver) => (
-        //         <Driver driverName={driver.name} driverAddress={driver.address} id={driver.id} />
-        //           ))
-        //       }
-        //     </table>
-        //   }
-        // </section>
