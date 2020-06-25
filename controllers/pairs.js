@@ -33,16 +33,61 @@ var PairController = {
 // UTILITY METHODS
 
 PairController._generatePairsByDistance = (pairDistances) => {
-  var pairing = [
-    { id: 1, 
-      driver: pairDistances[0].drivers[0].name, 
-      guest: pairDistances[0].name,
-      distance: pairDistances[0].drivers[0].distance 
-    }
-  ]
 
-  return pairing
+  // compare all distances 'find shorted global pair distance' 
+  // assign pair to output 
+  // eliminate that driver from all other guests 
+  // repeat until one pair left
+  // return output 
+
+
+  // while loop, until guests array < 1 
+
+  var pairing = []
+
+  while(pairDistances.length > 1) {
+    var shortestPair = {id: 0, distance: 100000000}
+    var guestIndex; 
+    var driverIndex;
+
+    pairDistances.forEach((guest, i) => {
+    
+      guest.drivers.forEach((driver, j) => {
+        if (driver.distance < shortestPair.distance) {
+          shortestPair = { id: pairing.length + 1, 
+            driver: driver.name, 
+            guest: guest.name,
+            distance: driver.distance 
+          }
+          guestIndex = i;
+          driverIndex = j;
+        }
+      });
+    })
+    pairing.push(shortestPair)
+    pairDistances.splice(guestIndex, 1)
+
+    pairDistances.forEach((guest) => {
+      guest.drivers.splice(driverIndex, 1)
+    })
+
+    console.log("pair distance")
+    console.log(pairDistances[0])
+    console.log("pairing")
+    console.log(pairing[0])
+
+    break;
+  }
+
+  var lastPair = {
+    id: pairing.length + 1,
+    driver: pairDistances[0].drivers[0].name,
+    guest: pairDistances[0].name,
+    distance: pairDistances[0].drivers[0].distance
+  }
   
+  pairing.push(lastPair)
+  return pairing
 };
 
 
