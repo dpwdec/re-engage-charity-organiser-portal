@@ -15,36 +15,36 @@ var PairController = {
     //sort API return into members format
     //for each guest make a directions API request for each driver
 
-    var members = [];
-    var guests = [{name: 'Doris', Address: 'SE153XX', role: 'guest'}]
-    var drivers = [{name: 'Zeus', Address: 'SW129PH', role: 'driver'}]
-    
-    //async
-    guests.forEach((guest) => {
-      guestData = {
-        name: guest.name,
-        drivers: []
-      }
+    // var members = [];
+    // var guests = [{name: 'Doris', Address: 'SE153XX', role: 'guest'}]
+    // var drivers = [{name: 'Zeus', Address: 'SW129PH', role: 'driver'}]
 
-      drivers.forEach((driver) => {
-        googleMapsClient.directions({origin: guest.Address, destination: driver.Address, mode: 'driving'})
-        .asPromise()
-        .then((result => {
-          driverData = {
-            name: driver.name,
-            distance: result.routes[0].legs[0].distance.value
-          }
-          guestData.drivers.push(driverData);
-         })
-        );
-      });
+    // //async
+    // guests.forEach((guest) => {
+    //   guestData = {
+    //     name: guest.name,
+    //     drivers: []
+    //   }
 
-      members.push(guestData);
-    });
-    //async
+    //   drivers.forEach((driver) => {
+    //     googleMapsClient.directions({origin: guest.Address, destination: driver.Address, mode: 'driving'})
+    //     .asPromise()
+    //     .then((result => {
+    //       driverData = {
+    //         name: driver.name,
+    //         distance: result.routes[0].legs[0].distance.value
+    //       }
+    //       guestData.drivers.push(driverData);
+    //      })
+    //     );
+    //   });
+
+    //   members.push(guestData);
+    // });
+    // //async
 
 
-    var pairings = PairController._generatePairsByDistance(members);
+    // var pairings = PairController._generatePairsByDistance(members);
 
     // members = []
 
