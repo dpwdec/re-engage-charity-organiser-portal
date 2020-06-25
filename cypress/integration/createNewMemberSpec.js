@@ -12,6 +12,7 @@ describe('Create Member Form', () => {
     cy.visit('/')  // this forces a refresh which loads the new member
     cy.get('.driver-list').should('contain', 'Himithy');
     cy.get('.driver-list').should('contain', 'S3 4KY');
-
+    cy.get('.guest-list').should('not.contain', 'Himithy');
+    cy.get('.guest-list').should('not.contain', 'S3 4KY');
   });
 });
