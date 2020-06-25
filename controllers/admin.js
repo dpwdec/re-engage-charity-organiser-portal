@@ -7,6 +7,7 @@ let adminController = {
     console.log(body);
 
     admin.findOne({ adminName: adminName }, function (err, existingAdmin) {
+      console.log(existingAdmin);
       if (err) {
         res.send({
           success: false,

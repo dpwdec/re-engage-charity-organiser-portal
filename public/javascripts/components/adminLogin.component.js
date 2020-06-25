@@ -32,12 +32,15 @@ class AdminLogin extends React.Component {
     };
     console.log(admin);
 
-    fetch("https://charity2020.herokuapp.com/admin/login", {
+    fetch("/admin/login", {
       method: "post",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(admin),
     })
-      .then((response) => response.json())
+      .then((response) => {
+        response.json();
+        console.log(response.json());
+      })
       .then((data) => {
         console.log(data);
         if (data.success === true) {
