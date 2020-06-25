@@ -4,6 +4,7 @@ let adminController = {
   Login: function (req, res) {
     const { body } = req;
     const { adminName, password } = body;
+    console.log(body);
 
     admin.findOne({ adminName: adminName }, function (err, existingAdmin) {
       if (err) {
@@ -16,6 +17,7 @@ let adminController = {
           res.send({
             success: true,
             message: "Valid log in",
+            admin: existingAdmin,
           });
         } else {
           res.send({
@@ -30,6 +32,9 @@ let adminController = {
         });
       }
     });
+  },
+  Index: function (req, res) {
+    res.render("admin");
   },
 };
 
