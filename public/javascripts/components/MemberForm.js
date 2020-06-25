@@ -50,9 +50,9 @@ class MemberForm extends React.Component {
 
         <form id="new-member-form" onSubmit={this.mySubmitHandler}>
           <h3>Add a new member</h3>
-          <input id="new-member-name" type="text" name="name" value={name} placeholder="name" onChange={this.onFormChange} ></input>
-          <input id="new-member-address" type="text" name="address" value={address} placeholder="address" onChange={this.onFormChange} ></input>
-          <input id="new-member-role" type="text" name="role" value={role}  placeholder="role" onChange={this.onFormChange} ></input>
+          <input required id="new-member-name" type="text" name="name" value={name} placeholder="name" onChange={this.onFormChange} ></input>
+          <input required id="new-member-address" type="text" name="address" value={address} placeholder="address" onChange={this.onFormChange} ></input>
+          <input required pattern="driver|guest" id="new-member-role" type="text" name="role" value={role} placeholder="role" onChange={this.onFormChange} ></input>
           <input type="submit" value="Submit"></input>
         </form>
         
