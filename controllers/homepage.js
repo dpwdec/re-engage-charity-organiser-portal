@@ -1,9 +1,9 @@
 var Member = require('../models/member');
 
 var HomepageController = {
-  
-  CreateNewDriver: function(request, response) {
-    
+
+  CreateNewMember: function(request, response) {
+
     var driver = new Member({})
 
   },

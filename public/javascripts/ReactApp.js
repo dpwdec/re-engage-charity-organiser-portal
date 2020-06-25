@@ -3,7 +3,7 @@ class ReactApp extends React.Component {
     return(
       <div>
         <h1>Hello</h1>
-        <CreateDriverForm />
+        <MemberForm />
         <DriverList />
         <GuestList />
         <Pairing/>
