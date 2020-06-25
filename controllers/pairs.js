@@ -17,11 +17,16 @@ var PairController = {
   },
   Route: (request, response) => {
     const googleMapsClient = require('@google/maps').createClient({
-      key: 'AIzaSyC9qJYJPqeVBtCCvu68wQ286oyCL8Z5PqQ'
+      key: 'AIzaSyC9qJYJPqeVBtCCvu68wQ286oyCL8Z5PqQ',
+      Promise: Promise
     });
-    console.log(googleMapsClient)
-    console.log("hello!")
-    response.send({message: "hello"})
+
+    googleMapsClient.directions({origin: 'SW129PH', destination: 'SE153XX', mode: 'driving'})
+    .asPromise()
+    .then((result) => {
+      console.log(result);
+      response.send(result)
+    }); 
   }
 }
 
