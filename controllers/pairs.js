@@ -31,6 +31,36 @@ var PairController = {
 }
 
 // UTILITY METHODS
+
+PairController._generatePairsByDistance = (pairDistances) => {
+  var pairing = [
+    { id: 1, 
+      driver: pairDistances[0].drivers[0].name, 
+      guest: pairDistances[0].name,
+      distance: pairDistances[0].drivers[0].distance 
+    }
+  ]
+
+  return pairing
+  
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 PairController._generatePairs = (members) => {
   // randomise the order of each members and guests array
   var mixedMembers = PairController._mixMembers(members);
@@ -61,5 +91,7 @@ PairController._shuffleArray = (array) => {
   }
   return array;
 }
+
+
 
 module.exports = PairController;
