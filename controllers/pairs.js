@@ -1,14 +1,99 @@
 var PairController = { 
   Pairing: (request, response) => {
-    // contact MongoDB
+    // contact to get members
+
+    //sort members into drivers and guest
+
+    //contact google maps API and get all driver and guest routes
+
+    //sort API return into members format
+
     // sort drivers and guests
-    var members = {
-      drivers: [ {name: 'Bradley'}, {name: 'Zeus'}, {name: 'Kevin'} ],
-      guests: [ {name: 'Doris' }, { name: 'Kimothey' }, {name: 'Perry'}]
-    }
+    var members = [ 
+      { name: 'Doris', 
+        drivers: [ 
+          { 
+            name: 'Bradley', 
+            distance: 8000 
+          },
+          { 
+            name: 'Zeus', 
+            distance: 2000 
+          },
+          {
+            name: 'Kevin',
+            distance: 3000
+          },
+          {
+            name: 'Gwen',
+            distance: 10000
+          }
+        ]
+      },
+      { name: 'Kimothey', 
+        drivers: [ 
+          { 
+            name: 'Bradley', 
+            distance: 6000 
+          },
+          { 
+            name: 'Zeus', 
+            distance: 3000 
+          },
+          {
+            name: 'Kevin',
+            distance: 500
+          },
+          {
+            name: 'Gwen',
+            distance: 5000
+          }
+        ]
+      },
+      { name: 'Perry', 
+        drivers: [ 
+          { 
+            name: 'Bradley', 
+            distance: 300 
+          },
+          { 
+            name: 'Zeus', 
+            distance: 10000 
+          },
+          {
+            name: 'Kevin',
+            distance: 600
+          },
+          {
+            name: 'Gwen',
+            distance: 100
+          }
+        ]
+      },
+      { name: 'Petunia', 
+        drivers: [ 
+          { 
+            name: 'Bradley', 
+            distance: 300 
+          },
+          { 
+            name: 'Zeus', 
+            distance: 400 
+          },
+          {
+            name: 'Kevin',
+            distance: 6000
+          },
+          {
+            name: 'Gwen',
+            distance: 5000
+          }
+        ]
+      }
+    ]
     
     // randomly pair drivers and guests
-    var pairings = PairController._generatePairs(members);
+    var pairings = PairController._generatePairsByDistance(members);
 
     response.send({ pairs: pairings});
   },

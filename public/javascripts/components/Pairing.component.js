@@ -25,7 +25,7 @@ class Pairing extends React.Component {
         <div className="table">
           <table>
             { this.state.pairs.map((pair)=> (
-                <PairItem driver={pair.driver} guest={pair.guest} id={pair.id} key={pair.id} />
+                <PairItem driver={pair.driver} guest={pair.guest} distance={pair.distance} id={pair.id} key={pair.id} />
               ))
             }
           </table>
