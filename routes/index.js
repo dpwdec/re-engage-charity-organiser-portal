@@ -9,5 +9,5 @@ router.get('/', function(req, res, next) {
 
 router.get('/drivers', HomepageController.DriverList);
 router.get('/guests', HomepageController.GuestList);
-// router.get('/createDriver', HomepageController.CreateNewMember);
+router.get('/createMember', HomepageController.CreateNewMember);
 module.exports = router;

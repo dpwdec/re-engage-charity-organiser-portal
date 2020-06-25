@@ -4,8 +4,16 @@ var HomepageController = {
 
   CreateNewMember: function(request, response) {
 
-    var driver = new Member({})
-
+    var member = new Member({
+      name: request.body.name,
+      role: request.body.role,
+      address: request.body.address
+    });
+    console.log(member);
+    member.save(function(err) {
+      if (err) { console.log(err) }
+      sendFlashMessage(response, request, '/', 'Member saved!');
+    });
   },
 
   DriverList: function(request, response) {
@@ -40,8 +48,12 @@ var HomepageController = {
       // console.log(guests)
       response.send(guests);
     });
-
-  }
+  },
 }
+
+var sendFlashMessage = (response, request, route, message) => {
+  request.session.errorMessage = message;
+  response.redirect(route);
+};
 
 module.exports = HomepageController;
