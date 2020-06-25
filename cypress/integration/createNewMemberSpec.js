@@ -9,6 +9,7 @@ describe('Create Member Form', () => {
     cy.get('#new-member-form').find('[id=new-member-role]').type('driver')
     cy.get('#new-member-form').submit();
 
+    cy.visit('/')  // this forces a refresh which loads the new member
     cy.get('.driver-list').should('contain', 'Himithy');
     cy.get('.driver-list').should('contain', 'S3 4KY');
 
