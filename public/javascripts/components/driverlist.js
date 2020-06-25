@@ -8,20 +8,17 @@ class DriverList extends React.Component {
   };
 
   componentDidMount() {
-    fetchDrivers = () => {
-      fetch('/drivers')
-      .then(response => response.json())
-      .then((data) => {
-        this.setState({
-          drivers: data,
-        });
-      });
-    }
-  }
+    this.fetchDrivers('/drivers');  }
 
-  // updateState = () => {
-  //   this.fetchData('/drivers') // this argument is passed in above, returns HomepageController.DriverList
-  // }
+  fetchDrivers = () => {
+    fetch('/drivers')
+    .then(response => response.json())
+    .then((data) => {
+      this.setState({
+        drivers: data,
+      });
+    });
+  }
 
   render() {
 
@@ -29,14 +26,12 @@ class DriverList extends React.Component {
 
     return(
       <div>
-        <h3>Drivers List</h3>
-        <section>
-          <table>
+        <h2>List of Drivers</h2>
+        <table>
             <tr>
               <th>Name</th>
               <th>Address</th>
             </tr>
-
             {data.map((driver) => {
               return(
                 <tr class="driver-list">
@@ -45,9 +40,21 @@ class DriverList extends React.Component {
                 </tr>
               )
             })}
-          </table>
-        </section>
+        </table>
       </div>
     )
   }
 }
+
+      
+     
+
+        //   <section className="table">
+        //   { <table>
+        //       { data.map((driver) => (
+        //         <Driver driverName={driver.name} driverAddress={driver.address} id={driver.id} />
+        //           ))
+        //       }
+        //     </table>
+        //   }
+        // </section>
