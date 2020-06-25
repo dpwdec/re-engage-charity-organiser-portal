@@ -2,7 +2,7 @@ var Member = require('../models/member');
 
 var HomepageController = {
 
-  CreateNewMember: function(request, response) {
+  CreateMember: function(request, response) {
 
     var member = new Member({
       name: request.body.name,
