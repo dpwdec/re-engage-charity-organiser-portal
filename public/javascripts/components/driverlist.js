@@ -8,17 +8,15 @@ class DriverList extends React.Component {
   };
 
   componentDidMount() {
-    this.fetchData('/drivers'); // requesting the same route as on updatestate
-  }
-
-  fetchData = (apiToFetch) => {
-    fetch(apiToFetch)
-    .then(response => response.json())
-    .then((data) => {
-      this.setState({
-        drivers: data,
+    fetchDrivers = () => {
+      fetch('/drivers')
+      .then(response => response.json())
+      .then((data) => {
+        this.setState({
+          drivers: data,
+        });
       });
-    });
+    }
   }
 
   // updateState = () => {
