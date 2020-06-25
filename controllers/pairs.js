@@ -70,13 +70,6 @@ PairController._generatePairsByDistance = (pairDistances) => {
     pairDistances.forEach((guest) => {
       guest.drivers.splice(driverIndex, 1)
     })
-
-    console.log("pair distance")
-    console.log(pairDistances[0])
-    console.log("pairing")
-    console.log(pairing[0])
-
-    break;
   }
 
   var lastPair = {
@@ -87,6 +80,7 @@ PairController._generatePairsByDistance = (pairDistances) => {
   }
   
   pairing.push(lastPair)
+  console.log(pairing)
   return pairing
 };
 
