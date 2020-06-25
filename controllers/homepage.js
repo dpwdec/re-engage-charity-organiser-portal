@@ -1,6 +1,13 @@
 var Member = require('../models/member');
 
 var HomepageController = {
+  
+  CreateNewDriver: function(request, response) {
+    
+    var driver = new Member({})
+
+  },
+
   DriverList: function(request, response) {
     let drivers = [];
 
