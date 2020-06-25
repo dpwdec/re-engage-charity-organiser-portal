@@ -36,6 +36,7 @@ class MemberForm extends React.Component {
         <h3>Add a new member</h3>
         <input id="new-member-name" type="text" placeholder="member's name" onChange={this.myChangeHandler} ></input>
         <input id="new-member-address" type="text" placeholder="member's address" onChange={this.myChangeHandler} ></input>
+        <input id="new-member-role" type="text" placeholder="member's role" onChange={this.myChangeHandler} ></input>
         <input type="submit" value="Submit"></input>
       </form>
     )

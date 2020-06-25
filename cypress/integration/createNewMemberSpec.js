@@ -6,6 +6,7 @@ describe('Create Member Form', () => {
     cy.visit('/')
     cy.get('#new-member-form').find('[id=new-member-name]').type('Himithy')
     cy.get('#new-member-form').find('[id=new-member-address]').type('S3 4KY')
+    cy.get('#new-member-form').find('[id=new-member-role]').type('driver')
     cy.get('#new-member-form').submit();
 
     cy.get('.driver-list').should('contain', 'Himithy');
