@@ -39,10 +39,7 @@ class AdminLogin extends React.Component {
     })
       .then((response) => {
         console.log(response);
-        if (response.ok) {
-          console.log(response.json());
-          return response.json();
-        }
+        response.clone().json;
       })
       .then((data) => {
         console.log(data);
