@@ -83,8 +83,8 @@ class AdminLogin extends React.Component {
     } else {
       return (
         <form onSubmit={this.homeButton}>
-          <h1>log out first</h1>
-          <input type="submit" value="home"></input>
+          <p>log out first</p>
+          <input id="home" class="button" type="submit" value="home"></input>
         </form>
       );
     }

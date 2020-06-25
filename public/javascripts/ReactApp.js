@@ -12,7 +12,11 @@ class ReactApp extends React.Component {
   }
   render() {
     if (this.state.loggedIn === false) {
-      return window.location.replace("admin/login");
+      return (
+        <form action="admin/login">
+          {window.location.replace("admin/login")}
+        </form>
+      );
     } else {
       return (
         <div>
