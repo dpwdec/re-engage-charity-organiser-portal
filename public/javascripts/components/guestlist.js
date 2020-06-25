@@ -21,8 +21,16 @@ class GuestList extends React.Component {
     });
   }
 
+  sortGuestsAtoZ() {
+    return this.state.guests.sort(function(memberA, memberB) {
+      var memberA = memberA.name.toUpperCase();
+      var memberB = memberB.name.toUpperCase();
+      return (memberA < memberB) ? -1 : (memberA > memberB) ? 1 : 0;
+    });
+  }
+
   render() {
-    let data = this.state.guests;
+    // let data = this.state.guests;
 
     return(
       <div>
@@ -32,7 +40,7 @@ class GuestList extends React.Component {
               <th>Name</th>
               <th>Address</th>
             </tr>
-            {data.map((guest) => {
+            {this.sortGuestsAtoZ().map((guest) => {
               return(
                 <tr class="guest-list">
                   <td>{guest.name}</td>
