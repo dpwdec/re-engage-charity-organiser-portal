@@ -30,7 +30,6 @@ class GuestList extends React.Component {
   }
 
   render() {
-    // let data = this.state.guests;
 
     return(
       <div>
