@@ -6,63 +6,6 @@ const googleMapsClient = require("@google/maps").createClient({
 var PairController = {
   Pairing: async (request, response) => {
     // contact to get members
-    // drivers = members.find(drivers)
-    // guests = members.find(guests)
-
-    //sort members into drivers and guest
-
-    //contact google maps API and get all driver and guest routes
-    //sort API return into members format
-    //for each guest make a directions API request for each driver
-
-    // var members = [];
-    // var guests = [{name: 'Doris', Address: 'SE153XX', role: 'guest'}]
-    // var drivers = [{name: 'Zeus', Address: 'SW129PH', role: 'driver'}]
-
-    // //async
-    // guests.forEach((guest) => {
-    //   guestData = {
-    //     name: guest.name,
-    //     drivers: []
-    //   }
-
-    //   drivers.forEach((driver) => {
-    //     googleMapsClient.directions({origin: guest.Address, destination: driver.Address, mode: 'driving'})
-    //     .asPromise()
-    //     .then((result => {
-    //       driverData = {
-    //         name: driver.name,
-    //         distance: result.routes[0].legs[0].distance.value
-    //       }
-    //       guestData.drivers.push(driverData);
-    //      })
-    //     );
-    //   });
-
-    //   members.push(guestData);
-    // });
-    // //async
-
-    // var pairings = PairController._generatePairsByDistance(members);
-
-    // members = []
-
-    // guests, drivers.
-    // guests.forEach((guest) => {
-    //   guestObject;
-    //   drivers.forEach((driver) => {
-    //     makeApiRequest{
-    //       origin = guest
-    //       destion = driver
-    //     }.then{
-    //       result
-    //       guestObject.drivers.push({
-
-    //       })
-    //     }
-
-    //   })
-    // })
 
     var drivers = [{name: 'Bradley', address: 'SE153XX', role: 'driver'}, {name: 'Zeus', address: 'SW64QP', role: 'driver'}]
     var guests = [{name: 'Doris', address: 'SE58HU', role: 'guest'}, {name: 'Tanil', address: 'SW114NJ', role: 'guest'}]
