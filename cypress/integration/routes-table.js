@@ -1,4 +1,11 @@
-describe("routes table", () => {  
+describe("routes table", () => {
+
+  beforeEach(() => {
+    cy.visit("admin/login");
+    cy.get("#admin").type("admin");
+    cy.get("#password").type("1234");
+    cy.get("#login").click();
+  });
 
   it("displays drivers and guests paired up", () => {
     cy.visit('/')
@@ -17,7 +24,10 @@ describe("routes table", () => {
     cy.get('.driver').should('contain', 'Zeus');
     cy.get('.driver').should('contain', 'Bradley');
     cy.get('.driver').should('contain', 'Kevin');
-
   });
 
+  afterEach(() => {
+    cy.visit('/')
+    cy.get("#logout").click();
+  });
 });

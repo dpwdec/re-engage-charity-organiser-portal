@@ -21,7 +21,9 @@ class ReactApp extends React.Component {
       return (
         <div>
           <h1>Hello</h1>
-          <DriverList />
+          <MemberForm updatemethod={this.updateState} />
+          <DriverList updatemethod={this.updateState} />
+          <GuestList />
           <Pairing />
           <AdminLogOut />
         </div>
