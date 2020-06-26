@@ -24,7 +24,7 @@ module.exports = (on) => {
   on('task', {
     addMember(member) {
       return new Promise((resolve) => {
-        mongoose.connect('mongodb://localhost/re_engage', function(err) {
+        mongoose.connect('mongodb://localhost/re_engage_test', function(err) {
           newMember = new Member(member);
           newMember.save(function(err) {
             resolve('done');
@@ -34,7 +34,7 @@ module.exports = (on) => {
     },
     dropDatabase() {
       return new Promise(function(resolve) {
-        mongoose.connect('mongodb://localhost/re_engage', function(err) {
+        mongoose.connect('mongodb://localhost/re_engage_test', function(err) {
           mongoose.connection.collections.members.drop(function () {
             resolve('done');
           });
