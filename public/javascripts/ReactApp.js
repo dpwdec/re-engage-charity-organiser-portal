@@ -24,7 +24,7 @@ class ReactApp extends React.Component {
           <DriverList />
           <Pairing />
           <AdminLogOut />
-          <DriverAvailability />
+          {/* <DriverAvailability /> */}
         </div>
       );
     }
