@@ -16,9 +16,9 @@ describe("routes table", () => {
     cy.task("addMember");
     cy.visit("/");
     cy.get("#generate-pairs").click();
+    cy.get(".guest").should("contain", "Dec");
+    cy.get(".guest").should("contain", "Tanil");
     cy.get(".guest").should("contain", "Doris");
-    cy.get(".guest").should("contain", "Kimothey");
-    cy.get(".guest").should("contain", "Perry");
 
     cy.get(".driver").should("contain", "Zeus");
     cy.get(".driver").should("contain", "Bradley");
@@ -28,13 +28,11 @@ describe("routes table", () => {
   it("sorts drivers and guests by closest distance and displays on page", () => {
     cy.visit("/");
     cy.get("#generate-pairs").click();
-    cy.get("#pair-1").should("contain", "Gwen");
-    cy.get("#pair-1").should("contain", "Perry");
-    cy.get("#pair-2").should("contain", "Bradley");
-    cy.get("#pair-2").should("contain", "Petunia");
-    cy.get("#pair-3").should("contain", "Kevin");
-    cy.get("#pair-3").should("contain", "Kimothey");
-    cy.get("#pair-4").should("contain", "Doris");
-    cy.get("#pair-4").should("contain", "Zeus");
+    cy.get("#pair-1").should("contain", "Dec");
+    cy.get("#pair-1").should("contain", "Bradley");
+    cy.get("#pair-2").should("contain", "Kevin");
+    cy.get("#pair-2").should("contain", "Tanil");
+    cy.get("#pair-3").should("contain", "Doris");
+    cy.get("#pair-3").should("contain", "Zeus");
   });
 });
