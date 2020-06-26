@@ -1,7 +1,7 @@
 let mongoose = require("mongoose");
 
 beforeAll(function (done) {
-  mongoose.connect("mongodb://localhost/re_engage", {
+  mongoose.connect("mongodb://localhost/re_engage_test", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   });

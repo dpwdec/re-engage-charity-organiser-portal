@@ -8,7 +8,8 @@ class DriverList extends React.Component {
   };
 
   componentDidMount() {
-    this.fetchDrivers('/drivers');  }
+    this.fetchDrivers('/drivers');
+  }
 
   fetchDrivers = () => {
     fetch('/drivers')
@@ -20,9 +21,15 @@ class DriverList extends React.Component {
     });
   }
 
-  render() {
+  sortDriversAtoZ() {
+    return this.state.drivers.sort(function(memberA, memberB) {
+    var memberA = memberA.name.toUpperCase();
+    var memberB = memberB.name.toUpperCase();
+      return (memberA < memberB) ? -1 : (memberA > memberB) ? 1 : 0;
+    });
+  }
 
-    let data = this.state.drivers;
+  render() {
 
     return(
       <div>
@@ -32,29 +39,18 @@ class DriverList extends React.Component {
               <th>Name</th>
               <th>Address</th>
             </tr>
-            {data.map((driver) => {
+
+            {this.sortDriversAtoZ().map((driver) => {
               return(
                 <tr class="driver-list">
                   <td>{driver.name}</td>
                   <td>{driver.address}</td>
                 </tr>
-              )
-            })}
+                )
+              })
+            }
         </table>
       </div>
     )
   }
 }
-
-      
-     
-
-        //   <section className="table">
-        //   { <table>
-        //       { data.map((driver) => (
-        //         <Driver driverName={driver.name} driverAddress={driver.address} id={driver.id} />
-        //           ))
-        //       }
-        //     </table>
-        //   }
-        // </section>

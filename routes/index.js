@@ -8,4 +8,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/drivers', HomepageController.DriverList);
+router.get('/guests', HomepageController.GuestList);
+router.post('/createMember', HomepageController.CreateMember);
+
 module.exports = router;

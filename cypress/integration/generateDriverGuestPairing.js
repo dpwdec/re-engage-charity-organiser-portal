@@ -1,9 +1,9 @@
 describe("routes table", () => {
   beforeEach(() => {
-    // cy.visit("admin/login");
-    // cy.get("#admin").type("admin");
-    // cy.get("#password").type("1234");
-    // cy.get("#login").click();
+    cy.visit("admin/login");
+    cy.get("#admin").type("admin");
+    cy.get("#password").type("1234");
+    cy.get("#login").click();
 
     // drop the database
     // cy.task("getMembers");
@@ -11,6 +11,10 @@ describe("routes table", () => {
     // generate pairs 
     cy.task("dropDatabase");
     cy.task("addMember");
+  });
+
+  afterEach(() => {
+    cy.get('#logout').click();
   });
 
   it("displays drivers and guests paired up", () => {
