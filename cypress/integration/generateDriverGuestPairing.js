@@ -9,11 +9,11 @@ describe("routes table", () => {
     // cy.task("getMembers");
     // insert expected members
     // generate pairs 
+    cy.task("dropDatabase");
+    cy.task("addMember");
   });
 
   it("displays drivers and guests paired up", () => {
-    cy.task("dropDatabase");
-    cy.task("addMember");
     cy.visit("/");
     cy.get("#generate-pairs").click();
     cy.get(".guest").should("contain", "Dec");
