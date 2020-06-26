@@ -32,37 +32,6 @@ module.exports = (on) => {
         });
       });
     },
-    paddMember() {
-      return new Promise((resolve) => {
-        mongoose.connect('mongodb://localhost/re_engage', function(err) {
-          var driver1 = new Member({
-            name: "Bradley",
-            address: "SE153XX",
-            role: "driver",
-          });
-          var driver2 = new Member({ name: "Zeus", address: "SW64QP", role: "driver" });
-          var driver3 = new Member({ name: "Kevin", address: "SW74SS", role: "driver" })
-
-          var guest1 = new Member({ name: "Doris", address: "SE58HU", role: "guest" });
-          var guest2 = new Member({ name: "Tanil", address: "SW114NJ", role: "guest" });
-          var guest3 = new Member({ name: "Dec", address: "SE229EX", role: "guest" });
-
-          driver1.save(function(err) {
-            driver2.save(function(err) {
-              guest1.save(function(err) {
-                guest2.save(function(err) {
-                  driver3.save(function(err) {
-                    guest3.save(function(err) {
-                      resolve('done');
-                    });
-                  });
-                });
-              });
-            });
-          });
-        });
-      });
-    },
     dropDatabase() {
       return new Promise(function(resolve) {
         mongoose.connect('mongodb://localhost/re_engage', function(err) {
