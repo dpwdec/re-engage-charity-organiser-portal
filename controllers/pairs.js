@@ -34,6 +34,7 @@ var PairController = {
 
         console.log(members[0]);
         console.log(members[1]);
+        console.log(members[2]);
         // randomly pair drivers and guests
         var pairings = PairController._generatePairsByDistance(members);
 
@@ -111,12 +112,12 @@ PairController._generatePairsByDistance = (pairDistances) => {
     pairDistances.splice(guestIndex, 1);
 
     pairDistances.forEach((guest) => {
-      var driverIndex;
       guest.drivers.forEach((driver, index) => {
-        if(driver === driverName) {
+        if(driver.name === driverName) {
           guest.drivers.splice(index, 1);
         }
       });
+      //console.log(guest);
     });
   }
 

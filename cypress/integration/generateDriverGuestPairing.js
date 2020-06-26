@@ -12,6 +12,7 @@ describe("routes table", () => {
   });
 
   it("displays drivers and guests paired up", () => {
+    cy.task("dropDatabase");
     cy.task("addMember");
     cy.visit("/");
     cy.get("#generate-pairs").click();
