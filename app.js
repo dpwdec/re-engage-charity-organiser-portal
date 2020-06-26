@@ -4,14 +4,31 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var pairsRouter = require('./routes/pairs')
+var indexRouter = require("./routes/index");
+var usersRouter = require("./routes/users");
+var pairsRouter = require("./routes/pairs");
 var adminRouter = require("./routes/admin");
 
 let Admin = require("./models/admin");
 let admin = new Admin({ adminName: "admin", password: "1234" });
 admin.save();
+
+const Member = require("./models/member");
+
+var driver1 = new Member({
+  name: "Bradley",
+  address: "SE153XX",
+  role: "driver",
+});
+var driver2 = new Member({ name: "Zeus", address: "SW64QP", role: "driver" });
+
+var guest1 = new Member({ name: "Doris", address: "SE58HU", role: "guest" });
+var guest2 = new Member({ name: "Tanil", address: "SW114NJ", role: "guest" });
+
+driver1.save();
+driver2.save();
+guest1.save();
+guest2.save();
 
 var app = express();
 
@@ -25,9 +42,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/pairs', pairsRouter);
+app.use("/", indexRouter);
+app.use("/users", usersRouter);
+app.use("/pairs", pairsRouter);
 app.use("/admin", adminRouter);
 
 // var Member = require ('./models/member');

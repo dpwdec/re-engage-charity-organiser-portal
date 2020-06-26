@@ -1,4 +1,4 @@
-var mongoose = require('mongoose');
+var mongoose = require("mongoose");
 
 var MemberSchema = new mongoose.Schema({
   name: String,
@@ -6,6 +6,6 @@ var MemberSchema = new mongoose.Schema({
   address: String,
 });
 
-var Member = mongoose.model('Member', MemberSchema);
+var Member = mongoose.model("Member", MemberSchema);
 
 module.exports = Member;

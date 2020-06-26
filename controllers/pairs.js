@@ -1,3 +1,6 @@
+var mongoose = require("mongoose");
+const Member = require("../models/member");
+
 const googleMapsClient = require("@google/maps").createClient({
   key: "AIzaSyC9qJYJPqeVBtCCvu68wQ286oyCL8Z5PqQ",
   Promise: Promise,
@@ -6,37 +9,36 @@ const googleMapsClient = require("@google/maps").createClient({
 var PairController = {
   Pairing: async (request, response) => {
     // contact to get members
+    Member.find({ role: "guest" }, (err, guests) => {
+      Member.find({ role: "driver" }, async (err, drivers) => {
+        var members = [];
+        var allPromises = [];
 
-    var drivers = [{name: 'Bradley', address: 'SE153XX', role: 'driver'}, {name: 'Zeus', address: 'SW64QP', role: 'driver'}]
-    var guests = [{name: 'Doris', address: 'SE58HU', role: 'guest'}, {name: 'Tanil', address: 'SW114NJ', role: 'guest'}]
+        guests.forEach((guest) => {
+          var member = {
+            name: guest.name,
+            drivers: [],
+          };
 
-    var allPromises = []
-    var members = []
+          var driverGuestPairPromises = drivers.map((driver) => {
+            return makeGoogleApiRequestForDistance(member, guest, driver);
+          });
 
-    guests.forEach((guest) => {
+          driverGuestPairPromises.forEach((APIpromise) => {
+            allPromises.push(APIpromise);
+          });
 
-      var member = {
-        name: guest.name,
-        drivers: []
-      }
+          members.push(member);
+        });
 
-      var driverGuestPairPromises = drivers.map((driver) => {
-        return  makeGoogleApiRequestForDistance(member, guest, driver);
+        var updatedUserInformation = await Promise.all(allPromises); // waits for all API calls to finish
+
+        // randomly pair drivers and guests
+        var pairings = PairController._generatePairsByDistance(members);
+
+        response.send({ pairs: pairings });
       });
-
-      driverGuestPairPromises.forEach((APIpromise) => {
-        allPromises.push(APIpromise);
-      })
-
-      members.push(member);
     });
-  
-    var updatedUserInformation =  await Promise.all(allPromises); // waits for all API calls to finish
-
-    // randomly pair drivers and guests
-    var pairings = PairController._generatePairsByDistance(members);
-
-    response.send({ pairs: pairings });
   },
   Map: (request, response) => {
     response.render("map");
@@ -57,19 +59,20 @@ var PairController = {
 };
 
 makeGoogleApiRequestForDistance = (member, guest, driver) => {
-  return new Promise(function(resolve) {
-    googleMapsClient.directions({origin: guest.address, destination: driver.address})
-    .asPromise()
-    .then((result) => {
-      //add the driver to the guest object
-      member.drivers.push({
-        name: driver.name,
-        distance: result.json.routes[0].legs[0].distance.value
-      })
-      resolve(result);
-    });
+  return new Promise(function (resolve) {
+    googleMapsClient
+      .directions({ origin: guest.address, destination: driver.address })
+      .asPromise()
+      .then((result) => {
+        //add the driver to the guest object
+        member.drivers.push({
+          name: driver.name,
+          distance: result.json.routes[0].legs[0].distance.value,
+        });
+        resolve(result);
+      });
   });
-}
+};
 
 // UTILITY METHODS
 
