@@ -1,4 +1,12 @@
 describe('Create Member Form', () => {
+
+  beforeEach(() => {
+    cy.visit("admin/login");
+    cy.get("#admin").type("admin");
+    cy.get("#password").type("1234");
+    cy.get("#login").click();
+  });
+
   it('Creates a new member', () => {
 
     //we will need to add DB drop helper function
@@ -14,5 +22,10 @@ describe('Create Member Form', () => {
     cy.get('.driver-list').should('contain', 'S3 4KY');
     cy.get('.guest-list').should('not.contain', 'Himithy');
     cy.get('.guest-list').should('not.contain', 'S3 4KY');
+  });
+
+  afterEach(() => {
+    cy.visit('/')
+    cy.get("#logout").click();
   });
 });
