@@ -9,22 +9,37 @@ class DriverAvailability extends React.Component {
 
   componentDidMount() {
     fetch('/driversAvailability')
-    .then(response => response.json())
-    .then((data)) => {
+    .then(response => {
+      return response.json()
+    }).then((data) => {
       this.setState({
-
+        drivers: data.drivers
       })
-    }
+    })
   }
 
   render() {
 
     return(
-      <div>
-        
+      <div className="table">
+        <table>
+          {this.state.drivers.map((driver) => (
+              <Driver 
+                id={driver.id} 
+                driver={driver.name} 
+                currentmonth={driver.currentmonth} 
+                secondmonth={driver.secondmonth} 
+                thirdmonth={driver.thirdmonth}
+                fourthmonth={driver.fourthmonth} 
+              />
+            )
+          )
+        }
+        </table>
       </div>
-    )
+    );
 
   }
 
+  
 }

@@ -1,9 +1,10 @@
 function Driver (props) {
   return(
     <tr>
-      <td>{props.drivers.id}</td>
-      <td className="driverName">{props.drivers.name}</td>
-      <td className="driverAddress">{props.drivers.address}</td>
+      <td>{props.id}</td>
+      <td className="driverName">{props.name}</td>
+      <td className="driverAddress">{props.address}</td>
+      <td className="driverAvailability">{props.availability}</td>
     </tr>
   );
 }
