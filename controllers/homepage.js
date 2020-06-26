@@ -2,7 +2,7 @@ var Member = require('../models/member');
 
 var HomepageController = {
 
-  CreateMember: function(request, response) {
+  CreateMember: (request, response) => {
 
     var member = new Member({
       name: request.body.name,
@@ -10,16 +10,16 @@ var HomepageController = {
       address: request.body.address
     });
 
-    member.save(function(err) {
+    member.save((err) => {
       if (err) { console.log(err) }
       // sendFlashMessage(response, request, '/', 'Member saved!');
     });
   },
 
-  DriverList: function(request, response) {
+  DriverList: (request, response) => {
     let drivers = [];
 
-    Member.find(function(err, result) {
+    Member.find((err, result) => {
       // console.log(result)
       result.forEach((member) => {
 
@@ -33,10 +33,10 @@ var HomepageController = {
     });
   },
 
-  GuestList: function(request, response) {
+  GuestList: (request, response) => {
     let guests = [];
 
-    Member.find(function(err, result) {
+    Member.find((err, result) => {
       // console.log(result)
       result.forEach((member) => {
 

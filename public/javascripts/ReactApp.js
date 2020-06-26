@@ -1,30 +1,4 @@
 class ReactApp extends React.Component {
-  
-  // constructor() {
-  //   super();
-  //   this.state = {
-  //     message: "",
-  //     member: { name: "", role: "", address: "" },
-  //   };
-  // }
-
-  // componentDidMount() {
-  //   this.fetchData('/');
-  // }
-
-  // fetchData = (apiToFetch) => {
-  //   fetch(apiToFetch)
-  //   .then(response => response.json())
-  //   .then((data) => {
-  //     this.setState({
-  //       member: data
-  //     })
-  //   })
-  // }
-
-  // updateState = () => {
-  //   this.fetchData('/')
-  // }
 
   render() {
     return(

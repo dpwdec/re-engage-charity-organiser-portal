@@ -25,7 +25,7 @@ class DriverList extends React.Component {
     return this.state.drivers.sort(function(memberA, memberB) {
     var memberA = memberA.name.toUpperCase();
     var memberB = memberB.name.toUpperCase();
-    return (memberA < memberB) ? -1 : (memberA > memberB) ? 1 : 0;
+      return (memberA < memberB) ? -1 : (memberA > memberB) ? 1 : 0;
     });
   }
 
@@ -54,4 +54,3 @@ class DriverList extends React.Component {
     )
   }
 }
-

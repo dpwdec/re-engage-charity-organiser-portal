@@ -25,7 +25,7 @@ class GuestList extends React.Component {
     return this.state.guests.sort(function(memberA, memberB) {
       var memberA = memberA.name.toUpperCase();
       var memberB = memberB.name.toUpperCase();
-      return (memberA < memberB) ? -1 : (memberA > memberB) ? 1 : 0;
+        return (memberA < memberB) ? -1 : (memberA > memberB) ? 1 : 0;
     });
   }
 
