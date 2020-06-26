@@ -1,12 +1,18 @@
 describe("routes table", () => {
-  beforeEach(function () {
+  beforeEach(() => {
     // cy.visit("admin/login");
     // cy.get("#admin").type("admin");
     // cy.get("#password").type("1234");
     // cy.get("#login").click();
+
+    // drop the database
+    // cy.task("getMembers");
+    // insert expected members
+    // generate pairs 
   });
 
   it("displays drivers and guests paired up", () => {
+    cy.task("addMember");
     cy.visit("/");
     cy.get("#generate-pairs").click();
     cy.get(".guest").should("contain", "Doris");

@@ -13,22 +13,22 @@ let Admin = require("./models/admin");
 let admin = new Admin({ adminName: "admin", password: "1234" });
 admin.save();
 
-const Member = require("./models/member");
+// const Member = require("./models/member");
 
-var driver1 = new Member({
-  name: "Bradley",
-  address: "SE153XX",
-  role: "driver",
-});
-var driver2 = new Member({ name: "Zeus", address: "SW64QP", role: "driver" });
+// var driver1 = new Member({
+//   name: "Bradley",
+//   address: "SE153XX",
+//   role: "driver",
+// });
+// var driver2 = new Member({ name: "Zeus", address: "SW64QP", role: "driver" });
 
-var guest1 = new Member({ name: "Doris", address: "SE58HU", role: "guest" });
-var guest2 = new Member({ name: "Tanil", address: "SW114NJ", role: "guest" });
+// var guest1 = new Member({ name: "Doris", address: "SE58HU", role: "guest" });
+// var guest2 = new Member({ name: "Tanil", address: "SW114NJ", role: "guest" });
 
-driver1.save();
-driver2.save();
-guest1.save();
-guest2.save();
+// driver1.save();
+// driver2.save();
+// guest1.save();
+// guest2.save();
 
 var app = express();
 

@@ -8,7 +8,6 @@ const googleMapsClient = require("@google/maps").createClient({
 
 var PairController = {
   Pairing: async (request, response) => {
-    // contact to get members
     Member.find({ role: "guest" }, (err, guests) => {
       Member.find({ role: "driver" }, async (err, drivers) => {
         var members = [];
@@ -33,6 +32,8 @@ var PairController = {
 
         var updatedUserInformation = await Promise.all(allPromises); // waits for all API calls to finish
 
+        console.log(members[0]);
+        console.log(members[1]);
         // randomly pair drivers and guests
         var pairings = PairController._generatePairsByDistance(members);
 
@@ -90,9 +91,9 @@ PairController._generatePairsByDistance = (pairDistances) => {
   while (pairDistances.length > 0) {
     var shortestPair = { id: 0, distance: 100000000 };
     var guestIndex;
-    var driverIndex;
+    var driverName;
 
-    pairDistances.forEach((guest, i) => {
+   pairDistances.forEach((guest, i) => {
       guest.drivers.forEach((driver, j) => {
         if (driver.distance < shortestPair.distance) {
           shortestPair = {
@@ -102,7 +103,7 @@ PairController._generatePairsByDistance = (pairDistances) => {
             distance: driver.distance,
           };
           guestIndex = i;
-          driverIndex = j;
+          driverName = driver.name;
         }
       });
     });
@@ -110,7 +111,12 @@ PairController._generatePairsByDistance = (pairDistances) => {
     pairDistances.splice(guestIndex, 1);
 
     pairDistances.forEach((guest) => {
-      guest.drivers.splice(driverIndex, 1);
+      var driverIndex;
+      guest.drivers.forEach((driver, index) => {
+        if(driver === driverName) {
+          guest.drivers.splice(index, 1);
+        }
+      });
     });
   }
 
