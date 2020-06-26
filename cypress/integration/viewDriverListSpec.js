@@ -5,6 +5,8 @@ describe('Members', () => {
     cy.get("#admin").type("admin");
     cy.get("#password").type("1234");
     cy.get("#login").click();
+
+    //cy.task('')
   });
 
   it('displays all drivers names and addresses', () => {
