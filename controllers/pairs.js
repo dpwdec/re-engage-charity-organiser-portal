@@ -4,7 +4,7 @@ const googleMapsClient = require("@google/maps").createClient({
 });
 
 var PairController = {
-  Pairing: (request, response) => {
+  Pairing: async (request, response) => {
     // contact to get members
     // drivers = members.find(drivers)
     // guests = members.find(guests)
@@ -64,93 +64,31 @@ var PairController = {
     //   })
     // })
 
-    // sort drivers and guests
-    var members = [
-      {
-        name: "Doris",
-        drivers: [
-          {
-            name: "Bradley",
-            distance: 8000,
-          },
-          {
-            name: "Zeus",
-            distance: 2000,
-          },
-          {
-            name: "Kevin",
-            distance: 3000,
-          },
-          {
-            name: "Gwen",
-            distance: 10000,
-          },
-        ],
-      },
-      {
-        name: "Kimothey",
-        drivers: [
-          {
-            name: "Bradley",
-            distance: 6000,
-          },
-          {
-            name: "Zeus",
-            distance: 3000,
-          },
-          {
-            name: "Kevin",
-            distance: 500,
-          },
-          {
-            name: "Gwen",
-            distance: 5000,
-          },
-        ],
-      },
-      {
-        name: "Perry",
-        drivers: [
-          {
-            name: "Bradley",
-            distance: 300,
-          },
-          {
-            name: "Zeus",
-            distance: 10000,
-          },
-          {
-            name: "Kevin",
-            distance: 600,
-          },
-          {
-            name: "Gwen",
-            distance: 100,
-          },
-        ],
-      },
-      {
-        name: "Petunia",
-        drivers: [
-          {
-            name: "Bradley",
-            distance: 300,
-          },
-          {
-            name: "Zeus",
-            distance: 400,
-          },
-          {
-            name: "Kevin",
-            distance: 6000,
-          },
-          {
-            name: "Gwen",
-            distance: 5000,
-          },
-        ],
-      },
-    ];
+    var drivers = [{name: 'Bradley', address: 'SE153XX', role: 'driver'}, {name: 'Zeus', address: 'SW64QP', role: 'driver'}]
+    var guests = [{name: 'Doris', address: 'SE58HU', role: 'guest'}, {name: 'Tanil', address: 'SW114NJ', role: 'guest'}]
+
+    var allPromises = []
+    var members = []
+
+    guests.forEach((guest) => {
+
+      var member = {
+        name: guest.name,
+        drivers: []
+      }
+
+      var driverGuestPairPromises = drivers.map((driver) => {
+        return  makeGoogleApiRequestForDistance(member, guest, driver);
+      });
+
+      driverGuestPairPromises.forEach((APIpromise) => {
+        allPromises.push(APIpromise);
+      })
+
+      members.push(member);
+    });
+  
+    var updatedUserInformation =  await Promise.all(allPromises); // waits for all API calls to finish
 
     // randomly pair drivers and guests
     var pairings = PairController._generatePairsByDistance(members);
@@ -174,6 +112,21 @@ var PairController = {
       });
   },
 };
+
+makeGoogleApiRequestForDistance = (member, guest, driver) => {
+  return new Promise(function(resolve) {
+    googleMapsClient.directions({origin: guest.address, destination: driver.address})
+    .asPromise()
+    .then((result) => {
+      //add the driver to the guest object
+      member.drivers.push({
+        name: driver.name,
+        distance: result.json.routes[0].legs[0].distance.value
+      })
+      resolve(result);
+    });
+  });
+}
 
 // UTILITY METHODS
 

@@ -9,11 +9,11 @@ var persons = [{name: 'Dec', origin: 'SE153XX'},
 var addresses = [{origin: 'SE153XX', destination: 'SW178LA'}, {origin: 'SE153XX', destination: 'SE229EX'}, {origin: 'SE153XX', destination: 'SW99PA'}]
 
 
-async function updateUserInformation(usersArray) {
+async function updateUserInformation(driverAddresses) {
   console.log('start');
   var allPromises = []
   persons.forEach((person) => {
-    var userInformationPromises = usersArray.map(function(user) {
+    var userInformationPromises = driverAddresses.map(function(user) {
       return  userInformationServerRequest(user, person);
     });
     userInformationPromises.forEach((APIpromise) => {
@@ -21,7 +21,7 @@ async function updateUserInformation(usersArray) {
     })
   });
   
-  var updatedUserInformation =  await  Promise.all(allPromises);
+  var updatedUserInformation =  await Promise.all(allPromises); // waits for all API calls to finish
   console.log(updatedUserInformation);
   console.log('end');
 }
