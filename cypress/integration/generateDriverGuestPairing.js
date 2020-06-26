@@ -5,12 +5,14 @@ describe("routes table", () => {
     cy.get("#password").type("1234");
     cy.get("#login").click();
 
-    // drop the database
-    // cy.task("getMembers");
-    // insert expected members
-    // generate pairs 
     cy.task("dropDatabase");
-    cy.task("addMember");
+    cy.task("addMember", { name: "Zeus", address: "SW64QP", role: "driver" });
+    cy.task("addMember", { name: "Kevin", address: "SW74SS", role: "driver" });
+    cy.task("addMember", { name: "Bradley", address: "SE153XX", role: "driver"});
+
+    cy.task("addMember", { name: "Doris", address: "SE58HU", role: "guest" });
+    cy.task("addMember", { name: "Tanil", address: "SW114NJ", role: "guest" });
+    cy.task("addMember", { name: "Dec", address: "SE229EX", role: "guest" });
   });
 
   afterEach(() => {

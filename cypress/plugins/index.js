@@ -22,7 +22,17 @@ const Member = require('../../models/member');
 module.exports = (on) => {
   // `on` is used to hook into various events Cypress emits
   on('task', {
-    addMember() {
+    addMember(member) {
+      return new Promise((resolve) => {
+        mongoose.connect('mongodb://localhost/re_engage', function(err) {
+          newMember = new Member(member);
+          newMember.save(function(err) {
+            resolve('done');
+          });
+        });
+      });
+    },
+    paddMember() {
       return new Promise((resolve) => {
         mongoose.connect('mongodb://localhost/re_engage', function(err) {
           var driver1 = new Member({
