@@ -12,8 +12,8 @@ class MemberForm extends React.Component {
     event.preventDefault();
     let newMember = {
       name: this.state.name,
-      role: this.state.role, 
-      address: this.state.address 
+      role: this.state.role,
+      address: this.state.address
     };
 
     fetch('/createMember', {
@@ -46,7 +46,7 @@ class MemberForm extends React.Component {
 
     return(
       <div>
-        <h4 class="form-message"> {message} </h4>
+        <h4 className="form-message"> {message} </h4>
 
         <form id="new-member-form" onSubmit={this.mySubmitHandler}>
           <h3>Add a new member</h3>
@@ -55,7 +55,7 @@ class MemberForm extends React.Component {
           <input required pattern="driver|guest" id="new-member-role" type="text" name="role" value={role} placeholder="role: driver or guest" onChange={this.onFormChange}></input>
           <input type="submit" value="Submit"></input>
         </form>
-        
+
       </div>
     )
   }

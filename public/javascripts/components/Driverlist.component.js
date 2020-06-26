@@ -15,7 +15,6 @@ class DriverList extends React.Component {
     fetch('/drivers')
     .then(response => response.json())
     .then((data) => {
-      console.log(data)
       this.setState({
         drivers: data,
       });
@@ -32,29 +31,25 @@ class DriverList extends React.Component {
   }
 
   render() {
-    console.log(this.state.drivers)
     return(
       <div>
         <h2>List of Drivers</h2>
         <table>
+          <thead>
             <tr>
+              <th></th>
               <th>Name</th>
               <th>Address</th>
             </tr>
-
+          </thead>
+          <tbody>
             {this.state.drivers.map((driver) => (
               < Driver name={driver.name} address={driver.address} id={driver._id} key={driver._id} />
               ))
             }
+          </tbody>
         </table>
       </div>
     )
   }
 }
-
-              // return(
-              //   <tr class="driver-list">
-              //     <td>{driver.name}</td>
-              //     <td>{driver.address}</td>
-              //   </tr>
-              //   )
