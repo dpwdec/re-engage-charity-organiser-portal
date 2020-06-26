@@ -24,18 +24,18 @@ module.exports = (on) => {
   on('task', {
     addMember(member) {
       return new Promise((resolve) => {
-        mongoose.connect('mongodb://localhost/re_engage_test', function(err) {
+        mongoose.connect('mongodb://localhost/re_engage_test', (err) => {
           newMember = new Member(member);
-          newMember.save(function(err) {
+          newMember.save((err) => {
             resolve('done');
           });
         });
       });
     },
     dropDatabase() {
-      return new Promise(function(resolve) {
-        mongoose.connect('mongodb://localhost/re_engage_test', function(err) {
-          mongoose.connection.collections.members.drop(function () {
+      return new Promise((resolve) => {
+        mongoose.connect('mongodb://localhost/re_engage_test', (err) => {
+          mongoose.connection.collections.members.drop((err) => {
             resolve('done');
           });
         });
