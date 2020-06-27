@@ -37,7 +37,7 @@ class DriverList extends React.Component {
     return(
       <div>
         <h2>List of Drivers</h2>
-        <table>
+        <table className="driver-list">
           <thead>
             <tr>
               <th></th>

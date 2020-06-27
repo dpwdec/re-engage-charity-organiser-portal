@@ -37,7 +37,7 @@ class GuestList extends React.Component {
     return(
       <div>
         <h2>List of Guests</h2>
-        <table>
+        <table className="guest-list">
           <thead>
             <tr>
               <th></th>

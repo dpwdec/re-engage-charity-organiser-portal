@@ -13,8 +13,6 @@ var mongoose = require('mongoose');
  * Get port from environment and store in Express.
  */
 
-// old port
-// var port = normalizePort(process.env.PORT || '3000');
 // new port step 1
 var port = process.env.PORT || '3000';
 app.set('port', port);
@@ -23,17 +21,6 @@ app.set('port', port);
 Setup MongoDB connection
 */
 
-// old config
-// var mongoDbUrl = process.env.MONGODB_URL || 'mongodb://localhost/re_engage';
-// mongoose.connect(mongoDbUrl, {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true
-// });
-
-// var db = mongoose.connection;
-// db.on('error', console.error.bind(console, 'MongoDB connection err:'));
-
-// new config step 2
 if ( process.env.MONGOLAB_URI ) {
   mongoose.connect(process.env.MONGOLAB_URI, {
     useNewUrlParser: true,
