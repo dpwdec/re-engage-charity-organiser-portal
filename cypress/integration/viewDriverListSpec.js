@@ -1,15 +1,18 @@
 describe('Members', () => {
 
   beforeEach(() => {
-    cy.visit("admin/login");
-    cy.get("#admin").type("admin");
-    cy.get("#password").type("1234");
-    cy.get("#login").click();
+    cy.task('dropAdmins');
+    cy.task('addAdmin', { adminName: "admin", password: "1234" });
 
     cy.task('dropMembers');
     cy.task('addMember', {name: 'Cat', role: 'driver'});
     cy.task('addMember', {name: 'Marija', role: 'driver'});
     cy.task('addMember', {name: 'Dec', role: 'guest'});
+
+    cy.visit("admin/login");
+    cy.get("#admin").type("admin");
+    cy.get("#password").type("1234");
+    cy.get("#login").click();
   });
 
   it('displays all drivers names and addresses', () => {

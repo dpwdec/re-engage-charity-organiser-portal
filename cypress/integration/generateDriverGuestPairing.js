@@ -1,9 +1,7 @@
 describe("routes table", () => {
   beforeEach(() => {
-    cy.visit("admin/login");
-    cy.get("#admin").type("admin");
-    cy.get("#password").type("1234");
-    cy.get("#login").click();
+    cy.task('dropAdmins');
+    cy.task('addAdmin', { adminName: "admin", password: "1234" });
 
     cy.task("dropMembers");
     cy.task("addMember", { name: "Zeus", address: "SW64QP", role: "driver" });
@@ -13,6 +11,11 @@ describe("routes table", () => {
     cy.task("addMember", { name: "Doris", address: "SE58HU", role: "guest" });
     cy.task("addMember", { name: "Tanil", address: "SW114NJ", role: "guest" });
     cy.task("addMember", { name: "Dec", address: "SE229EX", role: "guest" });
+
+    cy.visit("admin/login");
+    cy.get("#admin").type("admin");
+    cy.get("#password").type("1234");
+    cy.get("#login").click();
   });
 
   afterEach(() => {
