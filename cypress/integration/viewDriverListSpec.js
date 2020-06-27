@@ -9,7 +9,7 @@ describe('Members', () => {
     cy.task('dropDatabase');
     cy.task('addMember', {name: 'Cat', role: 'driver'});
     cy.task('addMember', {name: 'Marija', role: 'driver'});
-    cy.task('addMember', {name: 'Dec', role: 'driver'});
+    cy.task('addMember', {name: 'Dec', role: 'guest'});
   });
 
   it('displays all drivers names and addresses', () => {
