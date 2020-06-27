@@ -1,8 +1,8 @@
-var PairController = require("../controllers/pairs");
+var ShortestDistancePairs = require("../controllers/pairs/shortestDistancePairs");
 
 describe('Pair Controller', () => {
 
-  describe('._generatePairsByDistance', () => {
+  describe('.generate', () => {
 
     it('can generate a single pair with distance', () => {
 
@@ -20,7 +20,7 @@ describe('Pair Controller', () => {
         { id: 1, driver: 'Bradley', guest: 'Doris', distance: 8000 }
       ]
 
-      expect(PairController._generatePairsByDistance(data)).toEqual(output)
+      expect(ShortestDistancePairs.generate(data)).toEqual(output)
 
     });
 
@@ -58,7 +58,7 @@ describe('Pair Controller', () => {
         { id: 2, driver: 'Bradley', guest: 'Kimothey', distance: 6000 }
       ]
 
-      expect(PairController._generatePairsByDistance(data)).toEqual(output)
+      expect(ShortestDistancePairs.generate(data)).toEqual(output)
 
     });
 
@@ -154,7 +154,7 @@ describe('Pair Controller', () => {
         { id: 4, driver: 'Zeus', guest: 'Doris', distance: 2000 }
       ]
 
-      expect(PairController._generatePairsByDistance(data)).toEqual(output)
+      expect(ShortestDistancePairs.generate(data)).toEqual(output)
 
     });
 

@@ -31,7 +31,6 @@ var PairController = {
         });
 
         await Promise.all(allPromises); // waits for all API calls to finish
-        // randomly pair drivers and guests
         var pairings = PairController._generatePairsByDistance(members);
 
         response.send({ pairs: pairings });
@@ -113,19 +112,8 @@ PairController._generatePairsByDistance = (pairDistances) => {
           guest.drivers.splice(index, 1);
         }
       });
-      //console.log(guest);
     });
   }
-
-  // var lastPair = {
-  //   id: pairing.length + 1,
-  //   driver: pairDistances[0].drivers[0].name,
-  //   guest: pairDistances[0].name,
-  //   distance: pairDistances[0].drivers[0].distance,
-  // };
-
-  // pairing.push(lastPair);
-  console.log(pairing);
   return pairing;
 };
 
