@@ -9,10 +9,6 @@ var usersRouter = require("./routes/users");
 var pairsRouter = require("./routes/pairs");
 var adminRouter = require("./routes/admin");
 
-let Admin = require("./models/admin");
-let admin = new Admin({ adminName: "admin", password: "1234" });
-admin.save();
-
 var app = express();
 
 // view engine setup

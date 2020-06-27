@@ -34,10 +34,17 @@ Setup MongoDB connection
 // db.on('error', console.error.bind(console, 'MongoDB connection err:'));
 
 // new config step 2
-mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost/re_engage', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-});
+if ( process.env.MONGOLAB_URI ) {
+  mongoose.connect(process.env.MONGOLAB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  });
+} else {
+  mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost/re_engage', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  });
+}
 
 mongoose.connection.on('connected', () => {
   console.log('Mongoose is connected!');
