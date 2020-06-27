@@ -30,11 +30,7 @@ var PairController = {
           members.push(member);
         });
 
-        var updatedUserInformation = await Promise.all(allPromises); // waits for all API calls to finish
-
-        console.log(members[0]);
-        console.log(members[1]);
-        console.log(members[2]);
+        await Promise.all(allPromises); // waits for all API calls to finish
         // randomly pair drivers and guests
         var pairings = PairController._generatePairsByDistance(members);
 
