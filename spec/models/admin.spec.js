@@ -20,7 +20,7 @@ describe("Admin model", function () {
   });
 
   it("is storing data inside users table", function (done) {
-    let admin = new Admin({ adminName: "makers", password: "0000" });
+    let admin = new Admin({ adminName: "admin", password: "1234" });
 
     admin.save(function (err) {
       expect(err).toBeNull();
@@ -28,8 +28,8 @@ describe("Admin model", function () {
         expect(err).toBeNull();
         expect(admins[0].adminName).not.toEqual("maker");
         expect(admins[0].password).not.toEqual("000");
-        expect(admins[0].adminName).toEqual("makers");
-        expect(admins[0].password).toEqual("0000");
+        expect(admins[0].adminName).toEqual("admin");
+        expect(admins[0].password).toEqual("1234");
 
         done();
       });
