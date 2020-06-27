@@ -1,8 +1,15 @@
+var helperFunction = require('./helperFunctions') 
 var Member = require('../models/member');
 
 var AvailabilitiesController = {
 
     DriverAvailability: (request, response) => {
+
+      var current_month = getCurrentMonthAndYear();
+      var month2 = , 
+      var month3= ,
+      var month4 = ,
+
 
       // go into DB and retrieve drivers
       // get availabilities 
@@ -15,3 +22,4 @@ var AvailabilitiesController = {
 }
 
 module.exports = AvailabilitiesController;
+
