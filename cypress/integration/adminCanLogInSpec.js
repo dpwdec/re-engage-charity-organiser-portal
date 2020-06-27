@@ -1,5 +1,7 @@
 describe("Admin can log in with correct data", () => {
   beforeEach(() => {
+    cy.task('dropAdmins');
+
     cy.visit("admin/login");
     cy.get("#admin").type("admin");
     cy.get("#password").type("1234");

@@ -41,6 +41,15 @@ module.exports = (on) => {
         });
       });
     },
+    dropAdmins() {
+      return new Promise((resolve) => {
+        mongoose.connect('mongodb://localhost/re_engage_test', (err) => {
+          mongoose.connection.collections.admins.drop((err) => {
+            resolve('done');
+          });
+        });
+      });
+    }
   });
   // `config` is the resolved Cypress config
 }
