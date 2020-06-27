@@ -18,6 +18,9 @@ class GuestList extends React.Component {
       this.setState({
         guests: data,
       });
+      this.setState({
+        guests: this.sortGuestsAtoZ(),
+      });
     });
   }
 

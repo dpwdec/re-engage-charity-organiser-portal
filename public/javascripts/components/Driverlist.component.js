@@ -18,7 +18,10 @@ class DriverList extends React.Component {
       this.setState({
         drivers: data,
       });
-      this.sortDriversAtoZ()
+      this.setState({
+        drivers: this.sortDriversAtoZ(),
+      });
+      
     });
   }
 
