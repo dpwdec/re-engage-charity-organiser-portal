@@ -32,6 +32,16 @@ module.exports = (on) => {
         });
       });
     },
+    addAdmin(admin) {
+      return new Promise((resolve) => {
+        mongoose.connect('mongodb://localhost/re_engage_test', (err) => {
+          newAdmin = new Admin(admin);
+          newAdmin.save((err) => {
+            resolve('done');
+          });
+        });
+      });
+    },
     dropMembers() {
       return new Promise((resolve) => {
         mongoose.connect('mongodb://localhost/re_engage_test', (err) => {

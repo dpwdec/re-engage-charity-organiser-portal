@@ -1,5 +1,8 @@
 describe("Testing login functionality with wrong admin datas", () => {
   beforeEach(() => {
+    cy.task('dropAdmins');
+    cy.task('addAdmin', { adminName: "admin", password: "1234" });
+    
     cy.visit("admin/login");
   });
 
