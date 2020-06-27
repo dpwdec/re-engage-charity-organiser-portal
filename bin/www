@@ -34,7 +34,7 @@ Setup MongoDB connection
 // db.on('error', console.error.bind(console, 'MongoDB connection err:'));
 
 // new config step 2
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/re_engage', {
+mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost/re_engage', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
