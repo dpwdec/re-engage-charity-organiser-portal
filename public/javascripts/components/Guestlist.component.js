@@ -12,11 +12,14 @@ class GuestList extends React.Component {
   }
 
   fetchGuests = () => {
-    fetch('guests')
+    fetch('/guests')
     .then(response => response.json())
     .then((data) => {
       this.setState({
         guests: data,
+      });
+      this.setState({
+        guests: this.sortGuestsAtoZ(),
       });
     });
   }
@@ -34,19 +37,20 @@ class GuestList extends React.Component {
     return(
       <div>
         <h2>List of Guests</h2>
-        <table>
+        <table className="guest-list">
+          <thead>
             <tr>
+              <th></th>
               <th>Name</th>
               <th>Address</th>
             </tr>
-            {this.sortGuestsAtoZ().map((guest) => {
-              return(
-                <tr class="guest-list">
-                  <td>{guest.name}</td>
-                  <td>{guest.address}</td>
-                </tr>
-              )
-            })}
+          </thead>
+          <tbody>
+            {this.state.guests.map((guest) => (
+              < Guest name={guest.name} address={guest.address} id={guest._id} key={guest._id} />
+              ))
+            }
+          </tbody>
         </table>
       </div>
     )

@@ -4,7 +4,7 @@ class MemberForm extends React.Component {
     super();
     this.state = {
       message: "test message: success/fail add member",
-      member: { name: "", role: "", address: "" },
+      member: {},
     }
   };
 
@@ -12,8 +12,8 @@ class MemberForm extends React.Component {
     event.preventDefault();
     let newMember = {
       name: this.state.name,
-      role: this.state.role, 
-      address: this.state.address 
+      role: this.state.role,
+      address: this.state.address
     };
 
     fetch('/createMember', {
@@ -26,8 +26,13 @@ class MemberForm extends React.Component {
       this.setState({
         message: "Success!"
       })
-    });
-    this.cancelCourse()
+      // var formMessage = document.getElementById('form-message')
+      // formMessage.innerHTML = "testing"
+    })
+    .then(()=> {
+      XXXXXXXX.forceUpdate();
+      this.cancelCourse()
+    })
   }
 
   cancelCourse = () => {
@@ -40,22 +45,26 @@ class MemberForm extends React.Component {
     });
   }
 
+  refreshPage = () => {
+    window.location.reload(false);
+  }
+
   render() {
 
     const { name, address, role, message } = this.state;
 
     return(
       <div>
-        <h4 class="form-message"> {message} </h4>
+        <h4 id="form-message"></h4>
 
-        <form id="new-member-form" onSubmit={this.mySubmitHandler}>
+        <form id="new-member-form" onSubmit={this.mySubmitHandler} >
           <h3>Add a new member</h3>
-          <input required id="new-member-name" type="text" name="name" value={name} placeholder="name" onChange={this.onFormChange} ></input>
-          <input required id="new-member-address" type="text" name="address" value={address} placeholder="address" onChange={this.onFormChange} ></input>
-          <input required pattern="driver|guest" id="new-member-role" type="text" name="role" value={role} placeholder="role: driver or guest" onChange={this.onFormChange}></input>
+          <input required id="new-member-name" type="text" name="name" value={this.state.member.name} placeholder="name" onChange={this.onFormChange} ></input>
+          <input required id="new-member-address" type="text" name="address" value={this.state.member.address} placeholder="address" onChange={this.onFormChange} ></input>
+          <input required pattern="driver|guest" id="new-member-role" type="text" name="role" value={this.state.member.role} placeholder="role: driver or guest" onChange={this.onFormChange}></input>
           <input type="submit" value="Submit"></input>
         </form>
-        
+
       </div>
     )
   }
