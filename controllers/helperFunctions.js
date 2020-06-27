@@ -1,4 +1,4 @@
-let getArrayOfCurrentAndNextThreeMonths = () => {
+const getArrayOfCurrentAndNextThreeMonths = () => {
   
   //helpers
   var today = new Date();
