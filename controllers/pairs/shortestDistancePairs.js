@@ -1,12 +1,13 @@
 var ShortestDistancePairs = {
   generate: (pairDistances) => {
-    // compare all distances 'find shorted global pair distance'
-    // assign pair to output
-    // eliminate that driver from all other guests
-    // repeat until one pair left
-    // return output
-  
-    // while loop, until guests array < 1
+    /*
+      1. Compare all guest-driver distances and 'find shortest global pair distance'
+      2. Assign that shortest pair to output
+      3. Eliminate that guest from input
+      4. Elimate that driver as a possibilty for all other guests
+      5. Repeat until all pairs are assigned
+      6. Return output
+    */
   
     var pairing = [];
   
