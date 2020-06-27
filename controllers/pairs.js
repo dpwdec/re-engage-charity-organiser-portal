@@ -21,7 +21,7 @@ var PairController = {
           };
 
           var driverGuestPairPromises = drivers.map((driver) => {
-            return makeGoogleApiRequestForDistance(member, guest, driver);
+            return makeGooglePairRouteApiRequest(member, guest, driver);
           });
 
           driverGuestPairPromises.forEach((APIpromise) => {
@@ -56,7 +56,7 @@ var PairController = {
   },
 };
 
-makeGoogleApiRequestForDistance = (member, guest, driver) => {
+makeGooglePairRouteApiRequest = (member, guest, driver) => {
   return new Promise(function (resolve) {
     googleMapsClient
       .directions({ origin: guest.address, destination: driver.address })
@@ -71,5 +71,6 @@ makeGoogleApiRequestForDistance = (member, guest, driver) => {
       });
   });
 };
+
 
 module.exports = PairController;
