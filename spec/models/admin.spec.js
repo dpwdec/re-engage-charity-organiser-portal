@@ -9,6 +9,12 @@ describe("Admin model", function () {
     });
   });
 
+  afterEach(function (done) {
+    mongoose.connection.collections.admins.drop(function () {
+      done();
+    });
+  });
+
   it("has a adminName", function () {
     let admin = new Admin({ adminName: "admin" });
     expect(admin.adminName).toEqual("admin");
