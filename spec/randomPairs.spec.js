@@ -1,7 +1,7 @@
-var PairController = require('../controllers/pairs');
+var RandomPairs = require('../controllers/pairs/randomPairs.js');
 
 describe('Pair Controller', () => {
-  describe('._generatePairs', () => {
+  describe('.generate', () => {
     it('can generate a single pair', () => {
       var data = {
         drivers: [ {name: 'Bradley'} ],
@@ -13,7 +13,7 @@ describe('Pair Controller', () => {
       ]
       
 
-      expect(PairController._generatePairs(data)).toEqual(pairs);
+      expect(RandomPairs.generate(data)).toEqual(pairs);
     });
 
     it('can generate two pairs', () => {
@@ -27,14 +27,14 @@ describe('Pair Controller', () => {
         guests: [ {name: 'Doris' }, { name: 'Kimothey' } ]
       }
 
-      jest.spyOn(PairController, '_mixMembers').mockReturnValue(mixedData);
+      jest.spyOn(RandomPairs, '_mixMembers').mockReturnValue(mixedData);
 
       var pairs = [
         {id: 1, driver: 'Bradley', guest: 'Doris'},
         {id: 2, driver: 'Zeus', guest: 'Kimothey'}
       ]
 
-      expect(PairController._generatePairs(data)).toEqual(pairs);
+      expect(RandomPairs.generate(data)).toEqual(pairs);
     });
 
     it('can generate multiple pairs', () => {
@@ -49,7 +49,7 @@ describe('Pair Controller', () => {
         guests: [ {name: 'Kimothey' }, { name: 'Perry'}, {name: 'Doris'} ]
       }
 
-      jest.spyOn(PairController, '_mixMembers').mockReturnValue(mixedData);
+      jest.spyOn(RandomPairs, '_mixMembers').mockReturnValue(mixedData);
       //have a test that checks that _mixMembers calls _shuffleArray
 
       var pairs = [
@@ -58,18 +58,18 @@ describe('Pair Controller', () => {
         {id: 3, driver: 'Kevin', guest: 'Doris'}
       ]
 
-      expect(PairController._generatePairs(data)).toEqual(pairs);
+      expect(RandomPairs.generate(data)).toEqual(pairs);
     });
 
     it('Pair controller _mixMembers is called when generating pairs', () => {
-      var mixMemberSpy = jest.spyOn(PairController, '_mixMembers');
+      var mixMemberSpy = jest.spyOn(RandomPairs, '_mixMembers');
 
       var data = {
         drivers: [ {name: 'Bradley'} ],
         guests: [ {name: 'Doris' } ]
       }
 
-      PairController._generatePairs(data);
+      RandomPairs.generate(data);
 
       expect(mixMemberSpy).toHaveBeenCalled();
     });

@@ -5,10 +5,11 @@
   "scripts": {
     "start": "nodemon ./bin/www",
     "test:unit": "jest",
-    "start:test": "PORT=3000 MONGODB_URL='mongodb://localhost/re_engage_test' npm start",
+    "start:test": "PORT=3030 MONGODB_URL='mongodb://localhost/re_engage_test' npm start",
     "test:integration": "cypress run"
   },
   "dependencies": {
+    "@google/maps": "^1.1.3",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "express": "~4.16.1",

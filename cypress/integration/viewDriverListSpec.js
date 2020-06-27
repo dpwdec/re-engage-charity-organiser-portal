@@ -5,6 +5,11 @@ describe('Members', () => {
     cy.get("#admin").type("admin");
     cy.get("#password").type("1234");
     cy.get("#login").click();
+
+    cy.task('dropDatabase');
+    cy.task('addMember', {name: 'Cat', role: 'driver'});
+    cy.task('addMember', {name: 'Marija', role: 'driver'});
+    cy.task('addMember', {name: 'Dec', role: 'guest'});
   });
 
   it('displays all drivers names and addresses', () => {
