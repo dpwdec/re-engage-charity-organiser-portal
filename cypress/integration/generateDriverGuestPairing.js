@@ -5,7 +5,7 @@ describe("routes table", () => {
     cy.get("#password").type("1234");
     cy.get("#login").click();
 
-    cy.task("dropDatabase");
+    cy.task("dropMembers");
     cy.task("addMember", { name: "Zeus", address: "SW64QP", role: "driver" });
     cy.task("addMember", { name: "Kevin", address: "SW74SS", role: "driver" });
     cy.task("addMember", { name: "Bradley", address: "SE153XX", role: "driver"});

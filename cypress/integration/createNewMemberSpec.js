@@ -5,7 +5,7 @@ describe('Create Member Form', () => {
     cy.get("#admin").type("admin");
     cy.get("#password").type("1234");
     cy.get("#login").click();
-    cy.task('dropDatabase');
+    cy.task('dropMembers');
   });
 
   it('Creates a new member', () => {

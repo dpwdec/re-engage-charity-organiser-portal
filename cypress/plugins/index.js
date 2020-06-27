@@ -32,7 +32,7 @@ module.exports = (on) => {
         });
       });
     },
-    dropDatabase() {
+    dropMembers() {
       return new Promise((resolve) => {
         mongoose.connect('mongodb://localhost/re_engage_test', (err) => {
           mongoose.connection.collections.members.drop((err) => {
