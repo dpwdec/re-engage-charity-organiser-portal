@@ -9,7 +9,8 @@ class ReactApp extends React.Component {
     this.state = {
       loggedIn,
     };
-  }
+  }ç
+ 
   render() {
     if (this.state.loggedIn === false) {
       return (
@@ -19,14 +20,21 @@ class ReactApp extends React.Component {
       );
     } else {
       return (
-        <div>
-          <h1>Hello</h1>
-          <MemberForm updatemethod={this.updateState} />
-          <DriverList updatemethod={this.updateState} />
-          <GuestList />
-          <Pairing />
-          <AdminLogOut />
-        </div>
+      <div className="section">
+          <div>
+            <h1>Hello</h1>
+            
+            <MemberForm updatemethod={this.updateState} />
+            <DriverList updatemethod={this.updateState} />
+            <GuestList />
+            <Pairing />
+            <AdminLogOut />
+          
+          </div>
+
+          
+      </div>
+
       );
     }
   }
