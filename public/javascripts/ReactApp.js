@@ -64,7 +64,7 @@ class ReactApp extends React.Component {
           <div className="main-app container margin-top bg-white">
     
             <Header />
-            <div className="row tab-group">
+            <div className="row">
               <button id="home-tab" className="tab col button active-tab" onClick={this.showHome}>Home</button>
               <button id="pairing-tab" className="tab col button" onClick={this.showPairs}>Pairing</button>
               <button id="contact-tab" className="tab col button" onClick={this.showContact}>Contact</button>
