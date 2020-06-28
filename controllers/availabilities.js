@@ -16,7 +16,7 @@ var Availabilities= {
       var drivers = [];
 
       // Step 3: Mongoose query
-      var filter = 'availabilites.month1 availabilites.month2 availabilites.month3 availabilites.month4'
+      var filter = 'availability.month1 availability.month2 availability.month3 availability.month4'
 
       Member.find({ role: 'driver' }).select(filter).lean().
         exec((err, result) => {
