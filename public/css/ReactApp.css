@@ -9,10 +9,11 @@ body {
 
 .main-content{
   background-color: white;
+  height: 100%;
 }
 
 .tab {
-  background: #1abc9c;
+  background: #e67e22;
   border-right: 0.125rem solid;
   position: relative;
   margin: 3rem 0;
