@@ -52,33 +52,36 @@ class ReactApp extends React.Component {
       );
     } else {
       return (
-      <div className="Main Component">
+      <div className="container">
             <h1>Hello</h1>
             <AdminLogOut /> 
             
-            <div className="tabs">
-              <button onClick={this.showHome}>Home</button>
-              <button onClick={this.showPairs}>Pairing</button>
-              <button onClick={this.showContact}>Contact</button>
+            <div className="tabs row">
+              <button className="tab col" onClick={this.showHome}>Home</button>
+              <button className="tab col" onClick={this.showPairs}>Pairing</button>
+              <button className="tab col" onClick={this.showContact}>Contact</button>
             </div>
             
-
             {(() => {
               if (this.state.home === true) {
                 return (
-                  <Tabs />
+                  <div className="main-content">
+                    <Tabs /> 
+                  </div>
                 );
               }
 
               if (this.state.pairs === true) {
                 return (
-                  <Pairing />
+                  <div className="main-content">
+                    <Pairing />
+                  </div>
                 )
               }
 
               if (this.state.contact === true) {
                 return (
-                  <div className="contact-page">
+                  <div className="main-content">
                     <Contact />
                   </div>
                 );
