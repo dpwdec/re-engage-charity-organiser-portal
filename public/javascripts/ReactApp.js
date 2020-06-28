@@ -23,11 +23,6 @@ class ReactApp extends React.Component {
       contact: false
     });
     this.changeTabColour('home-tab', 'pairing-tab', 'contact-tab')
-    // var homeTab = document.getElementById('home-tab')
-    // homeTab.setAttribute("class", "tab col active-tab");
-    // var pairTab = document.getElementById('pairing-tab')
-    // pairTab.removeAttribute("class", "active-tab");
-    // pairTab.setAttribute("class", "tab col");
   }
 
   showPairs = (e) => {
@@ -37,12 +32,6 @@ class ReactApp extends React.Component {
       pairs: true,
       contact: false
     });
-    // var pairTab = document.getElementById('pairing-tab')
-    // pairTab.setAttribute("class", "tab col active-tab");
-    // var homeTab = document.getElementById('home-tab')
-    // homeTab.removeAttribute("class", "active-tab");
-    // homeTab.setAttribute("class", "tab col");
-
     this.changeTabColour('pairing-tab', 'home-tab', 'contact-tab')
   }
 
@@ -86,6 +75,7 @@ class ReactApp extends React.Component {
             {(() => {
               if (this.state.home === true) {
                 return (
+                  // new component to go here
                   <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
                 );
               }

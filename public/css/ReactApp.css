@@ -13,16 +13,26 @@ body {
 
 .tab {
   background: #1abc9c;
+  border-right: 0.125rem solid;
   position: relative;
   margin: 3rem 0;
-  height: 3rem;
+  line-height: 2.75em;
+  height: 3em;
+  color: #fff;
+  border-bottom: 0;
+}
+
+.tab:focus {
+  outline: none;
+  
 }
 
 .tab:hover {
   top: -0.25rem;
-  transition: top 0.25s;
+  transition: top 0.75s;
 }
 
 .active-tab {
   background: white;
+  color: #2c3e50;
 }
