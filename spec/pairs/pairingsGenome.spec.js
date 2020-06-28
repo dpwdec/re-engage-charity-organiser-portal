@@ -12,8 +12,8 @@ describe('PairingsGenome', () => {
     });
   });
 
-  describe('#elimateGene', () => {
-    it('elimates any genes that match the guest component of the targetGene', () => {
+  describe('#eliminateGene', () => {
+    it('eliminates any genes that match the guest component of the targetGene', () => {
       var genome = new PairingsGenome();
       genome.genes = [{
         guest: 'Doris',
@@ -26,7 +26,7 @@ describe('PairingsGenome', () => {
       expect(genome.genes.length).toEqual(0);
     });
 
-    it('elimates any genes that match the driver component of the targetGene', () => {
+    it('eliminates any genes that match the driver component of the targetGene', () => {
       var genome = new PairingsGenome();
       genome.genes = [{
         guest: 'Doris',
@@ -37,6 +37,40 @@ describe('PairingsGenome', () => {
 
       genome.eliminateGene(targetGene);
       expect(genome.genes.length).toEqual(0);
+    });
+
+    it('eliminates multuple genes that match across driver or guest', () => {
+      var genome = new PairingsGenome();
+      genome.genes = [{
+        guest: 'Doris',
+        driver: 'Bradley'
+      },
+      {
+        guest: 'Jean',
+        driver: 'Zeus'
+      }];
+
+      var targetGene = {guest: 'Jean', driver: 'Bradley'};
+
+      genome.eliminateGene(targetGene);
+      expect(genome.genes.length).toEqual(0);
+    });
+
+    it('leaves other elements of the Jean that do not match untouched', () => {
+      var genome = new PairingsGenome();
+      genome.genes = [{
+        guest: 'Doris',
+        driver: 'Bradley'
+      },
+      {
+        guest: 'Jean',
+        driver: 'Zeus'
+      }];
+
+      var targetGene = {guest: 'Marc', driver: 'Bradley'};
+
+      genome.eliminateGene(targetGene);
+      expect(genome.genes).toEqual([{ guest: 'Jean', driver: 'Zeus' }]);
     });
   });
 
