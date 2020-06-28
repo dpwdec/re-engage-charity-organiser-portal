@@ -1,7 +1,7 @@
 class GeneticPairs {
   constructor(members) {
     this.members = members;
-    this.POPULATION_SIZE = 50; 
+    this.POPULATION_SIZE = 5; 
 
     this.drivers = [];
     this.guests = [];
@@ -15,21 +15,58 @@ class GeneticPairs {
     });
     
     var population = this._generatePopulation();
-    console.log(this._calculatePopulationFitness(population));
+    population = this._calculatePopulationFitness(population);
+    var matingPool = this._generateMatingPool(population);
+
   }
 
-  _rankPopulationFitness(population, fitnessValues) {
-    // rank all duplicate fitnesses the same
-    // the genomes with the highest fitness will get the biggest slice of the pie
-    // 
+  _generateMatingPool(population) {
+    // Add all fitness values for the population together to get populations total fitness
+    // Subtract the individuals average speed from the total population fitness to get that
+    // Individual's representative fitness
+    // Divide the individual's fitness by the total population fitness
+    // Map the percentage to an array of members.
+
+    // Calculation total population fitness
+    var populationFitness = 0;
+    population.forEach((genome) => {
+      populationFitness += genome.fitness;
+    });
+
+    // Calculate genome's representative fitness score
+    // The lower the genome's fitness the higher its representation score
+    // Add up all the representative fitness scores to get total representative population fitness
+    var representativePopulationFitness = 0;
+    population = population.map((genome) => {
+      genome.representativeFitness = populationFitness - genome.fitness
+      representativePopulationFitness += genome.representativeFitness;
+      return genome;
+    });
+
+    // map each genome to a percentage representation in the mating pool
+    population = population.map((genome) => {
+      genome.matingPoolRepresentation = genome.representativeFitness/representativePopulationFitness;
+      return genome;
+    });
+
+    var matingPool = [];
+    var MATINGPOOL_SIZE = 1000;
+
+    population.forEach((genome, index) => {
+      var matingPoolSpots = MATINGPOOL_SIZE * genome.matingPoolRepresentation;
+      for(var i = 0; i < matingPoolSpots; i++) {
+        matingPool.push(index);
+      }
+    });
+
+    return matingPool;
   }
 
   _calculatePopulationFitness(population) {
-    var fitnessValues = [];
-    population.forEach((genome) => {
-      fitnessValues.push(this._calculateFitnessValue(genome));
+    return population.map((gene) => {
+      gene.fitness = this._calculateFitnessValue(gene);
+      return gene;
     });
-    return fitnessValues;
   }
 
   _calculateFitnessValue(genome) {

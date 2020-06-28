@@ -24,22 +24,22 @@ describe('Genetic Pairs', () => {
         { name: 'Doris', 
           drivers: [ { 
             name: 'Bradley', 
-            distance: 5000 
+            distance: 10 
             },
             { 
               name: 'Zeus', 
-              distance: 7000 
+              distance: 10 
               } 
           ]
         },
         { name: 'Petunia', 
           drivers: [ { 
             name: 'Bradley', 
-            distance: 6000 
+            distance: 10 
             },
             { 
               name: 'Zeus', 
-              distance: 12000 
+              distance: 10 
               } 
           ]
         },
