@@ -1,11 +1,10 @@
-#root {
+body {
   background: linear-gradient(to right, #e67e22, #e74c3c);
   height: 100vh;
 }
 
 .main-content{
   background-color: white;
-  height: 100%vh;
 }
 
 .active-tab {
