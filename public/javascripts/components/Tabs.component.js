@@ -1,9 +1,5 @@
 function Tabs (){
 
-  // navigateToContact = () => {
-  //   window.location.replace("/contact");
-  // };
-
   return (
     <div className="Tabs">
        {/* <form onSubmit={this.navigateToContact}>

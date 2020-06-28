@@ -78,26 +78,14 @@
 
 class Contact extends React.Component {
 
-  constructor(props) {
-    super(props);
-    const token = sessionStorage.getItem("token");
-    let loggedIn = true;
-    if (token == null) {
-      loggedIn = false;
-    }
-    this.state = {
-      loggedIn,
-    };
-  }
-  
   render() {
     return (
       <div>
-        hello
+        <MemberForm />
+        <DriverList />
+        <GuestList />
       </div>
     );
   }
 }
-
-ReactDOM.render(<Contact/>, document.getElementById("root"));
 

@@ -52,51 +52,43 @@ class ReactApp extends React.Component {
       );
     } else {
       return (
-      <div className="section">
-          <div>
+      <div className="Main Component">
             <h1>Hello</h1>
+            <AdminLogOut /> 
             
-            <form id="home" className="home" onSubmit={this.showHome}>
-              <input type="submit" value="home" id="home"></input>
-            </form>
-            <form id="pairs" className="pairs" onSubmit={this.showPairs}>
-              <input type="submit" value="pairs" id="pairs"></input>
-            </form>
-            <form id="contact" className="contact" onSubmit={this.showContact}>
-              <input type="submit" value="contact" id="contact"></input>
-            </form>
+            <div className="tabs">
+              <button onClick={this.showHome}>Home</button>
+              <button onClick={this.showPairs}>Pairing</button>
+              <button onClick={this.showContact}>Contact</button>
+            </div>
+            
 
-
-            <div id="content"></div>
             {(() => {
               if (this.state.home === true) {
                 return (
-                "Homepage"
+                  <Tabs />
                 );
               }
 
               if (this.state.pairs === true) {
                 return (
-                "Pairs"
-                );
+                  <Pairing />
+                )
               }
 
               if (this.state.contact === true) {
                 return (
-                "Contact"
+                  <div className="contact-page">
+                    <Contact />
+                  </div>
                 );
               }
             })()}
 
-            {/* <MemberForm updatemethod={this.updateState} />
-            <DriverList updatemethod={this.updateState} />
-            <GuestList />
-            <Pairing />
-            <AdminLogOut />  */}
-          
-          </div>
+            
+            
 
-          
+         
       </div>
 
       );
