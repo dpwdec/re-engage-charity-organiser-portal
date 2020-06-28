@@ -14,17 +14,16 @@ class PairingGenome {
       return gene.guest === targetGene.guest || gene.driver === targetGene.driver;
     });
   }
-
+  /*
+  Blend the genes of two parents by:
+    1. Adding an element to child genome from this
+    2. Eliminating those dirver an guest elements from the mate
+    3. Eliminating those driver and guests elements from the possible elements list
+    4. Repeating steps 1-3 for the mate
+    5. Switching back and forth until there are no elements left in the parents
+    6. Pair up and merge left over guests and drivers based on the order they appear in the array (RISKY)
+  */
   mateWith(mate) {
-    // Add an element from male
-    // Elimate those elements from female
-    // Elimate those elements from possible elements list
-    // Add an element from female
-    // Elimate those elements from male
-    // Elimate those elements from possible elements list
-    // Eepeat until no elements left
-    // Randomly merge left over elements
-
     var possibleDrivers = _.clone(PairingGenome.geneticMaterial.possibleDrivers);
     var possibleGuests = _.clone(PairingGenome.geneticMaterial.possibleGuests);
 
@@ -35,33 +34,37 @@ class PairingGenome {
       if(flip) {
         if(this.genes.length > 0) {
           // extract gene from a parent
-          var gene = _.head(male)
+          var gene = _.head(this.genes);
           // add gene to the child
           child.genes.push(gene);
           // remove genes that have same driver or guest from the other parents
-          female = this._elimateDriversOrGuests(female, _.head(male));
+          mate.eliminateGene(gene);
           // remove guest from possible guests
           _.remove(possibleGuests, (guest) => { return guest === gene.guest });
           // remove driver from possible drivers
           _.remove(possibleDrivers, (driver) => { return driver == gene.driver});
-          male.splice(0, 1);
+          // remove gene that has been passed onto child from parent
+          this.genes.splice(0, 1);
         }
       } else {
-        if(female.length > 0) {
-          child.genes.push(_.head(female));
-          male = this._elimateDriversOrGuests(female, _.head(female));
-          possibleGuests = this._elimateFromAllPossibleGuests(possibleGuests, _.head(female));
-          possibleDrivers = this._elimatePossibleDrivers(possibleDrivers, _.head(female));
-          female.splice(0, 1);
+        if(mate.genes.length > 0) {
+          var gene = _.head(mate.genes);
+          child.genes.push(gene);
+          this.eliminateGene(gene);
+          _.remove(possibleGuests, (guest) => { return guest === gene.guest });
+          _.remove(possibleDrivers, (driver) => { return driver == gene.driver});
+          mate.splice(0, 1);
         }
       }
 
       flip = !flip;
 
-      if(male.length == 0 && female.length == 0) {
+      if(this.genes.length == 0 && mate.genes.length == 0) {
         break;
       }
     }
+
+    return child;
   }
 }
 

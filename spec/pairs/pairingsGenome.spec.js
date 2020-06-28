@@ -1,20 +1,20 @@
-const PairingsGenome = require('../../controllers/pairs/pairingGenome');
+const PairingGenome = require('../../controllers/pairs/pairingGenome');
 
-describe('PairingsGenome', () => {
+describe('PairingGenome', () => {
   describe('.geneticMaterial', () => {
     it('has a list of all possible drivers and guests', () => {
-      PairingsGenome.geneticMaterial = {
+      PairingGenome.geneticMaterial = {
         possibleDrivers: [],
         possibleGuests: [],
       }
-      expect(PairingsGenome.geneticMaterial.possibleDrivers).toEqual([]);
-      expect(PairingsGenome.geneticMaterial.possibleGuests).toEqual([]);
+      expect(PairingGenome.geneticMaterial.possibleDrivers).toEqual([]);
+      expect(PairingGenome.geneticMaterial.possibleGuests).toEqual([]);
     });
   });
 
   describe('#eliminateGene', () => {
     it('eliminates any genes that match the guest component of the targetGene', () => {
-      var genome = new PairingsGenome();
+      var genome = new PairingGenome();
       genome.genes = [{
         guest: 'Doris',
         driver: 'Bradley'
@@ -27,7 +27,7 @@ describe('PairingsGenome', () => {
     });
 
     it('eliminates any genes that match the driver component of the targetGene', () => {
-      var genome = new PairingsGenome();
+      var genome = new PairingGenome();
       genome.genes = [{
         guest: 'Doris',
         driver: 'Bradley'
@@ -40,7 +40,7 @@ describe('PairingsGenome', () => {
     });
 
     it('eliminates multuple genes that match across driver or guest', () => {
-      var genome = new PairingsGenome();
+      var genome = new PairingGenome();
       genome.genes = [{
         guest: 'Doris',
         driver: 'Bradley'
@@ -57,7 +57,7 @@ describe('PairingsGenome', () => {
     });
 
     it('leaves other elements of the Jean that do not match untouched', () => {
-      var genome = new PairingsGenome();
+      var genome = new PairingGenome();
       genome.genes = [{
         guest: 'Doris',
         driver: 'Bradley'
@@ -76,21 +76,24 @@ describe('PairingsGenome', () => {
 
   describe('#mate', () => {
     it('can mate with another single member', () => {
-      var male = new PairingsGenome();
+      PairingGenome.possibleDrivers = ['Bradley'];
+      PairingGenome.possibleGuests = ['Doris'];
+
+      var male = new PairingGenome();
       male.genes = [{
         guest: 'Doris',
         driver: 'Bradley',
         distance: 40
       }];
 
-      var female = new PairingsGenome();
+      var female = new PairingGenome();
       male.genes = [{
         guest: 'Doris',
         driver: 'Bradley',
         distance: 40
       }];
 
-      var child = new PairingsGenome();
+      var child = new PairingGenome();
       child.genes = [{
         guest: 'Doris',
         driver: 'Bradley',
