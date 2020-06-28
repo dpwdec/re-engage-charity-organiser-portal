@@ -11,7 +11,7 @@ class PairingGenome {
   */
   eliminateGene(targetGene) {
     _.remove(this.genes, (gene) => {
-      return gene.guest === targetGene.guest;
+      return gene.guest === targetGene.guest || gene.driver === targetGene.driver;
     })
   }
 

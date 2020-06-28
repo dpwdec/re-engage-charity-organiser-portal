@@ -25,6 +25,19 @@ describe('PairingsGenome', () => {
       genome.eliminateGene(targetGene);
       expect(genome.genes.length).toEqual(0);
     });
+
+    it('elimates any genes that match the driver component of the targetGene', () => {
+      var genome = new PairingsGenome();
+      genome.genes = [{
+        guest: 'Doris',
+        driver: 'Bradley'
+      }];
+
+      var targetGene = {guest: 'Jean', driver: 'Bradley'};
+
+      genome.eliminateGene(targetGene);
+      expect(genome.genes.length).toEqual(0);
+    });
   });
 
   describe('#mate', () => {
