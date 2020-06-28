@@ -22,9 +22,9 @@ class ReactApp extends React.Component {
         <div>
           <h1>Hello</h1>
           <DriverList />
+          <DriverAvail />
           <Pairing />
           <AdminLogOut />
-          {/* <DriverAvailability /> */}
         </div>
       );
     }

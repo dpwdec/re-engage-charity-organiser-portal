@@ -8,16 +8,14 @@ class DriverList extends React.Component {
   };
 
   componentDidMount() {
-    this.fetchDrivers('/drivers');  }
-
-  fetchDrivers = () => {
     fetch('/drivers')
-    .then(response => response.json())
-    .then((data) => {
+    .then(response => {
+      return response.json()
+    }).then((data) => {
       this.setState({
-        drivers: data,
-      });
-    });
+        drivers: data
+      })
+    })
   }
 
   render() {
