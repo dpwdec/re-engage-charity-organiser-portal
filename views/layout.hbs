@@ -7,14 +7,95 @@
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
-    <script crossorigin src="https://unpkg.com/react-router@3.0.0/umd/ReactRouter.js"></script>
     <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
-    <script crossorigin src="https://unpkg.com/prop-types@15.6/prop-types.js"></script>
-    <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react-router-dom/6.0.0-alpha.5/react-router-dom.development.js"></scrip
-    <script crossorigin src="https://unpkg.com/react-router@3.0.0/umd/ReactRouter.js"></script>
   </head>
   <body>
     {{{body}}}
+    <div id="content"></div>
+    <script type="text/babel">
+      var Router = ReactRouter.Router;
+      var Route = ReactRouter.Route;
+      var IndexRoute = ReactRouter.IndexRoute;
+      var Link = ReactRouter.Link;
+      var browserHistory = ReactRouter.browserHistory;
+
+      class RouteA extends React.Component {
+        btnClickB() {
+          browserHistory.push('/b');
+        }
+        btnClickC() {
+          browserHistory.push('/c');
+        }
+
+        render() {
+          return(
+            <div>
+              <h2>Route A</h2>
+              <div>
+                <button className="btn btn-default" onClick={ this.btnClickB }>Goto B</button>
+                <button className="btn btn-default" onClick={ this.btnClickC }>Goto C</button>
+              </div>
+            </div>
+          );
+        }
+      }
+
+      class RouteB extends React.Component {
+        btnClickA() {
+          browserHistory.push('/a');
+        }
+
+        btnClickC() {
+          browserHistory.push('/c');
+        }
+
+        render() {
+          return(
+            <div>
+              <h2>Route B</h2>
+              <div>
+                <button className="btn btn-default" onClick={ this.btnClickA }>Goto A</button>
+                <button className="btn btn-default" onClick={ this.btnClickC }>Goto C</button>
+              </div>
+            </div>
+          );
+        }
+      }
+
+      class RouteC extends React.Component {
+        btnClickA() {
+          browserHistory.push('/a');
+        }
+
+        btnClickB() {
+          browserHistory.push('/b');
+        }
+
+        render() {
+          return(
+            <div>
+              <h2>Route C</h2>
+              <div>
+                <button className="btn btn-default" onClick={ this.btnClickA }>Goto A</button>
+                <button className="btn btn-default" onClick={ this.btnClickB }>Goto B</button>
+              </div>
+            </div>
+          );
+        }
+      }
+
+      ReactDOM.render(
+        <Router history={browserHistory}>
+          <Route path="/" component={RouteA} />
+          <Route path="/a" component={RouteA} />
+          <Route path="/b" component={RouteB} />
+          <Route path="/c" component={RouteC} />
+          <Route path="*" component={RouteA} />
+        </Router>,
+        document.getElementById('app')
+      );
+
+    </script>
   </body>
 </html>

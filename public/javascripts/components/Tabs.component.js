@@ -1,15 +1,14 @@
-function Tabs (props){
+function Tabs (){
 
-  navigateToContact = (e) => {
-    e.preventDefault();
-    window.location.replace("/");
-  };
+  // navigateToContact = () => {
+  //   window.location.replace("/contact");
+  // };
 
   return (
     <div className="Tabs">
-       <form onSubmit={this.login}>
+       {/* <form onSubmit={this.navigateToContact}>
           <input id="contact" class="button" type="submit" value="contact"></input>
-        </form>
+        </form> */}
     </div>
   );
 }

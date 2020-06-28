@@ -1,81 +1,103 @@
-var Router = ReactRouter.Router;
-var Route = ReactRouter.Route;
-var IndexRoute = ReactRouter.IndexRoute;
-var Link = ReactRouter.Link;
-var browserHistory = ReactRouter.browserHistory;
 
-class RouteA extends React.Component {
-  btnClickB() {
-    browserHistory.push('/b');
-  }
-  btnClickC() {
-    browserHistory.push('/c');
-  }
 
+// class RouteA extends React.Component {
+//   btnClickB() {
+//     browserHistory.push('/b');
+//   }
+//   btnClickC() {
+//     browserHistory.push('/c');
+//   }
+
+//   render() {
+//     return(
+//       <div>
+//         <h2>Route A</h2>
+//         <div>
+//           <button className="btn btn-default" onClick={ this.btnClickB }>Goto B</button>
+//           <button className="btn btn-default" onClick={ this.btnClickC }>Goto C</button>
+//         </div>
+//       </div>
+//     );
+//   }
+// }
+
+// class RouteB extends React.Component {
+//   btnClickA() {
+//     browserHistory.push('/a');
+//   }
+
+//   btnClickC() {
+//     browserHistory.push('/c');
+//   }
+
+//   render() {
+//     return(
+//       <div>
+//         <h2>Route B</h2>
+//         <div>
+//           <button className="btn btn-default" onClick={ this.btnClickA }>Goto A</button>
+//           <button className="btn btn-default" onClick={ this.btnClickC }>Goto C</button>
+//         </div>
+//       </div>
+//     );
+//   }
+// }
+
+// class RouteC extends React.Component {
+//   btnClickA() {
+//     browserHistory.push('/a');
+//   }
+
+//   btnClickB() {
+//     browserHistory.push('/b');
+//   }
+
+//   render() {
+//     return(
+//       <div>
+//         <h2>Route C</h2>
+//         <div>
+//           <button className="btn btn-default" onClick={ this.btnClickA }>Goto A</button>
+//           <button className="btn btn-default" onClick={ this.btnClickB }>Goto B</button>
+//         </div>
+//       </div>
+//     );
+//   }
+// }
+
+// ReactDOM.render(
+//   <Router history={browserHistory}>
+//     <Route path="/" component={RouteA} />
+//     <Route path="/a" component={RouteA} />
+//     <Route path="/b" component={RouteB} />
+//     <Route path="/c" component={RouteC} />
+//     <Route path="*" component={RouteA} />
+//   </Router>,
+//   document.getElementById('contact-page')
+// );
+
+class Contact extends React.Component {
+
+  constructor(props) {
+    super(props);
+    const token = sessionStorage.getItem("token");
+    let loggedIn = true;
+    if (token == null) {
+      loggedIn = false;
+    }
+    this.state = {
+      loggedIn,
+    };
+  }
+  
   render() {
-    return(
+    return (
       <div>
-        <h2>Route A</h2>
-        <div>
-          <button className="btn btn-default" onClick={ this.btnClickB }>Goto B</button>
-          <button className="btn btn-default" onClick={ this.btnClickC }>Goto C</button>
-        </div>
+        hello
       </div>
     );
   }
 }
 
-class RouteB extends React.Component {
-  btnClickA() {
-    browserHistory.push('/a');
-  }
+ReactDOM.render(<Contact/>, document.getElementById("root"));
 
-  btnClickC() {
-    browserHistory.push('/c');
-  }
-
-  render() {
-    return(
-      <div>
-        <h2>Route B</h2>
-        <div>
-          <button className="btn btn-default" onClick={ this.btnClickA }>Goto A</button>
-          <button className="btn btn-default" onClick={ this.btnClickC }>Goto C</button>
-        </div>
-      </div>
-    );
-  }
-}
-
-class RouteC extends React.Component {
-  btnClickA() {
-    browserHistory.push('/a');
-  }
-
-  btnClickB() {
-    browserHistory.push('/b');
-  }
-
-  render() {
-    return(
-      <div>
-        <h2>Route C</h2>
-        <div>
-          <button className="btn btn-default" onClick={ this.btnClickA }>Goto A</button>
-          <button className="btn btn-default" onClick={ this.btnClickB }>Goto B</button>
-        </div>
-      </div>
-    );
-  }
-}
-
-ReactDOM.render(
-  <Router history={browserHistory}>
-    <Route path="/" component={RouteA} />
-    <Route path="/a" component={RouteA} />
-    <Route path="/b" component={RouteB} />
-    <Route path="/c" component={RouteC} />
-    <Route path="*" component={RouteA} />
-  </Router>,
-  document.getElementById('contact-page')
-);
