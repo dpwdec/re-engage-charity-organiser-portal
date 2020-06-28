@@ -14,25 +14,38 @@ body {
 
 .tab {
   background: #e67e22;
-  border-right: 0.125rem solid;
-  position: relative;
   margin: 3rem 0;
   line-height: 2.75em;
   height: 3em;
   color: #fff;
   border-bottom: 0;
+  /* Only round the top corners */
+  -webkit-border-top-left-radius: 15px;
+  -webkit-border-top-right-radius: 15px;
+  -moz-border-radius-topleft: 15px;
+  -moz-border-radius-topright: 15px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px; 
 }
+
+
 
 .tab:focus {
   outline: none;
 }
 
-.tab:hover {
+/* .tab:hover {
   top: -0.25rem;
   transition: top 0.75s;
-}
+} */
 
 .active-tab {
   background: white;
   color: #2c3e50;
+  z-index: 3;
+}
+
+
+.tab-group:first-child {
+  background: yellow;
 }
