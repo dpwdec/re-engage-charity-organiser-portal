@@ -22,10 +22,12 @@ class ReactApp extends React.Component {
       pairs: false,
       contact: false
     });
-    var homeTab = document.getElementById('home-tab')
-    homeTab.setAttribute("className", "active-tab");
-    var pairTab = document.getElementById('pairing-tab')
-    pairTab.removeAttribute("className", "active-tab");
+    this.changeTabColour('home-tab', 'pairing-tab', 'contact-tab')
+    // var homeTab = document.getElementById('home-tab')
+    // homeTab.setAttribute("class", "tab col active-tab");
+    // var pairTab = document.getElementById('pairing-tab')
+    // pairTab.removeAttribute("class", "active-tab");
+    // pairTab.setAttribute("class", "tab col");
   }
 
   showPairs = (e) => {
@@ -35,11 +37,19 @@ class ReactApp extends React.Component {
       pairs: true,
       contact: false
     });
-    var pairTab = document.getElementById('pairing-tab')
-    pairTab.setAttribute("className", "active-tab");
-    var homeTab = document.getElementById('home-tab')
-    homeTab.removeAttribute("className", "active-tab");
+    // var pairTab = document.getElementById('pairing-tab')
+    // pairTab.setAttribute("class", "tab col active-tab");
+    // var homeTab = document.getElementById('home-tab')
+    // homeTab.removeAttribute("class", "active-tab");
+    // homeTab.setAttribute("class", "tab col");
 
+    this.changeTabColour('pairing-tab', 'home-tab', 'contact-tab')
+  }
+
+  changeTabColour = (active, inactive1, inactive2) => {
+    document.getElementById(active).setAttribute("class", "tab col active-tab");
+    document.getElementById(inactive1).setAttribute("class", "tab col");
+    document.getElementById(inactive2).setAttribute("class", "tab col");
   }
 
   showContact = (e) => {
@@ -49,6 +59,7 @@ class ReactApp extends React.Component {
       pairs: false,
       contact: true
     });
+    this.changeTabColour('contact-tab','pairing-tab', 'home-tab', )
   }
  
   render() {
@@ -66,9 +77,9 @@ class ReactApp extends React.Component {
           <AdminLogOut /> 
           
           <div className="row">
-            <button id="home-tab" className="tab col active-tab" onClick={this.showHome}>Home</button>
-            <button id="pairing-tab" className="tab col" onClick={this.showPairs}>Pairing</button>
-            <button id="contact-tab" className="tab col" onClick={this.showContact}>Contact</button>
+            <button id="home-tab" className="tab col button active-tab" onClick={this.showHome}>Home</button>
+            <button id="pairing-tab" className="tab col button" onClick={this.showPairs}>Pairing</button>
+            <button id="contact-tab" className="tab col button" onClick={this.showContact}>Contact</button>
           </div>
           
           <div className="main-content">

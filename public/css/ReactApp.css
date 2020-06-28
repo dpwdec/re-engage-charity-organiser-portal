@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   background: linear-gradient(to right, #e67e22, #e74c3c);
   height: 100vh;
@@ -7,6 +11,18 @@ body {
   background-color: white;
 }
 
+.tab {
+  background: #1abc9c;
+  position: relative;
+  margin: 3rem 0;
+  height: 3rem;
+}
+
+.tab:hover {
+  top: -0.25rem;
+  transition: top 0.25s;
+}
+
 .active-tab {
-  color: red;
+  background: white;
 }
