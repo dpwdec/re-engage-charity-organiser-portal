@@ -1,4 +1,4 @@
-var GeneticPairs = require('../controllers/pairs/geneticPairs');
+var GeneticPairs = require('../../controllers/pairs/geneticPairs');
 
 describe('Genetic Pairs', () => {
   describe('Generate', () => {
@@ -24,12 +24,16 @@ describe('Genetic Pairs', () => {
         { name: 'Doris', 
           drivers: [ { 
             name: 'Bradley', 
-            distance: 10 
+            distance: 5 
             },
             { 
               name: 'Zeus', 
-              distance: 10 
-              } 
+              distance: 30 
+            },
+            { 
+              name: 'Jake', 
+              distance: 3 
+            } 
           ]
         },
         { name: 'Petunia', 
@@ -39,8 +43,27 @@ describe('Genetic Pairs', () => {
             },
             { 
               name: 'Zeus', 
-              distance: 10 
-              } 
+              distance: 1 
+            },
+            { 
+              name: 'Jake', 
+              distance: 33 
+            } 
+          ]
+        },
+        { name: 'Jean', 
+          drivers: [ { 
+            name: 'Bradley', 
+            distance: 10 
+            },
+            { 
+              name: 'Zeus', 
+              distance: 1 
+            },
+            { 
+              name: 'Jake', 
+              distance: 11 
+            } 
           ]
         },
       ]

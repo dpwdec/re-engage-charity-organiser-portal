@@ -1,3 +1,5 @@
+var _ = require('lodash');
+
 class GeneticPairs {
   constructor(members) {
     this.members = members;
@@ -17,7 +19,118 @@ class GeneticPairs {
     var population = this._generatePopulation();
     population = this._calculatePopulationFitness(population);
     var matingPool = this._generateMatingPool(population);
+    //console.log(population);
+    this._mate(population[0], population[1]);
+  }
 
+  _mate(male, female) {
+    // Add an element from male
+    // Elimate those elements from female
+    // Elimate those elements from possible elements list
+    // Add an element from female
+    // Elimate those elements from male
+    // Elimate those elements from possible elements list
+    // Eepeat until no elements left
+    // Randomly merge left over elements
+
+    console.log(male);
+    // console.log(_.head(male));
+    console.log(female);
+    // console.log(_.head(female));
+
+    var possibleDrivers = _.clone(this.drivers);
+    var possibleGuests = _.clone(this.guests);
+
+    var child = [];
+    var flip = true;
+
+    while(true) {
+      if(flip) {
+        if(male.length > 0) {
+          // extract gene from a parent
+          var gene = _.head(male)
+          // add gene to the child
+          child.push(gene);
+          // remove genes that have same driver or guest from the other parents
+          female = this._elimateDriversOrGuests(female, _.head(male));
+          // remove guest from possible guests
+          _.remove(possibleGuests, (guest) => { return guest === gene.guest });
+          // remove driver from possible drivers
+          _.remove(possibleDrivers, (driver) => { return driver == gene.driver});
+          male.splice(0, 1);
+        }
+      } else {
+        if(female.length > 0) {
+          child.push(_.head(female));
+          male = this._elimateDriversOrGuests(female, _.head(female));
+          possibleGuests = this._elimateFromAllPossibleGuests(possibleGuests, _.head(female));
+          possibleDrivers = this._elimatePossibleDrivers(possibleDrivers, _.head(female));
+          female.splice(0, 1);
+        }
+      }
+
+      flip = !flip;
+
+      if(male.length == 0 && female.length == 0) {
+        break;
+      }
+    }
+
+    console.log(possibleGuests);
+    console.log(possibleDrivers);
+    console.log(child);
+
+    // add remaining guests and drivers to child.
+    possibleGuests.forEach((guest) => {
+      
+    });
+
+    return child;
+  }
+
+  _elimateFromAllPossibleGuests(possibleGuests, pair) {
+    possibleGuests = possibleGuests.map((guest) => {
+      if(guest === pair.guest) {
+        return false;
+      } else {
+        return guest;
+      }
+    });
+    return _.compact(possibleGuests);
+  }
+
+  _elimatePossibleDrivers(possibleDrivers, pair) {
+    possibleDrivers = possibleDrivers.map((driver) => {
+      if(driver === pair.driver) {
+        return false;
+      } else {
+        return driver;
+      }
+    });
+    return _.compact(possibleDrivers);
+  }
+
+  _elimateDriversOrGuests(genome, pair) {
+    genome = genome.map((gene) => {
+      if(gene.guest === pair.guest || gene.driver === pair.driver) {
+        return false;
+      } else {
+        return gene;
+      }
+    });
+
+    genome = _.compact(genome);
+
+    return genome;
+  }
+
+  _containsElementAlready(target, element) {
+    target.forEach((x) => {
+      if(x.guest === element || x.driver === element) {
+        return true;
+      }
+    });
+    return false;
   }
 
   _generateMatingPool(population) {
@@ -50,7 +163,7 @@ class GeneticPairs {
     });
 
     var matingPool = [];
-    var MATINGPOOL_SIZE = 1000;
+    var MATINGPOOL_SIZE = 50;
 
     population.forEach((genome, index) => {
       var matingPoolSpots = MATINGPOOL_SIZE * genome.matingPoolRepresentation;
