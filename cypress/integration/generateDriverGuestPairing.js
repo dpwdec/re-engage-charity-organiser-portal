@@ -24,6 +24,7 @@ describe("routes table", () => {
 
   it("displays drivers and guests paired up", () => {
     cy.visit("/");
+    cy.get("#pairing-tab").click();
     cy.get("#generate-pairs").click();
     cy.get(".guest").should("contain", "Dec");
     cy.get(".guest").should("contain", "Tanil");
@@ -36,6 +37,7 @@ describe("routes table", () => {
 
   it("sorts drivers and guests by closest distance and displays on page", () => {
     cy.visit("/");
+    cy.get("#pairing-tab").click();
     cy.get("#generate-pairs").click();
     cy.get("#pair-1").should("contain", "Dec");
     cy.get("#pair-1").should("contain", "Bradley");
