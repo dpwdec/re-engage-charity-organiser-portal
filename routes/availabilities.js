@@ -1,7 +1,7 @@
 let express = require("express")
 let router = express.Router();
-let availabilitiesController = require("../controllers/availabilities");
+let availabilities= require("../controllers/availabilities");
 
-router.get("/driversAvailability", availabilitiesController.DriverAvailability);
+router.get("/driversAvailability", availabilities.DriverAvailability);
 
 module.exports = router;
