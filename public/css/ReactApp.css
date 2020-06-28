@@ -9,7 +9,8 @@ body {
 
 .main-content{
   background-color: white;
-  height: 100%;
+  margin-bottom: 20%;
+  height: 100vh;
 }
 
 .tab {
