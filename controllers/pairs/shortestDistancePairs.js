@@ -8,15 +8,15 @@ var ShortestDistancePairs = {
       5. Repeat until all pairs are assigned
       6. Return output
     */
-  
+
     var pairing = [];
-  
+
     while (pairDistances.length > 0) {
       var shortestPair = { id: 0, distance: 100000000 };
       var guestIndex;
       var driverName;
-  
-     pairDistances.forEach((guest, i) => {
+
+      pairDistances.forEach((guest, i) => {
         guest.drivers.forEach((driver, j) => {
           if (driver.distance < shortestPair.distance) {
             shortestPair = {
@@ -24,6 +24,7 @@ var ShortestDistancePairs = {
               driver: driver.name,
               guest: guest.name,
               distance: driver.distance,
+              route: driver.route,
             };
             guestIndex = i;
             driverName = driver.name;
@@ -32,17 +33,17 @@ var ShortestDistancePairs = {
       });
       pairing.push(shortestPair);
       pairDistances.splice(guestIndex, 1);
-  
+
       pairDistances.forEach((guest) => {
         guest.drivers.forEach((driver, index) => {
-          if(driver.name === driverName) {
+          if (driver.name === driverName) {
             guest.drivers.splice(index, 1);
           }
         });
       });
     }
     return pairing;
-  }
-}
+  },
+};
 
 module.exports = ShortestDistancePairs;
