@@ -3,14 +3,17 @@ class Contact extends React.Component {
   constructor() {
     super();
     this.state = {
-      drivers: [],
       message: "test message: success/fail add member",
+      drivers: [],
+      guests: [],
       member: {},
+
     };
   };
 
   componentDidMount() {
     this.fetchDrivers('/drivers');
+    this.fetchGuests('/guests');
   }
 
   fetchDrivers = () => {
@@ -56,9 +59,40 @@ class Contact extends React.Component {
       this.setState({
         drivers: this.sortDriversAtoZ(),
       });
-      
     });
 
+    fetch('/guests')
+    .then(response => response.json())
+    .then((data) => {
+      this.setState({
+        guests: data,
+      });
+      this.setState({
+        guests: this.sortGuestsAtoZ(),
+      });
+    });
+
+  }
+
+  fetchGuests = () => {
+    fetch('/guests')
+    .then(response => response.json())
+    .then((data) => {
+      this.setState({
+        guests: data,
+      });
+      this.setState({
+        guests: this.sortGuestsAtoZ(),
+      });
+    });
+  }
+
+  sortGuestsAtoZ() {
+    return this.state.guests.sort(function(memberA, memberB) {
+      var memberA = memberA.name.toUpperCase();
+      var memberB = memberB.name.toUpperCase();
+        return (memberA < memberB) ? -1 : (memberA > memberB) ? 1 : 0;
+    });
   }
 
   // cancelCourse = () => {
@@ -102,7 +136,12 @@ class Contact extends React.Component {
           sortDriversAtoZ={this.sortDriversAtoZ} 
           componentDidMount={this.componentDidMount}
         />
-        <GuestList />
+        <GuestList
+          guests={this.state.guests} 
+          sortGuestsAtoZ={this.sortGuestsAtoZ} 
+          fetchGuests={this.fetchGuests}
+          componentDidMount={this.componentDidMount}
+         />
       </div>
     );
   }

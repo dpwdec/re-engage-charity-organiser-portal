@@ -1,36 +1,36 @@
 class GuestList extends React.Component {
 
-  constructor() {
-    super();
-    this.state = {
-      guests: [],
-    };
-  };
+  // constructor() {
+  //   super();
+  //   this.state = {
+  //     guests: [],
+  //   };
+  // };
 
-  componentDidMount() {
-    this.fetchGuests('/guests');
-  }
+  // componentDidMount() {
+  //   this.fetchGuests('/guests');
+  // }
 
-  fetchGuests = () => {
-    fetch('/guests')
-    .then(response => response.json())
-    .then((data) => {
-      this.setState({
-        guests: data,
-      });
-      this.setState({
-        guests: this.sortGuestsAtoZ(),
-      });
-    });
-  }
+  // fetchGuests = () => {
+  //   fetch('/guests')
+  //   .then(response => response.json())
+  //   .then((data) => {
+  //     this.setState({
+  //       guests: data,
+  //     });
+  //     this.setState({
+  //       guests: this.sortGuestsAtoZ(),
+  //     });
+  //   });
+  // }
 
-  sortGuestsAtoZ() {
-    return this.state.guests.sort(function(memberA, memberB) {
-      var memberA = memberA.name.toUpperCase();
-      var memberB = memberB.name.toUpperCase();
-        return (memberA < memberB) ? -1 : (memberA > memberB) ? 1 : 0;
-    });
-  }
+  // sortGuestsAtoZ() {
+  //   return this.state.guests.sort(function(memberA, memberB) {
+  //     var memberA = memberA.name.toUpperCase();
+  //     var memberB = memberB.name.toUpperCase();
+  //       return (memberA < memberB) ? -1 : (memberA > memberB) ? 1 : 0;
+  //   });
+  // }
 
   render() {
 
@@ -46,7 +46,7 @@ class GuestList extends React.Component {
             </tr>
           </thead>
           <tbody>
-            {this.state.guests.map((guest) => (
+            {this.props.guests.map((guest) => (
               < Guest name={guest.name} address={guest.address} id={guest._id} key={guest._id} />
               ))
             }
