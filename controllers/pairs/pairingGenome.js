@@ -34,7 +34,9 @@ class PairingGenome {
       if(flip) {
         if(this.genes.length > 0) {
           // extract gene from a parent
+          //console.log(this.genes[0]);
           var gene = _.head(this.genes);
+          //åconsole.log(gene);
           // add gene to the child
           child.genes.push(gene);
           // remove genes that have same driver or guest from the other parents
@@ -53,17 +55,16 @@ class PairingGenome {
           this.eliminateGene(gene);
           _.remove(possibleGuests, (guest) => { return guest === gene.guest });
           _.remove(possibleDrivers, (driver) => { return driver == gene.driver});
-          mate.splice(0, 1);
+          mate.genes.splice(0, 1);
         }
       }
 
       flip = !flip;
-
       if(this.genes.length == 0 && mate.genes.length == 0) {
         break;
       }
     }
-
+    //console.log(child);
     return child;
   }
 }

@@ -87,7 +87,7 @@ describe('PairingGenome', () => {
       }];
 
       var female = new PairingGenome();
-      male.genes = [{
+      female.genes = [{
         guest: 'Doris',
         driver: 'Bradley',
         distance: 40
@@ -101,6 +101,115 @@ describe('PairingGenome', () => {
       }];
 
       expect(male.mateWith(female)).toEqual(child);
-    })
+    });
+
+    it('can mate with multiple member genes', () => {
+      PairingGenome.geneticMaterial = {
+        possibleDrivers: ['Bradley', 'Zeus'],
+        possibleGuests: ['Jean', 'Doris'],
+      }
+
+      var male = new PairingGenome();
+      male.genes = [{
+        guest: 'Doris',
+        driver: 'Bradley',
+        distance: 40
+      },
+      {
+        guest: 'Jean',
+        driver: 'Zeus',
+        distance: 40
+      }];
+
+      var female = new PairingGenome();
+      female.genes = [{
+        guest: 'Jean',
+        driver: 'Zeus',
+        distance: 40
+        },
+        {
+        guest: 'Doris',
+        driver: 'Bradley',
+        distance: 40
+      }];
+
+      var child = new PairingGenome();
+      child.genes = [
+        {
+          guest: 'Doris',
+          driver: 'Bradley',
+          distance: 40
+        },
+        {
+          guest: 'Jean',
+          driver: 'Zeus',
+          distance: 40
+        }];
+
+      // just in the wrong order
+      expect(male.mateWith(female)).toEqual(child);
+    });
+
+    it('can integrate left over genetic information', () => {
+      PairingGenome.geneticMaterial = {
+        possibleDrivers: ['Bradley', 'Zeus', 'Kevin'],
+        possibleGuests: ['Jean', 'Doris', 'Petunia'],
+      }
+
+      var male = new PairingGenome();
+      male.genes = [{
+        guest: 'Doris',
+        driver: 'Bradley',
+        distance: 40
+      },
+      {
+        guest: 'Jean',
+        driver: 'Zeus',
+        distance: 40
+      },
+      {
+        guest: 'Petunia',
+        driver: 'Kevin',
+        distance: 40
+      }];
+
+      var female = new PairingGenome();
+      male.genes = [{
+        guest: 'Doris',
+        driver: 'Kevin',
+        distance: 40
+        },
+        {
+        guest: 'Petunia',
+        driver: 'Zeus',
+        distance: 40
+      },
+      {
+        guest: 'Jean',
+        driver: 'Bradley',
+        distance: 40
+      }];
+
+      var child = new PairingGenome();
+      child.genes = [
+        {
+          guest: 'Jean',
+          driver: 'Kevin',
+          distance: 40
+        },
+        {
+          guest: 'Petunia',
+          driver: 'Zeus',
+          distance: 40
+        },
+        {
+          guest: 'Doris',
+          driver: 'Kevin',
+          distance: 40
+        }];
+
+      // just in the wrong order
+      expect(male.mateWith(female)).toEqual(child);
+    });
   });
 });
