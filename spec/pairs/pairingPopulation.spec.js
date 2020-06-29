@@ -1,3 +1,4 @@
+const _ = require('lodash');
 var PairingPopulation = require('../../controllers/pairs/pairingPopulation');
 const PairingGenome = require('../../controllers/pairs/pairingGenome');
 
@@ -71,7 +72,7 @@ describe('PairingPopulation', () => {
       population = new PairingPopulation({members: members, size: 5});
 
       population.genomes = [];
-      
+
       for (let index = 0; index < 10; index++) {
         var newGenome = new PairingGenome();
         newGenome.genes = [
@@ -90,6 +91,34 @@ describe('PairingPopulation', () => {
   
       population.calculatePopulationFitness();
       expect(population.genomes[5].fitness).toEqual(10);
+    });
+  });
+
+  describe('#generateMatingPool', () => {
+    it('can generate a mating pool', () => {
+      var members = [{
+        name: 'Doris',
+        drivers:[{
+          name: 'Bradley',
+          distance: 20
+        }]
+      }];
+  
+      population = new PairingPopulation({members: members, size: 5, matingPoolSize: 15});
+      population.genomes = [];
+  
+      bigGenome = new PairingGenome();
+      bigGenome.fitness = 5;
+      smallGenome = new PairingGenome();
+      smallGenome.fitness = 10;
+  
+      population.genomes.push(bigGenome);
+      population.genomes.push(smallGenome);
+  
+      population.generateMatingPool();
+  
+      var popCount = _.countBy(population.matingPool, Math.floor);
+      expect(popCount['0']).toEqual(10);
     });
   });
 });
