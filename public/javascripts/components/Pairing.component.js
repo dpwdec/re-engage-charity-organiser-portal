@@ -27,18 +27,17 @@ class Pairing extends React.Component {
         </button>
         <div className="table">
           <table>
-            <thead>
-            </thead>
+            <thead></thead>
             <tbody>
-            {this.state.pairs.map((pair) => (
-              <PairItem
-                driver={pair.driver}
-                guest={pair.guest}
-                distance={pair.distance}
-                id={pair.id}
-                key={pair.id}
-              />
-            ))}
+              {this.state.pairs.map((pair) => (
+                <PairItem
+                  driver={pair.driver}
+                  guest={pair.guest}
+                  distance={pair.distance}
+                  id={pair.id}
+                  key={pair.id}
+                />
+              ))}
             </tbody>
           </table>
           <PairingsMap pairs={this.state.pairs} />

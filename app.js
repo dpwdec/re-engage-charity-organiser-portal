@@ -10,6 +10,7 @@ var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 var pairsRouter = require("./routes/pairs");
 var adminRouter = require("./routes/admin");
+var availRouter = require('./routes/availability');
 
 var app = express();
 app.locals.api_key = process.env.REACT_APP_MAP_API_KEY;
@@ -28,6 +29,7 @@ app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/pairs", pairsRouter);
 app.use("/admin", adminRouter);
+app.use('/availability', availRouter);
 
 // var Member = require ('./models/member');
 // newMember = new Member( {
