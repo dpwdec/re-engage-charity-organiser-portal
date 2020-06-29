@@ -36,7 +36,7 @@ class Pairing extends React.Component {
               />
             ))}
           </table>
-          <PairingMaps pairs={this.state.pairs} />
+          <PairingsMap pairs={this.state.pairs} />
         </div>
       </div>
     );
