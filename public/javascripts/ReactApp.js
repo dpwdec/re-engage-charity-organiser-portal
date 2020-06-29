@@ -76,7 +76,7 @@ class ReactApp extends React.Component {
                   return (
                     // new component to go here
                     <div className="">
-                      <DriverAvailability />
+                      <AvailabilityTables />
                     </div>
                   );
                 }

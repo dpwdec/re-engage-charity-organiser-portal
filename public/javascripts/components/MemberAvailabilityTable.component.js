@@ -1,21 +1,22 @@
-class DriverAvailability extends React.Component {
+class MemberAvailabilityTable extends React.Component {
 
   constructor() {
     super();
     this.state = {
       months: [],
-      drivers: []
+      members: []
     };
   };
 
   componentDidMount() {
-    fetch('/availability/driverAvailability')
+    console.log(this.props);
+    fetch(`/availability/availability?role=${this.props.role}`)
     .then(response => {
       return response.json()
     }).then((result) => {
       this.setState({
         months: result.months,
-        drivers: result.drivers 
+        members: result.members 
       });
     });
   }
@@ -23,8 +24,7 @@ class DriverAvailability extends React.Component {
   render() {
     return (
       <div>
-        <h2> Driver Availabilities </h2>
-        <table className="driver-avail">
+        <table className="member-avail">
           <thead>
             <tr>
               <th>Name</th>
@@ -36,8 +36,8 @@ class DriverAvailability extends React.Component {
           </thead>
 
           <tbody>
-            {this.state.drivers.map((driver) => (
-              <AvailabilityRow driver={driver} months={this.state.months} key={driver._id} id={driver._id}/>
+            {this.state.members.map((member) => (
+              <AvailabilityRow driver={member} months={this.state.months} key={member._id} id={member._id}/>
               ))
             }
           </tbody>

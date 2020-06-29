@@ -3,6 +3,6 @@ let router = express.Router();
 let AvailabilityController = require('../controllers/availability');
 
 // console.log(AvailabilityController);
-router.get('/driverAvailability', AvailabilityController.DriverAvailability);
+router.get('/availability', AvailabilityController.Availability);
 
 module.exports = router;
