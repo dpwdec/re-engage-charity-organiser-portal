@@ -9,6 +9,12 @@ function PairingsMap(props) {
     var directionsService = new google.maps.DirectionsService();
     var directionsRenderer = new google.maps.DirectionsRenderer();
     directionsRenderer.setMap(map);
+
+    var request = {
+      origin: { query: pair.route.routes[0].legs[0].start_address },
+      destination: { query: pair.route.routes[0].legs[0].end_address },
+      travelMode: "DRIVING",
+    };
   });
 
   return null;
