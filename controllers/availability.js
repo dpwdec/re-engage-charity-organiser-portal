@@ -3,7 +3,28 @@ var Member = require('../models/member');
 
 var AvailabilityController = {
 
+
     DriverAvailability: (request, response) => {
+
+      var filter = 'name availability'
+
+      var availabilitiesJSON = {
+        months: helperFunction.getArrayOfCurrentAndNextThreeMonths(),
+        drivers: []
+      }
+
+      Member.find({role: 'driver'}, filter ).lean().
+      exec((err, result) => {
+        if (!err) {
+          availabilitiesJSON.drivers = result
+          response.send(availabilitiesJSON)
+        };
+      });
+
+    },
+
+
+    DriverAvailability2: (request, response) => {
       // Step 1: get current + next 3 months to be used in query
       var month0 = getArrayOfCurrentAndNextThreeMonths()[0]; // i.e. returns 'Jun 2020'
       var month1 = getArrayOfCurrentAndNextThreeMonths()[1]; // i.e. returns 'Jul 2020'

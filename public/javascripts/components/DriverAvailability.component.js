@@ -4,10 +4,7 @@ class DriverAvailability extends React.Component {
     super();
     this.state = {
       months: [],
-      drivers: [{ 
-        name: "", 
-        availability: { month0: "", month1: "", month2: "", month3: "" }
-      }]
+      drivers: []
     };
   };
 
@@ -16,21 +13,32 @@ class DriverAvailability extends React.Component {
     .then(response => {
       return response.json()
     }).then((result) => {
+      console.log(result);
       this.setState({
         months: result.months,
         drivers: result.drivers 
       });
+      // var month1 = this.state.months[1];
+      // console.log(month1);
+      // var CatMonth1 = this.state.drivers[0].availability[month1];
+      // console.log(CatMonth1);
     });
   }
 
   render() {
+
+
+
+    // if month is undefined, return 'unconfirmed' 
+    // else return value -> t/f
+
+
     return (
       <div>
         <h2> Driver Availabilities </h2>
         <table className="driver-avail">
           <thead>
             <tr>
-              <th></th>
               <th>Name</th> 
               <th>{this.state.months[0]}</th>
               <th>{this.state.months[1]}</th>
@@ -39,14 +47,15 @@ class DriverAvailability extends React.Component {
             </tr>
           </thead>
           <tbody>
+
             {this.state.drivers.map((driver) => (
-              <Driver name={driver.name} 
-                month1={driver.month0} 
-                month2={driver.month1}
-                month3={driver.month2} 
-                month4={driver.month3} 
-                id={driver._id} 
-                key={driver._id} />
+              <tr>
+                <td> {driver.name} </td>
+                { driver.availability ? <td> {driver.availability[this.state.months[0]]} </td> : <td> unconfirmed </td> }
+                { driver.availability ? <td> {driver.availability[this.state.months[1]]} </td> : <td> unconfirmed </td> }
+                { driver.availability ? <td> {driver.availability[this.state.months[2]]} </td> : <td> unconfirmed </td> }
+                { driver.availability ? <td> {driver.availability[this.state.months[3]]} </td> : <td> unconfirmed </td> }
+              </tr>
               ))
             }
           </tbody>
