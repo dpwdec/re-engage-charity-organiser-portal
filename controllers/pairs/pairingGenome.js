@@ -3,6 +3,7 @@ var _ = require('lodash');
 class PairingGenome {
   constructor() {
     this.genes = [];
+    this.fitness = undefined;
   }
 
   /*
@@ -116,7 +117,19 @@ class PairingGenome {
     return incompleteGene;
   }
 
-  _shuffleArray = (array) => {
+  /*
+  Calculates the fitness for this genome and adds its as a
+  fitness property.
+  */
+  calculateFitness() {
+    var totalDistance = 0;
+    this.genes.forEach((gene) => {
+      totalDistance += gene.distance;
+    });
+    this.fitness = (totalDistance / this.genes.length);
+  }
+
+  _shuffleArray(array) {
     for (var i = array.length - 1; i > 0; i--) {
         var j = Math.floor(Math.random() * (i + 1));
         var temp = array[i];

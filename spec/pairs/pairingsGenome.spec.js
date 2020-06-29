@@ -554,4 +554,24 @@ describe('PairingGenome', () => {
       expect(genome.lookupDistance(unfinishedGene)).toEqual(finishedGene);
     });
   });
+
+  describe('#calculateFitness', () => {
+    it('can calculate its fitness', () => {
+      var genome = new PairingGenome();
+      genome.genes = [
+        {
+          guest: 'Doris', driver: 'Bradley', distance: 10
+        },
+        {
+          guest: 'Jean', driver: 'Zeus', distance: 3
+        },
+        {
+          guest: 'Petunia', driver: 'Kevin', distance: 17
+        },
+      ]
+
+      genome.calculateFitness();
+      expect(genome.fitness).toEqual(10);
+    });
+  });
 });

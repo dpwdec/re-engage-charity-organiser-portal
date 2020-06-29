@@ -53,7 +53,6 @@ describe('PairingPopulation', () => {
       var populationSize = 5;
       var population = new PairingPopulation({members: members, size: populationSize});
       population.generatePopulation();
-      //console.log(population.genomes);
       expect(population.genomes[0]).toBeInstanceOf(PairingGenome);
       expect(population.genomes.length).toEqual(5);
     });

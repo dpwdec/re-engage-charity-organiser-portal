@@ -1,4 +1,4 @@
-var GeneticPairs = require('../../controllers/pairs/geneticPairs');
+var GeneticPairs = require('../../controllers/pairs/_geneticPairs');
 
 describe('Genetic Pairs', () => {
   describe('Generate', () => {
