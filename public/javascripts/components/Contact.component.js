@@ -30,6 +30,19 @@ class Contact extends React.Component {
     });
   }
 
+  fetchGuests = () => {
+    fetch('/guests')
+    .then(response => response.json())
+    .then((data) => {
+      this.setState({
+        guests: data,
+      });
+      this.setState({
+        guests: this.sortGuestsAtoZ(),
+      });
+    });
+  }
+
   mySubmitHandler = (event) => {
     event.preventDefault();
     let newMember = {
@@ -74,40 +87,12 @@ class Contact extends React.Component {
 
   }
 
-  fetchGuests = () => {
-    fetch('/guests')
-    .then(response => response.json())
-    .then((data) => {
-      this.setState({
-        guests: data,
-      });
-      this.setState({
-        guests: this.sortGuestsAtoZ(),
-      });
-    });
-  }
-
   sortGuestsAtoZ() {
     return this.state.guests.sort(function(memberA, memberB) {
       var memberA = memberA.name.toUpperCase();
       var memberB = memberB.name.toUpperCase();
         return (memberA < memberB) ? -1 : (memberA > memberB) ? 1 : 0;
     });
-  }
-
-  // cancelCourse = () => {
-  //   document.getElementById("new-member-form").reset();
-  // }
-
-  onFormChange = (event) => {
-    this.setState({
-      [event.target.name]: event.target.value,
-      role: document.getElementById("new-member-role").value
-    });
-  }
-
-  refreshPage = () => {
-    window.location.reload(false);
   }
 
   sortDriversAtoZ = () => {
@@ -118,17 +103,21 @@ class Contact extends React.Component {
     });
   }
 
+  onFormChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value,
+      role: document.getElementById("new-member-role").value
+    });
+  }
+
   render() {
-    console.log(this.state.drivers)
     return (
       <div>
         <MemberForm 
-            member={this.state.member} 
-            mySubmitHandler={this.mySubmitHandler} 
-            // cancelCourse={this.cancelCourse} 
-            onFormChange={this.onFormChange} 
-            refreshPage={this.refreshPage} 
-            updateState={this.updateState}
+          member={this.state.member} 
+          mySubmitHandler={this.mySubmitHandler} 
+          onFormChange={this.onFormChange} 
+          updateState={this.updateState}
         />
         <DriverList 
           drivers={this.state.drivers} 
