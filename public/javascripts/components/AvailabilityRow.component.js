@@ -26,7 +26,7 @@ class AvailabilityRow extends React.Component {
 
   render() {
     return(
-      <tr>
+      <tr id={`tr-${this.props.driver.name}`}>
         <td className="driverName">{this.props.driver.name}</td>
         <td className="month0">{this.state.months[0]}</td>
         <td className="month1">{this.state.months[1]}</td>

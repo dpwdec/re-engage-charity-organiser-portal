@@ -23,6 +23,7 @@ describe("routes table", () => {
   });
 
   it("displays drivers and guests paired up", () => {
+    this.skip();
     cy.visit("/");
     cy.get("#pairing-tab").click();
     cy.get("#generate-pairs").click();
@@ -36,6 +37,7 @@ describe("routes table", () => {
   });
 
   it("sorts drivers and guests by closest distance and displays on page", () => {
+    this.skip();
     cy.visit("/");
     cy.get("#pairing-tab").click();
     cy.get("#generate-pairs").click();

@@ -24,7 +24,7 @@ class MemberAvailabilityTable extends React.Component {
   render() {
     return (
       <div>
-        <table className="member-avail">
+        <table className={`member-availability-${this.props.role}`}>
           <thead>
             <tr>
               <th>Name</th>
