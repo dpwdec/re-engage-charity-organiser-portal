@@ -29,10 +29,6 @@ body {
   border-top-right-radius: 15px; 
 }
 
-#map-canvas {
-  z-index: -2;
-}
-
 .tab:focus {
   outline: none;
 }
