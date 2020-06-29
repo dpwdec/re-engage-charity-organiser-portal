@@ -15,10 +15,8 @@
 {{!-- <scriptsrc="https://maps.googleapis.com/maps/api/js?sensor=false&key=" + `${process.env.REACT_APP_MAP_API_KEY}`
   + "&libraries=geometry"></script> --}}
 
-<script GOOGLE_MAP_KEY=process.env.REACT_APP_MAP_API_KEY
-  src='https://maps.googleapis.com/maps/api/js?sensor=false&key<var>process.env.REACT_APP_MAP_API_KEY</var>&libraries=geometry'></script>
-
-
+<script 
+  src='https://maps.googleapis.com/maps/api/js?libraries=geometry&key={{api_key}}'></script>
 <style>
   html,
   body {

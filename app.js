@@ -4,12 +4,12 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 require("dotenv").config();
-const apikey = process.env.REACT_APP_MAP_API_KEY;
+const API_KEY = process.env.REACT_APP_MAP_API_KEY;
 console.log("hello");
-console.log("MY_VARIABLE: " + apikey);
+console.log("MY_VARIABLE: " + API_KEY);
 var link =
   "https://maps.googleapis.com/maps/api/js?sensor=false&key=" +
-  `${apikey}` +
+  `${API_KEY}` +
   "&libraries=geometry";
 console.log("this is my link with api key" + link);
 
@@ -19,6 +19,7 @@ var pairsRouter = require("./routes/pairs");
 var adminRouter = require("./routes/admin");
 
 var app = express();
+app.locals.api_key = API_KEY;
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
