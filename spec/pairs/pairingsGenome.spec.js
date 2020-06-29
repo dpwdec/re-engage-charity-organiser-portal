@@ -74,6 +74,45 @@ describe('PairingGenome', () => {
     });
   });
 
+  describe('#generateGenes', () => {
+    it('can generate a set of genes from possible genetic material', () => {
+      PairingGenome.geneticMaterial = {
+        possibleDrivers: ['Bradley', 'Zeus'],
+        possibleGuests: ['Doris', 'Jean']
+      }
+      PairingGenome.members = [
+      {
+        name: 'Doris',
+        drivers: [
+          {
+            name: 'Bradley',
+            distance: 50
+          },
+          {
+            name: 'Zeus',
+            distance: 30
+          }
+        ]
+      },
+      {
+        name: 'Jean',
+        drivers: [
+          {
+            name: 'Bradley',
+            distance: 10
+          },
+          {
+            name: 'Zeus',
+            distance: 100
+          }
+        ]
+      }];
+      var genome = new PairingGenome();
+      genome.generateGenes();
+      expect(genome.genes.length).toEqual(2);
+    });
+  });
+
   describe('#mate', () => {
     it('can mate with another single member', () => {
       PairingGenome.possibleDrivers = ['Bradley'];

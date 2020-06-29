@@ -5,6 +5,31 @@ class PairingGenome {
     this.genes = [];
   }
 
+  /*
+  Generates a random set of guest-driver pairing for a genome
+  from a set of randomly shuffled drivers and guests.
+  */
+  generateGenes() {
+
+    var possibleDrivers = _.clone(PairingGenome.geneticMaterial.possibleDrivers);
+    var possibleGuests = _.clone(PairingGenome.geneticMaterial.possibleGuests);
+
+    possibleDrivers = this._shuffleArray(possibleDrivers);
+    possibleGuests = this._shuffleArray(possibleGuests);
+
+    possibleGuests.forEach((guest, index) => {
+      this.genes.push({
+        guest: guest, 
+        driver: possibleDrivers[index]
+      });
+    });
+
+    this.genes = this.genes.map((incompleteGene) => {
+      this.lookupDistance(incompleteGene);
+      return incompleteGene;
+    })
+  }
+
   /* 
   Eliminates any gene that has a driver or guest
   in common with it.
@@ -75,7 +100,7 @@ class PairingGenome {
   }
 
   /*
-  
+  Find the distance for a arbitrary guest-driver pairing.
   */
   lookupDistance(incompleteGene) {
     PairingGenome.members.forEach((guest) => {
@@ -89,6 +114,16 @@ class PairingGenome {
       }
     });
     return incompleteGene;
+  }
+
+  _shuffleArray = (array) => {
+    for (var i = array.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+    return array;
   }
 }
 
