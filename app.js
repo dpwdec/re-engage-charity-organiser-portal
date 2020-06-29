@@ -4,7 +4,7 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 require("dotenv").config();
-const apikey = process.env.REACT_APP_MAP_API_KEY;
+const apikey = process.env.API_KEY;
 console.log("hello");
 console.log("MY_VARIABLE: " + apikey);
 var link =
