@@ -12,7 +12,7 @@ helperFunction.getArrayOfCurrentAndNextThreeMonths = () => {
   var mm = Number(String(today.getMonth() + 1).padStart(2, '0'));
 
   var monthsHash = { 1: "Jan", 2: "Feb", 3: "Mar", 4: "Apr", 5: "May", 6: "Jun", 
-  7: "Jul", 8: "Aug", 9: "Sept", 10: "Oct", 11: "Nov", 12: "Dec" }
+  7: "Jul", 8: "Aug", 9: "Sep", 10: "Oct", 11: "Nov", 12: "Dec" }
 
   // returns months as a string, i.e "Jan"
   var mm0 = monthsHash[Number(String(today.getMonth() + 1).padStart(2, '0'))]; 

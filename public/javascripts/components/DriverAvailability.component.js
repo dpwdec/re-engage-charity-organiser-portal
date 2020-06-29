@@ -18,10 +18,6 @@ class DriverAvailability extends React.Component {
         months: result.months,
         drivers: result.drivers 
       });
-      // var month1 = this.state.months[1];
-      // console.log(month1);
-      // var CatMonth1 = this.state.drivers[0].availability[month1];
-      // console.log(CatMonth1);
     });
   }
 
@@ -49,13 +45,14 @@ class DriverAvailability extends React.Component {
           <tbody>
 
             {this.state.drivers.map((driver) => (
-              <tr>
-                <td> {driver.name} </td>
-                { driver.availability ? <td> {driver.availability[this.state.months[0]]} </td> : <td> unconfirmed </td> }
-                { driver.availability ? <td> {driver.availability[this.state.months[1]]} </td> : <td> unconfirmed </td> }
-                { driver.availability ? <td> {driver.availability[this.state.months[2]]} </td> : <td> unconfirmed </td> }
-                { driver.availability ? <td> {driver.availability[this.state.months[3]]} </td> : <td> unconfirmed </td> }
-              </tr>
+              <AvailabilityRow driver={driver} months={this.state.months}/>
+              // <tr>
+              //   <td> {driver.name} </td>
+              //   { driver.availability ? <td> {driver.availability[this.state.months[0]]} </td> : <td> unconfirmed </td> }
+              //   { driver.availability ? <td> {driver.availability[this.state.months[1]]} </td> : <td> unconfirmed </td> }
+              //   { driver.availability ? <td> {driver.availability[this.state.months[2]]} </td> : <td> unconfirmed </td> }
+              //   { driver.availability ? <td> {driver.availability[this.state.months[3]]} </td> : <td> unconfirmed </td> }
+              // </tr>
               ))
             }
           </tbody>
