@@ -27,6 +27,8 @@ class Contact extends React.Component {
     });
   }
 
+  // on submit state is currently not changing
+
   mySubmitHandler = (event) => {
     event.preventDefault();
     let newMember = {
@@ -46,9 +48,36 @@ class Contact extends React.Component {
         message: "Success!"
       })
     })
-    this.setState({
-      drivers: this.sortDriversAtoZ(),
+
+    fetch('/drivers')
+    .then(response => response.json())
+    .then((data) => {
+      this.setState({
+        drivers: data,
+      });
+      this.setState({
+        drivers: this.sortDriversAtoZ(),
+      });
+      
     });
+
+  }
+
+  updateState = () => {
+    console.log("button clicked!")
+    console.log(this.state.drivers)
+    
+    // fetch('/drivers')
+    // .then(response => response.json())
+    // .then((data) => {
+    //   this.setState({
+    //     drivers: data,
+    //   });
+    //   this.setState({
+    //     drivers: this.sortDriversAtoZ(),
+    //   });
+      
+    // });
   }
 
   cancelCourse = () => {
@@ -76,6 +105,7 @@ class Contact extends React.Component {
 
 
   render() {
+    console.log(this.state.drivers)
     return (
       <div>
         <MemberForm 
@@ -84,6 +114,7 @@ class Contact extends React.Component {
             cancelCourse={this.cancelCourse} 
             onFormChange={this.onFormChange} 
             refreshPage={this.refreshPage} 
+            updateState={this.updateState}
         />
         <DriverList 
           drivers={this.state.drivers} 
@@ -91,6 +122,7 @@ class Contact extends React.Component {
           sortDriversAtoZ={this.sortDriversAtoZ} 
           componentDidMount={this.componentDidMount}
         />
+        <p>{this.state.drivers.name}</p>
         <GuestList />
       </div>
     );
