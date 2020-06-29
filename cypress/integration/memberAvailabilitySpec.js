@@ -30,11 +30,7 @@ describe("DriverAvailability", () => {
       cy.get('td').eq(3).contains('true');
       cy.get('td').eq(4).contains('true');
     })
-    // cy.get(".driver-availability-table").should("contain", "Tom");
-    // cy.get(".driver-availability-table").should("not.contain", "Cath");
-    // cy.get(".driver-availability-table").should("not.contain", "Tim");
 
-    // cy.get(".driver-availability-table").should("contain", "July-2020");
-    // cy.get(".driver-availability-table").should("contain", "true");
+    cy.get("#logout").click();
   });
 });
