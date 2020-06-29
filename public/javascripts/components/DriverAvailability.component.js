@@ -13,7 +13,6 @@ class DriverAvailability extends React.Component {
     .then(response => {
       return response.json()
     }).then((result) => {
-      console.log(result);
       this.setState({
         months: result.months,
         drivers: result.drivers 
@@ -22,8 +21,6 @@ class DriverAvailability extends React.Component {
   }
 
   render() {
-
-
     return (
       <div>
         <h2> Driver Availabilities </h2>
@@ -37,10 +34,10 @@ class DriverAvailability extends React.Component {
               }
             </tr>
           </thead>
-          <tbody>
 
+          <tbody>
             {this.state.drivers.map((driver) => (
-              <AvailabilityRow driver={driver} months={this.state.months}/>
+              <AvailabilityRow driver={driver} months={this.state.months} key={driver._id}/>
               ))
             }
           </tbody>
