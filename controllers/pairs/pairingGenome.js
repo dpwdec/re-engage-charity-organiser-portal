@@ -64,8 +64,26 @@ class PairingGenome {
         break;
       }
     }
-    //console.log(child);
+    
+    possibleGuests.forEach((guest, index) => {
+      //look up driver guest distance
+    });
+
     return child;
+  }
+
+  lookupDistance(incompleteGene) {
+    PairingGenome.members.forEach((guest) => {
+      if(incompleteGene.guest === guest.name) {
+        guest.drivers.forEach((driver) => {
+          if(incompleteGene.driver === driver.name) {
+            incompleteGene.distance = driver.distance;
+            return;
+          }
+        });
+      }
+    });
+    return incompleteGene;
   }
 }
 
