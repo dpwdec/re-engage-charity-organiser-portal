@@ -6,15 +6,12 @@ class PairingPopulation {
     this.size = environment.size;
     this.genomes = [];
 
-    console.log(this.members);
-
     PairingGenome.geneticMaterial = {
       possibleDrivers: [],
       possibleGuests: [],
     }
 
     this.members.forEach((guest) => {
-      console.log(guest);
       PairingGenome.geneticMaterial.possibleGuests.push(guest.name);
     });
 
@@ -22,11 +19,10 @@ class PairingPopulation {
       PairingGenome.geneticMaterial.possibleDrivers.push(driver.name);
     });
 
-    console.log(PairingGenome.geneticMaterial);
-    // set up pairing genome genetic material
+    PairingGenome.members = this.members;
   }
 
-  generaPopulation() {
+  generatePopulation() {
     for (let index = 0; index < this.size; index++) {
       var newGenome = new PairingGenome();
       newGenome.generateGenes();

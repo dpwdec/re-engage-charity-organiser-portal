@@ -31,7 +31,7 @@ describe('PairingPopulation', () => {
   describe('#generatePopulation', () => {
     it('can generate a population of PairingGenomes', () => {
       var members = [{
-        guest: 'Doris',
+        name: 'Doris',
         drivers:[{
           name: 'Bradley',
           distance: 20
@@ -41,7 +41,7 @@ describe('PairingPopulation', () => {
         }]
       },
       {
-        guest: 'Jean',
+        name: 'Jean',
         drivers:[{
           name: 'Bradley',
           distance: 30
@@ -53,6 +53,7 @@ describe('PairingPopulation', () => {
       var populationSize = 5;
       var population = new PairingPopulation({members: members, size: populationSize});
       population.generatePopulation();
+      //console.log(population.genomes);
       expect(population.genomes[0]).toBeInstanceOf(PairingGenome);
       expect(population.genomes.length).toEqual(5);
     });
