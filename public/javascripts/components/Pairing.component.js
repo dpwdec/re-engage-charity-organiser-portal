@@ -26,6 +26,9 @@ class Pairing extends React.Component {
         </button>
         <div className="table">
           <table>
+            <thead>
+            </thead>
+            <tbody>
             {this.state.pairs.map((pair) => (
               <PairItem
                 driver={pair.driver}
@@ -35,6 +38,7 @@ class Pairing extends React.Component {
                 key={pair.id}
               />
             ))}
+            </tbody>
           </table>
 
           <PairingsMap pairs={this.state.pairs} />
