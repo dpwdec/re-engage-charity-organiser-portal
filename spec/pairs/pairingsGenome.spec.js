@@ -261,6 +261,222 @@ describe('PairingGenome', () => {
 
       expect(male.mateWith(female)).toEqual(child);
     });
+
+    it('can accomplish complex breeding', () => {
+      PairingGenome.geneticMaterial = {
+        possibleDrivers: ['Bradley', 'Zeus', 'Kevin'],
+        possibleGuests: ['Jean', 'Doris', 'Petunia'],
+      }
+      PairingGenome.members = [
+        {
+        name: 'Doris',
+        drivers: [
+          {
+            name: 'Bradley',
+            distance: 40
+          },
+          {
+            name: 'Kevin',
+            distance: 40
+          },
+          {
+            name: 'Zeus',
+            distance: 40
+          },
+          {
+            name: 'Lomothy',
+            distance: 40
+          },
+          {
+            name: 'Piers',
+            distance: 40
+          }
+        ]
+      },
+      {
+        name: 'Jean',
+        drivers: [
+          {
+            name: 'Bradley',
+            distance: 40
+          },
+          {
+            name: 'Kevin',
+            distance: 20
+          },
+          {
+            name: 'Zeus',
+            distance: 40
+          },
+          {
+            name: 'Lomothy',
+            distance: 40
+          },
+          {
+            name: 'Piers',
+            distance: 40
+          }
+        ]
+      },
+      {
+        name: 'Petunia',
+        drivers: [
+          {
+            name: 'Bradley',
+            distance: 40
+          },
+          {
+            name: 'Kevin',
+            distance: 40
+          },
+          {
+            name: 'Zeus',
+            distance: 40
+          },
+          {
+            name: 'Lomothy',
+            distance: 40
+          },
+          {
+            name: 'Piers',
+            distance: 40
+          }
+        ]
+      },
+      {
+        name: 'Jimothy',
+        drivers: [
+          {
+            name: 'Bradley',
+            distance: 40
+          },
+          {
+            name: 'Kevin',
+            distance: 40
+          },
+          {
+            name: 'Zeus',
+            distance: 40
+          },
+          {
+            name: 'Lomothy',
+            distance: 40
+          },
+          {
+            name: 'Piers',
+            distance: 40
+          }
+        ]
+      },
+      {
+        name: 'Jake',
+        drivers: [
+          {
+            name: 'Bradley',
+            distance: 40
+          },
+          {
+            name: 'Kevin',
+            distance: 40
+          },
+          {
+            name: 'Zeus',
+            distance: 40
+          },
+          {
+            name: 'Lomothy',
+            distance: 40
+          },
+          {
+            name: 'Piers',
+            distance: 40
+          }
+        ]
+      }]
+
+      var male = new PairingGenome();
+      male.genes = [{
+        guest: 'Doris',
+        driver: 'Lomothy',
+        distance: 40
+      },
+      {
+        guest: 'Jean',
+        driver: 'Zeus',
+        distance: 40
+      },
+      {
+        guest: 'Petunia',
+        driver: 'Piers',
+        distance: 40
+      },
+      {
+        guest: 'Jake',
+        driver: 'Bradley',
+        distance: 40,
+      },
+      {
+        guest: 'Jimothy',
+        driver: 'Kevin',
+        distance: 40,
+      }];
+
+      var female = new PairingGenome();
+      female.genes = [{
+        guest: 'Jake',
+        driver: 'Zeus',
+        distance: 40
+      },
+      {
+        guest: 'Jean',
+        driver: 'Bradley',
+        distance: 40
+      },
+      {
+        guest: 'Petunia',
+        driver: 'Piers',
+        distance: 40
+      },
+      {
+        guest: 'Doris',
+        driver: 'Kevin',
+        distance: 40,
+      },
+      {
+        guest: 'Jimothy',
+        driver: 'Lomothy',
+        distance: 40,
+      }];
+
+      var child = new PairingGenome();
+      child.genes = [{
+        guest: 'Doris',
+        driver: 'Lomothy',
+        distance: 40,
+      },
+      {
+        guest: 'Jake',
+        driver: 'Zeus',
+        distance: 40,
+      },
+      {
+        guest: 'Petunia',
+        driver: 'Piers',
+        distance: 40,
+      },
+      {
+        guest: 'Jean',
+        driver: 'Bradley',
+        distance: 40,
+      },
+      {
+        guest: 'Jimothy',
+        driver: 'Kevin',
+        distance: 40,
+      }]
+
+      expect(male.mateWith(female)).toEqual(child);
+    });
   });
 
   describe('#lookupDistance', () => {

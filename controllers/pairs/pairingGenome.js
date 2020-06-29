@@ -64,21 +64,19 @@ class PairingGenome {
         break;
       }
     }
-
-    console.log(possibleDrivers[0]);
-    console.log(possibleGuests);
     
     possibleGuests.forEach((guest, index) => {
       var leftoverGene = {guest: guest, driver: possibleDrivers[index] }
       leftoverGene = this.lookupDistance(leftoverGene);
       child.genes.push(leftoverGene);
     });
-    
-    console.log(child);
 
     return child;
   }
 
+  /*
+  
+  */
   lookupDistance(incompleteGene) {
     PairingGenome.members.forEach((guest) => {
       if(incompleteGene.guest === guest.name) {
