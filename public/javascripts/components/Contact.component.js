@@ -61,9 +61,9 @@ class Contact extends React.Component {
 
   }
 
-  cancelCourse = () => {
-    document.getElementById("new-member-form").reset();
-  }
+  // cancelCourse = () => {
+  //   document.getElementById("new-member-form").reset();
+  // }
 
   onFormChange = (event) => {
     this.setState({
@@ -84,8 +84,6 @@ class Contact extends React.Component {
     });
   }
 
-
-
   render() {
     console.log(this.state.drivers)
     return (
@@ -93,7 +91,7 @@ class Contact extends React.Component {
         <MemberForm 
             member={this.state.member} 
             mySubmitHandler={this.mySubmitHandler} 
-            cancelCourse={this.cancelCourse} 
+            // cancelCourse={this.cancelCourse} 
             onFormChange={this.onFormChange} 
             refreshPage={this.refreshPage} 
             updateState={this.updateState}
