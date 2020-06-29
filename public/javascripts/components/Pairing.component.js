@@ -19,6 +19,7 @@ class Pairing extends React.Component {
   };
 
   render() {
+    console.log(this.state.pairs);
     return (
       <div>
         <button id="generate-pairs" onClick={this.generatePairs}>
@@ -40,7 +41,6 @@ class Pairing extends React.Component {
             ))}
             </tbody>
           </table>
-
           <PairingsMap pairs={this.state.pairs} />
         </div>
       </div>
