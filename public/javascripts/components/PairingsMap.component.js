@@ -5,5 +5,11 @@ function PairingsMap(props) {
     center: { lat: 51.497309, lng: -0.147165 },
   });
 
+  props.pairs.forEach((pair) => {
+    var directionsService = new google.maps.DirectionsService();
+    var directionsRenderer = new google.maps.DirectionsRenderer();
+    directionsRenderer.setMap(map);
+  });
+
   return null;
 }
