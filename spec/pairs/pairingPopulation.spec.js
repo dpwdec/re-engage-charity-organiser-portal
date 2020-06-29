@@ -121,4 +121,57 @@ describe('PairingPopulation', () => {
       expect(popCount['0']).toEqual(10);
     });
   });
+
+  describe('.generate', () => {
+    it('can generate a solution', () => {
+      var data = [ 
+        { name: 'Doris', 
+          drivers: [ { 
+            name: 'Bradley', 
+            distance: 5 
+            },
+            { 
+              name: 'Zeus', 
+              distance: 30 
+            },
+            { 
+              name: 'Jake', 
+              distance: 3 
+            } 
+          ]
+        },
+        { name: 'Petunia', 
+          drivers: [ { 
+            name: 'Bradley', 
+            distance: 10 
+            },
+            { 
+              name: 'Zeus', 
+              distance: 1 
+            },
+            { 
+              name: 'Jake', 
+              distance: 33 
+            } 
+          ]
+        },
+        { name: 'Jean', 
+          drivers: [ { 
+            name: 'Bradley', 
+            distance: 10 
+            },
+            { 
+              name: 'Zeus', 
+              distance: 1 
+            },
+            { 
+              name: 'Jake', 
+              distance: 11 
+            } 
+          ]
+        },
+      ]
+      PairingPopulation.generate(data);
+    });
+  });
 });

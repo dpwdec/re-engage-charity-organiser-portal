@@ -79,6 +79,35 @@ class PairingPopulation {
       }
     });
   }
+
+  breedGenomes() {
+    var nextGeneration = [];
+    for(var i = 0; i < this.size; i++) {
+      //pick two random index from mating pool
+      var male = this.genomes[Math.floor(Math.random() * this.genomes.length)];
+      var female = this.genomes[Math.floor(Math.random() * this.genomes.length)];
+      var child = male.mateWith(female);
+
+      nextGeneration.push(child);
+    }
+    this.genomes = nextGeneration;
+  }
+}
+
+PairingPopulation.generate = (members) => {
+
+  population = new PairingPopulation({members: members, size: 50, matingPoolSize: 100});
+  population.generatePopulation();
+
+  // for(var i = 0; i < 100; i++) {
+    population.calculatePopulationFitness();
+    population.generateMatingPool();
+    population.breedGenomes();
+  // }
+  population.genomes.forEach((genome) => {
+    console.log(genome);
+  });
+  //console.log(population.genomes);
 }
 
 module.exports = PairingPopulation;
