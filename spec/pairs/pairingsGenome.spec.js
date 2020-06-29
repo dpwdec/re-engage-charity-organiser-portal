@@ -155,6 +155,57 @@ describe('PairingGenome', () => {
         possibleDrivers: ['Bradley', 'Zeus', 'Kevin'],
         possibleGuests: ['Jean', 'Doris', 'Petunia'],
       }
+      PairingGenome.members = [{
+        name: 'Doris',
+        drivers: [
+          {
+            name: 'Bradley',
+            distance: 40
+          },
+          {
+            name: 'Kevin',
+            distance: 40
+          },
+          {
+            name: 'Zeus',
+            distance: 40
+          }
+        ]
+      },
+      {
+        name: 'Jean',
+        drivers: [
+          {
+            name: 'Bradley',
+            distance: 40
+          },
+          {
+            name: 'Kevin',
+            distance: 20
+          },
+          {
+            name: 'Zeus',
+            distance: 40
+          }
+        ]
+      },
+      {
+        name: 'Petunia',
+        drivers: [
+          {
+            name: 'Bradley',
+            distance: 40
+          },
+          {
+            name: 'Kevin',
+            distance: 40
+          },
+          {
+            name: 'Zeus',
+            distance: 40
+          }
+        ]
+      }]
 
       var male = new PairingGenome();
       male.genes = [{
@@ -205,10 +256,9 @@ describe('PairingGenome', () => {
         {
           guest: 'Jean',
           driver: 'Kevin',
-          distance: 40
+          distance: 20
         }];
 
-      // just in the wrong order
       expect(male.mateWith(female)).toEqual(child);
     });
   });
@@ -245,7 +295,7 @@ describe('PairingGenome', () => {
       genome = new PairingGenome();
       var unfinishedGene = {guest: 'Jean', driver: 'Zeus'};
       var finishedGene = {guest: 'Jean', driver: 'Zeus', distance: 100};
-      
+
       expect(genome.lookupDistance(unfinishedGene)).toEqual(finishedGene);
     });
   });
