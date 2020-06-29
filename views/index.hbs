@@ -11,8 +11,14 @@
 <script type="text/babel" src="/javascripts/components/PairingsMap.component.js"></script>
 <script type="text/babel" src="/javascripts/ReactApp.js"></script>
 
-<script
-  src="https://maps.googleapis.com/maps/api/js?sensor=false&key=AIzaSyC9qJYJPqeVBtCCvu68wQ286oyCL8Z5PqQ&libraries=geometry"></script>
+
+{{!-- <scriptsrc="https://maps.googleapis.com/maps/api/js?sensor=false&key=" + `${process.env.REACT_APP_MAP_API_KEY}`
+  + "&libraries=geometry"></script> --}}
+
+<script GOOGLE_MAP_KEY=process.env.REACT_APP_MAP_API_KEY
+  src='https://maps.googleapis.com/maps/api/js?sensor=false&key<var>process.env.REACT_APP_MAP_API_KEY</var>&libraries=geometry'></script>
+
+
 <style>
   html,
   body {
