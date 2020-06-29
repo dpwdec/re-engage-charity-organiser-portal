@@ -8,6 +8,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var pairsRouter = require('./routes/pairs')
 var adminRouter = require("./routes/admin");
+var availRouter = require('./routes/availability');
 
 let Admin = require("./models/admin");
 let admin = new Admin({ adminName: "admin", password: "1234" });
@@ -29,6 +30,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/pairs', pairsRouter);
 app.use("/admin", adminRouter);
+app.use('/availability', availRouter);
 
 // var Member = require ('./models/member');
 // newMember = new Member( {
