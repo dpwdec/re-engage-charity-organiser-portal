@@ -17,12 +17,14 @@ describe('Create Member Form', () => {
     //we will need to add DB drop helper function
 
     cy.visit('/')
+    cy.get("#contact-tab").click();
     cy.get('#new-member-form').find('[id=new-member-name]').type('Himithy')
     cy.get('#new-member-form').find('[id=new-member-address]').type('S3 4KY')
     cy.get('#new-member-form').find('[id=new-member-role]').type('driver')
     cy.get('#new-member-form').submit();
 
     cy.visit('/')  // this forces a refresh which loads the new member
+    cy.get("#contact-tab").click();
     cy.get('.driver-list').should('contain', 'Himithy');
     cy.get('.driver-list').should('contain', 'S3 4KY');
     cy.get('.guest-list').should('not.contain', 'Himithy');
