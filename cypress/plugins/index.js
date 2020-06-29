@@ -12,10 +12,54 @@
 // This function is called when a project is opened or re-opened (e.g. due to
 // the project's config changing)
 
+const mongoose = require('mongoose');
+const Admin = require('../../models/admin');
+const Member = require('../../models/member');
+
 /**
  * @type {Cypress.PluginConfig}
  */
-module.exports = (on, config) => {
+module.exports = (on) => {
   // `on` is used to hook into various events Cypress emits
+  on('task', {
+    addMember(member) {
+      return new Promise((resolve) => {
+        mongoose.connect('mongodb://localhost/re_engage_test', (err) => {
+          newMember = new Member(member);
+          newMember.save((err) => {
+            resolve('done');
+          });
+        });
+      });
+    },
+    addAdmin(admin) {
+      return new Promise((resolve) => {
+        mongoose.connect('mongodb://localhost/re_engage_test', (err) => {
+          newAdmin = new Admin(admin);
+          newAdmin.save((err) => {
+            resolve('done');
+          });
+        });
+      });
+    },
+    dropMembers() {
+      return new Promise((resolve) => {
+        mongoose.connect('mongodb://localhost/re_engage_test', (err) => {
+          mongoose.connection.collections.members.drop((err) => {
+            resolve('done');
+          });
+        });
+      });
+    },
+    dropAdmins() {
+      return new Promise((resolve) => {
+        mongoose.connect('mongodb://localhost/re_engage_test', (err) => {
+          mongoose.connection.collections.admins.drop((err) => {
+            resolve('done');
+          });
+        });
+      });
+    }
+  });
   // `config` is the resolved Cypress config
 }

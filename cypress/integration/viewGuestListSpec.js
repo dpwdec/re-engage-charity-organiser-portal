@@ -6,8 +6,8 @@ describe('Members', () => {
 
     cy.task('dropMembers');
     cy.task('addMember', {name: 'Cat', role: 'driver'});
-    cy.task('addMember', {name: 'Marija', role: 'driver'});
     cy.task('addMember', {name: 'Dec', role: 'guest'});
+    cy.task('addMember', {name: 'Jo', role: 'guest'});
 
     cy.visit("admin/login");
     cy.get("#admin").type("admin");
@@ -15,12 +15,12 @@ describe('Members', () => {
     cy.get("#login").click();
   });
 
-  it('displays all drivers names and addresses', () => {
+  it('displays all guests names and addresses', () => {
     cy.visit('/');
     cy.get("#contact-tab").click();
-    cy.get('.driver-list').should('contain', 'Cat');
-    cy.get('.driver-list').should('contain', 'Marija');
-    cy.get('.driver-list').should('not.contain', 'Dec');
+    cy.get('.guest-list').should('contain', 'Dec');
+    cy.get('.guest-list').should('contain', 'Jo');
+    cy.get('.guest-list').should('not.contain', 'Cat');
   });
 
   afterEach(() => {

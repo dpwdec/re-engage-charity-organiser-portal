@@ -1,49 +1,76 @@
-var PairController = { 
-  Pairing: (request, response) => {
-    // contact MongoDB
-    // sort drivers and guests
-    var members = {
-      drivers: [ {name: 'Bradley'}, {name: 'Zeus'}, {name: 'Kevin'} ],
-      guests: [ {name: 'Doris' }, { name: 'Kimothey' }, {name: 'Perry'}]
-    }
-    
-    // randomly pair drivers and guests
-    var pairings = PairController._generatePairs(members);
+var mongoose = require("mongoose");
+const Member = require("../models/member");
+const ShortestDistancePairs = require("./pairs/shortestDistancePairs");
 
-    response.send({ pairs: pairings});
-  }
-}
+const googleMapsClient = require("@google/maps").createClient({
+  key: process.env.REACT_APP_MAP_API_KEY,
+  Promise: Promise,
+});
 
-// UTILITY METHODS
-PairController._generatePairs = (members) => {
-  // randomise the order of each members and guests array
-  var mixedMembers = PairController._mixMembers(members);
+var PairController = {
+  Pairing: async (request, response) => {
+    Member.find({ role: "guest" }, (err, guests) => {
+      Member.find({ role: "driver" }, async (err, drivers) => {
+        var members = [];
+        var allPromises = [];
 
-  //pair up drivers and guests from arrays
-  var pairs = mixedMembers.drivers.map((driver, index) => {
-    return {
-      id: index+1,
-      driver: driver.name,
-      guest: mixedMembers.guests[index].name
-    }
+        guests.forEach((guest) => {
+          var member = {
+            name: guest.name,
+            drivers: [],
+          };
+
+          var driverGuestPairPromises = drivers.map((driver) => {
+            return makeGooglePairRouteApiRequest(member, guest, driver);
+          });
+
+          driverGuestPairPromises.forEach((APIpromise) => {
+            allPromises.push(APIpromise);
+          });
+
+          members.push(member);
+        });
+
+        await Promise.all(allPromises); // waits for all API calls to finish
+        var pairings = ShortestDistancePairs.generate(members);
+
+        response.send({ pairs: pairings });
+      });
+    });
+  },
+  Map: (request, response) => {
+    response.render("map");
+  },
+  Route: (request, response) => {
+    googleMapsClient
+      .directions({
+        origin: "SW129PH",
+        destination: "SE153XX",
+        mode: "driving",
+      })
+      .asPromise()
+      .then((result) => {
+        console.log(result);
+        response.send(result);
+      });
+  },
+};
+
+makeGooglePairRouteApiRequest = (member, guest, driver) => {
+  return new Promise(function (resolve) {
+    googleMapsClient
+      .directions({ origin: guest.address, destination: driver.address })
+      .asPromise()
+      .then((result) => {
+        //add the driver to the guest object
+        member.drivers.push({
+          name: driver.name,
+          distance: result.json.routes[0].legs[0].distance.value,
+          route: result.json,
+        });
+        resolve(result);
+      });
   });
-  return pairs
-}
-
-PairController._mixMembers = (members) => {
-  members.drivers = PairController._shuffleArray(members.drivers);
-  members.guests = PairController._shuffleArray(members.guests);
-  return members;
-}
-
-PairController._shuffleArray = (array) => {
-  for (var i = array.length - 1; i > 0; i--) {
-      var j = Math.floor(Math.random() * (i + 1));
-      var temp = array[i];
-      array[i] = array[j];
-      array[j] = temp;
-  }
-  return array;
-}
+};
 
 module.exports = PairController;

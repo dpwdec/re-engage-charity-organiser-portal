@@ -1,2 +1,4 @@
 node_modules
 reques.rest
+coverage
+.env

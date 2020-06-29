@@ -3,18 +3,17 @@ var express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
+require("dotenv").config();
+// const API_KEY = process.env.REACT_APP_MAP_API_KEY;
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var pairsRouter = require('./routes/pairs')
+var indexRouter = require("./routes/index");
+var usersRouter = require("./routes/users");
+var pairsRouter = require("./routes/pairs");
 var adminRouter = require("./routes/admin");
 var availRouter = require('./routes/availability');
 
-let Admin = require("./models/admin");
-let admin = new Admin({ adminName: "admin", password: "1234" });
-admin.save();
-
 var app = express();
+app.locals.api_key = process.env.REACT_APP_MAP_API_KEY;
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -26,9 +25,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/pairs', pairsRouter);
+app.use("/", indexRouter);
+app.use("/users", usersRouter);
+app.use("/pairs", pairsRouter);
 app.use("/admin", adminRouter);
 app.use('/availability', availRouter);
 

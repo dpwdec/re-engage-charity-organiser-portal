@@ -28,16 +28,16 @@ class DriverAvailability extends React.Component {
           <thead>
             <tr>
               <th>Name</th>
-              {this.state.months.map((month) => (
-                <th>{month}</th>
-              ))
-              }
+              <th>{this.state.months[0]}</th>
+              <th>{this.state.months[1]}</th>
+              <th>{this.state.months[2]}</th>
+              <th>{this.state.months[3]}</th>
             </tr>
           </thead>
 
           <tbody>
             {this.state.drivers.map((driver) => (
-              <AvailabilityRow driver={driver} months={this.state.months} key={driver._id}/>
+              <AvailabilityRow driver={driver} months={this.state.months} key={driver._id} id={driver._id}/>
               ))
             }
           </tbody>

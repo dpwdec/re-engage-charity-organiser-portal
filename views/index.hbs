@@ -1,9 +1,34 @@
 <div id="root"></div>
+<div id="map-canvas"></div>
 <script type="text/babel" src="/javascripts/components/adminLogOut.component.js"></script>
-<script type="text/babel" src="/javascripts/components/Driver.component.js"></script>
-<script type="text/babel" src="/javascripts/components/DriverList.js"></script>
 <script type="text/babel" src="/javascripts/components/AvailabilityRow.component.js"></script>
 <script type="text/babel" src="/javascripts/components/DriverAvailability.component.js"></script>
+<script type="text/babel" src="/javascripts/components/MemberForm.component.js"></script>
+<script type="text/babel" src="/javascripts/components/Driver.component.js"></script>
+<script type="text/babel" src="/javascripts/components/Driverlist.component.js"></script>
+<script type="text/babel" src="/javascripts/components/Guest.component.js"></script>
+<script type="text/babel" src="/javascripts/components/Guestlist.component.js"></script>
 <script type="text/babel" src="/javascripts/components/PairItem.component.js"></script>
 <script type="text/babel" src="/javascripts/components/Pairing.component.js"></script>
+<script type="text/babel" src="/javascripts/components/PairingsMap.component.js"></script>
+<script type="text/babel" src="/javascripts/components/Header.component.js"></script>
+<script type="text/babel" src="/javascripts/components/Contact.component.js"></script>
 <script type="text/babel" src="/javascripts/ReactApp.js"></script>
+
+<script src='https://maps.googleapis.com/maps/api/js?libraries=geometry&key={{api_key}}'></script>
+<style>
+  <style>html,
+  body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  #map-canvas {
+    position: absolute;
+    height: 50%;
+    width: 50%;
+    bottom: 0px;
+    right: 0;
+  }
+</style>
