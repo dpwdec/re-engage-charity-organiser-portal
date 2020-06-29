@@ -55,13 +55,13 @@ class MemberForm extends React.Component {
           <h3>Add a new member</h3>
           <input required id="new-member-name" type="text" name="name" value={this.props.member.name} placeholder="name" onChange={this.props.onFormChange} ></input>
           <input required id="new-member-address" type="text" name="address" value={this.props.member.address} placeholder="address" onChange={this.props.onFormChange} ></input>
-          <input required pattern="driver|guest" id="new-member-role" type="text" name="role" value={this.props.member.role} placeholder="role: driver or guest" onChange={this.props.onFormChange}></input>
-          {/* <select className="dropdown" id="new-member-role" name="role" value={this.props.member.role} onChange={this.props.onFormChange}>
-            <option value="driver">Driver</option>
-            <option value="guest">Guest</option>
-          </select> */}
+          {/* <input required pattern="driver|guest" id="new-member-role" type="text" name="role" value={this.props.member.role} placeholder="role: driver or guest" onChange={this.props.onFormChange}></input> */}
+          <select className="dropdown" id="new-member-role" name="role" value={this.props.member.role} onChange={this.props.onFormChange}>
+            <option value="driver">driver</option>
+            <option value="guest">guest</option>
+          </select>
 
-          <input type="submit" value="Submit" onClick={this.props.updateState}></input>
+          <input type="submit" value="Submit"></input>
         </form>
 
        

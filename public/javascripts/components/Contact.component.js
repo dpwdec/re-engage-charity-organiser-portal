@@ -63,23 +63,6 @@ class Contact extends React.Component {
 
   }
 
-  updateState = () => {
-    console.log("button clicked!")
-    console.log(this.state.drivers)
-    
-    // fetch('/drivers')
-    // .then(response => response.json())
-    // .then((data) => {
-    //   this.setState({
-    //     drivers: data,
-    //   });
-    //   this.setState({
-    //     drivers: this.sortDriversAtoZ(),
-    //   });
-      
-    // });
-  }
-
   cancelCourse = () => {
     document.getElementById("new-member-form").reset();
   }
@@ -122,7 +105,6 @@ class Contact extends React.Component {
           sortDriversAtoZ={this.sortDriversAtoZ} 
           componentDidMount={this.componentDidMount}
         />
-        <p>{this.state.drivers.name}</p>
         <GuestList />
       </div>
     );
