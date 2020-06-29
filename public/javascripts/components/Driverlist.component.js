@@ -1,37 +1,37 @@
 class DriverList extends React.Component {
 
-  constructor() {
-    super();
-    this.state = {
-      drivers: [],
-    };
-  };
+  // constructor() {
+  //   super();
+  //   this.state = {
+  //     drivers: [],
+  //   };
+  // };
 
-  componentDidMount() {
-    this.fetchDrivers('/drivers');
-  }
+  // componentDidMount() {
+  //   this.fetchDrivers('/drivers');
+  // }
 
-  fetchDrivers = () => {
-    fetch('/drivers')
-    .then(response => response.json())
-    .then((data) => {
-      this.setState({
-        drivers: data,
-      });
-      this.setState({
-        drivers: this.sortDriversAtoZ(),
-      });
+  // fetchDrivers = () => {
+  //   fetch('/drivers')
+  //   .then(response => response.json())
+  //   .then((data) => {
+  //     this.setState({
+  //       drivers: data,
+  //     });
+  //     this.setState({
+  //       drivers: this.sortDriversAtoZ(),
+  //     });
       
-    });
-  }
+  //   });
+  // }
 
-  sortDriversAtoZ = () => {
-    return this.state.drivers.sort(function(memberA, memberB) {
-    var memberA = memberA.name.toUpperCase();
-    var memberB = memberB.name.toUpperCase();
-      return (memberA < memberB) ? -1 : (memberA > memberB) ? 1 : 0;
-    });
-  }
+  // sortDriversAtoZ = () => {
+  //   return this.state.drivers.sort(function(memberA, memberB) {
+  //   var memberA = memberA.name.toUpperCase();
+  //   var memberB = memberB.name.toUpperCase();
+  //     return (memberA < memberB) ? -1 : (memberA > memberB) ? 1 : 0;
+  //   });
+  // }
 
   render() {
     return(
@@ -46,7 +46,7 @@ class DriverList extends React.Component {
             </tr>
           </thead>
           <tbody>
-            {this.state.drivers.map((driver) => (
+            {this.props.drivers.map((driver) => (
               < Driver name={driver.name} address={driver.address} id={driver._id} key={driver._id} />
               ))
             }
