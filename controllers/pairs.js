@@ -3,7 +3,7 @@ const Member = require("../models/member");
 const ShortestDistancePairs = require("./pairs/shortestDistancePairs");
 
 const googleMapsClient = require("@google/maps").createClient({
-  key: process.env.API_KEY,
+  key: process.env.REACT_APP_MAP_API_KEY,
   Promise: Promise,
 });
 
