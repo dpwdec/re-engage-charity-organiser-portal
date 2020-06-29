@@ -1,6 +1,6 @@
 var mongoose = require("mongoose");
 const Member = require("../models/member");
-const ShortestDistancePairs = require('./pairs/shortestDistancePairs');
+const ShortestDistancePairs = require("./pairs/shortestDistancePairs");
 
 const googleMapsClient = require("@google/maps").createClient({
   key: "AIzaSyC9qJYJPqeVBtCCvu68wQ286oyCL8Z5PqQ",
@@ -66,11 +66,11 @@ makeGooglePairRouteApiRequest = (member, guest, driver) => {
         member.drivers.push({
           name: driver.name,
           distance: result.json.routes[0].legs[0].distance.value,
+          route: result.json,
         });
         resolve(result);
       });
   });
 };
-
 
 module.exports = PairController;
