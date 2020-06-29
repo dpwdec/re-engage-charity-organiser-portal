@@ -1,4 +1,3 @@
-
 class ReactApp extends React.Component {
   constructor(props) {
     super(props);
@@ -11,7 +10,7 @@ class ReactApp extends React.Component {
       loggedIn,
       home: true,
       pairs: false,
-      contact: false
+      contact: false,
     };
   }
 
@@ -20,37 +19,43 @@ class ReactApp extends React.Component {
     this.setState({
       home: true,
       pairs: false,
-      contact: false
+      contact: false,
     });
-    this.changeTabColour('home-tab', 'pairing-tab', 'contact-tab')
-  }
+    this.changeTabColour("home-tab", "pairing-tab", "contact-tab");
+    var x = document.getElementById("map-canvas");
+    x.style.display = "none";
+  };
 
   showPairs = (e) => {
     e.preventDefault();
     this.setState({
       home: false,
       pairs: true,
-      contact: false
+      contact: false,
     });
-    this.changeTabColour('pairing-tab', 'home-tab', 'contact-tab')
-  }
+    this.changeTabColour("pairing-tab", "home-tab", "contact-tab");
+    var x = document.getElementById("map-canvas");
+    x.style.display = "";
+  };
 
   showContact = (e) => {
     e.preventDefault();
     this.setState({
       home: false,
       pairs: false,
-      contact: true
+      contact: true,
     });
-    this.changeTabColour('contact-tab','pairing-tab', 'home-tab', )
-  }
+    this.changeTabColour("contact-tab", "pairing-tab", "home-tab");
+    var x = document.getElementById("map-canvas");
+    x.style.display = "none";
+  };
 
   changeTabColour = (active, inactive1, inactive2) => {
     document.getElementById(active).setAttribute("class", "tab col active-tab");
     document.getElementById(inactive1).setAttribute("class", "tab col");
     document.getElementById(inactive2).setAttribute("class", "tab col");
-  }
- 
+  };
+
   render() {
     if (this.state.loggedIn === false) {
       return (
@@ -62,14 +67,31 @@ class ReactApp extends React.Component {
       return (
         <div className="container">
           <div className="main-app container margin-top bg-white">
-    
             <Header />
             <div className="row">
-              <button id="home-tab" className="tab col button active-tab" onClick={this.showHome}>Home</button>
-              <button id="pairing-tab" className="tab col button" onClick={this.showPairs}>Pairing</button>
-              <button id="contact-tab" className="tab col button" onClick={this.showContact}>Contact</button>
+              <button
+                id="home-tab"
+                className="tab col button active-tab"
+                onClick={this.showHome}
+              >
+                Home
+              </button>
+              <button
+                id="pairing-tab"
+                className="tab col button"
+                onClick={this.showPairs}
+              >
+                Pairing
+              </button>
+              <button
+                id="contact-tab"
+                className="tab col button"
+                onClick={this.showContact}
+              >
+                Contact
+              </button>
             </div>
-          
+
             <div className="main-content">
               {(() => {
                 if (this.state.home === true) {
@@ -82,15 +104,11 @@ class ReactApp extends React.Component {
                 }
 
                 if (this.state.pairs === true) {
-                  return (
-                    <Pairing />
-                  )
+                  return <Pairing />;
                 }
 
                 if (this.state.contact === true) {
-                  return (
-                    <Contact />
-                  );
+                  return <Contact />;
                 }
               })()}
             </div>
