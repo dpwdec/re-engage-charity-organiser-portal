@@ -29,6 +29,15 @@ class PairingPopulation {
       this.genomes.push(newGenome);
     }
   }
+
+  /*
+  Trigger calculate fitness for every genome in the population
+  */
+  calculatePopulationFitness() {
+    this.genomes.forEach((genome) => {
+      genome.calculateFitness();
+    });
+  }
 }
 
 module.exports = PairingPopulation;

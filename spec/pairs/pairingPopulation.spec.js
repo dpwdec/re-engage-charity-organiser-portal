@@ -57,4 +57,39 @@ describe('PairingPopulation', () => {
       expect(population.genomes.length).toEqual(5);
     });
   });
+
+  describe('#calculatePopulationFitness', () => {
+    it('can calculate an entire population fitness', () => {
+      var members = [{
+        name: 'Doris',
+        drivers:[{
+          name: 'Bradley',
+          distance: 20
+        }]
+      }];
+
+      population = new PairingPopulation({members: members, size: 5});
+
+      population.genomes = [];
+      
+      for (let index = 0; index < 10; index++) {
+        var newGenome = new PairingGenome();
+        newGenome.genes = [
+          {
+            guest: 'Doris', driver: 'Bradley', distance: 10
+          },
+          {
+            guest: 'Jean', driver: 'Zeus', distance: 3
+          },
+          {
+            guest: 'Petunia', driver: 'Kevin', distance: 17
+          },
+        ]
+        population.genomes.push(newGenome);
+      }
+  
+      population.calculatePopulationFitness();
+      expect(population.genomes[5].fitness).toEqual(10);
+    });
+  });
 });
