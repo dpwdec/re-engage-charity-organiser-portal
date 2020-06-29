@@ -15,6 +15,13 @@ function PairingsMap(props) {
       destination: { query: pair.route.routes[0].legs[0].end_address },
       travelMode: "DRIVING",
     };
+    directionsService.route(request, function (response, status) {
+      if (status === "OK") {
+        directionsRenderer.setDirections(response);
+      } else {
+        window.alert("Directions request failed due to " + status);
+      }
+    });
   });
 
   return null;
