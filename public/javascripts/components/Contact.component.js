@@ -27,8 +27,6 @@ class Contact extends React.Component {
     });
   }
 
-  // on submit state is currently not changing
-
   mySubmitHandler = (event) => {
     event.preventDefault();
     let newMember = {
@@ -63,30 +61,14 @@ class Contact extends React.Component {
 
   }
 
-  updateState = () => {
-    console.log("button clicked!")
-    console.log(this.state.drivers)
-    
-    // fetch('/drivers')
-    // .then(response => response.json())
-    // .then((data) => {
-    //   this.setState({
-    //     drivers: data,
-    //   });
-    //   this.setState({
-    //     drivers: this.sortDriversAtoZ(),
-    //   });
-      
-    // });
-  }
-
   cancelCourse = () => {
     document.getElementById("new-member-form").reset();
   }
 
   onFormChange = (event) => {
     this.setState({
-      [event.target.name]: event.target.value
+      [event.target.name]: event.target.value,
+      role: document.getElementById("new-member-role").value
     });
   }
 
@@ -122,7 +104,6 @@ class Contact extends React.Component {
           sortDriversAtoZ={this.sortDriversAtoZ} 
           componentDidMount={this.componentDidMount}
         />
-        <p>{this.state.drivers.name}</p>
         <GuestList />
       </div>
     );
