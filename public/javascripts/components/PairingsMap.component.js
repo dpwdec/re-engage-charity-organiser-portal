@@ -4,4 +4,6 @@ function PairingsMap(props) {
     zoom: 12,
     center: { lat: 51.497309, lng: -0.147165 },
   });
+
+  return null;
 }
