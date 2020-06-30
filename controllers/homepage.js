@@ -21,8 +21,6 @@ var HomepageController = {
     var id = request.body.id;
     Member.deleteOne({"_id" : id}, function(err){
       if(err) { throw err; }
-
-      // res.status(201).redirect('/api/posts')
     });
   },
 
@@ -30,15 +28,12 @@ var HomepageController = {
     let drivers = [];
 
     Member.find((err, result) => {
-      // console.log(result)
       result.forEach((member) => {
 
         if(member.role === 'driver'){
           drivers.push(member);
         }
       });
-      // console.log("Drivers only")
-      // console.log(drivers)
       response.send(drivers);
     });
   },
@@ -47,15 +42,12 @@ var HomepageController = {
     let guests = [];
 
     Member.find((err, result) => {
-      // console.log(result)
       result.forEach((member) => {
 
         if(member.role === 'guest'){
           guests.push(member);
         }
       });
-      // console.log("Guests only")
-      // console.log(guests)
       response.send(guests);
     });
   }

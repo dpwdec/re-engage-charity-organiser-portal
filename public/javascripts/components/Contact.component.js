@@ -88,12 +88,8 @@ class Contact extends React.Component {
   }
 
   deleteDriver = (event) => {
-    console.log(event.target.dataset.id)
     event.preventDefault();
     var member = {
-      name: "Paula",
-      role: "Driver",
-      address: "Some address",
       id: event.target.dataset.id
     };
 
@@ -102,12 +98,23 @@ class Contact extends React.Component {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(member)
     })
-    // .then(response => response.json())
-    // .then((result) => {
-    //   this.setState({
-    //     message: "Success!"
-    //   })
-    // })
+    .then(response => response.json())
+    .then((result) => {
+      this.setState({
+        message: "Success!"
+      })
+    })
+
+    fetch('/drivers')
+    .then(response => response.json())
+    .then((data) => {
+      this.setState({
+        drivers: data,
+      });
+      this.setState({
+        drivers: this.sortDriversAtoZ(),
+      });
+    });
   }
  
   sortGuestsAtoZ() {
