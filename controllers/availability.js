@@ -24,8 +24,7 @@ var AvailabilityController = {
 
 
     Update: (request, response) => {
-    
-      console.log(request.body);
+      // console.log(request.body);
 
       var query = { _id: request.body.driver_id };
 
@@ -41,18 +40,10 @@ var AvailabilityController = {
           // console.log('success!')
           // })
         });
-        
+
       })
 
-      
-
-
-
-
-
-     
-
-      }
+    }
 
 }
 

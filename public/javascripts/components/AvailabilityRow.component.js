@@ -17,9 +17,7 @@ class AvailabilityRow extends React.Component {
 
     this.props.months.forEach((month, index) => {
       var monthsArray = this.state.months;
-
       monthsArray[index] = this.props.driver.availability[month] != undefined ? this.props.driver.availability[month].toString() : 'undecided'
-
       this.setState({
         months: monthsArray
       })
