@@ -45,6 +45,16 @@ function PairingsMap(props) {
     directionsService.route(request, function (response, status) {
       if (status === "OK") {
         directionsRenderer.setDirections(response);
+        makeMarker(
+          pair.route.routes[0].legs[0].start_location,
+          icons.start,
+          pair.driver
+        );
+        makeMarker(
+          pair.route.routes[0].legs[0].end_location,
+          icons.end,
+          pair.guest
+        );
       } else {
         window.alert("Directions request failed due to " + status);
       }
