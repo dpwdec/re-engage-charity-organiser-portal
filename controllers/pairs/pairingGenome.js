@@ -109,6 +109,7 @@ class PairingGenome {
         guest.drivers.forEach((driver) => {
           if(incompleteGene.driver === driver.name) {
             incompleteGene.distance = driver.distance;
+            incompleteGene.route = driver.route;
             return;
           }
         });
@@ -127,6 +128,21 @@ class PairingGenome {
       totalDistance += gene.distance;
     });
     this.fitness = (totalDistance / this.genes.length);
+  }
+
+  mutate() {
+    var geneA = this.genes[Math.floor(Math.random() * this.genes.length)];
+    var geneB = this.genes[Math.floor(Math.random() * this.genes.length)];
+    
+    if(Math.random() > .5) {
+      var driverA = geneA.driver;
+      geneA.driver = geneB.driver;
+      geneB.driver = driverA;
+    } else {
+      var guestA = geneA.guest;
+      geneA.guest = geneB.guest;
+      geneB.guest = guestA;
+    }
   }
 
   _shuffleArray(array) {

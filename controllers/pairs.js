@@ -1,9 +1,10 @@
 var mongoose = require("mongoose");
 const Member = require("../models/member");
-const ShortestDistancePairs = require('./pairs/shortestDistancePairs');
+const ShortestDistancePairs = require("./pairs/shortestDistancePairs");
+const PairingPopulation = require('./pairs/pairingPopulation');
 
 const googleMapsClient = require("@google/maps").createClient({
-  key: "AIzaSyC9qJYJPqeVBtCCvu68wQ286oyCL8Z5PqQ",
+  key: process.env.REACT_APP_MAP_API_KEY,
   Promise: Promise,
 });
 
@@ -32,7 +33,9 @@ var PairController = {
         });
 
         await Promise.all(allPromises); // waits for all API calls to finish
-        var pairings = ShortestDistancePairs.generate(members);
+        var pairings = PairingPopulation.generate(members);
+        // var pairings = ShortestDistancePairs.generate(members);
+        console.log(pairings);
 
         response.send({ pairs: pairings });
       });
@@ -66,11 +69,11 @@ makeGooglePairRouteApiRequest = (member, guest, driver) => {
         member.drivers.push({
           name: driver.name,
           distance: result.json.routes[0].legs[0].distance.value,
+          route: result.json,
         });
         resolve(result);
       });
   });
 };
-
 
 module.exports = PairController;

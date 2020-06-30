@@ -5,6 +5,7 @@ class PairingPopulation {
     this.members = environment.members;
     this.size = environment.size;
     this.matingPoolSize = environment.matingPoolSize;
+    this.mutationRate = environment.mutationRate;
     this.genomes = [];
     this.matingPool = [];
 
@@ -80,6 +81,7 @@ class PairingPopulation {
     });
   }
 
+  // untested
   breedGenomes() {
     var nextGeneration = [];
     for(var i = 0; i < this.size; i++) {
@@ -92,21 +94,43 @@ class PairingPopulation {
     }
     this.genomes = nextGeneration;
   }
+
+  findBestGenome() {
+    var bestGenome = {fitness: 10000000};
+    this.genomes.forEach((genome) => {
+      if(genome.fitness < bestGenome.fitness) {
+        bestGenome = genome;
+      }
+    });
+    return bestGenome;
+  }
+
+  mutatePopuation() {
+    this.genomes.forEach((genome) => {
+      if(Math.random < this.mutationRate) {
+        genome.mutate();
+      }
+    })
+  }
 }
 
 PairingPopulation.generate = (members) => {
 
-  population = new PairingPopulation({members: members, size: 50, matingPoolSize: 100});
+  population = new PairingPopulation({members: members, size: 500, matingPoolSize: 100, mutationRate: 0.01});
   population.generatePopulation();
 
-  // for(var i = 0; i < 100; i++) {
+  for(var i = 0; i < 100; i++) {
     population.calculatePopulationFitness();
     population.generateMatingPool();
     population.breedGenomes();
-  // }
-  population.genomes.forEach((genome) => {
-    console.log(genome);
-  });
+    population.mutatePopuation();
+  }
+  population.calculatePopulationFitness();
+  var bestSolution = population.findBestGenome().genes;
+  bestSolution.forEach((pair, index) => {
+    pair.id = index;
+  })
+  return bestSolution;
   //console.log(population.genomes);
 }
 

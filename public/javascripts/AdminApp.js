@@ -1,7 +1,7 @@
 class AdminApp extends React.Component {
   render() {
     return (
-      <div>
+      <div className="container bg-white">
         <AdminLogin />
       </div>
     );
