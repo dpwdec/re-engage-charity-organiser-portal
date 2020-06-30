@@ -17,7 +17,7 @@ class DriverList extends React.Component {
                 index={index} 
                 id={driver._id} 
                 key={driver._id} 
-                deleteDriver={this.props.deleteDriver}
+                deleteMember={this.props.deleteMember}
               />
               ))
             

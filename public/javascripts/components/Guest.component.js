@@ -4,7 +4,7 @@ function Guest(props) {
       className="col"
       className="delete-button"
       data-id={props.id}
-      onSubmit={props.deleteGuest}
+      onSubmit={props.deleteMember}
     >
       <div className="guest-component row guest">
         <div className="guest index col-2">{props.index + 1}</div>

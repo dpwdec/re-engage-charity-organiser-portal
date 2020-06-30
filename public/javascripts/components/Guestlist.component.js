@@ -15,7 +15,7 @@ class GuestList extends React.Component {
               index={index}
               id={guest._id}
               key={guest._id}
-              deleteGuest={this.props.deleteGuest}
+              deleteMember={this.props.deleteMember}
             />
           ))}
         </div>

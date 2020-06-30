@@ -3,7 +3,6 @@ var Member = require('../models/member');
 var HomepageController = {
 
   CreateMember: (request, response) => {
-    // console.log(request.body)
     var member = new Member({
       name: request.body.name,
       role: request.body.role,
@@ -13,6 +12,7 @@ var HomepageController = {
     member.save((err) => {
       if (err) { console.log(err) }
       // sendFlashMessage(response, request, '/', 'Member saved!');
+      response.send({message: "ok"});
     });
   },
 

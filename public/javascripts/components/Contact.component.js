@@ -53,95 +53,38 @@ class Contact extends React.Component {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newMember),
     })
-      .then((response) => response.json())
-      .then((result) => {
-        this.setState({
-          message: "Success!",
-        });
+    .then((response) => response.json())
+    .then(() => {
+      this.setState({
+        message: "Success!",
       });
-
-    fetch("/drivers")
-      .then((response) => response.json())
-      .then((data) => {
-        this.setState({
-          drivers: data,
-        });
-        this.setState({
-          drivers: this.sortDriversAtoZ(),
-        });
-      });
-
-    fetch("/guests")
-      .then((response) => response.json())
-      .then((data) => {
-        this.setState({
-          guests: data,
-        });
-        this.setState({
-          guests: this.sortGuestsAtoZ(),
-        });
-      });
+    })
+  
+    this.fetchGuests()
+    this.fetchDrivers()
   };
 
-  deleteDriver = (event) => {
+  deleteMember = (event) => {
     event.preventDefault();
     var member = {
-      id: event.target.dataset.id,
+      id: event.target.dataset.id
     };
-
+    
     fetch("/deleteMember", {
       method: "post",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(member),
     })
-      .then((response) => response.json())
-      .then((result) => {
-        this.setState({
-          message: "Success!",
-        });
+    .then((response) => response.json())
+    .then((result) => {
+      this.setState({
+        message: "Success!",
       });
+    });
 
-    fetch("/drivers")
-      .then((response) => response.json())
-      .then((data) => {
-        this.setState({
-          drivers: data,
-        });
-        this.setState({
-          drivers: this.sortDriversAtoZ(),
-        });
-      });
-  };
-
-  deleteGuest = (event) => {
-    event.preventDefault();
-    var member = {
-      id: event.target.dataset.id,
-    };
-
-    fetch("/deleteMember", {
-      method: "post",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(member),
-    })
-      .then((response) => response.json())
-      .then((result) => {
-        this.setState({
-          message: "Success",
-        });
-      });
-
-    fetch("/guests")
-      .then((response) => response.json())
-      .then((data) => {
-        this.setState({
-          guests: data,
-        });
-        this.setState({
-          guests: this.sortGuestsAtoZ(),
-        });
-      });
-  };
+    this.fetchGuests()
+    this.fetchDrivers()
+  }
 
   sortGuestsAtoZ() {
     return this.state.guests.sort(function (memberA, memberB) {
@@ -179,15 +122,13 @@ class Contact extends React.Component {
           drivers={this.state.drivers}
           fetchDrivers={this.fetchDrivers}
           sortDriversAtoZ={this.sortDriversAtoZ}
-          componentDidMount={this.componentDidMount}
-          deleteDriver={this.deleteDriver}
+          deleteMember={this.deleteMember}
         />
         <GuestList
           guests={this.state.guests}
           sortGuestsAtoZ={this.sortGuestsAtoZ}
           fetchGuests={this.fetchGuests}
-          componentDidMount={this.componentDidMount}
-          deleteGuest={this.deleteGuest}
+          deleteMember={this.deleteMember}
         />
       </div>
     );
