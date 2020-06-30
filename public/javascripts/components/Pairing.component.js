@@ -3,10 +3,12 @@ class Pairing extends React.Component {
     super();
     this.state = {
       pairs: [],
+      pairingType: 'shortest'
     };
   }
 
-  generatePairs = () => {
+  generatePairs = (event) => {
+    event.preventDefault();
     fetch(`/pairs`)
       .then((response) => {
         return response.json();
@@ -18,13 +20,24 @@ class Pairing extends React.Component {
       });
   };
 
+  setPairingType = (event) => {
+    var eventOutput = event.target.value;
+    this.setState({
+      pairingType: event.target.value
+    });
+  }
+
   render() {
-    console.log(this.state.pairs);
     return (
       <div>
-        <button id="generate-pairs" onClick={this.generatePairs}>
-          Generate
-        </button>
+        <form action="" onSubmit={this.generatePairs}>
+        <select name="pairingType" onChange={this.setPairingType}>
+            <option value="shortest">Shortest</option>
+            <option value="average">Average</option>
+            <option value="smart">Smart</option>
+          </select>
+          <input type="submit" value="Generate"></input>
+        </form>
         <div className="table">
           <table>
             <thead></thead>

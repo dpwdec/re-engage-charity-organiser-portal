@@ -2,6 +2,8 @@ var mongoose = require("mongoose");
 const Member = require("../models/member");
 const ShortestDistancePairs = require("./pairs/shortestDistancePairs");
 const PairingPopulation = require('./pairs/pairingPopulation');
+const AveragePair = require('./pairs/averagePairs');
+const AveragePairs = require("./pairs/averagePairs");
 
 const googleMapsClient = require("@google/maps").createClient({
   key: process.env.REACT_APP_MAP_API_KEY,
@@ -33,7 +35,7 @@ var PairController = {
         });
 
         await Promise.all(allPromises); // waits for all API calls to finish
-        var pairings = PairingPopulation.generate(members);
+        var pairings = AveragePairs.generate(members);
         // var pairings = ShortestDistancePairs.generate(members);
         console.log(pairings);
 

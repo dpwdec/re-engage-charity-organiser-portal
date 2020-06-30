@@ -55,11 +55,6 @@ AveragePairs.generate = (members) => {
 
   }
 
-
-  // pairings.forEach((pairing) => {
-  //   console.log(pairing);
-  // })
-
   //look up distance info
   pairings.forEach((pairing) => {
     pairing.pairs.forEach((pair) => {
@@ -86,10 +81,6 @@ AveragePairs.generate = (members) => {
     pairing.averageDistance = cumulativeDistance/pairing.pairs.length;
   });
 
-  // console.log(pairings[0]);
-  // console.log(pairings[1]);
-  // console.log(pairings[2]);
-
   //find pairing with lowest average distance
   var bestPairing = {
     pairs: [],
@@ -110,137 +101,3 @@ AveragePairs.generate = (members) => {
 }
 
 module.exports = AveragePairs;
-
-
-
-  /*
-  pairing {
-    pairs: [array of pairs]
-    averageDistance: number
-  }
-  */
-
-//  var flip = true;
-//   // generate all possible pairings for this data set
-//   for(var i = 0; i < 9; i ++) { // number of possible cominations
-
-//     // number of pairs for this set of pairs
-//     for(var j = 0; j < 3; j ++) {
-//       // the pairs for this combination
-//       var pairs = [];
-
-
-//       this.guests.forEach((guest, index) => {
-
-//         var newPair = {
-//           driver: this.drivers[index],
-//           guest: guest
-//         }
-//         pairs.push(newPair);
-//       });
-
-//       // shift guests
-//       var tempGuest = this.guests.pop();
-//       this.guests.unshift(tempGuest);                                                                                                                                                                                                                                                                                                                                                                                                                                                        
-
-//       var pairing =  {
-//         pairs: pairs,
-//         averageDistance: 10000000
-//       }
-
-//       pairings.push(pairing);
-//     }
-
-//     //shift the guests back to neutral
-//     var tempGuest = this.guests.pop();
-//     this.guests.unshift(tempGuest);
-
-//     if(flip) {
-//       var tempDriver = this.drivers.pop();
-//       this.drivers.unshift(tempDriver);
-//     } else {
-//       var tempGuest = this.guests.pop();
-//       this.guests.unshift(tempGuest);
-//     }
-//     flip = !flip;
-//   }
-
-  // var flip = true;
-  // for(var i = 0; i < this.guests.length; i++) {
-  //   var pairs = [];
-  //   this.guests.forEach((guest, index) => {
-  //     var newPair = {
-  //       driver: this.drivers[index],
-  //       guest: guest
-  //     }
-  //     pairs.push(newPair);
-  //   });
-
-  //   var pairing = {
-  //     pairs: pairs,
-  //     averageDistance: 10000000
-  //   }
-
-  //   pairings.push(pairing);
-    // if(flip) {
-    //   var tempDriver = this.drivers.pop();
-    //   this.drivers.unshift(tempDriver);
-    // } else {
-    //   var tempGuest = this.guests.pop();
-    //   this.guests.unshift(tempGuest);
-    // }
-    // flip = !flip;
-  // };
-
-  /*
-
-  [a, b, c]
-  [d, e, f]
-  [{a, d}, {b, e}, {c, f}]
-
-  [a, c, b]
-  [d, e, f]
-
-  [a, b, c]
-  [f, d, e]
-
-  [a, c, b]
-  [f, d, e]
-
-  [a, b, c]
-  [e, f, d]
-
-  [a, c, b]
-  [e, f, d]
-
-  // iterate through the a1 
-
-
-  */
-
-//  for(var i = 0; i < this.guests.length; i++) {
-//   for(var j = 0; j < this.guests.length; j++) {
-//     var pairing = {
-//       pairs: []
-//     }
-//     this.guests.forEach((guest, index) => {
-//       pairing.pairs.push({
-//         guest: guest,
-//         driver: this.drivers[index]
-//       })
-//     });
-//     pairings.push(pairing);
-//     console.log(this.drivers);
-//     var tempDriver = this.drivers.pop();
-//     this.drivers.unshift(tempDriver);
-//   }
-
-//   // console.log(this.drivers);
-//   // var tempDriver = this.drivers.pop();
-//   // console.log(tempDriver);
-//   // this.drivers.unshift(tempDriver);
-//   // console.log('hello', this.drivers);
-  
-//   var tempGuest = this.guests.pop();
-//   this.guests.unshift(tempGuest);
-// }
