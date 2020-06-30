@@ -4,21 +4,25 @@ class DriverList extends React.Component {
     return(
       <div>
         <h2>List of Drivers</h2>
-        <table className="driver-list">
-          <thead>
-            <tr>
-              <th></th>
-              <th>Name</th>
-              <th>Address</th>
-            </tr>
-          </thead>
-          <tbody>
-            {this.props.drivers.map((driver) => (
-              < Driver name={driver.name} address={driver.address} id={driver._id} key={driver._id} />
+        <div className="driver-list col-5">
+          <div className="headers row">
+              <div className="name">Name</div>
+              <div className="address">Address</div>
+          </div>
+            {this.props.drivers.map((driver, index) => (
+              
+              < Driver 
+                name={driver.name} 
+                address={driver.address} 
+                index={index} 
+                id={driver._id} 
+                key={driver._id} 
+                deleteDriver={this.props.deleteDriver}
+              />
               ))
+            
             }
-          </tbody>
-        </table>
+        </div>
       </div>
     )
   }

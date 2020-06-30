@@ -87,6 +87,39 @@ class Contact extends React.Component {
 
   }
 
+  // delete = (event) => {
+  //   event.preventDefault();
+  //   var driverId = driver.id
+  //   console.log(driverId)
+  //   console.log("deleting driver...")
+  // }
+
+  deleteDriver = (event) => {
+    event.preventDefault();
+    console.log("hello")
+    const driver_id = {
+      id: event.target.dataset.id
+    }
+    console.log(driver_id)
+
+    // axios({
+    //   url: '/api/posts/delete',
+    //   method: 'POST',
+    //   data: post_id
+    // })
+
+    // .then(() => {
+    //   console.log('Data has been sent to be deleted');
+    // })
+    // .finally(()=> {
+    //   this.getBlogPost();
+    //   this.displayPosts(this.state.posts);
+    // })
+    // .catch(() => {
+    //   console.log('Error');
+    // });
+  }
+ 
   sortGuestsAtoZ() {
     return this.state.guests.sort(function(memberA, memberB) {
       var memberA = memberA.name.toUpperCase();
@@ -124,6 +157,7 @@ class Contact extends React.Component {
           fetchDrivers={this.fetchDrivers} 
           sortDriversAtoZ={this.sortDriversAtoZ} 
           componentDidMount={this.componentDidMount}
+          deleteDriver={this.deleteDriver}
         />
         <GuestList
           guests={this.state.guests} 
