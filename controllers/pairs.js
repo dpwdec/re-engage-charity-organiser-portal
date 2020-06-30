@@ -17,28 +17,39 @@ var PairController = {
 
     console.log("query");
     console.log(query);
-    Member.find(
-      { role: "guest", availability: { $Jul2020: true } },
-
-      (err, members) => {
-        console.log(err);
-        console.log("members");
-        console.log(members);
-      }
-    );
+    Member.find((err, members) => {
+      console.log(members.availability);
+    });
 
     Member.find({ role: "guest" }, (err, guests) => {
+      var availableGuests = [];
+      guests.forEach((guest) => {
+        if (guest.availability[month] !== undefined) {
+          if (guest.availability[month] === true) {
+            availableGuests.push(guest);
+          }
+        }
+      });
       Member.find({ role: "driver" }, async (err, drivers) => {
+        var availableDrivers = [];
+        drivers.forEach((driver) => {
+          if (driver.availability[month] !== undefined) {
+            if (driver.availability[month] === true) {
+              availableDrivers.push(driver);
+            }
+          }
+        });
+
         var members = [];
         var allPromises = [];
 
-        guests.forEach((guest) => {
+        availableGuests.forEach((guest) => {
           var member = {
             name: guest.name,
             drivers: [],
           };
 
-          var driverGuestPairPromises = drivers.map((driver) => {
+          var driverGuestPairPromises = availableDrivers.map((driver) => {
             return makeGooglePairRouteApiRequest(member, guest, driver);
           });
 
