@@ -37,18 +37,18 @@ class Pairing extends React.Component {
         </button>
         <select id="month" onChange={this.handleChangeMonth}>
           <option>please select month</option>
-          <option value="1">January</option>
-          <option value="2">February</option>
-          <option value="3">March</option>
-          <option value="4">April</option>
-          <option value="5">May</option>
-          <option value="6">June</option>
+          <option value="Jan 2020">January</option>
+          <option value="Feb 2020">February</option>
+          <option value="Mar 2020">March</option>
+          <option value="Apr 2020">April</option>
+          <option value="May 2020">May</option>
+          <option value="Jun 2020">June</option>
           <option value="Jul 2020">July</option>
-          <option value="8">August</option>
-          <option value="9">September</option>
-          <option value="10">October</option>
-          <option value="11">November</option>
-          <option value="12">December</option>
+          <option value="Aug 2020">August</option>
+          <option value="Sept 2020">September</option>
+          <option value="Oct 2020">October</option>
+          <option value="Nov 2020">November</option>
+          <option value="Dec 2020">December</option>
         </select>
         <div className="table">
           <table>
