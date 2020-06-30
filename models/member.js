@@ -5,7 +5,11 @@ var MemberSchema = new mongoose.Schema({
   role: String,
   address: String,
   availability: {}
-});
+}, 
+  { 
+    minimize: false 
+  }
+);
 
 var Member = mongoose.model("Member", MemberSchema);
 
