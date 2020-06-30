@@ -11,6 +11,12 @@ var PairController = {
   Pairing: async (request, response) => {
     console.log("hey");
     console.log(request.query.month);
+
+    Member.find({role: "guest", availability: {Jul2020: true}}, (err, guests) => {
+      console.log("show guests")
+      console.log(guests);
+    });
+
     Member.find({ role: "guest" }, (err, guests) => {
       Member.find({ role: "driver" }, async (err, drivers) => {
         var members = [];
