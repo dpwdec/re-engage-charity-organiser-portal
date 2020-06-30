@@ -4,6 +4,7 @@ class Pairing extends React.Component {
     this.state = {
       pairs: [],
       month: "",
+      year: "",
     };
   }
 
@@ -20,19 +21,27 @@ class Pairing extends React.Component {
   };
   handleChangeMonth = (e) => {
     //console.log(e.target.value);
+    var today = new Date();
+    var yyyy = today.getFullYear();
+
+    console.log(yyyy)
+
     this.setState({
       month: e.target.value,
+      year: yyyy
     });
     this.setState({
       pairs: [],
     });
-    console.log("hey");
+    console.log("month");
     console.log(this.state.month);
+    console.log("year")
+    console.log(e.target.value)
   };
 
   render() {
-    console.log("pairs");
-    console.log(this.state.pairs);
+    // console.log("pairs");
+    // console.log(this.state.pairs);
     return (
       <div>
         <button id="generate-pairs" onClick={this.generatePairs}>
