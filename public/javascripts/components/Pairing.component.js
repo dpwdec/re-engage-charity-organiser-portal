@@ -9,7 +9,7 @@ class Pairing extends React.Component {
 
   generatePairs = (event) => {
     event.preventDefault();
-    fetch(`/pairs`)
+    fetch(`/pairs?pairingType=${this.state.pairingType}`)
       .then((response) => {
         return response.json();
       })

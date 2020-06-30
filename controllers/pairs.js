@@ -2,7 +2,6 @@ var mongoose = require("mongoose");
 const Member = require("../models/member");
 const ShortestDistancePairs = require("./pairs/shortestDistancePairs");
 const PairingPopulation = require('./pairs/pairingPopulation');
-const AveragePair = require('./pairs/averagePairs');
 const AveragePairs = require("./pairs/averagePairs");
 
 const googleMapsClient = require("@google/maps").createClient({
@@ -35,9 +34,20 @@ var PairController = {
         });
 
         await Promise.all(allPromises); // waits for all API calls to finish
-        var pairings = AveragePairs.generate(members);
-        // var pairings = ShortestDistancePairs.generate(members);
-        console.log(pairings);
+
+        // use different pairing alogirithm depending on user input
+        var pairings;
+        if(request.query.pairingType === 'shortest') {
+          console.log("generating pairs with shortest heuristic")
+          pairings = ShortestDistancePairs.generate(members);
+        } 
+        else if (request.query.pairingType === 'average') {
+          console.log("generating pairs with average heuristic")
+          pairings = AveragePairs.generate(members);
+        } else {
+          console.log("generating pairs with smart heuristic")
+          pairings = PairingPopulation.generate(members);
+        }
 
         response.send({ pairs: pairings });
       });
