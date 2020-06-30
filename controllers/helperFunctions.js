@@ -26,18 +26,7 @@ helperFunction.getArrayOfCurrentAndNextThreeMonths = () => {
   return result;
 };
 
-
-
-
-const getCurrentMonthAsNumber = () => {
-  var today = new Date();
-  var mm = Number(String(today.getMonth() + 1).padStart(2, '0')); //January is 0!
-
-  console.log(mm)
-  return mm; 
-}
-
-const getCurrentYearAsNumber = () => {
+helperFunction.getCurrentYearAsNumber = () => {
   var today = new Date();
   var yyyy = today.getFullYear();
   
@@ -45,7 +34,17 @@ const getCurrentYearAsNumber = () => {
   return yyyy;
 }
 
-const getCurrentMonthAsString = (monthAsNumber) => {
+
+helperFunction.getCurrentMonthAsNumber = () => {
+  var today = new Date();
+  var mm = Number(String(today.getMonth() + 1).padStart(2, '0')); //January is 0!
+
+  console.log(mm)
+  return mm; 
+}
+
+
+helperFunction.getCurrentMonthAsString = (monthAsNumber) => {
   var months = {
     1: "Jan", 2: "Feb", 3: "Mar", 4: "Apr", 5: "May", 6: "Jun", 
     7: "Jul", 8: "Aug", 9: "Sept", 10: "Oct", 11: "Nov", 12: "Dec"
