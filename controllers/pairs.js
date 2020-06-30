@@ -15,38 +15,39 @@ var PairController = {
     query[month] = true;
     console.log(query);
     Member.find({ availability: query }, (err, members) => {
-      console.log(err);
-      console.log("show members");
-      console.log(members);
-    });
+      if (members.length === 0) {
+        console.log("there is no member in that month");
+        return null;
+      } else {
+        Member.find({ role: "guest" }, (err, guests) => {
+          Member.find({ role: "driver" }, async (err, drivers) => {
+            var members = [];
+            var allPromises = [];
 
-    Member.find({ role: "guest" }, (err, guests) => {
-      Member.find({ role: "driver" }, async (err, drivers) => {
-        var members = [];
-        var allPromises = [];
+            guests.forEach((guest) => {
+              var member = {
+                name: guest.name,
+                drivers: [],
+              };
 
-        guests.forEach((guest) => {
-          var member = {
-            name: guest.name,
-            drivers: [],
-          };
+              var driverGuestPairPromises = drivers.map((driver) => {
+                return makeGooglePairRouteApiRequest(member, guest, driver);
+              });
 
-          var driverGuestPairPromises = drivers.map((driver) => {
-            return makeGooglePairRouteApiRequest(member, guest, driver);
+              driverGuestPairPromises.forEach((APIpromise) => {
+                allPromises.push(APIpromise);
+              });
+
+              members.push(member);
+            });
+
+            await Promise.all(allPromises); // waits for all API calls to finish
+            var pairings = ShortestDistancePairs.generate(members);
+
+            response.send({ pairs: pairings });
           });
-
-          driverGuestPairPromises.forEach((APIpromise) => {
-            allPromises.push(APIpromise);
-          });
-
-          members.push(member);
         });
-
-        await Promise.all(allPromises); // waits for all API calls to finish
-        var pairings = ShortestDistancePairs.generate(members);
-
-        response.send({ pairs: pairings });
-      });
+      }
     });
   },
   Map: (request, response) => {
