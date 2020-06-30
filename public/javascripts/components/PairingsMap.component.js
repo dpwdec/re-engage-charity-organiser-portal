@@ -4,7 +4,26 @@ function PairingsMap(props) {
     zoom: 12,
     center: { lat: 51.497309, lng: -0.147165 },
   });
-
+  var icons = {
+    start: new google.maps.MarkerImage(
+      // URL
+      // (width,height)
+      new google.maps.Size(44, 32),
+      // The origin point (x,y)
+      new google.maps.Point(0, 0),
+      // The anchor point (x,y)
+      new google.maps.Point(22, 32)
+    ),
+    end: new google.maps.MarkerImage(
+      // URL
+      // (width,height)
+      new google.maps.Size(44, 32),
+      // The origin point (x,y)
+      new google.maps.Point(0, 0),
+      // The anchor point (x,y)
+      new google.maps.Point(22, 32)
+    ),
+  };
   props.pairs.forEach((pair) => {
     var directionsService = new google.maps.DirectionsService();
     var directionsRenderer = new google.maps.DirectionsRenderer();
