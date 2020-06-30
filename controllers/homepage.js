@@ -3,7 +3,7 @@ var Member = require('../models/member');
 var HomepageController = {
 
   CreateMember: (request, response) => {
-
+    // console.log(request.body)
     var member = new Member({
       name: request.body.name,
       role: request.body.role,
@@ -13,6 +13,16 @@ var HomepageController = {
     member.save((err) => {
       if (err) { console.log(err) }
       // sendFlashMessage(response, request, '/', 'Member saved!');
+    });
+  },
+
+  DeleteMember: (request, response) => {
+    console.log("we are in delete member function")
+    var id = request.body.id;
+    Member.deleteOne({"_id" : id}, function(err){
+      if(err) { throw err; }
+
+      // res.status(201).redirect('/api/posts')
     });
   },
 
@@ -48,7 +58,8 @@ var HomepageController = {
       // console.log(guests)
       response.send(guests);
     });
-  },
+  }
+
 }
 
 // var sendFlashMessage = (response, request, route, message) => {

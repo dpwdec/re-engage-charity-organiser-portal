@@ -87,37 +87,27 @@ class Contact extends React.Component {
 
   }
 
-  // delete = (event) => {
-  //   event.preventDefault();
-  //   var driverId = driver.id
-  //   console.log(driverId)
-  //   console.log("deleting driver...")
-  // }
-
   deleteDriver = (event) => {
+    console.log(event.target.dataset.id)
     event.preventDefault();
-    console.log("hello")
-    const driver_id = {
+    var member = {
+      name: "Paula",
+      role: "Driver",
+      address: "Some address",
       id: event.target.dataset.id
-    }
-    console.log(driver_id)
+    };
 
-    // axios({
-    //   url: '/api/posts/delete',
-    //   method: 'POST',
-    //   data: post_id
+    fetch('/deleteMember', {
+      method: 'post',
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(member)
+    })
+    // .then(response => response.json())
+    // .then((result) => {
+    //   this.setState({
+    //     message: "Success!"
+    //   })
     // })
-
-    // .then(() => {
-    //   console.log('Data has been sent to be deleted');
-    // })
-    // .finally(()=> {
-    //   this.getBlogPost();
-    //   this.displayPosts(this.state.posts);
-    // })
-    // .catch(() => {
-    //   console.log('Error');
-    // });
   }
  
   sortGuestsAtoZ() {
