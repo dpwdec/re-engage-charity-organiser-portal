@@ -7,7 +7,6 @@ var AvailabilityController = {
     Availability: (request, response) => {
       console.log(request.query);
       var filter = 'name availability'
-
       var availabilitiesJSON = {
         months: helperFunction.getArrayOfCurrentAndNextThreeMonths(),
         members: []
@@ -25,23 +24,35 @@ var AvailabilityController = {
 
 
     Update: (request, response) => {
-     console.log(request.body);
+    
+      console.log(request.body);
 
-     Member.findOne( {_id: request.body.driver_id}, (err, result) => {
-       result.availability[request.body.month_name] = (request.body.month_status == 'true')
-       console.log(result);
-       var newMemberData = {
-        name: result.name, 
-        _id: result._id, 
-        availability: result.availability  
-      } 
-      var newMember = new Member(newMemberData) 
-      newMember.save((err)=> {
-        console.log('success!')
+      var query = { _id: request.body.driver_id };
+
+      Member.findOne(query, (err, result) => {
+        var update = { availability: result.availability };
+        update.availability[request.body.month_name] = (request.body.month_status == 'true');
+        console.log(update);
+
+        Member.findOneAndUpdate( query, update, (err, result) => {
+          // console.log(result.availability[request.body.month_name]);
+          console.log(result);
+          // result.save((err)=> {
+          // console.log('success!')
+          // })
+        });
+        
       })
-     })
 
-    }
+      
+
+
+
+
+
+     
+
+      }
 
 }
 

@@ -15,9 +15,10 @@ class AvailabilityCell extends React.Component {
     updateAvailability = (event) => {
       console.log(event.target.value);
       console.log(this.props.driver_id);
+      console.log(this.props.monthName);
      
       let updateMember = {
-        driver_id: this.props.driver_id, 
+        driver_id: this.props.driver_id,
         month_name: this.props.monthName, 
         month_status: event.target.value, 
       };
@@ -29,6 +30,8 @@ class AvailabilityCell extends React.Component {
       })
       .then(response => response.json())
       .then((result) => {
+        this.setState(result)
+        console.log(result);
         console.log('sucess!')
       })
     }
@@ -44,7 +47,7 @@ class AvailabilityCell extends React.Component {
 
     render() {
       
-      console.log(this.props.monthName)
+      // console.log(this.props.monthName)
       // if this.props.month = true; display option id="true"
 
       return(

@@ -24,7 +24,8 @@ Setup MongoDB connection
 if ( process.env.MONGOLAB_URI ) {
   mongoose.connect(process.env.MONGOLAB_URI, {
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true, 
+    useFindAndModify: false
   });
 } else {
   mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost/re_engage', {
