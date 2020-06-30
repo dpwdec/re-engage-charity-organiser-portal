@@ -1,13 +1,12 @@
-describe('Members', () => {
-
+describe("Members", () => {
   beforeEach(() => {
-    cy.task('dropAdmins');
-    cy.task('addAdmin', { adminName: "admin", password: "1234" });
+    cy.task("dropAdmins");
+    cy.task("addAdmin", { adminName: "admin", password: "1234" });
 
-    cy.task('dropMembers');
-    cy.task('addMember', {name: 'Cat', role: 'driver', id: 1});
-    cy.task('addMember', {name: 'Marija', role: 'driver', id: 2});
-    cy.task('addMember', {name: 'Dec', role: 'guest', id: 3});
+    cy.task("dropMembers");
+    cy.task("addMember", { name: "Cat", role: "driver" });
+    cy.task("addMember", { name: "Marija", role: "driver" });
+    cy.task("addMember", { name: "Dec", role: "guest" });
 
     cy.visit("admin/login");
     cy.get("#admin").type("admin");
@@ -15,23 +14,28 @@ describe('Members', () => {
     cy.get("#login").click();
   });
 
-  it('displays all drivers names and addresses', () => {
-    cy.visit('/');
+  it("displays all drivers names and addresses", () => {
+    cy.visit("/");
     cy.get("#contact-tab").click();
-    cy.get('.driver-list').should('contain', 'Cat');
-    cy.get('.driver-list').should('contain', 'Marija');
-    cy.get('.driver-list').should('not.contain', 'Dec');
+    cy.get(".driver-list").should("contain", "Cat");
+    cy.get(".driver-list").should("contain", "Marija");
+    cy.get(".driver-list").should("not.contain", "Dec");
   });
 
-  it('deletes driver from driver list component'), () => {
-    cy.visit('/');
-    cy.get("#contact-tab").click();
-    cy.get("#delete-driver-1").click();
-    cy.get('.driver-list').should('not.contain', 'Cat');
-  }
+  it("deletes driver from driver list component"),
+    () => {
+      cy.visit("/");
+      cy.get("#contact-tab").click();
+      cy.get(".delete-driver-btn").click();
+      cy.get(".delete-driver-btn").click();
+      cy.get(".delete-driver-btn").click();
+      cy.get(".driver-list").should("not.contain", "Cat");
+      cy.get(".driver-list").should("not.contain", "Marija");
+      cy.get(".driver-list").should("not.contain", "Dec");
+    };
 
   afterEach(() => {
-    cy.visit('/')
+    cy.visit("/");
     cy.get("#logout").click();
   });
 });
