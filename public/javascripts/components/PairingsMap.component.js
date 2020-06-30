@@ -24,6 +24,14 @@ function PairingsMap(props) {
       new google.maps.Point(22, 32)
     ),
   };
+  var makeMarker = (position, icon, title) => {
+    new google.maps.Marker({
+      position: position,
+      map: map,
+      icon: icon,
+      label: title,
+    });
+  };
   props.pairs.forEach((pair) => {
     var directionsService = new google.maps.DirectionsService();
     var directionsRenderer = new google.maps.DirectionsRenderer();
