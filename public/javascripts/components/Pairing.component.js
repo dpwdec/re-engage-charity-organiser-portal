@@ -4,7 +4,6 @@ class Pairing extends React.Component {
     this.state = {
       pairs: [],
       month: "",
-      year: "",
     };
   }
 
@@ -20,28 +19,18 @@ class Pairing extends React.Component {
       });
   };
   handleChangeMonth = (e) => {
-    //console.log(e.target.value);
     var today = new Date();
     var yyyy = today.getFullYear();
 
-    console.log(yyyy)
-
     this.setState({
-      month: e.target.value,
-      year: yyyy
+      month: e.target.value + yyyy,
     });
     this.setState({
       pairs: [],
     });
-    console.log("month");
-    console.log(this.state.month);
-    console.log("year")
-    console.log(e.target.value)
   };
 
   render() {
-    // console.log("pairs");
-    // console.log(this.state.pairs);
     return (
       <div>
         <button id="generate-pairs" onClick={this.generatePairs}>
@@ -49,18 +38,18 @@ class Pairing extends React.Component {
         </button>
         <select id="month" onChange={this.handleChangeMonth}>
           <option>please select month</option>
-          <option value="Jan 2020">January</option>
-          <option value="Feb 2020">February</option>
-          <option value="Mar 2020">March</option>
-          <option value="Apr 2020">April</option>
-          <option value="May 2020">May</option>
-          <option value="Jun 2020">June</option>
-          <option value="Jul 2020">July</option>
-          <option value="Aug 2020">August</option>
-          <option value="Sept 2020">September</option>
-          <option value="Oct 2020">October</option>
-          <option value="Nov 2020">November</option>
-          <option value="Dec 2020">December</option>
+          <option value="Jan ">January</option>
+          <option value="Feb ">February</option>
+          <option value="Mar ">March</option>
+          <option value="Apr ">April</option>
+          <option value="May ">May</option>
+          <option value="Jun ">June</option>
+          <option value="Jul ">July</option>
+          <option value="Aug ">August</option>
+          <option value="Sept ">September</option>
+          <option value="Oct ">October</option>
+          <option value="Nov ">November</option>
+          <option value="Dec ">December</option>
         </select>
         <div className="table">
           <table>

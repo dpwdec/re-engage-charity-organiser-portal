@@ -9,14 +9,10 @@ const googleMapsClient = require("@google/maps").createClient({
 
 var PairController = {
   Pairing: async (request, response) => {
-    console.log("month");
-    console.log(request.query.month);
     let month = request.query.month;
     let query = {};
     query[month] = true;
 
-    console.log("query");
-    console.log(query);
     Member.find((err, members) => {
       console.log(members.availability);
     });
