@@ -23,6 +23,9 @@ class Pairing extends React.Component {
     this.setState({
       month: e.target.value,
     });
+    this.setState({
+      pairs: [],
+    });
     console.log("hey");
     console.log(this.state.month);
   };
