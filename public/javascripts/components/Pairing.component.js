@@ -46,7 +46,7 @@ class Pairing extends React.Component {
           <option value="Apr 2020">April</option>
           <option value="May 2020">May</option>
           <option value="Jun 2020">June</option>
-          <option value="Jul 2020">July</option>
+          <option value="Jul2020">July</option>
           <option value="Aug 2020">August</option>
           <option value="Sept 2020">September</option>
           <option value="Oct 2020">October</option>
