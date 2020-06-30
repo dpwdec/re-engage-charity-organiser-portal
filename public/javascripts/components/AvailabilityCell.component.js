@@ -11,7 +11,27 @@ class AvailabilityCell extends React.Component {
       }
   }
 
-    
+
+    updateAvailability = (event) => {
+      console.log(event.target.value);
+      console.log(this.props.driver_id);
+     
+      let updateMember = {
+        driver_id: this.props.driver_id, 
+        month_name: this.props.monthName, 
+        month_status: event.target.value, 
+      };
+
+      fetch('/availability/update', {
+        method: 'post',
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(updateMember)
+      })
+      .then(response => response.json())
+      .then((result) => {
+        console.log('sucess!')
+      })
+    }
 
     // obtain driver ID, needed to do in parent component 
     // in order for child component to successfully update 
@@ -24,12 +44,13 @@ class AvailabilityCell extends React.Component {
 
     render() {
       
+      console.log(this.props.monthName)
       // if this.props.month = true; display option id="true"
 
       return(
         <td className="month">
-
-        <select className="select-availability">
+        
+        <select className="select-availability" onChange={this.updateAvailability} >
           <option value="true" selected={this.props.month == "true"}>True</option>
           <option value="false" selected={this.props.month == "false"}>False</option>
           <option value="tbd" selected={this.props.month == "undecided"}>TBD</option>

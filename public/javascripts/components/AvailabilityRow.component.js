@@ -24,16 +24,18 @@ class AvailabilityRow extends React.Component {
         months: monthsArray
       })
     });
+    console.log(this.props.months)
   }
 
   render() {
+
     return(
       <tr id={`tr-${this.props.driver.name}`}>
         <td className="driverName">{this.props.driver.name}</td>
-        <AvailabilityCell driver_id={this.props.driver._id} month={this.state.months[0]} />
-        <AvailabilityCell driver_id={this.props.driver._id} month={this.state.months[1]} />
-        <AvailabilityCell driver_id={this.props.driver._id} month={this.state.months[2]} />
-        <AvailabilityCell driver_id={this.props.driver._id} month={this.state.months[3]} />
+        <AvailabilityCell driver_id={this.props.driver._id} month={this.state.months[0]} monthName={this.props.months[0]} />
+        <AvailabilityCell driver_id={this.props.driver._id} month={this.state.months[1]} monthName={this.props.months[1]}/>
+        <AvailabilityCell driver_id={this.props.driver._id} month={this.state.months[2]} monthName={this.props.months[2]}/>
+        <AvailabilityCell driver_id={this.props.driver._id} month={this.state.months[3]} monthName={this.props.months[3]}/>
       </tr>
     )
   }
