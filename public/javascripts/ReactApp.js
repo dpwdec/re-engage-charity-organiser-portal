@@ -67,7 +67,7 @@ class ReactApp extends React.Component {
     } else {
       return (
         <div className="container">
-          <div className="main-app container margin-top bg-white">
+          <div className="main-app container margin-top bg-white shadow p-3 mb-5 bg-white rounded">
             <Header />
             {/* <div className="row">
               <button

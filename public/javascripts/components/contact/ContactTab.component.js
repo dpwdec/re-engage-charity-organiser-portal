@@ -26,6 +26,7 @@ class Contact extends React.Component {
       newState[role + "s"] = this.sortAtoZ(data)
       this.setState(newState);
     });
+    debugger;
   }
 
   mySubmitHandler = (event) => {
