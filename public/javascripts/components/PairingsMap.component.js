@@ -3,6 +3,7 @@ function PairingsMap(props) {
   Here some resource helped me to make api works;
   DirectionsServices: https://developers.google.com/maps/documentation/javascript/directions
   Drawing Marker: https://developers.google.com/maps/documentation/javascript/examples/icon-complex
+  Drawing Marker:https://developers.google.com/chart/infographics/docs/dynamic_icons?csw=1#plain_pin
   Code samples: https://developers.google.com/maps/documentation/javascript/examples
   */
   var map = new google.maps.Map(document.getElementById("map-canvas"), {
@@ -11,35 +12,32 @@ function PairingsMap(props) {
   });
 
   var icons = {
-    start: new google.maps.MarkerImage(
-      "https://img.icons8.com/fluent/48/000000/marker-storm.png",
-      new google.maps.Size(20, 32),
-      new google.maps.Point(0, 0),
-      new google.maps.Point(0, 32)
-    ),
-
-    end: new google.maps.MarkerImage(
-      "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png",
-      new google.maps.Size(20, 32),
-      new google.maps.Point(0, 0),
-      new google.maps.Point(0, 32)
-    ),
+    start: new google.maps.MarkerImage(),
+    end: new google.maps.MarkerImage(),
   };
 
   var startMarker = (position, icon, title) => {
     new google.maps.Marker({
       map: map,
       position: position,
-      icon: icon,
-      label: title,
+      icon: {
+        url:
+          "http://chart.apis.google.com/chart?chst=d_map_pin_icon&chld=car|ADDE63",
+        labelOrigin: new google.maps.Point(10, -4),
+      },
+      label: { text: title, color: "black", fontWeight: "bold" },
     });
   };
   var endMarker = (position, icon, title) => {
     new google.maps.Marker({
       map: map,
       position: position,
-      icon: icon,
-      label: title,
+      icon: {
+        url:
+          "http://chart.apis.google.com/chart?chst=d_map_pin_icon&chld=home|ADDE63",
+        labelOrigin: new google.maps.Point(10, -4),
+      },
+      label: { text: title, color: "black", fontWeight: "bold" },
     });
   };
   props.pairs.forEach((pair) => {
