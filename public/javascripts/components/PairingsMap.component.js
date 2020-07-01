@@ -29,7 +29,11 @@ function PairingsMap(props) {
           }`,
           labelOrigin: new google.maps.Point(10, -4),
         },
-        label: { text: title, color: "green", fontWeight: "bold" },
+        label: {
+          text: title,
+          color: colorStringPalet[i % colorStringPalet.length],
+          fontWeight: "bold",
+        },
       });
     };
 
@@ -43,7 +47,11 @@ function PairingsMap(props) {
           }`,
           labelOrigin: new google.maps.Point(10, -4),
         },
-        label: { text: title, color: "green", fontWeight: "bold" },
+        label: {
+          text: title,
+          color: colorStringPalet[i % colorStringPalet.length],
+          fontWeight: "bold",
+        },
       });
     };
 
