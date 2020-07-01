@@ -114,7 +114,7 @@ describe('PairingGenome', () => {
   });
 
   describe('#mate', () => {
-    it('can mate with another single member', () => {
+    xit('can mate with another single member', () => {
       PairingGenome.possibleDrivers = ['Bradley'];
       PairingGenome.possibleGuests = ['Doris'];
 
