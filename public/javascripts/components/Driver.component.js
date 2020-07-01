@@ -1,4 +1,5 @@
 function Driver(props) {
+  var buttonId = "delete-btn-" + props.index + 1
   return (
     <form
       className="col"
@@ -11,7 +12,7 @@ function Driver(props) {
         <div className="driverName col">{props.name}</div>
         <div className="driverAddress col">{props.address}</div>
         <input
-          className="delete-driver-btn"
+          id={buttonId}
           type="submit"
           value="Delete"
         ></input>

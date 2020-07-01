@@ -22,17 +22,12 @@ describe("Members", () => {
     cy.get(".driver-list").should("not.contain", "Dec");
   });
 
-  it("deletes driver from driver list component"),
-    () => {
+  it("deletes driver from driver list component", () => {
       cy.visit("/");
       cy.get("#contact-tab").click();
-      cy.get(".delete-driver-btn").click();
-      cy.get(".delete-driver-btn").click();
-      cy.get(".delete-driver-btn").click();
+      cy.get("#delete-btn-01").click();
       cy.get(".driver-list").should("not.contain", "Cat");
-      cy.get(".driver-list").should("not.contain", "Marija");
-      cy.get(".driver-list").should("not.contain", "Dec");
-    };
+    });
 
   afterEach(() => {
     cy.visit("/");
