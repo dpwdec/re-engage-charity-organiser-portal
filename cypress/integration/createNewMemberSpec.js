@@ -17,7 +17,7 @@ describe('Create Member Form', () => {
     cy.get("#contact-tab").click();
     cy.get('#new-member-form').find('[id=new-member-name]').type('Himithy')
     cy.get('#new-member-form').find('[id=new-member-address]').type('S3 4KY')
-    cy.get('#new-member-form').find('[id=new-member-role]').type('driver')
+    cy.get('#new-member-form').find('[id=new-member-role]').select('driver')
     cy.get('#new-member-form').submit();
 
     cy.visit('/')
