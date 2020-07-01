@@ -29,6 +29,7 @@ var HomepageController = {
   Members:(request, response) => {
     Member.find({role: request.query.role},(err, result) => {
       response.send(result);
+      console.log("helloo")
     });
   },
 

@@ -111,7 +111,7 @@ class ReactApp extends React.Component {
 
 
 
-            <section className="tabs">
+            <section className="tabs row container">
 
               <input onClick={this.showHome} id="home-tab" type="radio" name="radio-set" className="tab-selector-1 tab-selector active" />
               <label htmlFor="home-tab" className="tab-label-1">Home</label>
@@ -123,8 +123,8 @@ class ReactApp extends React.Component {
               <label htmlFor="contact-tab" className="tab-label-3">Contact</label>
 
              <div className="clear-shadow"></div>
-
-              <div className="main-content">
+             </section>
+              
                 {(() => {
                   if (this.state.home === true) {
                     return (
@@ -137,14 +137,13 @@ class ReactApp extends React.Component {
                 }
 
                 if (this.state.contact === true) {
-                  console.log("hello")
                     return (
                       <Contact />
                     );
                   }
                 })()}
-              </div>
-            </section>
+
+            
           </div>
 
         
