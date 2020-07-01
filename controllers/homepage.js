@@ -1,9 +1,7 @@
-var Member = require('../models/member');
-
 var HomepageController = {
 
-  CreateMember: (request, response) => {
-    var member = new Member({
+  CreateMember: (memberModel) => (request, response) => {
+    var member = new memberModel({
       name: request.body.name,
       role: request.body.role,
       address: request.body.address,
@@ -18,18 +16,18 @@ var HomepageController = {
     });
   },
 
-  DeleteMember: (request, response) => {
+  DeleteMember: (memberModel) => (request, response) => {
     console.log("we are in delete member function")
     var id = request.body.id;
-    Member.deleteOne({"_id" : id}, function(err){
+    memberModel.deleteOne({"_id" : id}, (err) => {
       if(err) { throw err; }
     });
   },
 
-  DriverList: (request, response) => {
+  DriverList: (memberModel) => (request, response) => {
     let drivers = [];
 
-    Member.find((err, result) => {
+    memberModel.find((err, result) => {
       result.forEach((member) => {
 
         if(member.role === 'driver'){
@@ -40,10 +38,10 @@ var HomepageController = {
     });
   },
 
-  GuestList: (request, response) => {
+  GuestList: (memberModel) => (request, response) => {
     let guests = [];
 
-    Member.find((err, result) => {
+    memberModel.find((err, result) => {
       result.forEach((member) => {
 
         if(member.role === 'guest'){

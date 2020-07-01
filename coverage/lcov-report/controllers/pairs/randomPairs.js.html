@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">75% </span>
+                <span class="strong">12.5% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>12/16</span>
+                <span class='fraction'>2/16</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>4/4</span>
+                <span class='fraction'>0/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">73.33% </span>
+                <span class="strong">13.33% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>11/15</span>
+                <span class='fraction'>2/15</span>
             </div>
         
             
@@ -55,7 +55,7 @@
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
         </p>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line low'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -93,66 +93,66 @@
 <a name='L34'></a><a href='#L34'>34</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span></td><td class="text"><pre class="prettyprint lang-js">var RandomPairs = {
-  generate: (members) =&gt; {
+  generate: <span class="fstat-no" title="function not covered" >(m</span>embers) =&gt; {
     // randomise the order of each members and guests array
-    var mixedMembers = RandomPairs._mixMembers(members);
+    var mixedMembers = <span class="cstat-no" title="statement not covered" >RandomPairs._mixMembers(members);</span>
   
     //pair up drivers and guests from arrays
-    var pairs = mixedMembers.drivers.map((driver, index) =&gt; {
-      return {
+    var pairs = <span class="cstat-no" title="statement not covered" >mixedMembers.drivers.map(<span class="fstat-no" title="function not covered" >(d</span>river, index) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >      return {</span>
         id: index+1,
         driver: driver.name,
         guest: mixedMembers.guests[index].name
       }
     });
-    return pairs
+<span class="cstat-no" title="statement not covered" >    return pairs</span>
   },
 &nbsp;
-  _mixMembers: (members) =&gt; {
-    members.drivers = RandomPairs._shuffleArray(members.drivers);
-    members.guests = RandomPairs._shuffleArray(members.guests);
-    return members;
+  _mixMembers: <span class="fstat-no" title="function not covered" >(m</span>embers) =&gt; {
+<span class="cstat-no" title="statement not covered" >    members.drivers = RandomPairs._shuffleArray(members.drivers);</span>
+<span class="cstat-no" title="statement not covered" >    members.guests = RandomPairs._shuffleArray(members.guests);</span>
+<span class="cstat-no" title="statement not covered" >    return members;</span>
   },
 &nbsp;
-  _shuffleArray: (array) =&gt; {
-    for (var i = array.length - 1; i &gt; 0; i--) {
+  _shuffleArray: <span class="fstat-no" title="function not covered" >(a</span>rray) =&gt; {
+<span class="cstat-no" title="statement not covered" >    for (var i = <span class="cstat-no" title="statement not covered" >array.length - 1;</span> i &gt; 0; i--) {</span>
         var j = <span class="cstat-no" title="statement not covered" >Math.floor(Math.random() * (i + 1));</span>
         var temp = <span class="cstat-no" title="statement not covered" >array[i];</span>
 <span class="cstat-no" title="statement not covered" >        array[i] = array[j];</span>
 <span class="cstat-no" title="statement not covered" >        array[j] = temp;</span>
     }
-    return array;
+<span class="cstat-no" title="statement not covered" >    return array;</span>
   }
 }
 &nbsp;
@@ -163,7 +163,7 @@ module.exports = RandomPairs;</pre></td></tr></table></pre>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Sun Jun 28 2020 12:37:34 GMT+0100 (British Summer Time)
+                at Wed Jul 01 2020 14:23:47 GMT+0100 (British Summer Time)
             </div>
         </div>
         <script src="../../prettify.js"></script>
