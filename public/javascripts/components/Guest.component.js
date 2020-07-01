@@ -10,6 +10,7 @@ function Guest(props) {
         <div className="guest index col-2">{props.index + 1}</div>
         <div className="guestName col">{props.name}</div>
         <div className="guestAdress col">{props.address}</div>
+        <div className="guestTelephone col">{props.telephone}</div>
         <input type="submit" value="Delete"></input>
       </div>
     </form>

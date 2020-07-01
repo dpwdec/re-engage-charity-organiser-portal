@@ -35,7 +35,8 @@ app.use('/availability', availRouter);
 // newMember = new Member( {
 //   name: "Jackie",
 //   address: "SE2",
-//   role: "driver"
+//   telephone: 07111222333,
+//   role: "driver", 
 // })
 
 // newMember.save()
