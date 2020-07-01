@@ -10,42 +10,47 @@ function PairingsMap(props) {
     zoom: 12,
     center: { lat: 51.497309, lng: -0.147165 },
   });
-
   var icons = {
     start: new google.maps.MarkerImage(),
     end: new google.maps.MarkerImage(),
   };
 
-  var startMarker = (position, icon, title) => {
-    new google.maps.Marker({
-      map: map,
-      position: position,
-      icon: {
-        url:
-          "http://chart.apis.google.com/chart?chst=d_map_pin_icon&chld=car|ADDE63",
-        labelOrigin: new google.maps.Point(10, -4),
-      },
-      label: { text: title, color: "black", fontWeight: "bold" },
-    });
-  };
-  var endMarker = (position, icon, title) => {
-    new google.maps.Marker({
-      map: map,
-      position: position,
-      icon: {
-        url:
-          "http://chart.apis.google.com/chart?chst=d_map_pin_icon&chld=home|ADDE63",
-        labelOrigin: new google.maps.Point(10, -4),
-      },
-      label: { text: title, color: "black", fontWeight: "bold" },
-    });
-  };
-  props.pairs.forEach((pair) => {
-    console.log(pair.route.routes[0].legs[0]);
+  var colorHexPalet = ["769b17", "519cc9", "dfd974", "cb4b99", "ff9d78"];
+  var colorStringPalet = ["green", "	blue", "yellow", "pink", "orange"];
+
+  props.pairs.forEach((pair, i) => {
+    var startMarker = (position, icon, title) => {
+      new google.maps.Marker({
+        map: map,
+        position: position,
+        icon: {
+          url: `http://chart.apis.google.com/chart?chst=d_map_pin_icon&chld=car|${
+            colorHexPalet[i % colorHexPalet.length]
+          }`,
+          labelOrigin: new google.maps.Point(10, -4),
+        },
+        label: { text: title, color: "green", fontWeight: "bold" },
+      });
+    };
+
+    var endMarker = (position, icon, title) => {
+      new google.maps.Marker({
+        map: map,
+        position: position,
+        icon: {
+          url: `http://chart.apis.google.com/chart?chst=d_map_pin_icon&chld=home|${
+            colorHexPalet[i % colorHexPalet.length]
+          }`,
+          labelOrigin: new google.maps.Point(10, -4),
+        },
+        label: { text: title, color: "green", fontWeight: "bold" },
+      });
+    };
+
     var directionsService = new google.maps.DirectionsService();
     var directionsRenderer = new google.maps.DirectionsRenderer({
       polylineOptions: {
-        strokeColor: "green",
+        strokeColor: colorStringPalet[i % colorStringPalet.length],
       },
       suppressMarkers: true,
     });
@@ -64,6 +69,7 @@ function PairingsMap(props) {
           icons.start,
           pair.driver
         );
+
         endMarker(
           pair.route.routes[0].legs[0].end_location,
           icons.end,
