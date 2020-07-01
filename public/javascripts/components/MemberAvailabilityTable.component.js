@@ -9,7 +9,7 @@ class MemberAvailabilityTable extends React.Component {
   };
 
   componentDidMount() {
-    console.log(this.props);
+    // console.log(this.props);
     fetch(`/availability/availability?role=${this.props.role}`)
     .then(response => {
       return response.json()

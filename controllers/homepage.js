@@ -6,8 +6,10 @@ var HomepageController = {
     var member = new Member({
       name: request.body.name,
       role: request.body.role,
-      address: request.body.address
+      address: request.body.address,
+      availability: { },
     });
+
 
     member.save((err) => {
       if (err) { console.log(err) }
