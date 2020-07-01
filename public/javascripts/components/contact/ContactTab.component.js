@@ -41,6 +41,7 @@ class Contact extends React.Component {
   };
 
   mySubmitHandler = (event) => {
+    event.target.reset();
     event.preventDefault();
     let newMember = {
       name: this.state.name,
@@ -60,8 +61,8 @@ class Contact extends React.Component {
       });
     })
   
-    this.fetchGuests()
-    this.fetchDrivers()
+    this.fetchGuests();
+    this.fetchDrivers();
   };
 
   deleteMember = (event) => {
