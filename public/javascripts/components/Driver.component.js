@@ -11,6 +11,7 @@ function Driver(props) {
         <div className="driver-index col-2">{props.index + 1}</div>
         <div className="driverName col">{props.name}</div>
         <div className="driverAddress col">{props.address}</div>
+        <div className="driverTel col">{props.telephone}</div>
         <input
           id={buttonId}
           type="submit"

@@ -7,13 +7,12 @@ var HomepageController = {
       name: request.body.name,
       role: request.body.role,
       address: request.body.address,
+      telephone: request.body.telephone,
       availability: { },
     });
 
-
     member.save((err) => {
       if (err) { console.log(err) }
-      // sendFlashMessage(response, request, '/', 'Member saved!');
       response.send({message: "ok"});
     });
   },
@@ -27,6 +26,7 @@ var HomepageController = {
   },
 
   DriverList: (request, response) => {
+    console.log("driver request", request.body.telephone);
     let drivers = [];
 
     Member.find((err, result) => {
@@ -37,10 +37,12 @@ var HomepageController = {
         }
       });
       response.send(drivers);
+      console.log("driver response", drivers);
     });
   },
 
   GuestList: (request, response) => {
+    console.log("guest request", request.body.telephone);
     let guests = [];
 
     Member.find((err, result) => {
@@ -51,14 +53,10 @@ var HomepageController = {
         }
       });
       response.send(guests);
+      console.log("guest response",guests);
     });
   }
 
 }
-
-// var sendFlashMessage = (response, request, route, message) => {
-//   request.session.errorMessage = message;
-//   response.redirect(route);
-// };
 
 module.exports = HomepageController;

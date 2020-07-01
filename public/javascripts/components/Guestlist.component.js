@@ -7,11 +7,13 @@ class GuestList extends React.Component {
           <div className="headers row">
             <div className="name">Name</div>
             <div className="name">Address</div>
+            <div className="name">Telephone</div>
           </div>
           {this.props.guests.map((guest, index) => (
             <Guest
               name={guest.name}
               address={guest.address}
+              telephone={guest.telephone}
               index={index}
               id={guest._id}
               key={guest._id}
