@@ -14,8 +14,10 @@ class Contact extends React.Component {
     this.fetchGuests("/guests");
   }
 
+
+
   fetchDrivers = () => {
-    fetch("/drivers")
+    fetch("/members?role=driver")
       .then((response) => response.json())
       .then((data) => {
         this.setState({
@@ -28,7 +30,7 @@ class Contact extends React.Component {
   };
 
   fetchGuests = () => {
-    fetch("/guests")
+    fetch("/members?role=guest")
       .then((response) => response.json())
       .then((data) => {
         this.setState({

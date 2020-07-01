@@ -26,35 +26,10 @@ var HomepageController = {
     });
   },
 
-  DriverList: (request, response) => {
-    console.log("driver request", request.body.telephone);
-    let drivers = [];
-
-    Member.find((err, result) => {
-      result.forEach((member) => {
-
-        if(member.role === 'driver'){
-          drivers.push(member);
-        }
-      });
-      response.send(drivers);
-      console.log("driver response", drivers);
-    });
-  },
-
-  GuestList: (request, response) => {
-    console.log("guest request", request.body.telephone);
-    let guests = [];
-
-    Member.find((err, result) => {
-      result.forEach((member) => {
-
-        if(member.role === 'guest'){
-          guests.push(member);
-        }
-      });
-      response.send(guests);
-      console.log("guest response",guests);
+  Members:(request, response) => {
+    Member.find({role: request.query.role},(err, result) => {
+      response.send(result);
+      console.log("driver response");
     });
   }
 

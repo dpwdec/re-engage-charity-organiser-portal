@@ -7,10 +7,9 @@ router.get('/', function(req, res, next) {
   res.render('index');
 });
 
-router.get('/drivers', HomepageController.DriverList);
-router.get('/guests', HomepageController.GuestList);
 router.post('/createMember', HomepageController.CreateMember);
 router.post('/deleteMember', HomepageController.DeleteMember);
+router.get('/members', HomepageController.Members)
 
 
 module.exports = router;
