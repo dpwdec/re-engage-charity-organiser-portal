@@ -29,9 +29,7 @@ class AvailabilityCell extends React.Component {
     })
     .then(response => response.json())
     .then((result) => {
-      this.setState(result)
       console.log(result);
-      console.log('sucess!')
     })
   }
 
