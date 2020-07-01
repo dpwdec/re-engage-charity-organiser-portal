@@ -25,7 +25,6 @@ var HomepageController = {
   },
 
   DriverList: (memberModel) => (request, response) => {
-    console.log("driver request", request.body.telephone);
     let drivers = [];
 
     memberModel.find((err, result) => {
@@ -41,7 +40,6 @@ var HomepageController = {
   },
 
   GuestList: (memberModel) => (request, response) => {
-    console.log("guest request", request.body.telephone);
     let guests = [];
 
     memberModel.find((err, result) => {

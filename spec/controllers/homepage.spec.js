@@ -60,15 +60,13 @@ describe('Homepage Controller', () => {
 
   describe('Delete Member', () => {
     it('deletes a member from the database', () => {
-      memberModelMock = jest.fn();
-      var deleteOneMock = jest.fn();
-      memberModelMock.mockImplementation(() => {
-        return {deleteOne: deleteOneMock}
-      });
+      memberModelMock = {
+        deleteOne: jest.fn()
+      };
       req.body = {id: '1'}
       controller = HomepageController.DeleteMember(memberModelMock);
       controller(req, res);
-      expect(deleteOneMock).toHaveBeenCalled();
+      expect(memberModelMock.deleteOne).toHaveBeenCalled();
     });
   });
 });
