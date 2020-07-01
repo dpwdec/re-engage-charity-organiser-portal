@@ -62,5 +62,24 @@ describe("Admin Controller", () => {
         message: "Wrong password",
       });
     });
+
+    it("No admin with that name", () => {
+      var mockAdminModel = {
+        findOne: (query, callback) => {
+          var err = false;
+          var result = null;
+          callback(err, result);
+        },
+      };
+
+      var res = { send: jest.fn() };
+      var req = { body: { adminName: "admin1", password: "1234" } };
+      controller = AdminController.Login(mockAdminModel);
+      controller(req, res);
+      expect(res.send).toHaveBeenCalledWith({
+        success: false,
+        message: "There is no admin with that adminName",
+      });
+    });
   });
 });
