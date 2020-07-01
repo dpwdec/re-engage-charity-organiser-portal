@@ -3,11 +3,12 @@ class Pairing extends React.Component {
     super();
     this.state = {
       pairs: [],
+      month: "",
     };
   }
 
   generatePairs = () => {
-    fetch(`/pairs`)
+    fetch(`/pairs?month=${this.state.month}`)
       .then((response) => {
         return response.json();
       })
@@ -17,14 +18,39 @@ class Pairing extends React.Component {
         });
       });
   };
+  handleChangeMonth = (e) => {
+    var today = new Date();
+    var yyyy = today.getFullYear();
+
+    this.setState({
+      month: e.target.value + yyyy,
+    });
+    this.setState({
+      pairs: [],
+    });
+  };
 
   render() {
-    console.log(this.state.pairs);
     return (
       <div>
         <button id="generate-pairs" onClick={this.generatePairs}>
           Generate
         </button>
+        <select id="month" onChange={this.handleChangeMonth}>
+          <option>please select month</option>
+          <option value="Jan ">January</option>
+          <option value="Feb ">February</option>
+          <option value="Mar ">March</option>
+          <option value="Apr ">April</option>
+          <option value="May ">May</option>
+          <option value="Jun ">June</option>
+          <option value="Jul ">July</option>
+          <option value="Aug ">August</option>
+          <option value="Sept ">September</option>
+          <option value="Oct ">October</option>
+          <option value="Nov ">November</option>
+          <option value="Dec ">December</option>
+        </select>
         <div className="table">
           <table>
             <thead></thead>
