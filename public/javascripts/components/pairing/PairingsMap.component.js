@@ -73,13 +73,13 @@ function PairingsMap(props) {
       if (status === "OK") {
         directionsRenderer.setDirections(response);
         startMarker(
-          pair.route.routes[0].legs[0].start_location,
+          pair.route.routes[0].legs[0].end_location,
           icons.start,
           pair.driver
         );
 
         endMarker(
-          pair.route.routes[0].legs[0].end_location,
+          pair.route.routes[0].legs[0].start_location,
           icons.end,
           pair.guest
         );
