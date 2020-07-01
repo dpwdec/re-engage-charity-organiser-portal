@@ -44,6 +44,9 @@ function PairingsMap(props) {
     console.log(pair.route.routes[0].legs[0]);
     var directionsService = new google.maps.DirectionsService();
     var directionsRenderer = new google.maps.DirectionsRenderer({
+      polylineOptions: {
+        strokeColor: "green",
+      },
       suppressMarkers: true,
     });
     directionsRenderer.setMap(map);
