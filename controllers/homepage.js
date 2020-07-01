@@ -5,13 +5,12 @@ var HomepageController = {
       name: request.body.name,
       role: request.body.role,
       address: request.body.address,
+      telephone: request.body.telephone,
       availability: { },
     });
 
-
     member.save((err) => {
       if (err) { console.log(err) }
-      // sendFlashMessage(response, request, '/', 'Member saved!');
       response.send({message: "ok"});
     });
   },
@@ -21,10 +20,12 @@ var HomepageController = {
     var id = request.body.id;
     memberModel.deleteOne({"_id" : id}, (err) => {
       if(err) { throw err; }
+      response.send({message: 'success!'});
     });
   },
 
   DriverList: (memberModel) => (request, response) => {
+    console.log("driver request", request.body.telephone);
     let drivers = [];
 
     memberModel.find((err, result) => {
@@ -35,10 +36,12 @@ var HomepageController = {
         }
       });
       response.send(drivers);
+      console.log("driver response", drivers);
     });
   },
 
   GuestList: (memberModel) => (request, response) => {
+    console.log("guest request", request.body.telephone);
     let guests = [];
 
     memberModel.find((err, result) => {
@@ -49,14 +52,10 @@ var HomepageController = {
         }
       });
       response.send(guests);
+      console.log("guest response",guests);
     });
   }
 
 }
-
-// var sendFlashMessage = (response, request, route, message) => {
-//   request.session.errorMessage = message;
-//   response.redirect(route);
-// };
 
 module.exports = HomepageController;

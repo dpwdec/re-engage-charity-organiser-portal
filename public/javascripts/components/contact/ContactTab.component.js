@@ -41,11 +41,13 @@ class Contact extends React.Component {
   };
 
   mySubmitHandler = (event) => {
+    event.target.reset();
     event.preventDefault();
     let newMember = {
       name: this.state.name,
       role: this.state.role,
       address: this.state.address,
+      telephone: this.state.telephone, 
     };
 
     fetch("/createMember", {
@@ -58,10 +60,9 @@ class Contact extends React.Component {
       this.setState({
         message: "Success!",
       });
+      this.fetchGuests();
+      this.fetchDrivers();
     })
-  
-    this.fetchGuests()
-    this.fetchDrivers()
   };
 
   deleteMember = (event) => {
@@ -80,10 +81,9 @@ class Contact extends React.Component {
       this.setState({
         message: "Success!",
       });
+      this.fetchGuests();
+      this.fetchDrivers();
     });
-
-    this.fetchGuests()
-    this.fetchDrivers()
   }
 
   sortGuestsAtoZ() {

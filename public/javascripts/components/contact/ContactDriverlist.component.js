@@ -8,12 +8,14 @@ class DriverList extends React.Component {
           <div className="headers row">
               <div className="name">Name</div>
               <div className="address">Address</div>
+              <div className="telephone">Telephone</div>
           </div>
             {this.props.drivers.map((driver, index) => (
               
               < Driver 
                 name={driver.name} 
                 address={driver.address} 
+                telephone={driver.telephone}
                 index={index} 
                 id={driver._id} 
                 key={driver._id} 

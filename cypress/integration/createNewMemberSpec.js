@@ -18,14 +18,19 @@ describe('Create Member Form', () => {
     cy.get('#new-member-form').find('[id=new-member-name]').type('Himithy')
     cy.get('#new-member-form').find('[id=new-member-address]').type('S3 4KY')
     cy.get('#new-member-form').find('[id=new-member-role]').select('driver')
+    cy.get('#new-member-form').find('[id=new-member-telephone]').type('07111222333')
     cy.get('#new-member-form').submit();
 
     cy.visit('/')
     cy.get("#contact-tab").click();
     cy.get('.driver-list').should('contain', 'Himithy');
     cy.get('.driver-list').should('contain', 'S3 4KY');
+    cy.get('.driver-list').should('contain', '07111222333');
+
     cy.get('.guest-list').should('not.contain', 'Himithy');
     cy.get('.guest-list').should('not.contain', 'S3 4KY');
+    
+
   });
 
   afterEach(() => {
