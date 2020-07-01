@@ -1,13 +1,9 @@
-let admin = require("../models/admin"); //db
-
 let adminController = {
-  Login: function (req, res) {
+  Login: (adminModel) => (req, res) => {
     const { body } = req;
     const { adminName, password } = body;
-    console.log(body);
 
-    admin.findOne({ adminName: adminName }, function (err, existingAdmin) {
-      console.log(existingAdmin);
+    adminModel.findOne({ adminName: adminName }, (err, existingAdmin) => {
       if (err) {
         res.send({
           success: false,
@@ -34,7 +30,7 @@ let adminController = {
       }
     });
   },
-  Index: function (req, res) {
+  Index: (req, res) => {
     res.render("admin");
   },
 };

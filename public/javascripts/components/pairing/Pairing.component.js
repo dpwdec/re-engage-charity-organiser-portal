@@ -4,12 +4,14 @@ class Pairing extends React.Component {
     this.state = {
       pairs: [],
       month: "",
-      pairingType: 'shortest'
+      pairingType: "shortest",
     };
   }
 
   generatePairs = () => {
-    fetch(`/pairs?month=${this.state.month}&pairingType=${this.state.pairingType}`)
+    fetch(
+      `/pairs?month=${this.state.month}&pairingType=${this.state.pairingType}`
+    )
       .then((response) => {
         return response.json();
       })
@@ -35,12 +37,12 @@ class Pairing extends React.Component {
   setPairingType = (event) => {
     var eventOutput = event.target.value;
     this.setState({
-      pairingType: event.target.value
+      pairingType: event.target.value,
     });
     this.setState({
       pairs: [],
     });
-  }
+  };
 
   render() {
     return (
@@ -83,7 +85,7 @@ class Pairing extends React.Component {
                 <PairItem
                   driver={pair.driver}
                   guest={pair.guest}
-                  // guestTelephone={pair.guest.telephone}
+                  telephone={pair.telephone}
                   distance={pair.distance}
                   id={pair.id}
                   key={pair.id}

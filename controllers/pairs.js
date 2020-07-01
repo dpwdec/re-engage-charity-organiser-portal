@@ -1,7 +1,7 @@
 var mongoose = require("mongoose");
 const Member = require("../models/member");
 const ShortestDistancePairs = require("./pairs/shortestDistancePairs");
-const PairingPopulation = require('./pairs/pairingPopulation');
+const PairingPopulation = require("./pairs/pairingPopulation");
 const AveragePairs = require("./pairs/averagePairs");
 
 const googleMapsClient = require("@google/maps").createClient({
@@ -44,6 +44,7 @@ var PairController = {
         availableGuests.forEach((guest) => {
           var member = {
             name: guest.name,
+            telephone: guest.telephone,
             drivers: [],
           };
 
@@ -62,19 +63,19 @@ var PairController = {
 
         // use different pairing alogirithm depending on user input
         var pairings;
-        if(request.query.pairingType === 'shortest') {
-          console.log("generating pairs with shortest heuristic")
+        if (request.query.pairingType === "shortest") {
+          console.log("generating pairs with shortest heuristic");
           pairings = ShortestDistancePairs.generate(members);
-        } 
-        else if (request.query.pairingType === 'average') {
-          console.log("generating pairs with average heuristic")
+        } else if (request.query.pairingType === "average") {
+          console.log("generating pairs with average heuristic");
           pairings = AveragePairs.generate(members);
         } else {
-          console.log("generating pairs with smart heuristic")
+          console.log("generating pairs with smart heuristic");
           pairings = PairingPopulation.generate(members);
         }
 
         response.send({ pairs: pairings });
+        console.log("Pairs!", { pairs: pairings });
       });
     });
   },
