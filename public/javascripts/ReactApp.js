@@ -21,7 +21,7 @@ class ReactApp extends React.Component {
       pairs: false,
       contact: false,
     });
-    this.changeTabColour("home-tab", "pairing-tab", "contact-tab");
+    this.changeTabColour("home-tab", "pairs-tab", "contact-tab");
     var x = document.getElementById("map-canvas");
     x.style.display = "none";
   };
@@ -33,7 +33,7 @@ class ReactApp extends React.Component {
       pairs: true,
       contact: false,
     });
-    this.changeTabColour("pairing-tab", "home-tab", "contact-tab");
+    this.changeTabColour("pairs-tab", "home-tab", "contact-tab");
     var x = document.getElementById("map-canvas");
     x.style.display = "";
   };
@@ -45,18 +45,19 @@ class ReactApp extends React.Component {
       pairs: false,
       contact: true,
     });
-    this.changeTabColour("contact-tab", "pairing-tab", "home-tab");
+    this.changeTabColour("contact-tab", "pairs-tab", "home-tab");
     var x = document.getElementById("map-canvas");
     x.style.display = "none";
   };
 
   changeTabColour = (active, inactive1, inactive2) => {
-    document.getElementById(active).setAttribute("class", "tab col active-tab");
-    document.getElementById(inactive1).setAttribute("class", "tab col");
-    document.getElementById(inactive2).setAttribute("class", "tab col");
+    document.getElementById(active).setAttribute("class", "col tab-selector active");
+    document.getElementById(inactive1).setAttribute("class", "col tab-selector");
+    document.getElementById(inactive2).setAttribute("class", "col tab-selector");
   };
 
   render() {
+    console.log(this.state)
     if (this.state.loggedIn === false) {
       return (
         <form action="admin/login">
@@ -68,38 +69,66 @@ class ReactApp extends React.Component {
         <div className="container">
           <div className="main-app container margin-top bg-white">
             <Header />
-            <div className="row">
+            {/* <div className="row">
               <button
                 id="home-tab"
-                className="tab col button active-tab"
+                className="nav-link tab col button active-tab"
                 onClick={this.showHome}
               >
                 Home
               </button>
               <button
                 id="pairing-tab"
-                className="tab col button"
+                className="nav-link tab col button"
                 onClick={this.showPairs}
               >
                 Pairing
               </button>
               <button
                 id="contact-tab"
-                className="tab col button"
+                className="nav-link tab col button"
                 onClick={this.showContact}
               >
                 Contact
               </button>
-            </div>
+            </div> */}
 
-            <div className="main-content">
-              {(() => {
-                if (this.state.home === true) {
-                  return (
-                    // new component to go here
-                    <div className="">
-                      <AvailabilityTables />
-                    </div>
+            {/* <section class="tabs row">
+
+              <input onClick={this.showHome} id="tab-2" className="nav-link tab col button active-tab" id="tab-1" type="radio" name="radio-set" className="col tab-selector-1" checked="checked" />
+              <label for="tab-1" class="tab-label-1">Home</label>
+
+              <input onClick={this.showPairs} id="tab-2" type="radio" name="radio-set" className="col tab-selector" />
+              <label for="tab-2" class="tab-label-2">Pairs</label>
+
+              <input onClick={this.showContact} id="tab-3" type="radio" name="radio-set" class="col tab-selector" />
+              <label for="tab-3" class="tab-label-3">Contact</label>
+
+              <div class="clear-shadow"></div>
+
+
+            </section> */}
+
+
+
+            <section className="tabs">
+
+              <input onClick={this.showHome} id="home-tab" type="radio" name="radio-set" className="tab-selector-1 tab-selector active" />
+              <label htmlFor="home-tab" className="tab-label-1">Home</label>
+
+              <input onClick={this.showPairs}  id="pairs-tab" type="radio" name="radio-set" className="tab-selector-2 tab-selector" />
+              <label htmlFor="pairs-tab" className="tab-label-2">Pairs</label>
+
+              <input onClick={this.showContact} id="contact-tab" type="radio" name="radio-set" className="tab-selector-3 tab-selector" />
+              <label htmlFor="contact-tab" className="tab-label-3">Contact</label>
+
+             <div className="clear-shadow"></div>
+
+              <div className="main-content">
+                {(() => {
+                  if (this.state.home === true) {
+                    return (
+                    <AvailabilityTables />
                   );
                 }
 
@@ -108,11 +137,20 @@ class ReactApp extends React.Component {
                 }
 
                 if (this.state.contact === true) {
-                  return <Contact />;
-                }
-              })()}
-            </div>
+                  console.log("hello")
+                    return (
+                      <Contact />
+                    );
+                  }
+                })()}
+              </div>
+            </section>
           </div>
+
+        
+
+
+
         </div>
       );
     }
