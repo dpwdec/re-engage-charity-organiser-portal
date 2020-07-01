@@ -4,6 +4,7 @@ var MemberSchema = new mongoose.Schema({
   name: String,
   role: String,
   address: String,
+  telephone: String, // MongooseDB doesn't have type = Number, it has Int32, which returns a different number than the one typed in
   availability: {},
 }, 
   { 

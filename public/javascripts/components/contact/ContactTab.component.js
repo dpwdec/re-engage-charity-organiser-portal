@@ -47,6 +47,7 @@ class Contact extends React.Component {
       name: this.state.name,
       role: this.state.role,
       address: this.state.address,
+      telephone: this.state.telephone, 
     };
 
     fetch("/createMember", {
