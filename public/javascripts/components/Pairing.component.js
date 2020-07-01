@@ -53,7 +53,13 @@ class Pairing extends React.Component {
         </select>
         <div className="table">
           <table>
-            <thead></thead>
+            <thead>
+              <td>No.</td>
+              <td>Driver</td>
+              <td>Guest</td>
+              <td>Distance</td>
+              <td>R.Colour</td>
+            </thead>
             <tbody>
               {this.state.pairs.map((pair) => (
                 <PairItem
