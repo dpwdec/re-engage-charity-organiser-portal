@@ -10,37 +10,23 @@ class Contact extends React.Component {
   }
 
   componentDidMount() {
-    this.fetchDrivers("/drivers");
-    this.fetchGuests("/guests");
+    this.fetchMembers("driver");
+    this.fetchMembers("guest");
+    // this.fetchGuests("/guests");
   }
 
-
-
-  fetchDrivers = () => {
-    fetch("/members?role=driver")
-      .then((response) => response.json())
-      .then((data) => {
-        this.setState({
-          drivers: data,
-        });
-        this.setState({
-          drivers: this.sortDriversAtoZ(),
-        });
-      });
-  };
-
-  fetchGuests = () => {
-    fetch("/members?role=guest")
-      .then((response) => response.json())
-      .then((data) => {
-        this.setState({
-          guests: data,
-        });
-        this.setState({
-          guests: this.sortGuestsAtoZ(),
-        });
-      });
-  };
+  fetchMembers = (role) => {
+    fetch(`/members?role=${role}`)
+    .then((response) => response.json())
+    .then((data) => {
+      var newState = {}
+      newState[role + "s"] = data
+      this.setState(newState);
+      // this.setState({
+      //   drivers: this.sortDriversAtoZ(),
+      // });
+    });
+  }
 
   mySubmitHandler = (event) => {
     event.target.reset();
@@ -62,8 +48,8 @@ class Contact extends React.Component {
       this.setState({
         message: "Success!",
       });
-      this.fetchGuests();
-      this.fetchDrivers();
+      this.fetchMembers('guest');
+      this.fetchMembers('driver');
     })
   };
 
@@ -83,8 +69,8 @@ class Contact extends React.Component {
       this.setState({
         message: "Success!",
       });
-      this.fetchGuests();
-      this.fetchDrivers();
+      this.fetchMembers('guest');
+      this.fetchMembers('driver');
     });
   }
 
@@ -122,14 +108,10 @@ class Contact extends React.Component {
         />
         <DriverList
           drivers={this.state.drivers}
-          fetchDrivers={this.fetchDrivers}
-          sortDriversAtoZ={this.sortDriversAtoZ}
           deleteMember={this.deleteMember}
         />
         <GuestList
           guests={this.state.guests}
-          sortGuestsAtoZ={this.sortGuestsAtoZ}
-          fetchGuests={this.fetchGuests}
           deleteMember={this.deleteMember}
         />
       </div>
