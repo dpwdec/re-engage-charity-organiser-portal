@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">80.65% </span>
+                <span class="strong">80% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>25/31</span>
+                <span class='fraction'>24/30</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">86.21% </span>
+                <span class="strong">80% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>25/29</span>
+                <span class='fraction'>24/30</span>
             </div>
         
             
@@ -115,9 +115,7 @@
 <a name='L56'></a><a href='#L56'>56</a>
 <a name='L57'></a><a href='#L57'>57</a>
 <a name='L58'></a><a href='#L58'>58</a>
-<a name='L59'></a><a href='#L59'>59</a>
-<a name='L60'></a><a href='#L60'>60</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L59'></a><a href='#L59'>59</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -131,23 +129,25 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -162,42 +162,42 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">var HomepageController = {
-&nbsp;
   CreateMember: (memberModel) =&gt; (request, response) =&gt; {
     var member = new memberModel({
       name: request.body.name,
       role: request.body.role,
       address: request.body.address,
       telephone: request.body.telephone,
-      availability: { },
+      availability: {},
     });
 &nbsp;
     member.save(<span class="fstat-no" title="function not covered" >(e</span>rr) =&gt; {
-<span class="cstat-no" title="statement not covered" >      if (err) { <span class="cstat-no" title="statement not covered" >console.log(err) </span>}</span>
-<span class="cstat-no" title="statement not covered" >      response.send({message: "ok"});</span>
+<span class="cstat-no" title="statement not covered" >      if (err) {</span>
+<span class="cstat-no" title="statement not covered" >        console.log(err);</span>
+      }
+<span class="cstat-no" title="statement not covered" >      response.send({ message: "ok" });</span>
     });
   },
 &nbsp;
   DeleteMember: (memberModel) =&gt; (request, response) =&gt; {
-    console.log("we are in delete member function")
     var id = request.body.id;
-    memberModel.deleteOne({"_id" : id}, <span class="fstat-no" title="function not covered" >(e</span>rr) =&gt; {
-<span class="cstat-no" title="statement not covered" >      if(err) { <span class="cstat-no" title="statement not covered" >throw err; </span>}</span>
-<span class="cstat-no" title="statement not covered" >      response.send({message: 'success!'});</span>
+    memberModel.deleteOne({ _id: id }, <span class="fstat-no" title="function not covered" >(e</span>rr) =&gt; {
+<span class="cstat-no" title="statement not covered" >      if (err) {</span>
+<span class="cstat-no" title="statement not covered" >        throw err;</span>
+      }
+<span class="cstat-no" title="statement not covered" >      response.send({ message: "success!" });</span>
     });
   },
 &nbsp;
@@ -206,8 +206,7 @@
 &nbsp;
     memberModel.find((err, result) =&gt; {
       result.forEach((member) =&gt; {
-&nbsp;
-        if(member.role === 'driver'){
+        if (member.role === "driver") {
           drivers.push(member);
         }
       });
@@ -221,17 +220,15 @@
 &nbsp;
     memberModel.find((err, result) =&gt; {
       result.forEach((member) =&gt; {
-&nbsp;
-        if(member.role === 'guest'){
+        if (member.role === "guest") {
           guests.push(member);
         }
       });
       response.send(guests);
-      console.log("guest response",guests);
+      console.log("guest response", guests);
     });
-  }
-&nbsp;
-}
+  },
+};
 &nbsp;
 module.exports = HomepageController;
 &nbsp;</pre></td></tr></table></pre>
@@ -241,7 +238,7 @@ module.exports = HomepageController;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Wed Jul 01 2020 16:14:50 GMT+0100 (GMT+01:00)
+                at Wed Jul 01 2020 16:42:17 GMT+0100 (GMT+01:00)
             </div>
         </div>
         <script src="../prettify.js"></script>
