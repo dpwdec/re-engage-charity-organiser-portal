@@ -71,4 +71,13 @@ describe("Homepage Controller", () => {
       expect(memberModelMock.deleteOne).toHaveBeenCalled();
     });
   });
+
+  describe("Index", () => {
+    it("checks home page", () => {
+      var req = "";
+      var res = { render: jest.fn() };
+      index = HomepageController.Index(req, res);
+      expect(res.render).toHaveBeenCalledWith("index");
+    });
+  });
 });

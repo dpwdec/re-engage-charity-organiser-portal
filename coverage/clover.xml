@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1593618137410" clover="3.2.0">
-  <project timestamp="1593618137410" name="All files">
-    <metrics statements="385" coveredstatements="360" conditionals="68" coveredconditionals="55" methods="107" coveredmethods="101" elements="560" coveredelements="516" complexity="0" loc="385" ncloc="385" packages="5" files="11" classes="11"/>
+<coverage generated="1593619160809" clover="3.2.0">
+  <project timestamp="1593619160810" name="All files">
+    <metrics statements="370" coveredstatements="350" conditionals="68" coveredconditionals="55" methods="103" coveredmethods="97" elements="541" coveredelements="502" complexity="0" loc="370" ncloc="370" packages="5" files="10" classes="10"/>
     <package name="controllers">
-      <metrics statements="44" coveredstatements="38" conditionals="14" coveredconditionals="10" methods="18" coveredmethods="16"/>
+      <metrics statements="45" coveredstatements="39" conditionals="14" coveredconditionals="10" methods="19" coveredmethods="17"/>
       <file name="admin.js" path="/Users/tanil/Desktop/RubyProjects/Portfolio/week11-12/charity-apr2020/controllers/admin.js">
         <metrics statements="14" coveredstatements="14" conditionals="6" coveredconditionals="6" methods="4" coveredmethods="4"/>
         <line num="1" count="1" type="stmt"/>
@@ -22,7 +22,7 @@
         <line num="38" count="1" type="stmt"/>
       </file>
       <file name="homepage.js" path="/Users/tanil/Desktop/RubyProjects/Portfolio/week11-12/charity-apr2020/controllers/homepage.js">
-        <metrics statements="30" coveredstatements="24" conditionals="8" coveredconditionals="4" methods="14" coveredmethods="12"/>
+        <metrics statements="31" coveredstatements="25" conditionals="8" coveredconditionals="4" methods="15" coveredmethods="13"/>
         <line num="1" count="2" type="stmt"/>
         <line num="2" count="2" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -52,13 +52,14 @@
         <line num="49" count="1" type="stmt"/>
         <line num="52" count="1" type="stmt"/>
         <line num="53" count="1" type="stmt"/>
-        <line num="58" count="2" type="stmt"/>
+        <line num="58" count="1" type="stmt"/>
+        <line num="62" count="2" type="stmt"/>
       </file>
     </package>
     <package name="controllers.pairs">
-      <metrics statements="312" coveredstatements="294" conditionals="54" coveredconditionals="45" methods="84" coveredmethods="81"/>
+      <metrics statements="297" coveredstatements="283" conditionals="54" coveredconditionals="45" methods="80" coveredmethods="76"/>
       <file name="_geneticPairs.js" path="/Users/tanil/Desktop/RubyProjects/Portfolio/week11-12/charity-apr2020/controllers/pairs/_geneticPairs.js">
-        <metrics statements="117" coveredstatements="113" conditionals="26" coveredconditionals="20" methods="31" coveredmethods="29"/>
+        <metrics statements="117" coveredstatements="113" conditionals="26" coveredconditionals="20" methods="31" coveredmethods="28"/>
         <line num="1" count="1" type="stmt"/>
         <line num="5" count="2" type="stmt"/>
         <line num="6" count="2" type="stmt"/>
@@ -79,22 +80,22 @@
         <line num="44" count="2" type="stmt"/>
         <line num="45" count="2" type="stmt"/>
         <line num="47" count="2" type="stmt"/>
-        <line num="48" count="3" type="cond" truecount="2" falsecount="0"/>
-        <line num="49" count="2" type="cond" truecount="1" falsecount="1"/>
-        <line num="51" count="2" type="stmt"/>
-        <line num="53" count="2" type="stmt"/>
-        <line num="55" count="2" type="stmt"/>
-        <line num="57" count="4" type="stmt"/>
-        <line num="59" count="4" type="stmt"/>
-        <line num="60" count="2" type="stmt"/>
+        <line num="48" count="4" type="cond" truecount="2" falsecount="0"/>
+        <line num="49" count="3" type="cond" truecount="1" falsecount="1"/>
+        <line num="51" count="3" type="stmt"/>
+        <line num="53" count="3" type="stmt"/>
+        <line num="55" count="3" type="stmt"/>
+        <line num="57" count="5" type="stmt"/>
+        <line num="59" count="5" type="stmt"/>
+        <line num="60" count="3" type="stmt"/>
         <line num="63" count="1" type="cond" truecount="1" falsecount="1"/>
         <line num="64" count="1" type="stmt"/>
         <line num="65" count="1" type="stmt"/>
         <line num="66" count="1" type="stmt"/>
         <line num="67" count="1" type="stmt"/>
         <line num="68" count="1" type="stmt"/>
-        <line num="72" count="3" type="stmt"/>
-        <line num="74" count="3" type="cond" truecount="4" falsecount="0"/>
+        <line num="72" count="4" type="stmt"/>
+        <line num="74" count="4" type="cond" truecount="4" falsecount="0"/>
         <line num="75" count="2" type="stmt"/>
         <line num="79" count="2" type="stmt"/>
         <line num="80" count="2" type="stmt"/>
@@ -111,12 +112,12 @@
         <line num="105" count="1" type="stmt"/>
         <line num="107" count="1" type="stmt"/>
         <line num="110" count="1" type="stmt"/>
-        <line num="114" count="3" type="stmt"/>
-        <line num="115" count="5" type="cond" truecount="4" falsecount="0"/>
+        <line num="114" count="4" type="stmt"/>
+        <line num="115" count="7" type="cond" truecount="4" falsecount="0"/>
         <line num="116" count="4" type="stmt"/>
-        <line num="118" count="1" type="stmt"/>
-        <line num="122" count="3" type="stmt"/>
-        <line num="124" count="3" type="stmt"/>
+        <line num="118" count="3" type="stmt"/>
+        <line num="122" count="4" type="stmt"/>
+        <line num="124" count="4" type="stmt"/>
         <line num="128" count="0" type="stmt"/>
         <line num="129" count="0" type="cond" truecount="0" falsecount="4"/>
         <line num="130" count="0" type="stmt"/>
@@ -240,44 +241,44 @@
         <line num="28" count="506" type="stmt"/>
         <line num="29" count="1512" type="stmt"/>
         <line num="30" count="1512" type="stmt"/>
-        <line num="39" count="92517" type="stmt"/>
-        <line num="40" count="73731" type="cond" truecount="2" falsecount="0"/>
+        <line num="39" count="92822" type="stmt"/>
+        <line num="40" count="73957" type="cond" truecount="2" falsecount="0"/>
         <line num="53" count="50003" type="stmt"/>
         <line num="54" count="50003" type="stmt"/>
         <line num="56" count="50003" type="stmt"/>
         <line num="57" count="50003" type="stmt"/>
         <line num="59" count="50003" type="stmt"/>
-        <line num="60" count="158034" type="cond" truecount="2" falsecount="0"/>
-        <line num="61" count="99241" type="cond" truecount="2" falsecount="0"/>
-        <line num="64" count="52278" type="stmt"/>
-        <line num="67" count="52278" type="stmt"/>
-        <line num="69" count="52278" type="stmt"/>
-        <line num="71" count="104866" type="stmt"/>
-        <line num="73" count="104867" type="stmt"/>
-        <line num="75" count="52278" type="stmt"/>
-        <line num="78" count="58793" type="cond" truecount="2" falsecount="0"/>
-        <line num="79" count="40235" type="stmt"/>
-        <line num="80" count="40235" type="stmt"/>
-        <line num="81" count="40235" type="stmt"/>
-        <line num="82" count="80339" type="stmt"/>
-        <line num="83" count="80341" type="stmt"/>
-        <line num="84" count="40235" type="stmt"/>
-        <line num="88" count="158034" type="stmt"/>
-        <line num="89" count="158034" type="cond" truecount="4" falsecount="0"/>
+        <line num="60" count="158403" type="cond" truecount="2" falsecount="0"/>
+        <line num="61" count="99417" type="cond" truecount="2" falsecount="0"/>
+        <line num="64" count="52420" type="stmt"/>
+        <line num="67" count="52420" type="stmt"/>
+        <line num="69" count="52420" type="stmt"/>
+        <line num="71" count="105113" type="stmt"/>
+        <line num="73" count="105114" type="stmt"/>
+        <line num="75" count="52420" type="stmt"/>
+        <line num="78" count="58986" type="cond" truecount="2" falsecount="0"/>
+        <line num="79" count="40398" type="stmt"/>
+        <line num="80" count="40398" type="stmt"/>
+        <line num="81" count="40398" type="stmt"/>
+        <line num="82" count="80694" type="stmt"/>
+        <line num="83" count="80696" type="stmt"/>
+        <line num="84" count="40398" type="stmt"/>
+        <line num="88" count="158403" type="stmt"/>
+        <line num="89" count="158403" type="cond" truecount="4" falsecount="0"/>
         <line num="90" count="50003" type="stmt"/>
         <line num="94" count="50003" type="stmt"/>
-        <line num="95" count="57497" type="stmt"/>
-        <line num="96" count="57497" type="stmt"/>
-        <line num="97" count="57497" type="stmt"/>
+        <line num="95" count="57192" type="stmt"/>
+        <line num="96" count="57192" type="stmt"/>
+        <line num="97" count="57192" type="stmt"/>
         <line num="100" count="50003" type="stmt"/>
-        <line num="107" count="59010" type="stmt"/>
-        <line num="108" count="177017" type="cond" truecount="2" falsecount="0"/>
-        <line num="109" count="59010" type="stmt"/>
-        <line num="110" count="177017" type="cond" truecount="2" falsecount="0"/>
-        <line num="111" count="59010" type="stmt"/>
-        <line num="112" count="59010" type="stmt"/>
-        <line num="113" count="59010" type="stmt"/>
-        <line num="118" count="59010" type="stmt"/>
+        <line num="107" count="58705" type="stmt"/>
+        <line num="108" count="176102" type="cond" truecount="2" falsecount="0"/>
+        <line num="109" count="58705" type="stmt"/>
+        <line num="110" count="176102" type="cond" truecount="2" falsecount="0"/>
+        <line num="111" count="58705" type="stmt"/>
+        <line num="112" count="58705" type="stmt"/>
+        <line num="113" count="58705" type="stmt"/>
+        <line num="118" count="58705" type="stmt"/>
         <line num="126" count="50511" type="stmt"/>
         <line num="127" count="50511" type="stmt"/>
         <line num="128" count="151533" type="stmt"/>
@@ -366,24 +367,6 @@
         <line num="133" count="1" type="stmt"/>
         <line num="137" count="1" type="stmt"/>
       </file>
-      <file name="randomPairs.js" path="/Users/tanil/Desktop/RubyProjects/Portfolio/week11-12/charity-apr2020/controllers/pairs/randomPairs.js">
-        <metrics statements="15" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="4" count="4" type="stmt"/>
-        <line num="7" count="4" type="stmt"/>
-        <line num="8" count="9" type="stmt"/>
-        <line num="14" count="4" type="stmt"/>
-        <line num="18" count="1" type="stmt"/>
-        <line num="19" count="1" type="stmt"/>
-        <line num="20" count="1" type="stmt"/>
-        <line num="24" count="2" type="stmt"/>
-        <line num="25" count="0" type="stmt"/>
-        <line num="26" count="0" type="stmt"/>
-        <line num="27" count="0" type="stmt"/>
-        <line num="28" count="0" type="stmt"/>
-        <line num="30" count="2" type="stmt"/>
-        <line num="34" count="1" type="stmt"/>
-      </file>
     </package>
     <package name="models">
       <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
@@ -403,20 +386,19 @@
       </file>
     </package>
     <package name="routes">
-      <metrics statements="11" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+      <metrics statements="10" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="index.js" path="/Users/tanil/Desktop/RubyProjects/Portfolio/week11-12/charity-apr2020/routes/index.js">
-        <metrics statements="11" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <metrics statements="10" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
         <line num="7" count="1" type="stmt"/>
-        <line num="8" count="0" type="stmt"/>
-        <line num="11" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
         <line num="12" count="1" type="stmt"/>
-        <line num="13" count="1" type="stmt"/>
-        <line num="14" count="1" type="stmt"/>
-        <line num="17" count="1" type="stmt"/>
       </file>
     </package>
     <package name="spec">

@@ -32,7 +32,9 @@
   "jest": {
     "testPathIgnorePatterns": [
       "/node_modules/",
-      "views"
+      "views",
+      "spec/pairs/randomPairs.spec.js",
+      "controllers/pairs/randomPairs.js"
     ],
     "collectCoverage": true,
     "coverageDirectory": "./coverage"
