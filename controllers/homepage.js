@@ -22,6 +22,7 @@ var HomepageController = {
     var id = request.body.id;
     Member.deleteOne({"_id" : id}, function(err){
       if(err) { throw err; }
+      response.send({message: 'success!'});
     });
   },
 
