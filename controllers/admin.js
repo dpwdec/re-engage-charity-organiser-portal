@@ -2,10 +2,8 @@ let adminController = {
   Login: (adminModel) => (req, res) => {
     const { body } = req;
     const { adminName, password } = body;
-    console.log(body);
 
     adminModel.findOne({ adminName: adminName }, (err, existingAdmin) => {
-      console.log(existingAdmin);
       if (err) {
         res.send({
           success: false,
