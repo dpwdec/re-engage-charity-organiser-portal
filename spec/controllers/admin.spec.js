@@ -1,5 +1,4 @@
 let AdminController = require("../../controllers/admin");
-const { result } = require("lodash");
 
 describe("Admin Controller", () => {
   describe("Login", () => {
@@ -80,6 +79,14 @@ describe("Admin Controller", () => {
         success: false,
         message: "There is no admin with that adminName",
       });
+    });
+  });
+  describe("Index", () => {
+    it("checks home page", () => {
+      var req = "";
+      var res = { render: jest.fn() };
+      index = AdminController.Index(req, res);
+      expect(res.render).toHaveBeenCalledWith("admin");
     });
   });
 });
