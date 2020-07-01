@@ -37,6 +37,9 @@ class Pairing extends React.Component {
     this.setState({
       pairingType: event.target.value
     });
+    this.setState({
+      pairs: [],
+    });
   }
 
   render() {
