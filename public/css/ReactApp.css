@@ -236,15 +236,14 @@ header .sup {
     width: 100%;
     position: absolute;
   }
-  .tabs label.tab-label-1, .tabs input.tab-label-1, .tabs label#tab-1, .tabs input#tab-1 {
+  .tabs label.tab-label-1, .tabs input.tab-label-1, .tabs label#home-tab .tabs input#tab-1 {
     width: 88%;
     top: 150px;
     left: 0;
     height: 50px;
     z-index: 4 !important;
   }
-  .tabs label.tab-label-2, .tabs input.tab-label-2, .tabs label#pairs-tab, .tabs input#pairs-tab {
-    width: 92%;
+  .tabs label.pairs-tab, .tabs input.pairs-tab, .tabs label#pairs-tab, .tabs input#pairs-tab {
     top: 100px;
     left: 0;
     height: 100px;
