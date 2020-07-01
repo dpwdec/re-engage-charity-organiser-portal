@@ -10,9 +10,12 @@ class Contact extends React.Component {
   }
 
   componentDidMount() {
+    this.updateMembers();
+  }
+
+  updateMembers = () => {
     this.fetchMembers("driver");
     this.fetchMembers("guest");
-    // this.fetchGuests("/guests");
   }
 
   fetchMembers = (role) => {
@@ -20,11 +23,8 @@ class Contact extends React.Component {
     .then((response) => response.json())
     .then((data) => {
       var newState = {}
-      newState[role + "s"] = data
+      newState[role + "s"] = this.sortAtoZ(data)
       this.setState(newState);
-      // this.setState({
-      //   drivers: this.sortDriversAtoZ(),
-      // });
     });
   }
 
@@ -43,14 +43,7 @@ class Contact extends React.Component {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newMember),
     })
-    .then((response) => response.json())
-    .then(() => {
-      this.setState({
-        message: "Success!",
-      });
-      this.fetchMembers('guest');
-      this.fetchMembers('driver');
-    })
+    .then((response) => { this.updateMembers() })
   };
 
   deleteMember = (event) => {
@@ -64,31 +57,17 @@ class Contact extends React.Component {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(member),
     })
-    .then((response) => response.json())
-    .then((result) => {
-      this.setState({
-        message: "Success!",
-      });
-      this.fetchMembers('guest');
-      this.fetchMembers('driver');
-    });
+    .then((response) => { this.updateMembers() })
   }
 
-  sortGuestsAtoZ() {
-    return this.state.guests.sort(function (memberA, memberB) {
+
+  sortAtoZ(array) {
+    return array.sort(function (memberA, memberB) {
       var memberA = memberA.name.toUpperCase();
       var memberB = memberB.name.toUpperCase();
       return memberA < memberB ? -1 : memberA > memberB ? 1 : 0;
     });
   }
-
-  sortDriversAtoZ = () => {
-    return this.state.drivers.sort(function (memberA, memberB) {
-      var memberA = memberA.name.toUpperCase();
-      var memberB = memberB.name.toUpperCase();
-      return memberA < memberB ? -1 : memberA > memberB ? 1 : 0;
-    });
-  };
 
   onFormChange = (event) => {
     this.setState({
@@ -104,7 +83,6 @@ class Contact extends React.Component {
           member={this.state.member}
           mySubmitHandler={this.mySubmitHandler}
           onFormChange={this.onFormChange}
-          updateState={this.updateState}
         />
         <DriverList
           drivers={this.state.drivers}
