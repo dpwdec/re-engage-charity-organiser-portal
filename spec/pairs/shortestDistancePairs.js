@@ -1,4 +1,4 @@
-var ShortestDistancePairs = require("../controllers/pairs/shortestDistancePairs");
+var ShortestDistancePairs = require("../../controllers/pairs/shortestDistancePairs");
 
 describe('Pair Controller', () => {
 

@@ -1,4 +1,4 @@
-var RandomPairs = require('../controllers/pairs/randomPairs.js');
+var RandomPairs = require('../../controllers/pairs/randomPairs');
 
 describe('Pair Controller', () => {
   describe('.generate', () => {

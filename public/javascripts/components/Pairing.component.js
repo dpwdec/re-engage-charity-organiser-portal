@@ -4,11 +4,12 @@ class Pairing extends React.Component {
     this.state = {
       pairs: [],
       month: "",
+      pairingType: 'shortest'
     };
   }
 
   generatePairs = () => {
-    fetch(`/pairs?month=${this.state.month}`)
+    fetch(`/pairs?month=${this.state.month}&pairingType=${this.state.pairingType}`)
       .then((response) => {
         return response.json();
       })
@@ -18,6 +19,7 @@ class Pairing extends React.Component {
         });
       });
   };
+
   handleChangeMonth = (e) => {
     var today = new Date();
     var yyyy = today.getFullYear();
@@ -29,6 +31,16 @@ class Pairing extends React.Component {
       pairs: [],
     });
   };
+
+  setPairingType = (event) => {
+    var eventOutput = event.target.value;
+    this.setState({
+      pairingType: event.target.value
+    });
+    this.setState({
+      pairs: [],
+    });
+  }
 
   render() {
     return (
@@ -50,6 +62,11 @@ class Pairing extends React.Component {
           <option value="Oct ">October</option>
           <option value="Nov ">November</option>
           <option value="Dec ">December</option>
+        </select>
+        <select name="pairingType" onChange={this.setPairingType}>
+          <option value="shortest">Shortest</option>
+          <option value="average">Average</option>
+          <option value="smart">Smart</option>
         </select>
         <div className="table">
           <table>
