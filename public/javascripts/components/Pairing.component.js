@@ -3,13 +3,13 @@ class Pairing extends React.Component {
     super();
     this.state = {
       pairs: [],
+      month: "",
       pairingType: 'shortest'
     };
   }
 
-  generatePairs = (event) => {
-    event.preventDefault();
-    fetch(`/pairs?pairingType=${this.state.pairingType}`)
+  generatePairs = () => {
+    fetch(`/pairs?month=${this.state.month}&pairingType=${this.state.pairingType}`)
       .then((response) => {
         return response.json();
       })
@@ -18,6 +18,18 @@ class Pairing extends React.Component {
           pairs: data.pairs,
         });
       });
+  };
+
+  handleChangeMonth = (e) => {
+    var today = new Date();
+    var yyyy = today.getFullYear();
+
+    this.setState({
+      month: e.target.value + yyyy,
+    });
+    this.setState({
+      pairs: [],
+    });
   };
 
   setPairingType = (event) => {
@@ -30,17 +42,38 @@ class Pairing extends React.Component {
   render() {
     return (
       <div>
-        <form action="" onSubmit={this.generatePairs}>
+        <button id="generate-pairs" onClick={this.generatePairs}>
+          Generate
+        </button>
+        <select id="month" onChange={this.handleChangeMonth}>
+          <option>please select month</option>
+          <option value="Jan ">January</option>
+          <option value="Feb ">February</option>
+          <option value="Mar ">March</option>
+          <option value="Apr ">April</option>
+          <option value="May ">May</option>
+          <option value="Jun ">June</option>
+          <option value="Jul ">July</option>
+          <option value="Aug ">August</option>
+          <option value="Sept ">September</option>
+          <option value="Oct ">October</option>
+          <option value="Nov ">November</option>
+          <option value="Dec ">December</option>
+        </select>
         <select name="pairingType" onChange={this.setPairingType}>
-            <option value="shortest">Shortest</option>
-            <option value="average">Average</option>
-            <option value="smart">Smart</option>
-          </select>
-          <input type="submit" value="Generate"></input>
-        </form>
+          <option value="shortest">Shortest</option>
+          <option value="average">Average</option>
+          <option value="smart">Smart</option>
+        </select>
         <div className="table">
           <table>
-            <thead></thead>
+            <thead>
+              <td>No.</td>
+              <td>Driver</td>
+              <td>Guest</td>
+              <td>Distance</td>
+              <td>R.Colour</td>
+            </thead>
             <tbody>
               {this.state.pairs.map((pair) => (
                 <PairItem

@@ -29,8 +29,6 @@ body {
   border-top-right-radius: 15px; 
 }
 
-
-
 .tab:focus {
   outline: none;
 }
