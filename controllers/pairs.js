@@ -44,7 +44,7 @@ var PairController = {
         availableGuests.forEach((guest) => {
           var member = {
             name: guest.name,
-            //telephone: guest.telephone,
+            telephone: guest.telephone,
             drivers: [],
           };
 

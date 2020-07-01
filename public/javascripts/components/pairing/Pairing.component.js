@@ -85,7 +85,7 @@ class Pairing extends React.Component {
                 <PairItem
                   driver={pair.driver}
                   guest={pair.guest}
-                  guestTelephone={pair.telephone}
+                  telephone={pair.telephone}
                   distance={pair.distance}
                   id={pair.id}
                   key={pair.id}
