@@ -18,7 +18,6 @@ var HomepageController = {
   },
 
   DeleteMember: (request, response) => {
-    console.log("we are in delete member function")
     var id = request.body.id;
     Member.deleteOne({"_id" : id}, function(err){
       if(err) { throw err; }
@@ -29,7 +28,6 @@ var HomepageController = {
   Members:(request, response) => {
     Member.find({role: request.query.role},(err, result) => {
       response.send(result);
-      console.log("driver response");
     });
   }
 

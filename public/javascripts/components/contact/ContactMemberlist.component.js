@@ -2,7 +2,7 @@ function MemberList(props) {
   return (
     <div>
       <h2>List of {props.role}</h2>
-      <div className={props.role + "s-list col-5"}>
+      <div className={props.role + "-list col-5"}>
         <div className="headers row">
           <div className="name">Name</div>
           <div className="name">Address</div>
