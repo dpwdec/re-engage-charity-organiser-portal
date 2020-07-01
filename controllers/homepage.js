@@ -3,7 +3,6 @@ var Member = require('../models/member');
 var HomepageController = {
 
   CreateMember: (request, response) => {
-
     var member = new Member({
       name: request.body.name,
       role: request.body.role,
@@ -15,6 +14,15 @@ var HomepageController = {
     member.save((err) => {
       if (err) { console.log(err) }
       // sendFlashMessage(response, request, '/', 'Member saved!');
+      response.send({message: "ok"});
+    });
+  },
+
+  DeleteMember: (request, response) => {
+    console.log("we are in delete member function")
+    var id = request.body.id;
+    Member.deleteOne({"_id" : id}, function(err){
+      if(err) { throw err; }
     });
   },
 
@@ -22,15 +30,12 @@ var HomepageController = {
     let drivers = [];
 
     Member.find((err, result) => {
-      // console.log(result)
       result.forEach((member) => {
 
         if(member.role === 'driver'){
           drivers.push(member);
         }
       });
-      // console.log("Drivers only")
-      // console.log(drivers)
       response.send(drivers);
     });
   },
@@ -39,18 +44,16 @@ var HomepageController = {
     let guests = [];
 
     Member.find((err, result) => {
-      // console.log(result)
       result.forEach((member) => {
 
         if(member.role === 'guest'){
           guests.push(member);
         }
       });
-      // console.log("Guests only")
-      // console.log(guests)
       response.send(guests);
     });
-  },
+  }
+
 }
 
 // var sendFlashMessage = (response, request, route, message) => {

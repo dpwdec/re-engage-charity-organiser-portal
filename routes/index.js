@@ -10,5 +10,7 @@ router.get('/', function(req, res, next) {
 router.get('/drivers', HomepageController.DriverList);
 router.get('/guests', HomepageController.GuestList);
 router.post('/createMember', HomepageController.CreateMember);
+router.post('/deleteMember', HomepageController.DeleteMember);
+
 
 module.exports = router;
