@@ -59,10 +59,9 @@ class Contact extends React.Component {
       this.setState({
         message: "Success!",
       });
+      this.fetchGuests();
+      this.fetchDrivers();
     })
-  
-    this.fetchGuests();
-    this.fetchDrivers();
   };
 
   deleteMember = (event) => {
@@ -81,10 +80,9 @@ class Contact extends React.Component {
       this.setState({
         message: "Success!",
       });
+      this.fetchGuests();
+      this.fetchDrivers();
     });
-
-    this.fetchGuests()
-    this.fetchDrivers()
   }
 
   sortGuestsAtoZ() {
