@@ -84,12 +84,14 @@ class Contact extends React.Component {
           mySubmitHandler={this.mySubmitHandler}
           onFormChange={this.onFormChange}
         />
-        <DriverList
-          drivers={this.state.drivers}
+         <MemberList
+          members={this.state.drivers}
+          role={"driver"}
           deleteMember={this.deleteMember}
         />
-        <GuestList
-          guests={this.state.guests}
+        <MemberList
+          members={this.state.guests}
+          role={"guest"}
           deleteMember={this.deleteMember}
         />
       </div>
