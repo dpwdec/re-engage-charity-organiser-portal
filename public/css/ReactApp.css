@@ -109,7 +109,7 @@ header .sup {
   left: 75%;
 }
 .tabs label {
-  background: #3f6b9d;
+  background: #e74c3c;
   color: #fefefe;
   font-size: 15px;
   line-height: 50px;
@@ -148,15 +148,13 @@ header .sup {
 .tabs label:first-of-type {
   z-index: 4;
 }
-.tab-label-2 {
+.tab-pairs-tab{
   z-index: 4;
 }
-.tab-label-3 {
+.tab-contact-tab {
   z-index: 3;
 }
-.tab-label-4 {
-  z-index: 2;
-}
+
 .tabs input.active+ label {
   background: #fefefe;
   color: #1a1a1a;
@@ -201,19 +199,7 @@ header .sup {
   height: auto;
   padding: 5%;
 }
-.content div h2 {
-  color: #3f6b9d;
-}
-.content div p {
-  font-size: 14px;
-  line-height: 22px;
-  font-style: italic;
-  text-align: left;
-  margin: 0;
-  color: #777;
-  padding-left: 15px;
-  border-left: 8px solid rgba(63, 148, 148, 0.1);
-}
+
 @media screen and (min-width: 768px) {
   .tabs .active + label {
     top: -5px;
