@@ -28,5 +28,13 @@
   "devDependencies": {
     "cypress": "^4.8.0",
     "jest": "^25.5.4"
+  },
+  "jest": {
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "views"
+    ],
+    "collectCoverage": true,
+    "coverageDirectory": "./coverage"
   }
 }

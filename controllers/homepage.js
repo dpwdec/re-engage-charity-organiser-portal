@@ -1,39 +1,37 @@
-var Member = require('../models/member');
-
 var HomepageController = {
-
-  CreateMember: (request, response) => {
-    var member = new Member({
+  CreateMember: (memberModel) => (request, response) => {
+    var member = new memberModel({
       name: request.body.name,
       role: request.body.role,
       address: request.body.address,
       telephone: request.body.telephone,
-      availability: { },
+      availability: {},
     });
 
     member.save((err) => {
-      if (err) { console.log(err) }
-      response.send({message: "ok"});
+      if (err) {
+        console.log(err);
+      }
+      response.send({ message: "ok" });
     });
   },
 
-  DeleteMember: (request, response) => {
-    console.log("we are in delete member function")
+  DeleteMember: (memberModel) => (request, response) => {
     var id = request.body.id;
-    Member.deleteOne({"_id" : id}, function(err){
-      if(err) { throw err; }
-      response.send({message: 'success!'});
+    memberModel.deleteOne({ _id: id }, (err) => {
+      if (err) {
+        throw err;
+      }
+      response.send({ message: "success!" });
     });
   },
 
-  DriverList: (request, response) => {
-    console.log("driver request", request.body.telephone);
+  DriverList: (memberModel) => (request, response) => {
     let drivers = [];
 
-    Member.find((err, result) => {
+    memberModel.find((err, result) => {
       result.forEach((member) => {
-
-        if(member.role === 'driver'){
+        if (member.role === "driver") {
           drivers.push(member);
         }
       });
@@ -42,22 +40,23 @@ var HomepageController = {
     });
   },
 
-  GuestList: (request, response) => {
-    console.log("guest request", request.body.telephone);
+  GuestList: (memberModel) => (request, response) => {
     let guests = [];
 
-    Member.find((err, result) => {
+    memberModel.find((err, result) => {
       result.forEach((member) => {
-
-        if(member.role === 'guest'){
+        if (member.role === "guest") {
           guests.push(member);
         }
       });
       response.send(guests);
-      console.log("guest response",guests);
+      console.log("guest response", guests);
     });
-  }
+  },
 
-}
+  Index: (req, res, next) => {
+    res.render("index");
+  },
+};
 
 module.exports = HomepageController;
