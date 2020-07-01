@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1593613398704" clover="3.2.0">
-  <project timestamp="1593613398705" name="All files">
-    <metrics statements="386" coveredstatements="51" conditionals="68" coveredconditionals="1" methods="107" coveredmethods="7" elements="561" coveredelements="59" complexity="0" loc="386" ncloc="386" packages="5" files="11" classes="11"/>
+<coverage generated="1593613903728" clover="3.2.0">
+  <project timestamp="1593613903728" name="All files">
+    <metrics statements="386" coveredstatements="53" conditionals="68" coveredconditionals="3" methods="107" coveredmethods="7" elements="561" coveredelements="63" complexity="0" loc="386" ncloc="386" packages="5" files="11" classes="11"/>
     <package name="controllers">
-      <metrics statements="45" coveredstatements="16" conditionals="14" coveredconditionals="1" methods="18" coveredmethods="7"/>
-      <file name="admin.js" path="/Users/student/Projects/week11/charity-apr2020/controllers/admin.js">
-        <metrics statements="16" coveredstatements="10" conditionals="6" coveredconditionals="1" methods="4" coveredmethods="3"/>
+      <metrics statements="45" coveredstatements="18" conditionals="14" coveredconditionals="3" methods="18" coveredmethods="7"/>
+      <file name="admin.js" path="/Users/tanil/Desktop/RubyProjects/Portfolio/week11-12/charity-apr2020/controllers/admin.js">
+        <metrics statements="16" coveredstatements="12" conditionals="6" coveredconditionals="3" methods="4" coveredmethods="3"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -14,16 +14,16 @@
         <line num="7" count="1" type="stmt"/>
         <line num="8" count="1" type="stmt"/>
         <line num="9" count="1" type="cond" truecount="1" falsecount="1"/>
-        <line num="10" count="1" type="stmt"/>
-        <line num="14" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="15" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="16" count="0" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="14" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="15" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="16" count="1" type="stmt"/>
         <line num="22" count="0" type="stmt"/>
         <line num="28" count="0" type="stmt"/>
         <line num="36" count="0" type="stmt"/>
         <line num="40" count="1" type="stmt"/>
       </file>
-      <file name="homepage.js" path="/Users/student/Projects/week11/charity-apr2020/controllers/homepage.js">
+      <file name="homepage.js" path="/Users/tanil/Desktop/RubyProjects/Portfolio/week11-12/charity-apr2020/controllers/homepage.js">
         <metrics statements="29" coveredstatements="6" conditionals="8" coveredconditionals="0" methods="14" coveredmethods="4"/>
         <line num="1" count="2" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -58,7 +58,7 @@
     </package>
     <package name="controllers.pairs">
       <metrics statements="312" coveredstatements="14" conditionals="54" coveredconditionals="0" methods="84" coveredmethods="0"/>
-      <file name="_geneticPairs.js" path="/Users/student/Projects/week11/charity-apr2020/controllers/pairs/_geneticPairs.js">
+      <file name="_geneticPairs.js" path="/Users/tanil/Desktop/RubyProjects/Portfolio/week11-12/charity-apr2020/controllers/pairs/_geneticPairs.js">
         <metrics statements="117" coveredstatements="3" conditionals="26" coveredconditionals="0" methods="31" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="5" count="0" type="stmt"/>
@@ -178,7 +178,7 @@
         <line num="240" count="0" type="stmt"/>
         <line num="248" count="1" type="stmt"/>
       </file>
-      <file name="averagePairs.js" path="/Users/student/Projects/week11/charity-apr2020/controllers/pairs/averagePairs.js">
+      <file name="averagePairs.js" path="/Users/tanil/Desktop/RubyProjects/Portfolio/week11-12/charity-apr2020/controllers/pairs/averagePairs.js">
         <metrics statements="46" coveredstatements="4" conditionals="6" coveredconditionals="0" methods="12" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -227,7 +227,7 @@
         <line num="99" count="0" type="stmt"/>
         <line num="103" count="1" type="stmt"/>
       </file>
-      <file name="pairingGenome.js" path="/Users/student/Projects/week11/charity-apr2020/controllers/pairs/pairingGenome.js">
+      <file name="pairingGenome.js" path="/Users/tanil/Desktop/RubyProjects/Portfolio/week11-12/charity-apr2020/controllers/pairs/pairingGenome.js">
         <metrics statements="70" coveredstatements="2" conditionals="18" coveredconditionals="0" methods="19" coveredmethods="0"/>
         <line num="1" count="2" type="stmt"/>
         <line num="5" count="0" type="stmt"/>
@@ -300,7 +300,7 @@
         <line num="155" count="0" type="stmt"/>
         <line num="159" count="2" type="stmt"/>
       </file>
-      <file name="pairingPopulation.js" path="/Users/student/Projects/week11/charity-apr2020/controllers/pairs/pairingPopulation.js">
+      <file name="pairingPopulation.js" path="/Users/tanil/Desktop/RubyProjects/Portfolio/week11-12/charity-apr2020/controllers/pairs/pairingPopulation.js">
         <metrics statements="64" coveredstatements="3" conditionals="4" coveredconditionals="0" methods="18" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="5" count="0" type="stmt"/>
@@ -367,7 +367,7 @@
         <line num="133" count="0" type="stmt"/>
         <line num="137" count="1" type="stmt"/>
       </file>
-      <file name="randomPairs.js" path="/Users/student/Projects/week11/charity-apr2020/controllers/pairs/randomPairs.js">
+      <file name="randomPairs.js" path="/Users/tanil/Desktop/RubyProjects/Portfolio/week11-12/charity-apr2020/controllers/pairs/randomPairs.js">
         <metrics statements="15" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="4" count="0" type="stmt"/>
@@ -388,14 +388,14 @@
     </package>
     <package name="models">
       <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-      <file name="admin.js" path="/Users/student/Projects/week11/charity-apr2020/models/admin.js">
+      <file name="admin.js" path="/Users/tanil/Desktop/RubyProjects/Portfolio/week11-12/charity-apr2020/models/admin.js">
         <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="14" count="1" type="stmt"/>
         <line num="16" count="1" type="stmt"/>
       </file>
-      <file name="member.js" path="/Users/student/Projects/week11/charity-apr2020/models/member.js">
+      <file name="member.js" path="/Users/tanil/Desktop/RubyProjects/Portfolio/week11-12/charity-apr2020/models/member.js">
         <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -405,7 +405,7 @@
     </package>
     <package name="routes">
       <metrics statements="11" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-      <file name="index.js" path="/Users/student/Projects/week11/charity-apr2020/routes/index.js">
+      <file name="index.js" path="/Users/tanil/Desktop/RubyProjects/Portfolio/week11-12/charity-apr2020/routes/index.js">
         <metrics statements="11" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -422,7 +422,7 @@
     </package>
     <package name="spec">
       <metrics statements="10" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="0"/>
-      <file name="mongodb_helper.js" path="/Users/student/Projects/week11/charity-apr2020/spec/mongodb_helper.js">
+      <file name="mongodb_helper.js" path="/Users/tanil/Desktop/RubyProjects/Portfolio/week11-12/charity-apr2020/spec/mongodb_helper.js">
         <metrics statements="10" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
