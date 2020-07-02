@@ -110,6 +110,7 @@ class PairingGenome {
           if(incompleteGene.driver === driver.name) {
             incompleteGene.distance = driver.distance;
             incompleteGene.route = driver.route;
+            incompleteGene.telephone = guest.telephone;
             return;
           }
         });
