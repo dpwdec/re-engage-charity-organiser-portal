@@ -26,13 +26,36 @@ This is a tool to help with the organisation of tea parties in the local communi
 - [Travis](https://travis-ci.org) for continuous integration and build testing.
 - [Heroku](https://www.heroku.com) for deployment. 
 
+### Installation Guide
+1. Clone or Fork this repo to your local machine
+2. Install Node Version Manager (NVM) and ```nvm install 14.3.0 ```
+3. Navigate into the project repo
+4. Install Node.js dependencies ```npm install```
+5. Install ```mongodb-community@4.2```
+6. Start Mongodb with ```start mongodb-community@4.2```
+7. ```npm start``` to start the server
+8. Visit http://localhost:3000 to see the website in action!
+
+### Testing
+The test server must be running for integration tests to pass. The test server runs on port 3030 at http://localhost:3030. 
+
+* In one terminal (start the test server): ```npm run start:test``` 
+* In another terminal, run these commands 
+  * To run all the tests (Jest and Cypress): ```npm test```
+  * To run Jest unit tests: ```npm run test:unit```
+  * To run Cypress feature tests: ```npm run test:integratiton```
+
+### Learning
+We ran daily retros to review each other's code and clarified our learning with a wiki post detailing the new knowledge we had acquired. You can a link to an overview of daily learning [here](https://github.com/Tracht/charity-apr2020/wiki/Learnings).
+
+[1]: https://github.com/Tracht/charity-apr2020/wiki/Product-Spec
+
 ### Development Process
 Our team used an agile development process with periodic sprints to deliver to our client with regular check ins and feature updates. The client's specification was broken down by our team into a [product spec][1] which were then turned into user stories and finally assigned to team member pairs. This process allowed us to integrate changes in specification late into development and keep the team running by dividing up dividing up tasks during the sprints. We used a process of branches, pull-request code reviews and continuous integration testing pipelines to keep our code clean and dependendable.
 
 For an insight into our agile process you can view our team's [card wall here](https://trello.com/b/tg4zTEhc/charity-april-2020).
 
-We employed extensive domain and database modelling for our application before beginning development as well as diagramming the flow of the application. There are links to our wiki with this planning below:
-
+We employed extensive domain and database modelling for our application before beginning development as well as diagramming the flow of the application.
 
 ### MVP user stories
 `Coordinator Access`:
@@ -121,26 +144,3 @@ I would like to see a map of the pairs in the table
 ```
 
 
-### Installation Guide
-1. Clone or Fork this repo to your local machine
-2. Install Node Version Manager (NVM) and ```nvm install 14.3.0 ```
-3. Navigate into the project repo
-4. Install Node.js dependencies ```npm install```
-5. Install ```mongodb-community@4.2```
-6. Start Mongodb with ```start mongodb-community@4.2```
-7. ```npm start``` to start the server
-8. Visit http://localhost:3000 to see the website in action!
-
-### Testing
-The test server must be running for integration tests to pass. The test server runs on port 3030 at http://localhost:3030. 
-
-* In one terminal (start the test server): ```npm run start:test``` 
-* In another terminal, run these commands 
-  * To run all the tests (Jest and Cypress): ```npm test```
-  * To run Jest unit tests: ```npm run test:unit```
-  * To run Cypress feature tests: ```npm run test:integratiton```
-
-### Learning
-We ran daily retros to review each other's code and clarified our learning with a wiki post detailing the new knowledge we had acquired. You can a link to an overview of daily learning [here](https://github.com/Tracht/charity-apr2020/wiki/Learnings).
-
-[1]: https://github.com/Tracht/charity-apr2020/wiki/Product-Spec
