@@ -128,7 +128,7 @@ class AdminLogin extends React.Component {
                   </div>
 
                   <div className="container-login100-form-btn">
-                    <button className="login100-form-btn">
+                    <button id="login" className="login100-form-btn">
                       Login
                 </button>
                   </div>
