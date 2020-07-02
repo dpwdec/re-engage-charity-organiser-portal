@@ -32,29 +32,48 @@ class AvailabilityCell extends React.Component {
       });
   };
 
+  // updateSelectColour = () => {
+  //   console.log("in the select colour function")
+  //   var selector = document.getElementById("coloured-cell")
+  //   selector.setAttribute("class", "test");
+  // }
+
+
   render() {
+    // var selector = document.getElementById("coloured-cell")
     return (
+
       <div className="col cell">
+
+
         <select
-          className="select-availability col"
+          id="coloured-cell"
+          className="select-availability col dropdown"
           onChange={this.updateAvailability}
         >
           <option
-            className="success"
+            // add the success to select
+            // onChange={selector.setAttribute("class", "success")}
+            className="dropdown-item"
             value="true"
             selected={this.props.month == "true"}
           >
             True
           </option>
           <option
-            className="danger"
+            // add danger to select
+            // onChange={this.updateSelectColour("danger")}
+            // className="danger"
+            
             value="false"
             selected={this.props.month == "false"}
           >
             False
           </option>
           <option
-            className="amber"
+            // add amber to select
+            // onChange={this.updateSelectColour("amber")}
+            // className="amber"
             value="tbd"
             selected={this.props.month == "undecided"}
           >

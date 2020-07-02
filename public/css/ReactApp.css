@@ -264,23 +264,31 @@ header .sup {
   margin-left: 200px;
 }
 
+.pairingType{
+  margin: 0 20px;
+}
+
 .success {
-  color: green;
-  margin-left: 30px;
+  background-color: green;
+  /* margin-left: 30px; */
 }
 
 .danger {
-  color: red;
-  margin-left: 30px;
+  background-color: red;
+  /* margin-left: 30px; */
 }
 
 .amber {
-  color: orange;
-  margin-left: 30px;
+  background-color: orange;
+  /* margin-left: 30px; */
 }
 
 .avail-cell {
   padding: 0;
+}
+
+.generate{
+  padding-bottom: 10px;
 }
 
 .drivers-availability,
