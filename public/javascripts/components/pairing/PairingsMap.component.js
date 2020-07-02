@@ -5,6 +5,7 @@ function PairingsMap(props) {
   Drawing Marker: https://developers.google.com/maps/documentation/javascript/examples/icon-complex
   Drawing Marker:https://developers.google.com/chart/infographics/docs/dynamic_icons?csw=1#plain_pin
   Code samples: https://developers.google.com/maps/documentation/javascript/examples
+  Map styling: https://mapstyle.withgoogle.com/
   */
   var map = new google.maps.Map(document.getElementById("map-canvas"), {
     zoom: 12,
