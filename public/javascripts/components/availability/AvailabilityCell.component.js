@@ -43,18 +43,17 @@ class AvailabilityCell extends React.Component {
     // var selector = document.getElementById("coloured-cell")
     return (
 
-      <div className="col cell">
+      <div className="avail-cell">
 
 
         <select
           id="coloured-cell"
-          className="select-availability col dropdown"
+          className="select-availability col custom-select"
           onChange={this.updateAvailability}
         >
           <option
             // add the success to select
             // onChange={selector.setAttribute("class", "success")}
-            className="dropdown-item"
             value="true"
             selected={this.props.month == "true"}
           >
@@ -63,8 +62,6 @@ class AvailabilityCell extends React.Component {
           <option
             // add danger to select
             // onChange={this.updateSelectColour("danger")}
-            // className="danger"
-            
             value="false"
             selected={this.props.month == "false"}
           >
