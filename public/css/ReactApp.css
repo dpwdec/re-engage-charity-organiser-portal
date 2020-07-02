@@ -98,7 +98,7 @@ header .sup {
 .tabs input {
   position: absolute;
   z-index: 1000;
-  width: 33%;
+  width: 0%;
   height: 50px;
   left: 0;
   top: 0;
@@ -108,15 +108,8 @@ header .sup {
   cursor: pointer;
   margin: 0;
 }
-.tabs input#pairs-tab {
-  left: 33%;
-}
-.tabs input#contact-tab {
-  left: 33%;
-}
-.tabs input#tab-4 {
-  left: 33%;
-}
+
+
 .tabs label {
   background: #e74c3c;
   color: #fefefe;
@@ -156,12 +149,6 @@ header .sup {
 }
 .tabs label:first-of-type {
   z-index: 4;
-}
-.tab-pairs-tab{
-  z-index: 4;
-}
-.tab-contact-tab {
-  z-index: 3;
 }
 
 .tabs input.active+ label {
@@ -231,22 +218,20 @@ header .sup {
     width: 100%;
     position: absolute;
   }
-  .tabs label.tab-label-1, .tabs input.tab-label-1, .tabs label#tab-label-1 .tabs input#tab-label-1{
-    width: 88%;
-    top: 150px;
+  .tabs label.tab-label-1, .tabs input.tab-label-1, .tabs label#tab-label-1 {
+    width: 100%;
     left: 0;
     height: 50px;
     z-index: 4 !important;
   }
-  .tabs label.tab-label-2, .tabs input.tab-label-2, .tabs label#tab-label-2, .tabs input#tab-label-2 {
-    top: 100px;
+  .tabs label.tab-label-2, .tabs input.tab-label-2, .tabs label#tab-label-2 {
+    width: 100%;
     left: 0;
     height: 100px;
     z-index: 3 !important;
   }
-  .tabs label.tab-label-3, .tabs input.tab-label-3, .tabs label#tab-label-3 .tabs input#tab-label-3 {
-    width: 96%;
-    top: 50px;
+  .tabs label.tab-label-3, .tabs input.tab-label-3, .tabs label#tab-label-3 {
+    width: 100%;
     left: 0;
     height: 150px;
     z-index: 2 !important;
@@ -254,9 +239,6 @@ header .sup {
   .tabs .content {
     top: 200px;
   }
-}
-.tab-group:first-child {
-  background: yellow;
 }
 
 .month {
