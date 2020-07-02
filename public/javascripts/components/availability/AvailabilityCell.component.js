@@ -48,7 +48,17 @@ class AvailabilityCell extends React.Component {
   
 
   render() {
-    // var selector = document.getElementById("coloured-cell")
+    // if ($("#coloured-cell").data("value") === 'TBD') {
+    //   $('#coloured-cell').addClass('.select-availability.col.custom-select.tbd');
+    // }
+
+    // if ($("#coloured-cell").data("value") === 'True') {
+    //   $('#coloured-cell').addClass('.select-availability.col.custom-select.true');
+    // }
+
+    // if ($("#coloured-cell").data("value") === 'False') {
+    //   $('#coloured-cell').addClass('.select-availability.col.custom-select.false');
+    // }
     return (
 
       <div className="avail-cell">

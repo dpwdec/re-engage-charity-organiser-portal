@@ -11,8 +11,8 @@ class AdminLogOut extends React.Component {
 
   render() {
     return (
-      <div>
-        <form id="log-out-form" className="logout" onSubmit={this.logout}>
+      <div id="logout">
+        <form id="logout" className="logout" onSubmit={this.logout}>
           <input
             id="logout"
             className="button login100-form-btn-small" 
