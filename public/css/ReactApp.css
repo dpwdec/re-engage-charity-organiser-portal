@@ -268,17 +268,17 @@ header .sup {
   margin: 0 20px;
 }
 
-.success {
+.select-availability.col.custom-select.true {
   background-color: green;
   /* margin-left: 30px; */
 }
 
-.danger {
+.select-availability.col.custom-select.false {
   background-color: red;
   /* margin-left: 30px; */
 }
 
-.amber {
+.select-availability.col.custom-select.tbd {
   background-color: orange;
   /* margin-left: 30px; */
 }
