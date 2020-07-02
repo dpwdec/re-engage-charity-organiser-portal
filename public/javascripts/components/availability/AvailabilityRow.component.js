@@ -28,33 +28,42 @@ class AvailabilityRow extends React.Component {
 
   render() {
     return (
-      <tr id={`tr-${this.props.driver.name}`}>
-        <td className="driverName cell">{this.props.driver.name}</td>
-        <AvailabilityCell
-          driver_id={this.props.driver._id}
-          className="cells"
-          month={this.state.months[0]}
-          monthName={this.props.months[0]}
-        />
-        <AvailabilityCell
-          driver_id={this.props.driver._id}
-          className="cells"
-          month={this.state.months[1]}
-          monthName={this.props.months[1]}
-        />
-        <AvailabilityCell
-          driver_id={this.props.driver._id}
-          className="cells"
-          month={this.state.months[2]}
-          monthName={this.props.months[2]}
-        />
-        <AvailabilityCell
-          driver_id={this.props.driver._id}
-          className="cells"
-          month={this.state.months[3]}
-          monthName={this.props.months[3]}
-        />
-      </tr>
+      <div className="available row" id={`tr-${this.props.driver.name}`}>
+        <div className="driverName col">{this.props.driver.name}</div>
+        
+        <div className="col">
+          <AvailabilityCell
+            driver_id={this.props.driver._id}
+            className="col"
+            month={this.state.months[0]}
+            monthName={this.props.months[0]}
+          />
+        </div>
+        <div className="col">
+          <AvailabilityCell
+            driver_id={this.props.driver._id}
+            className="col"
+            month={this.state.months[1]}
+            monthName={this.props.months[1]}
+          />
+        </div>
+        <div className="col">
+          <AvailabilityCell
+            driver_id={this.props.driver._id}
+            className="col"
+            month={this.state.months[2]}
+            monthName={this.props.months[2]}
+          />
+        </div>
+        <div className="col">
+          <AvailabilityCell
+            driver_id={this.props.driver._id}
+            className="col"
+            month={this.state.months[3]}
+            monthName={this.props.months[3]}
+          />
+        </div>
+      </div>
     );
   }
 }

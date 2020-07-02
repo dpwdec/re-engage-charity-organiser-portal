@@ -34,9 +34,9 @@ class AvailabilityCell extends React.Component {
 
   render() {
     return (
-      <td className="month col-8">
+      <div className="month col">
         <select
-          className="select-availability"
+          className="select-availability col"
           onChange={this.updateAvailability}
         >
           <option
@@ -61,7 +61,7 @@ class AvailabilityCell extends React.Component {
             TBD
           </option>
         </select>
-      </td>
+      </div>
     );
   }
 }
