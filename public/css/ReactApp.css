@@ -339,6 +339,19 @@ header .sup {
   margin: auto;
 }
 
+.headers.row {
+  background-color: #f7ac4bc4
+}
+
+.delete {
+  margin-right: 10px;
+}
+
+.spacer {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
 .driver-list-row {
   margin-right: 50px;
 }

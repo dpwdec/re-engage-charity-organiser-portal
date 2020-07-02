@@ -26,7 +26,7 @@ class MemberAvailabilityTable extends React.Component {
     var firstLetter = this.props.role.charAt(0).toUpperCase(); // G or D
     var newString = firstLetter + string + "s"; //  Guest or Driver
     return (
-      <div className="members-table shadow p-3 mb-5 bg-white rounded">
+      <div className="members-table shadow-sm p-3 mb-5 bg-white rounded">
         <div className={`member-availability-${this.props.role}`}>
           <div className="row">
             <h3 className="drivers-availability"> {newString} </h3>

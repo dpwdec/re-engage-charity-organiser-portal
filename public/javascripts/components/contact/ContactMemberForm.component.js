@@ -40,9 +40,10 @@ class MemberForm extends React.Component {
             placeholder="telephone"
             onChange={this.props.onFormChange}
           ></input>
+
           <select
             id="new-member-role"
-            className="col-2"
+            className="col-2 custom-select"
             name="role"
             value={this.props.member.role}
             onChange={this.props.onFormChange}
