@@ -93,6 +93,7 @@ class AdminLogin extends React.Component {
                   <span className="login100-form-title-1">
                   <div className="logo">
                     <p className="text-center"><img className="container-fluid" src="../../images/logo.svg"></img></p>
+                    
                   </div>
                   </span>
                 </div>
