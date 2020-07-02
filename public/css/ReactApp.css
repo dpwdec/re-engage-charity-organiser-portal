@@ -332,8 +332,11 @@ header .sup {
 #new-member-address,
 #new-member-telephone,
 #new-member-role {
-  margin-right: 30px;
   margin-top: 10px;
+}
+
+.member-submit {
+  margin: auto;
 }
 
 .driver-list-row {
