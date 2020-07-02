@@ -47,7 +47,7 @@ class Contact extends React.Component {
       name: this.state.name,
       role: this.state.role,
       address: this.state.address,
-      telephone: this.state.telephone, 
+      telephone: this.state.telephone,
     };
 
     fetch("/createMember", {
@@ -55,36 +55,36 @@ class Contact extends React.Component {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newMember),
     })
-    .then((response) => response.json())
-    .then(() => {
-      this.setState({
-        message: "Success!",
+      .then((response) => response.json())
+      .then(() => {
+        this.setState({
+          message: "Success!",
+        });
+        this.fetchGuests();
+        this.fetchDrivers();
       });
-      this.fetchGuests();
-      this.fetchDrivers();
-    })
   };
 
   deleteMember = (event) => {
     event.preventDefault();
     var member = {
-      id: event.target.dataset.id
+      id: event.target.dataset.id,
     };
-    
+
     fetch("/deleteMember", {
       method: "post",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(member),
     })
-    .then((response) => response.json())
-    .then((result) => {
-      this.setState({
-        message: "Success!",
+      .then((response) => response.json())
+      .then((result) => {
+        this.setState({
+          message: "Success!",
+        });
+        this.fetchGuests();
+        this.fetchDrivers();
       });
-      this.fetchGuests();
-      this.fetchDrivers();
-    });
-  }
+  };
 
   sortGuestsAtoZ() {
     return this.state.guests.sort(function (memberA, memberB) {
