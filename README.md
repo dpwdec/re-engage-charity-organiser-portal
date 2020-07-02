@@ -15,18 +15,18 @@ This is a tool to help with the organisation of tea parties in the local communi
 - Generate a map to view paired routes 
 
 ### Tech Stack
-- [Google Maps Directions API](https://developers.google.com/maps/documentation/directions/start) to generate routes for guest/driver pairs. 
-- [Node](https://nodejs.org/en/) for the development environment.
-- [Express](https://expressjs.com/) web framework for Node.js.
-- [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) as our development language
-- [Nodemon](https://nodemon.io/) to reload the server automatically.
 - [Mongo](https://www.mongodb.com) as as our non-relational database. 
+- [Express](https://expressjs.com/) web framework for Node.js.
+- [React](https://reactjs.org) as a front end controller. 
+- [Node](https://nodejs.org/en/) for the development environment.
+- [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) as our development languag
+- [Google Maps Directions API](https://developers.google.com/maps/documentation/directions/start) to generate routes for guest/driver pairs. 
 - [Mongoose](https://mongoosejs.com) to model objects for MongoDB.
+- [Nodemon](https://nodemon.io/) to reload the server automatically.
 - [Prettier](https://prettier.io) for linting
 - [Jest](https://jestjs.io/) for testing.
 - [Cypress](https://www.cypress.io/) for end-to-end testing.
 - [Travis](https://travis-ci.org) for continuous integration and build testing.
-- [React](https://reactjs.org) as a front end controller. 
 - [Heroku](https://www.heroku.com) for deployment. 
 
 ### Development Process
