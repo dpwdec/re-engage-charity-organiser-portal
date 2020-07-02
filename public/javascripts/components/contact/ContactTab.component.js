@@ -10,35 +10,23 @@ class Contact extends React.Component {
   }
 
   componentDidMount() {
-    this.fetchDrivers("/drivers");
-    this.fetchGuests("/guests");
+    this.updateMembers();
   }
 
-  fetchDrivers = () => {
-    fetch("/drivers")
-      .then((response) => response.json())
-      .then((data) => {
-        this.setState({
-          drivers: data,
-        });
-        this.setState({
-          drivers: this.sortDriversAtoZ(),
-        });
-      });
-  };
+  updateMembers = () => {
+    this.fetchMembers("driver");
+    this.fetchMembers("guest");
+  }
 
-  fetchGuests = () => {
-    fetch("/guests")
-      .then((response) => response.json())
-      .then((data) => {
-        this.setState({
-          guests: data,
-        });
-        this.setState({
-          guests: this.sortGuestsAtoZ(),
-        });
-      });
-  };
+  fetchMembers = (role) => {
+    fetch(`/members?role=${role}`)
+    .then((response) => response.json())
+    .then((data) => {
+      var newState = {}
+      newState[role + "s"] = this.sortAtoZ(data)
+      this.setState(newState);
+    });
+  }
 
   mySubmitHandler = (event) => {
     event.target.reset();
@@ -55,14 +43,7 @@ class Contact extends React.Component {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newMember),
     })
-    .then((response) => response.json())
-    .then(() => {
-      this.setState({
-        message: "Success!",
-      });
-      this.fetchGuests();
-      this.fetchDrivers();
-    })
+    .then((response) => { this.updateMembers() })
   };
 
   deleteMember = (event) => {
@@ -76,31 +57,17 @@ class Contact extends React.Component {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(member),
     })
-    .then((response) => response.json())
-    .then((result) => {
-      this.setState({
-        message: "Success!",
-      });
-      this.fetchGuests();
-      this.fetchDrivers();
-    });
+    .then((response) => { this.updateMembers() })
   }
 
-  sortGuestsAtoZ() {
-    return this.state.guests.sort(function (memberA, memberB) {
+
+  sortAtoZ(array) {
+    return array.sort(function (memberA, memberB) {
       var memberA = memberA.name.toUpperCase();
       var memberB = memberB.name.toUpperCase();
       return memberA < memberB ? -1 : memberA > memberB ? 1 : 0;
     });
   }
-
-  sortDriversAtoZ = () => {
-    return this.state.drivers.sort(function (memberA, memberB) {
-      var memberA = memberA.name.toUpperCase();
-      var memberB = memberB.name.toUpperCase();
-      return memberA < memberB ? -1 : memberA > memberB ? 1 : 0;
-    });
-  };
 
   onFormChange = (event) => {
     this.setState({
@@ -116,18 +83,15 @@ class Contact extends React.Component {
           member={this.state.member}
           mySubmitHandler={this.mySubmitHandler}
           onFormChange={this.onFormChange}
-          updateState={this.updateState}
         />
-        <DriverList
-          drivers={this.state.drivers}
-          fetchDrivers={this.fetchDrivers}
-          sortDriversAtoZ={this.sortDriversAtoZ}
+         <MemberList
+          members={this.state.drivers}
+          role={"driver"}
           deleteMember={this.deleteMember}
         />
-        <GuestList
-          guests={this.state.guests}
-          sortGuestsAtoZ={this.sortGuestsAtoZ}
-          fetchGuests={this.fetchGuests}
+        <MemberList
+          members={this.state.guests}
+          role={"guest"}
           deleteMember={this.deleteMember}
         />
       </div>

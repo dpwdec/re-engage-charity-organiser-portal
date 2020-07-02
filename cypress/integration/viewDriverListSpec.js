@@ -28,7 +28,7 @@ describe("Members", () => {
   it("deletes driver from driver list component", () => {
       cy.visit("/");
       cy.get("#contact-tab").click();
-      cy.get("#delete-btn-01").click();
+      cy.get("#delete-btn-0").click();
       cy.get(".driver-list").should("not.contain", "Cat");
       cy.get(".driver-list").should("not.contain", "07333555777");
     });

@@ -26,31 +26,10 @@ var HomepageController = {
     });
   },
 
-  DriverList: (memberModel) => (request, response) => {
-    let drivers = [];
 
-    memberModel.find((err, result) => {
-      result.forEach((member) => {
-        if (member.role === "driver") {
-          drivers.push(member);
-        }
-      });
-      response.send(drivers);
-      console.log("driver response", drivers);
-    });
-  },
-
-  GuestList: (memberModel) => (request, response) => {
-    let guests = [];
-
-    memberModel.find((err, result) => {
-      result.forEach((member) => {
-        if (member.role === "guest") {
-          guests.push(member);
-        }
-      });
-      response.send(guests);
-      console.log("guest response", guests);
+  Members:(memberModel) => (request, response) => {
+    memberModel.find({role: request.query.role},(err, result) => {
+      response.send(result);
     });
   },
 
