@@ -7,7 +7,7 @@ AveragePairs.generate = (members) => {
   this.guests = [];
 
   members.forEach((guest) => {
-    this.guests.push(guest.name);
+    this.guests.push(guest);
   });
 
   members[0].drivers.forEach((driver) => {
@@ -35,7 +35,8 @@ AveragePairs.generate = (members) => {
       // pair up each guest with driver
       guestClone.forEach((guest, index) => {
         var pair = {
-          guest: guest,
+          guest: guest.name,
+          telephone: guest.telephone,
           driver: this.drivers[index]
         }
         pairing.pairs.push(pair);

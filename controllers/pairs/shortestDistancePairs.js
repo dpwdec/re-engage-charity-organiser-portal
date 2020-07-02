@@ -23,6 +23,7 @@ var ShortestDistancePairs = {
               id: pairing.length + 1,
               driver: driver.name,
               guest: guest.name,
+              telephone: guest.telephone,
               distance: driver.distance,
               route: driver.route,
             };

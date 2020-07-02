@@ -33,14 +33,10 @@ var AvailabilityController = {
         update.availability[request.body.month_name] = (request.body.month_status == 'true');
         console.log(update);
 
-        Member.findOneAndUpdate( query, update, (err, result) => {
-          // console.log(result.availability[request.body.month_name]);
-          console.log(result);
-          // result.save((err)=> {
-          // console.log('success!')
-          // })
-        });
-
+        Member.findOneAndUpdate(query, update).
+        then(() => {
+          response.send({message: 'success'});
+        })
       })
 
     }
