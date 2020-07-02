@@ -8,10 +8,6 @@ router.get('/', function(req, res, next) {
   res.render('index');
 });
 
-
-// var HomepageController = require("../controllers/homepage");
-
-
 router.get("/", HomepageController.Index);
 router.post("/createMember", HomepageController.CreateMember(Member));
 router.post("/deleteMember", HomepageController.DeleteMember(Member));
