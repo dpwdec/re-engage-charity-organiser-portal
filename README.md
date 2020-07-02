@@ -18,6 +18,7 @@ This is a tool to help with the organisation of tea parties in the local communi
 - [Google Maps Directions API](https://developers.google.com/maps/documentation/directions/start) to generate routes for guest/driver pairs. 
 - [Node](https://nodejs.org/en/) for the development environment.
 - [Express](https://expressjs.com/) web framework for Node.js.
+- [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) as our development language
 - [Nodemon](https://nodemon.io/) to reload the server automatically.
 - [Mongo](https://www.mongodb.com) as as our non-relational database. 
 - [Mongoose](https://mongoosejs.com) to model objects for MongoDB.
