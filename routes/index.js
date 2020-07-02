@@ -4,9 +4,8 @@ var HomepageController = require("../controllers/homepage");
 var Member = require("../models/member");
 
 router.get("/", HomepageController.Index);
-router.get("/drivers", HomepageController.DriverList(Member));
-router.get("/guests", HomepageController.GuestList(Member));
 router.post("/createMember", HomepageController.CreateMember(Member));
 router.post("/deleteMember", HomepageController.DeleteMember(Member));
+router.get('/members', HomepageController.Members(Member))
 
 module.exports = router;
