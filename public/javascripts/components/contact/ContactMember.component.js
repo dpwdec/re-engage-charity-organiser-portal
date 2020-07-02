@@ -15,6 +15,7 @@ function Member(props) {
           id={`delete-btn-${props.index}`}
           type="submit"
           value="Delete"
+          className="login100-form-btn-small"
         ></input>
       </div>
     </form>

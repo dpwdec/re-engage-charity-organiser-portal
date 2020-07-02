@@ -1,18 +1,24 @@
-* {
+/* e74c3c */
+/* e08f24 */
+
+*{
   box-sizing: border-box;
 }
 
 body {
   background: linear-gradient(to right, #e67e22, #e74c3c);
   height: 100vh;
-}
+ }
 
-.main-content{
+.main-content {
   background-color: white;
   margin-bottom: 20%;
   height: 100vh;
 }
 
+.center-wrapper {
+  margin: auto;
+}
 .tab {
   background: #e67e22;
   margin: 3rem 0;
@@ -21,30 +27,307 @@ body {
   color: #fff;
   border-bottom: 0;
   /* Only round the top corners */
-  -webkit-border-top-left-radius: 15px;
+  /* -webkit-border-top-left-radius: 15px;
   -webkit-border-top-right-radius: 15px;
   -moz-border-radius-topleft: 15px;
   -moz-border-radius-topright: 15px;
   border-top-left-radius: 15px;
-  border-top-right-radius: 15px; 
+  border-top-right-radius: 15px; */
 }
 
-.tab:focus {
-  outline: none;
+.wrapper{
+  background: #fff;
+  box-shadow: 0px 13px 40px -13px rgba(0,0,0,0.75);
+  margin: 0 auto;
+  padding: 10% 15% 10% 15%;
+  margin: 5%;
 }
 
-/* .tab:hover {
-  top: -0.25rem;
-  transition: top 0.75s;
+.transparent-wrapper{
+  align-content: center;
+  background: 
+  /* top, transparent red */ 
+  rgba(black, 0.25),
+  /* bottom, image */
+  url(https://www.reengage.org.uk/site/assets/files/2869/dsc_9720.750x0.jpg);
+  /* background-image: url(https://www.reengage.org.uk/site/assets/files/2869/dsc_9720.750x0.jpg); */
+  box-shadow: 0px 13px 40px -13px rgba(0,0,0,0.75);
+  margin: 0 auto;
+  padding: 10% 15% 10% 15%;
+  margin: 5% auto;
+}
+
+/* .login-background {
+  background-image: url("/public/images/logo.svg");
 } */
 
-.active-tab {
-  background: white;
-  color: #2c3e50;
+a {
+  text-decoration: none;
+}
+a.link {
+  color: #3f6b9d;
+  -webkit-transition: all 150ms ease 0s;
+  transition: all 150ms ease 0s;
+}
+a.link:hover {
+  color: #e08f24;
+}
+p {
+  margin-bottom: 10px;
+}
+header {
+  margin: 60px 0 40px;
+}
+header h1 {
+  margin-bottom: 0px;
+}
+header .sup {
+  font-style: italic;
+  color: #999;
+  margin-top: 4px;
+}
+.tabs {
+  position: relative;
+  margin: 40px auto;
+  width: 1024px;
+  max-width: 100%;
+  overflow: hidden;
+  padding-top: 10px;
+  margin-bottom: 60px;
+}
+.tabs input {
+  position: absolute;
+  z-index: 1000;
+  width: 33%;
+  height: 50px;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: alpha(opacity=0);
+  cursor: pointer;
+  margin: 0;
+}
+.tabs input#pairs-tab {
+  left: 33%;
+}
+.tabs input#contact-tab {
+  left: 33%;
+}
+.tabs input#tab-4 {
+  left: 33%;
+}
+.tabs label {
+  background: #e74c3c;
+  color: #fefefe;
+  font-size: 15px;
+  line-height: 50px;
+  height: 60px;
+  position: relative;
+  top: 0;
+  padding: 0 20px;
+  float: left;
+  display: block;
+  width: 33%;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-align: center;
+  box-shadow: 2px 0 2px rgba(0, 0, 0, 0.1), -2px 0 2px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  -webkit-transition: all 150ms ease 0s;
+  transition: all 150ms ease 0s;
+}
+.tabs label:hover {
+  cursor: pointer;
+}
+.tabs label:after {
+  content: "";
+  background: #fefefe;
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  display: block;
+}
+.tabs input:hover + label {
+  background: #e08f24;
+}
+.tabs label:first-of-type {
+  z-index: 4;
+}
+.tab-pairs-tab{
+  z-index: 4;
+}
+.tab-contact-tab {
   z-index: 3;
 }
 
+.tabs input.active+ label {
+  background: #fefefe;
+  color: #1a1a1a;
+  z-index: 6;
+}
+.clear-shadow {
+  clear: both;
+}
+.content {
+  height: auto;
+  width: 100%;
+  float: left;
+  position: relative;
+  z-index: 5;
+  background: #fefefe;
+  top: -10px;
+  box-sizing: border-box;
+}
+.content div {
+  position: relative;
+  float: left;
+  width: 0;
+  height: 0;
+  box-sizing: border-box;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  opacity: 0;
+  background: #fefefe;
+}
+.content div h2 {
+  margin-top: 0;
+}
+.tabs .tab-selector-1.active ~ .content .content-1, .tabs .tab-selector-2.active~ .content .content-2, .tabs .tab-selector-3.active ~ .content .content-3 {
+  z-index: 100;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  filter: alpha(opacity=100);
+  opacity: 1;
+  width: 100%;
+  height: auto;
+  width: 100%;
+  height: auto;
+  padding: 5%;
+}
 
+@media screen and (min-width: 768px) {
+  .tabs .active + label {
+    top: -5px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .tabs {
+    height: auto;
+    background: #fefefe;
+    padding-bottom: 200px;
+    width: 95%;
+  }
+  .tabs label {
+    text-align: left;
+  }
+  .tabs input.active + label {
+    padding-left: 30px;
+  }
+  .tabs label, .tabs input {
+    width: 100%;
+    position: absolute;
+  }
+  .tabs label.tab-label-1, .tabs input.tab-label-1, .tabs label#tab-label-1 .tabs input#tab-label-1{
+    width: 88%;
+    top: 150px;
+    left: 0;
+    height: 50px;
+    z-index: 4 !important;
+  }
+  .tabs label.tab-label-2, .tabs input.tab-label-2, .tabs label#tab-label-2, .tabs input#tab-label-2 {
+    top: 100px;
+    left: 0;
+    height: 100px;
+    z-index: 3 !important;
+  }
+  .tabs label.tab-label-3, .tabs input.tab-label-3, .tabs label#tab-label-3 .tabs input#tab-label-3 {
+    width: 96%;
+    top: 50px;
+    left: 0;
+    height: 150px;
+    z-index: 2 !important;
+  }
+  .tabs .content {
+    top: 200px;
+  }
+}
 .tab-group:first-child {
   background: yellow;
 }
+
+.month {
+  width: 25%;
+  margin-left: 200px;
+}
+
+.success {
+  color: green;
+  margin-left: 30px;
+}
+
+.danger {
+  color: red;
+  margin-left: 30px;
+}
+
+.amber {
+  color: orange;
+  margin-left: 30px;
+}
+
+.drivers-availability,
+.guests-availability {
+  color: grey;
+  margin-left: 15px;
+}
+
+.driverName {
+  /* color: grey; */
+  padding-left: 15px;
+}
+.members-table,
+.member-form-table,
+.driver-list-table,
+.guest-list-table {
+  background-color: white;
+  margin: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  border: 1px solid #efefef;
+  padding: 30px;
+}
+
+.driver-list-table,
+.guest-list-table {
+  margin-top: 10px;
+}
+
+.new-member-address {
+  margin-left: 20px;
+}
+
+.form-group {
+  text-align: center;
+}
+
+#new-member-name,
+#new-member-address,
+#new-member-telephone,
+#new-member-role {
+  margin-right: 30px;
+  margin-top: 10px;
+}
+
+.driver-list-row {
+  margin-right: 50px;
+}
+/* .month {
+  margin-left: 40px;
+  width: 200%;
+} */
