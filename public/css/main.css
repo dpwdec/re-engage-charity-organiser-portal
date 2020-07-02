@@ -233,10 +233,6 @@ iframe {
   height: 100%;
   top: 0;
   left: 0;
- 
-  /* background-image: url(https://www.reengage.org.uk/site/assets/files/2869/dsc_9720.750x0.jpg); */
-  background-image: url(/public/images/logo.svg);
-  background-color: rgba(54,84,99,0.3);
 }
 
 

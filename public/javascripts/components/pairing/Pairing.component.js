@@ -97,8 +97,7 @@ class Pairing extends React.Component {
             <div className="pairing-table">
               <PairingsMap pairs={this.state.pairs} />
             </div>
-            
-            {/* <div id="map-canvas"></div> */}
+          
           </div>
         </div>
       </div>
