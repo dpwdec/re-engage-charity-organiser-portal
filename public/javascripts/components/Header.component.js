@@ -7,7 +7,7 @@ class Header extends React.Component {
           <div className="d-flex flex-row-reverse">
             <AdminLogOut /> 
           </div>
-        <p className="text-center">LOGO GOES HERE</p>
+        <p className="text-center"><img className="container-fluid col-4" src="../../images/logo.svg"></img></p>
       </div>
     );
   }

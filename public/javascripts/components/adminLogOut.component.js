@@ -15,7 +15,7 @@ class AdminLogOut extends React.Component {
         <form id="log-out-form" className="logout" onSubmit={this.logout}>
           <input
             id="logout"
-            className="button"
+            className="button login100-form-btn-small" 
             type="submit"
             value="log out"
           ></input>

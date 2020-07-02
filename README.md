@@ -12,10 +12,10 @@ This tool helps volunteer coordinators for Re-Engage. Re-Engage is a charity tha
 - Coordinators can login/logout
 - View, add, and delete members (drivers & guests), their addresses, and telephone numbers
 - View and update members' availabilities
-- Generate paired routes for drivers and guests using three algorithims: 
+- Generate paired routes for drivers and guests using three algorithms: 
   * `shortest` (produces non-optimal pairings but runs very quickly - good for large samples)
   * `average` (always produces optimal pairings but runs slowly - good for small samples)
-  * `smart` (a genetic algorithim that often produces optimal pairings and runs substantially faster than the `average` algorithim)
+  * `smart` (a genetic algorithms that often produces optimal pairings and runs substantially faster than the `average` algorithm)
 - Displays the generated paired routes on a map with contact information
 
 ### Tech Stack

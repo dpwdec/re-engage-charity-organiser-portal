@@ -58,37 +58,90 @@ class AdminLogin extends React.Component {
   render() {
     if (this.state.loggedIn === false) {
       return (
-        <form id="admin-login-form row container" className="login" onSubmit={this.login}>
-          <div className="row">
-            <label>AdminName:</label>
-            <input
-              id="admin"
-              type="text"
-              placeholder="Admin"
-              required
-              onChange={this.handleChangeName}
-              value={this.state.adminName}>
-            </input>
+        <div className="container col">
+          {/* <form id="admin-login-form row" className="login" onSubmit={this.login}>
+              <div className="logo">
+              <p className="text-center"><img className="container-fluid col-4" src="../../images/logo.svg"></img></p>
+              </div>
+              <div className="row">
+                <label>AdminName:</label>
+                <input
+                  id="admin"
+                  type="text"
+                  placeholder="Admin"
+                  required
+                  onChange={this.handleChangeName}
+                  value={this.state.adminName}>
+                </input>
+              </div>
+              <div className="row">
+                <label>Password:</label>
+                <input
+                  id="password"
+                  type="password"
+                  placeholder="Password"
+                  required
+                  onChange={this.handleChangePassword}
+                  value={this.state.password}
+                ></input>
+                <input type="submit" value="login" id="login"></input>
+              </div>
+            </form> */}
+
+              <div className="wrap-login100">
+                <div className="login100-form-title login-background">
+                  <span className="login100-form-title-1">
+                  <div className="logo">
+                    <p className="text-center"><img className="container-fluid" src="../../images/logo.svg"></img></p>
+                    
+                  </div>
+                  </span>
+                </div>
+
+               
+
+                <form id="admin-login-form" className="login100-form validate-form" onSubmit={this.login}>
+                  <div className="wrap-input100 validate-input m-b-26" data-validate="Username is required">
+                    <span className="label-input100">Username</span>
+                    <input
+                      id="admin" 
+                      className="input100" 
+                      type="text" 
+                      name="username" 
+                      placeholder="Enter username" 
+                      onChange={this.handleChangeName}
+                    value={this.state.adminName}></input>
+                    <span className="focus-input100"></span>
+                  </div>
+
+                  <div className="wrap-input100 validate-input m-b-18" data-validate="Password is required">
+                    <span className="label-input100">Password</span>
+                      <input
+                      id="password" 
+                      className="input100" 
+                      type="password" name="pass" 
+                      placeholder="Enter password" 
+                      onChange={this.handleChangePassword}
+                      value={this.state.password}
+                      />
+                    <span className="focus-input100"></span>
+                  </div>
+
+                  <div className="container-login100-form-btn">
+                    <button className="login100-form-btn">
+                      Login
+                </button>
+                  </div>
+                </form>
+              </div>
           </div>
-          <div className="row">
-            <label>Password:</label>
-            <input
-              id="password"
-              type="password"
-              placeholder="Password"
-              required
-              onChange={this.handleChangePassword}
-              value={this.state.password}
-            ></input>
-            <input type="submit" value="login" id="login"></input>
-          </div>
-        </form>
+
       );
     } else {
       return (
         <form onSubmit={this.homeButton}>
           <p>log out first</p>
-          <input id="home" class="button" type="submit" value="home"></input>
+          <input id="home" className="button" type="submit" value="home"></input>
         </form>
       );
     }
