@@ -16,7 +16,7 @@ var HomepageController = {
     });
   },
 
-  DeleteMember: (request, response) => {
+  DeleteMember: (memberModel) => (request, response) => {
     var id = request.body.id;
     memberModel.deleteOne({ _id: id }, (err) => {
       if (err) {
@@ -26,10 +26,10 @@ var HomepageController = {
     });
   },
 
-  Members:(request, response) => {
-    Member.find({role: request.query.role},(err, result) => {
+
+  Members:(memberModel) => (request, response) => {
+    memberModel.find({role: request.query.role},(err, result) => {
       response.send(result);
-      console.log("helloo")
     });
   },
 

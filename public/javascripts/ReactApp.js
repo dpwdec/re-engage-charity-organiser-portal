@@ -69,47 +69,6 @@ class ReactApp extends React.Component {
         <div className="container">
           <div className="main-app container margin-top bg-white shadow p-3 mb-5 bg-white rounded">
             <Header />
-            {/* <div className="row">
-              <button
-                id="home-tab"
-                className="nav-link tab col button active-tab"
-                onClick={this.showHome}
-              >
-                Home
-              </button>
-              <button
-                id="pairing-tab"
-                className="nav-link tab col button"
-                onClick={this.showPairs}
-              >
-                Pairing
-              </button>
-              <button
-                id="contact-tab"
-                className="nav-link tab col button"
-                onClick={this.showContact}
-              >
-                Contact
-              </button>
-            </div> */}
-
-            {/* <section class="tabs row">
-
-              <input onClick={this.showHome} id="tab-2" className="nav-link tab col button active-tab" id="tab-1" type="radio" name="radio-set" className="col tab-selector-1" checked="checked" />
-              <label for="tab-1" class="tab-label-1">Home</label>
-
-              <input onClick={this.showPairs} id="tab-2" type="radio" name="radio-set" className="col tab-selector" />
-              <label for="tab-2" class="tab-label-2">Pairs</label>
-
-              <input onClick={this.showContact} id="tab-3" type="radio" name="radio-set" class="col tab-selector" />
-              <label for="tab-3" class="tab-label-3">Contact</label>
-
-              <div class="clear-shadow"></div>
-
-
-            </section> */}
-
-
 
             <section className="tabs row container">
 
@@ -145,11 +104,6 @@ class ReactApp extends React.Component {
 
             
           </div>
-
-        
-
-
-
         </div>
       );
     }
