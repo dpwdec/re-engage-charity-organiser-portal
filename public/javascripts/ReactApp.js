@@ -34,8 +34,12 @@ class ReactApp extends React.Component {
       contact: false,
     });
     this.changeTabColour("pairs-tab", "home-tab", "contact-tab");
-    var x = document.getElementById("map-canvas");
-    x.style.display = "";
+    // var x = document.getElementById("pairing-map");
+    // // var body = document.getElementsByTagName("body")
+    // // body.removeChild(x);
+    // // var parent = document.getElementById("map-pairing-tab");
+    // // parent.appendChild(x)
+    // x.style.display = ""
   };
 
   showContact = (e) => {

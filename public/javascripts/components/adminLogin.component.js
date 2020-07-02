@@ -93,7 +93,11 @@ class AdminLogin extends React.Component {
                 <div className="login100-form-title login-background">
                   <span className="login100-form-title-1">
                     Sign In
-              </span>
+                  </span>
+                </div>
+
+                <div className="logo">
+                  <p className="text-center"><img className="container-fluid col-5" src="../../images/logo.svg"></img></p>
                 </div>
 
                 <form className="login100-form validate-form" onSubmit={this.login}>
