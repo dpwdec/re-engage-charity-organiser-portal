@@ -1,20 +1,14 @@
 class AvailabilityTables extends React.Component {
-
   constructor() {
-    super()
-
+    super();
   }
 
   render() {
-    return(
+    return (
       <div>
-        <h3> Drivers </h3>
-        <MemberAvailabilityTable role="driver"/>
-        <h3> Guests </h3>
-        <MemberAvailabilityTable role="guest"/>
+        <MemberAvailabilityTable role="driver" />
+        <MemberAvailabilityTable role="guest" />
       </div>
-    )
-
+    );
   }
-
 }

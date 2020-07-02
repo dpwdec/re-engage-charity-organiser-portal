@@ -10,7 +10,7 @@ body {
   height: 100vh;
  }
 
-.main-content{
+.main-content {
   background-color: white;
   margin-bottom: 20%;
   height: 100vh;
@@ -18,6 +18,21 @@ body {
 
 .center-wrapper {
   margin: auto;
+}
+.tab {
+  background: #e67e22;
+  margin: 3rem 0;
+  line-height: 2.75em;
+  height: 3em;
+  color: #fff;
+  border-bottom: 0;
+  /* Only round the top corners */
+  /* -webkit-border-top-left-radius: 15px;
+  -webkit-border-top-right-radius: 15px;
+  -moz-border-radius-topleft: 15px;
+  -moz-border-radius-topright: 15px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px; */
 }
 
 .wrapper{
@@ -240,3 +255,79 @@ header .sup {
     top: 200px;
   }
 }
+.tab-group:first-child {
+  background: yellow;
+}
+
+.month {
+  width: 25%;
+  margin-left: 200px;
+}
+
+.success {
+  color: green;
+  margin-left: 30px;
+}
+
+.danger {
+  color: red;
+  margin-left: 30px;
+}
+
+.amber {
+  color: orange;
+  margin-left: 30px;
+}
+
+.drivers-availability,
+.guests-availability {
+  color: grey;
+  margin-left: 15px;
+}
+
+.driverName {
+  /* color: grey; */
+  padding-left: 15px;
+}
+.members-table,
+.member-form-table,
+.driver-list-table,
+.guest-list-table {
+  background-color: white;
+  margin: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  border: 1px solid #efefef;
+  padding: 30px;
+}
+
+.driver-list-table,
+.guest-list-table {
+  margin-top: 10px;
+}
+
+.new-member-address {
+  margin-left: 20px;
+}
+
+.form-group {
+  text-align: center;
+}
+
+#new-member-name,
+#new-member-address,
+#new-member-telephone,
+#new-member-role {
+  margin-right: 30px;
+  margin-top: 10px;
+}
+
+.driver-list-row {
+  margin-right: 50px;
+}
+/* .month {
+  margin-left: 40px;
+  width: 200%;
+} */
