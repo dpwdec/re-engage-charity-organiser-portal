@@ -29,14 +29,9 @@ class AvailabilityCell extends React.Component {
       .then((response) => response.json())
       .then((result) => {
         console.log(result);
+        this.updateSelectColour()
       });
   };
-
-  // updateSelectColour = () => {
-  //   console.log("in the select colour function")
-  //   var selector = document.getElementById("coloured-cell")
-  //   selector.setAttribute("class", "test");
-  // }
 
 
   render() {
