@@ -339,9 +339,9 @@ header .sup {
   margin: auto;
 }
 
-.headers.row {
+/* .headers.row {
   background-color: #f7ac4bc4
-}
+} */
 
 .delete {
   margin-right: 10px;
@@ -356,6 +356,8 @@ header .sup {
   margin-right: 50px;
 }
 
+
 .members-table-header, .available {
   width:100%;
 }
+

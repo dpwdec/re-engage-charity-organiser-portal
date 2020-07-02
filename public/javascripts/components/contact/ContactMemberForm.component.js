@@ -52,7 +52,7 @@ class MemberForm extends React.Component {
             <option value="guest">guest</option>
           </select>
 
-          <input type="submit" value="Submit" className="login100-form-btn-small col-2 member-submit"></input>
+          <input type="submit" value="submit" className="login100-form-btn-small col-2 member-submit"></input>
         </form>
       </div>
     );

@@ -12,10 +12,10 @@ function Member(props) {
         <div className={`${props.role}-name col`}>{props.name}</div>
         <div className={`${props.role}-address col`}>{props.address}</div>
         <div className={`${props.role}-telephone col`}>{props.telephone}</div>
-        <input className="login100-form-btn-small col-1 delete" id={`delete-btn-${props.index}`} type="submit" value="Delete"></input>
+        <input className="login100-form-btn-small col-1 delete" id={`delete-btn-${props.index}`} type="submit" value="delete"></input>
       </div>
     </form>
     </div>
-    
+
   );
 }

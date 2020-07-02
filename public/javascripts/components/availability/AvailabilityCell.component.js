@@ -11,9 +11,11 @@ class AvailabilityCell extends React.Component {
   }
 
   updateAvailability = (event) => {
-    console.log(event.target.value);
-    console.log(this.props.driver_id);
-    console.log(this.props.monthName);
+    // console.log(event.target.value);
+    console.log(event.target);
+    this.changeColor()
+    // console.log(this.props.driver_id);
+    // console.log(this.props.monthName);
 
     let updateMember = {
       driver_id: this.props.driver_id,
@@ -29,10 +31,21 @@ class AvailabilityCell extends React.Component {
       .then((response) => response.json())
       .then((result) => {
         console.log(result);
-        this.updateSelectColour()
+        
       });
   };
 
+  changeColor = () => {
+    // console.log(event.target.value);
+    if (event.target.value === "false") {
+      event.target.style.backgroundColor = "red";
+    } else if (event.target.value === "true") {
+      event.target.style.backgroundColor = "green";
+    } else {
+      event.target.style.backgroundColor = "orange";
+    }
+  };
+  
 
   render() {
     // var selector = document.getElementById("coloured-cell")
@@ -71,7 +84,7 @@ class AvailabilityCell extends React.Component {
           >
             TBD
           </option>
-        </select>
+        </select>  
       </div>
     );
   }
