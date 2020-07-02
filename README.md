@@ -23,11 +23,11 @@ This tool helps volunteer coordinators for Re-Engage. Re-Engage is a charity tha
 - **[Express](https://expressjs.com/)** web framework for Node.js.
 - **[React](https://reactjs.org)** as a front end controller. 
 - **[Node](https://nodejs.org/en/)** for the development environment.
-- [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) as our development languag
+- [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) as our development language.
 - [Google Maps Directions API](https://developers.google.com/maps/documentation/directions/start) to generate routes for guest/driver pairs. 
 - [Mongoose](https://mongoosejs.com) to model objects for MongoDB.
 - [Nodemon](https://nodemon.io/) to reload the server automatically.
-- [Prettier](https://prettier.io) for linting
+- [Prettier](https://prettier.io) for linting.
 - [Jest](https://jestjs.io/) for testing.
 - [Cypress](https://www.cypress.io/) for end-to-end testing.
 - [Travis](https://travis-ci.org) for continuous integration and build testing.
@@ -46,11 +46,11 @@ This tool helps volunteer coordinators for Re-Engage. Re-Engage is a charity tha
 ### Testing
 The test server must be running for integration tests to pass. The test server runs on port 3030 at http://localhost:3030. 
 
-* In one terminal (start the test server): ```npm run start:test``` 
+* In one terminal (start the test server): `npm run start:test` 
 * In another terminal, run these commands 
-  * To run all the tests (Jest and Cypress): ```npm test```
-  * To run Jest unit tests: ```npm run test:unit```
-  * To run Cypress feature tests: ```npm run test:integratiton```
+  * To run all the tests (Jest and Cypress): `npm test`
+  * To run Jest unit tests: `npm run test:unit` or `npx jest`
+  * To run Cypress feature tests: `npm run test:integration`
 
 ### Learning
 We ran daily retros to review each other's code and clarified our learning with a wiki post detailing the new knowledge we had acquired. You can a link to an overview of daily learning [here](https://github.com/Tracht/charity-apr2020/wiki/Learnings).
