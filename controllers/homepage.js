@@ -37,7 +37,7 @@ var HomepageController = {
       });
       response.send(drivers);
       console.log("driver response", drivers);
-    });
+    }).lean();
   },
 
   GuestList: (memberModel) => (request, response) => {
@@ -51,7 +51,7 @@ var HomepageController = {
       });
       response.send(guests);
       console.log("guest response", guests);
-    });
+    }).lean();
   },
 
   Index: (req, res, next) => {

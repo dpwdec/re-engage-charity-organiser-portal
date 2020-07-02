@@ -17,7 +17,7 @@ var PairController = {
 
     Member.find((err, members) => {
       console.log(members.availability);
-    });
+    }).lean();
 
     Member.find({ role: "guest" }, (err, guests) => {
       var availableGuests = [];

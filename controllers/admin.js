@@ -28,7 +28,7 @@ let adminController = {
           message: "There is no admin with that adminName",
         });
       }
-    });
+    }).lean();
   },
   Index: (req, res) => {
     res.render("admin");
