@@ -1,8 +1,12 @@
-## Charity Portal
-This is a tool to help with the organisation of tea parties in the local communities.
+![Build Status][1]
+## Re-Engage Portal
+This tool helps volunteer coordinators for Re-Engage. Re-Engage is a charity that organises tea parties for elderly members in the community to address isolation and loneliness. 
 
-### Travis CI 
-![Build Status](https://travis-ci.org/Tracht/charity-apr2020.svg?branch=master)
+Background: Each month, a driver from a group of volunteers is matched with an elderly guest, with drivers and guests who live close to one another being paired preferentially. Drivers then pick up and drop off their assigned guest at a central location where the charity runs a tea party. 
+
+Problem: Driver/Guest pairings are often different each month based on the participants' changing schedules. Coordinating everyone involved was done manually using spreadsheets and required a substantial number of hours to complete, with the shortest guest/driver pairs being created by looking up participants' addresses in Google Maps and eyeballing the best pairings. 
+
+Solution: The Re-Engage Coordinator Portal helps coordinators by automating the administrative tasks involved. 
 
 ### Features
 - Coordinator can login/logout
@@ -48,10 +52,8 @@ The test server must be running for integration tests to pass. The test server r
 ### Learning
 We ran daily retros to review each other's code and clarified our learning with a wiki post detailing the new knowledge we had acquired. You can a link to an overview of daily learning [here](https://github.com/Tracht/charity-apr2020/wiki/Learnings).
 
-[1]: https://github.com/Tracht/charity-apr2020/wiki/Product-Spec
-
 ### Development Process
-Our team used an agile development process with periodic sprints to deliver to our client with regular check ins and feature updates. The client's specification was broken down by our team into a [product spec][1] which were then turned into user stories and finally assigned to team member pairs. This process allowed us to integrate changes in specification late into development and keep the team running by dividing up dividing up tasks during the sprints. We used a process of branches, pull-request code reviews and continuous integration testing pipelines to keep our code clean and dependendable.
+Our team used an agile development process with periodic sprints to deliver to our client with regular check ins and feature updates. The client's specification was broken down by our team into a [product spec][2] which were then turned into user stories and finally assigned to team member pairs. This process allowed us to integrate changes in specification late into development and keep the team running by dividing up dividing up tasks during the sprints. We used a process of branches, pull-request code reviews and continuous integration testing pipelines to keep our code clean and dependendable.
 
 For an insight into our agile process you can view our team's [card wall here](https://trello.com/b/tg4zTEhc/charity-april-2020).
 
@@ -143,4 +145,5 @@ So that I can visualise the pairing logistics
 I would like to see a map of the pairs in the table
 ```
 
-
+[1]: https://travis-ci.org/Tracht/charity-apr2020.svg?branch=master
+[2]: https://github.com/Tracht/charity-apr2020/wiki/Product-Spec
