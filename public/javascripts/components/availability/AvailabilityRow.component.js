@@ -28,37 +28,37 @@ class AvailabilityRow extends React.Component {
 
   render() {
     return (
-      <div className="available row" id={`tr-${this.props.driver.name}`}>
+      <div className="available row container" id={`tr-${this.props.driver.name}`}>
         <div className="driverName col">{this.props.driver.name}</div>
         
-        <div className="col">
+        <div className="col cell">
           <AvailabilityCell
             driver_id={this.props.driver._id}
-            className="col"
+            className="col cell"
             month={this.state.months[0]}
             monthName={this.props.months[0]}
           />
         </div>
-        <div className="col">
+        <div className="col cell">
           <AvailabilityCell
             driver_id={this.props.driver._id}
-            className="col"
+            className="col cell"
             month={this.state.months[1]}
             monthName={this.props.months[1]}
           />
         </div>
-        <div className="col">
+        <div className="col cell">
           <AvailabilityCell
             driver_id={this.props.driver._id}
-            className="col"
+            className="col cell"
             month={this.state.months[2]}
             monthName={this.props.months[2]}
           />
         </div>
-        <div className="col">
+        <div className="col cell">
           <AvailabilityCell
             driver_id={this.props.driver._id}
-            className="col"
+            className="col cell"
             month={this.state.months[3]}
             monthName={this.props.months[3]}
           />

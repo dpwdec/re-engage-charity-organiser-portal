@@ -279,6 +279,10 @@ header .sup {
   margin-left: 30px;
 }
 
+.avail-cell {
+  padding: 0;
+}
+
 .drivers-availability,
 .guests-availability {
   color: grey;
@@ -287,7 +291,7 @@ header .sup {
 
 .driverName {
   /* color: grey; */
-  padding-left: 15px;
+  padding-left: 30px;
 }
 .members-table,
 .member-form-table,
@@ -327,7 +331,7 @@ header .sup {
 .driver-list-row {
   margin-right: 50px;
 }
-/* .month {
-  margin-left: 40px;
-  width: 200%;
-} */
+
+.members-table-header, .available {
+  width:100%;
+}

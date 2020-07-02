@@ -34,7 +34,7 @@ class AvailabilityCell extends React.Component {
 
   render() {
     return (
-      <div className="month col">
+      <div className="col cell">
         <select
           className="select-availability col"
           onChange={this.updateAvailability}
