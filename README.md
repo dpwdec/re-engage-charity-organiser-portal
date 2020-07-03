@@ -10,7 +10,7 @@ This tool helps volunteer coordinators for Re-Engage. Re-Engage is a charity tha
 
 ### The Team
 [![ezgif.com-gif-maker45afae518b3e29ba.gif](https://s7.gifyu.com/images/ezgif.com-gif-maker45afae518b3e29ba.gif)](https://gifyu.com/image/QKpL)
-![](https://media.giphy.com/media/Y1dlGNNAIv3eYc04qh/giphy.gif)
+
 ### Features
 - Coordinators can login/logout
 - View, add, and delete members (drivers & guests), their addresses, and telephone numbers
