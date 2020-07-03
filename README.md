@@ -9,8 +9,7 @@ This tool helps volunteer coordinators for Re-Engage. Re-Engage is a charity tha
 **Solution**: The Re-Engage Coordinator Portal helps coordinators by automating the administrative tasks involved. 
 
 ### The Team
-![ezgif com-gif-maker](https://user-images.githubusercontent.com/28805811/86462837-38583a80-bd24-11ea-8fb4-c4a69a212926.gif)
-![](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)
+![](https://user-images.githubusercontent.com/28805811/86462837-38583a80-bd24-11ea-8fb4-c4a69a212926.gif)
 ### Features
 - Coordinators can login/logout
 - View, add, and delete members (drivers & guests), their addresses, and telephone numbers
