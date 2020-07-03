@@ -77,13 +77,13 @@ class ReactApp extends React.Component {
             <section className="tabs row container">
 
               <input onClick={this.showHome} id="home-tab" type="radio" name="radio-set" className="tab-selector-1 tab-selector active" />
-              <label htmlFor="home-tab" className="tab-label-1">Home</label>
+              <label htmlFor="home-tab" id="home-tab" className="tab-label-1">Home</label>
 
               <input onClick={this.showPairs}  id="pairs-tab" type="radio" name="radio-set" className="tab-selector-2 tab-selector" />
-              <label htmlFor="pairs-tab" className="tab-label-2">Pairs</label>
+              <label htmlFor="pairs-tab" id="pairs-tab" className="tab-label-2">Pairs</label>
 
               <input onClick={this.showContact} id="contact-tab" type="radio" name="radio-set" className="tab-selector-3 tab-selector" />
-              <label htmlFor="contact-tab" className="tab-label-3">Contact</label>
+              <label htmlFor="contact-tab" id="contact-tab" className="tab-label-3">Contact</label>
 
              <div className="clear-shadow"></div>
              </section>
