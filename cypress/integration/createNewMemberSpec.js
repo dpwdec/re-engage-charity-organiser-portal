@@ -1,3 +1,7 @@
+Cypress.on('uncaught:exception', (err, runnable) => {
+  return false
+})
+
 describe('Create Member Form', () => {
 
   beforeEach(() => {
@@ -14,7 +18,7 @@ describe('Create Member Form', () => {
 
   it('Creates a new member', () => {
     cy.visit('/')
-    cy.get("#contact-tab").click();
+    cy.get('#tab-label-3').click()
     cy.get('#new-member-form').find('[id=new-member-name]').type('Himithy')
     cy.get('#new-member-form').find('[id=new-member-address]').type('S3 4KY')
     cy.get('#new-member-form').find('[id=new-member-role]').select('driver')
@@ -22,7 +26,7 @@ describe('Create Member Form', () => {
     cy.get('#new-member-form').submit();
     
     cy.visit('/')
-    cy.get("#contact-tab").click();
+    cy.get("#tab-label-3").click()
     cy.get('.driver-list').should('contain', 'Himithy');
     cy.get('.driver-list').should('contain', 'S3 4KY');
     cy.get('.driver-list').should('contain', '07111222333');
