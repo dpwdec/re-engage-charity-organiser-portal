@@ -27,12 +27,12 @@ body {
   color: #fff;
   border-bottom: 0;
   /* Only round the top corners */
-  /* -webkit-border-top-left-radius: 15px;
+  -webkit-border-top-left-radius: 15px;
   -webkit-border-top-right-radius: 15px;
   -moz-border-radius-topleft: 15px;
   -moz-border-radius-topright: 15px;
   border-top-left-radius: 15px;
-  border-top-right-radius: 15px; */
+  border-top-right-radius: 15px;
 }
 
 .wrapper{
@@ -46,20 +46,13 @@ body {
 .transparent-wrapper{
   align-content: center;
   background: 
-  /* top, transparent red */ 
   rgba(black, 0.25),
-  /* bottom, image */
   url(https://www.reengage.org.uk/site/assets/files/2869/dsc_9720.750x0.jpg);
-  /* background-image: url(https://www.reengage.org.uk/site/assets/files/2869/dsc_9720.750x0.jpg); */
   box-shadow: 0px 13px 40px -13px rgba(0,0,0,0.75);
   margin: 0 auto;
   padding: 10% 15% 10% 15%;
   margin: 5% auto;
 }
-
-/* .login-background {
-  background-image: url("/public/images/logo.svg");
-} */
 
 a {
   text-decoration: none;
@@ -159,6 +152,11 @@ header .sup {
 .clear-shadow {
   clear: both;
 }
+
+#login {
+  margin-top: 20px;
+}
+
 .content {
   height: auto;
   width: 100%;
