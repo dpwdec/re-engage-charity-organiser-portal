@@ -1,4 +1,5 @@
 class ReactApp extends React.Component {
+  
   constructor(props) {
     super(props);
     const token = sessionStorage.getItem("token");
@@ -70,37 +71,35 @@ class ReactApp extends React.Component {
 
             <section className="tabs row container">
 
-              <button onClick={this.showHome} id="home-tab" type="radio" name="radio-set" className="tab-selector-1 tab-selector active" />
+              <input onClick={this.showHome} id="home-tab" type="radio" name="radio-set" className="tab-selector-1 tab-selector active" />
               <label htmlFor="home-tab" id="tab-label-1" className="tab-label-1">Home</label>
 
-              <button onClick={this.showPairs}  id="pairs-tab" type="radio" name="radio-set" className="tab-selector-2 tab-selector" />
+              <input onClick={this.showPairs}  id="pairs-tab" type="radio" name="radio-set" className="tab-selector-2 tab-selector" />
               <label htmlFor="pairs-tab" id="tab-label-2" className="tab-label-2">Pairs</label>
 
-              <button onClick={this.showContact} id="contact-tab"  type="radio" name="radio-set" className="tab-selector-3 tab-selector" />
+              <input onClick={this.showContact} id="contact-tab"  type="radio" name="radio-set" className="tab-selector-3 tab-selector" />
               <label  htmlFor="contact-tab" id="tab-label-3" className="tab-label-3">Contact</label>
 
              <div className="clear-shadow"></div>
              </section>
               
-                {(() => {
-                  if (this.state.home === true) {
-                    return (
-                    <AvailabilityTables />
+              {(() => {
+                if (this.state.home === true) {
+                  return (
+                  <AvailabilityTables />
+                );
+              }
+
+              if (this.state.pairs === true) {
+                return <Pairing />;
+              }
+
+              if (this.state.contact === true) {
+                  return (
+                    <Contact />
                   );
                 }
-
-                if (this.state.pairs === true) {
-                  return <Pairing />;
-                }
-
-                if (this.state.contact === true) {
-                    return (
-                      <Contact />
-                    );
-                  }
-                })()}
-
-            
+              })()}
           </div>
         </div>
       );

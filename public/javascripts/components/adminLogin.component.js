@@ -18,6 +18,7 @@ class AdminLogin extends React.Component {
       adminName: e.target.value,
     });
   };
+  
   handleChangePassword = (e) => {
     this.setState({
       password: e.target.value,

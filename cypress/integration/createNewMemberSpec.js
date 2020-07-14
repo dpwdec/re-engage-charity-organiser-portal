@@ -33,8 +33,6 @@ describe('Create Member Form', () => {
 
     cy.get('.guest-list').should('not.contain', 'Himithy');
     cy.get('.guest-list').should('not.contain', 'S3 4KY');
-    
-
   });
 
   afterEach(() => {
