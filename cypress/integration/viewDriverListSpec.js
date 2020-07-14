@@ -1,3 +1,7 @@
+Cypress.on('uncaught:exception', (err, runnable) => {
+  return false
+})
+
 describe("Members", () => {
   beforeEach(() => {
     cy.task("dropAdmins");
@@ -16,7 +20,7 @@ describe("Members", () => {
 
   it("displays all drivers names and addresses", () => {
     cy.visit("/");
-    cy.get("#contact-tab").click();
+    cy.get('#tab-label-3').click()
     cy.get(".driver-list").should("contain", "Cat");
     cy.get(".driver-list").should("contain", "07333555777");
     cy.get(".driver-list").should("contain", "Marija");
@@ -27,7 +31,7 @@ describe("Members", () => {
 
   it("deletes driver from driver list component", () => {
       cy.visit("/");
-      cy.get("#contact-tab").click();
+      cy.get('#tab-label-3').click()
       cy.get("#delete-btn-0").click();
       cy.get(".driver-list").should("not.contain", "Cat");
       cy.get(".driver-list").should("not.contain", "07333555777");

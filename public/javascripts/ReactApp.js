@@ -1,4 +1,5 @@
 class ReactApp extends React.Component {
+  
   constructor(props) {
     super(props);
     const token = sessionStorage.getItem("token");
@@ -34,12 +35,6 @@ class ReactApp extends React.Component {
       contact: false,
     });
     this.changeTabColour("pairs-tab", "home-tab", "contact-tab");
-    // var x = document.getElementById("pairing-map");
-    // // var body = document.getElementsByTagName("body")
-    // // body.removeChild(x);
-    // // var parent = document.getElementById("map-pairing-tab");
-    // // parent.appendChild(x)
-    // x.style.display = ""
   };
 
   showContact = (e) => {
@@ -77,36 +72,34 @@ class ReactApp extends React.Component {
             <section className="tabs row container">
 
               <input onClick={this.showHome} id="home-tab" type="radio" name="radio-set" className="tab-selector-1 tab-selector active" />
-              <label htmlFor="home-tab" className="tab-label-1">Home</label>
+              <label htmlFor="home-tab" id="tab-label-1" className="tab-label-1">Home</label>
 
               <input onClick={this.showPairs}  id="pairs-tab" type="radio" name="radio-set" className="tab-selector-2 tab-selector" />
-              <label htmlFor="pairs-tab" className="tab-label-2">Pairs</label>
+              <label htmlFor="pairs-tab" id="tab-label-2" className="tab-label-2">Pairs</label>
 
-              <input onClick={this.showContact} id="contact-tab" type="radio" name="radio-set" className="tab-selector-3 tab-selector" />
-              <label htmlFor="contact-tab" className="tab-label-3">Contact</label>
+              <input onClick={this.showContact} id="contact-tab"  type="radio" name="radio-set" className="tab-selector-3 tab-selector" />
+              <label  htmlFor="contact-tab" id="tab-label-3" className="tab-label-3">Contact</label>
 
              <div className="clear-shadow"></div>
              </section>
               
-                {(() => {
-                  if (this.state.home === true) {
-                    return (
-                    <AvailabilityTables />
+              {(() => {
+                if (this.state.home === true) {
+                  return (
+                  <AvailabilityTables />
+                );
+              }
+
+              if (this.state.pairs === true) {
+                return <Pairing />;
+              }
+
+              if (this.state.contact === true) {
+                  return (
+                    <Contact />
                   );
                 }
-
-                if (this.state.pairs === true) {
-                  return <Pairing />;
-                }
-
-                if (this.state.contact === true) {
-                    return (
-                      <Contact />
-                    );
-                  }
-                })()}
-
-            
+              })()}
           </div>
         </div>
       );

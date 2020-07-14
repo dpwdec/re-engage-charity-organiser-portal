@@ -3,33 +3,36 @@ describe("DriverAvailability", () => {
     cy.task("dropAdmins");
     cy.task("addAdmin", { adminName: "admin", password: "1234" });
 
-    cy.task("dropMembers");
-    cy.task("addMember", {
-      name: "Cat",
-      role: "driver",
-      availability: { "Jul 2020": false, "Aug 2020": false, "Sep 2020": true },
-    });
-    cy.task("addMember", {
-      name: "Merija",
-      role: "guest",
-      availability: { "Jul 2020": true, "Aug 2020": true, "Sep 2020": true },
-    });
+    // cy.task("dropMembers");
+    // cy.task("addMember", {
+    //   name: "Cat",
+    //   role: "driver",
+    //   availability: { 
+    //     "Jul 2020": false
+    //  },
+    // });
+    // cy.task("addMember", {
+    //   name: "Merija",
+    //   role: "guest",
+    //   availability: { 
+    //     "Jul 2020": true
+    //   },
+    // });
 
     cy.task("dropMembers");
     cy.task("addMember", {
       name: "Cat",
       role: "driver",
       availability: {
-        "Jun 2020": false,
         "Jul 2020": false,
-        "Aug 2020": false,
-        "Sep 2020": true,
       },
     });
     cy.task("addMember", {
       name: "Merija",
       role: "guest",
-      availability: { "Jul 2020": true, "Aug 2020": true, "Sep 2020": true },
+      availability: { 
+        "Jul 2020": true, 
+      },
     });
 
     cy.visit("admin/login");
@@ -42,21 +45,15 @@ describe("DriverAvailability", () => {
     // Simplest test created to check the controller logic
     cy.visit("/");
     cy.contains("Cat")
-      .parents("tr")
+      .parents(".available")
       .within(() => {
-        cy.get("td").eq(1).contains("False");
-        cy.get("td").eq(2).contains("False");
-        cy.get("td").eq(3).contains("True");
-        cy.get("td").eq(4).contains("TBD");
+        cy.get("option").eq(1).contains("False");
       });
 
     cy.contains("Merija")
-      .parents("tr")
+      .parents(".available")
       .within(() => {
-        cy.get("td").eq(1).contains("True");
-        cy.get("td").eq(2).contains("True");
-        cy.get("td").eq(3).contains("True");
-        cy.get("td").eq(4).contains("TBD");
+        cy.get("option").eq(1).contains("False");
       });
 
     cy.get("#logout").click();
