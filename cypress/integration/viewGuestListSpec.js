@@ -17,7 +17,7 @@ describe('Members', () => {
 
   it('displays all guests names and addresses', () => {
     cy.visit('/');
-    cy.get("#contact-tab").click();
+    cy.get('#tab-label-3').click()
     cy.get('.guest-list').should('contain', 'Dec');
     cy.get('.guest-list').should('contain', '0300 200 3300');
     cy.get('.guest-list').should('contain', 'Jo');
