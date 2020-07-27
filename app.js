@@ -31,12 +31,16 @@ app.use("/pairs", pairsRouter);
 app.use("/admin", adminRouter);
 app.use('/availability', availRouter);
 
+
+// The following code is meant to initialise the first connection to the DB
+
 // var Member = require ('./models/member');
 // newMember = new Member( {
 //   name: "Jackie",
 //   address: "SE2",
 //   telephone: 07111222333,
 //   role: "driver", 
+//   availability: {}
 // })
 
 // newMember.save()
@@ -48,7 +52,6 @@ app.use('/availability', availRouter);
 // })
 
 // newAdmin.save()
-
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
