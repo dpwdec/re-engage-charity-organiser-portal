@@ -53,7 +53,7 @@ The test server must be running for integration tests to pass. The test server r
 * In another terminal, run these commands 
   * To run all the tests (Jest and Cypress): `npm test`
   * To run Jest unit tests: `npm run test:unit` or `npx jest`
-  * To run Cypress feature tests: `npm run test:integration`
+  * To run Cypress feature tests: `npm run test:integration` or `npx cypress open`
 
 ### Learning
 We ran daily retros to review each other's code and clarified our learning with a wiki post detailing the new knowledge we had acquired. You can a link to an overview of daily learning [here](https://github.com/Tracht/charity-apr2020/wiki/Learnings).
