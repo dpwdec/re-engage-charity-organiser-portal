@@ -3,8 +3,10 @@ let router = express.Router();
 let adminController = require("../controllers/admin");
 const Admin = require("../models/admin");
 
-router.post("/login", adminController.Login(Admin));
-router.get("/login", adminController.Index);
+router.route("/login")
+.post(adminController.Login(Admin))
+.get(adminController.Index);
+
 module.exports = router;
 
 /* GET users listing. */
