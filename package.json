@@ -3,14 +3,13 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www",
+    "start": "nodemon ./bin/www", 
     "start:dev": "PORT=3000 MONGODB_URL='mongodb://localhost/re_engage' npm start ",
     "start:test": "PORT=3030 MONGODB_URL='mongodb://localhost/re_engage_test' npm start ",
     "start:prod": "npm start",
     "test": "npm run test:unit && npm run test:integration",
     "test:unit": "jest",
     "test:integration": "cypress run"
-    
   },
   "dependencies": {
     "@google/maps": "^1.1.3",

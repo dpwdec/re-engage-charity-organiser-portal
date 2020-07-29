@@ -19,7 +19,7 @@ describe("Admin Controller", () => {
 
       expect(res.send).toHaveBeenCalledWith({
         success: false,
-        message: "Datebase error",
+        message: "Database error",
       });
     });
 
@@ -77,7 +77,7 @@ describe("Admin Controller", () => {
       controller(req, res);
       expect(res.send).toHaveBeenCalledWith({
         success: false,
-        message: "There is no admin with that adminName",
+        message: "This username doesn't exist in the database.",
       });
     });
   });
