@@ -1,4 +1,5 @@
 let adminController = {
+
   Login: (adminModel) => (req, res) => {
     const { body } = req;
     const { adminName, password } = body;
@@ -25,14 +26,16 @@ let adminController = {
       } else {
         res.send({
           success: false,
-          message: "There is no record of that admin in the database.",
+          message: "There is no record of this admin in the database.",
         });
       }
     });
   },
+
   Index: (req, res) => {
     res.render("admin");
   },
+
 };
 
 module.exports = adminController;
