@@ -5,7 +5,6 @@
   "scripts": {
     "start": "nodemon ./bin/www",
     "test:unit": "jest",
-    "start:test": "PORT=3030 MONGODB_URL='mongodb://localhost/re_engage_test' npm start",
     "test:integration": "cypress run",
     "test": "npm run test:unit && npm run test:integration"
   },
