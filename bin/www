@@ -14,31 +14,42 @@ var mongoose = require('mongoose');
  */
 
 // new port step 1
-var port = process.env.PORT || '3000';
+var port = process.env.PORT || '3000'; // uses the first otherwise defaults to PORT 3000
 app.set('port', port);
 
 /*
 Setup MongoDB connection
 */
+console.log("Which DB are we connecting to?", process.env.MONGODB_URL);
 
-var environment = "testing";
-
-if ( environment === "local" ) {
-  mongoose.connect('mongodb://localhost/re_engage', {
-        useNewUrlParser: true,
-        useUnifiedTopology: true
-      });
-} else if ( environment === "testing" ) {
-  mongoose.connect('mongodb://localhost/re_engage_test', {
-        useNewUrlParser: true,
-        useUnifiedTopology: true
-      });
-} else { // live environment
-  mongoose.connect(process.env.MONGOLAB_URI, {
+mongoose.connect(process.env.MONGODB_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true, 
-  });
-}
+  }
+);
+
+mongoose.connection.on('connected', () => {
+  console.log('Mongoose is connected!');
+});
+
+// var environment = "development";
+
+// if ( environment === "development" ) {
+//   mongoose.connect('mongodb://localhost/re_engage', {
+//         useNewUrlParser: true,
+//         useUnifiedTopology: true
+//       });
+// } else if ( environment === "testing" ) {
+//   mongoose.connect('mongodb://localhost/re_engage_test', {
+//         useNewUrlParser: true,
+//         useUnifiedTopology: true
+//       });
+// } else { // production environment
+//   mongoose.connect(process.env.MONGOLAB_URI, {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true, 
+//   });
+// }
 
 // if ( process.env.MONGOLAB_URI ) {
 //   mongoose.connect(process.env.MONGOLAB_URI, {
@@ -53,9 +64,9 @@ if ( environment === "local" ) {
 //   });
 // }
 
-mongoose.connection.on('connected', () => {
-  console.log('Mongoose is connected!');
-});
+// mongoose.connection.on('connected', () => {
+//   console.log('Mongoose is connected!');
+// });
 
 /**
  * Create HTTP server.
