@@ -8,7 +8,7 @@ let adminController = {
       if (err) {
         res.send({
           success: false,
-          message: "Database error",
+          message: "Datebase error",
         });
       } else if (existingAdmin !== null) {
         if (password == existingAdmin.password) {
@@ -26,7 +26,7 @@ let adminController = {
       } else {
         res.send({
           success: false,
-          message: "There is no record of this admin in the database.",
+          message: "There is no admin with that adminName",
         });
       }
     });

@@ -10,7 +10,7 @@ describe("Testing login functionality with wrong admin datas", () => {
     cy.get("#admin").type("admin1");
     cy.get("#password").type("1234");
     cy.on('window:alert', (str) => {
-      expect(str).to.equal("There is no record of this admin in the database.")
+      expect(str).to.equal("There is no admin with that adminName")
     });
     cy.get("#login").click();
   });
