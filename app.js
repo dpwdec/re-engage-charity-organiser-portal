@@ -47,8 +47,8 @@ app.use('/availability', availRouter);
 
 // var Admin = require ('./models/admin');
 // newAdmin = new Admin( {
-//   adminName: ,
-//   password: 
+//   adminName: "admin",
+//   password: "1234"
 // })
 
 // newAdmin.save()
