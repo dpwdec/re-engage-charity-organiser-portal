@@ -45,13 +45,13 @@ app.use('/availability', availRouter);
 
 // newMember.save()
 
-var Admin = require ('./models/admin');
-newAdmin = new Admin( {
-  adminName: "admin",
-  password: "1234"
-})
+// var Admin = require ('./models/admin');
+// newAdmin = new Admin( {
+//   adminName: "admin",
+//   password: "1234"
+// })
 
-newAdmin.save()
+// newAdmin.save()
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
