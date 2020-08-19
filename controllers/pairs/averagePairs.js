@@ -10,6 +10,7 @@ AveragePairs.generate = (members) => {
     this.guests.push(guest);
   });
 
+  // push each unique driver into list of drivers
   members[0].drivers.forEach((driver) => {
     this.drivers.push(driver.name);
   });
@@ -27,7 +28,7 @@ AveragePairs.generate = (members) => {
     // clone guests for mutation
     guestClone = _.clone(this.guests);
 
-    for(var j = 0; j < this.guests.length-1; j++) {
+    for(var j = 0; j < this.guests.length; j++) {
       var pairing = {
         pairs: []
       };
@@ -96,7 +97,7 @@ AveragePairs.generate = (members) => {
   //add ids
   bestPairing.pairs.forEach((pair, index) => {
     pair.id = index+1;
-  })
+  });
   return bestPairing.pairs;
   
 }

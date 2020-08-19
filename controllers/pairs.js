@@ -15,10 +15,6 @@ var PairController = {
     let query = {};
     query[month] = true;
 
-    Member.find((err, members) => {
-      console.log(members.availability);
-    }).lean();
-
     Member.find({ role: "guest" }, (err, guests) => {
       var availableGuests = [];
       guests.forEach((guest) => {
@@ -75,7 +71,6 @@ var PairController = {
         }
 
         response.send({ pairs: pairings });
-        console.log("Pairs!", { pairs: pairings });
       });
     });
   },
