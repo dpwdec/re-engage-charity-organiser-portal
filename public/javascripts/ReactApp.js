@@ -6,6 +6,10 @@ class ReactApp extends React.Component {
     let loggedIn = true;
     if (token == null) {
       loggedIn = false;
+      // log in message for those wanting to demo the app
+      alert('This version of the coordinator service and all data contained there in is for demonstration purposes only.\n\nYou can log in as an admin using the following credentials.\n\n\
+      USERNAME: admin\n\
+      PASSWORD: 1234')
     }
     this.state = {
       loggedIn,
