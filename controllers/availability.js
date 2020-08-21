@@ -4,16 +4,17 @@ var Member = require('../models/member');
 var AvailabilityController = {
 
 
-    Availability: (request, response) => {
-      console.log(request.query);
+    Availability: (memberModel) => (request, response) => {
       var filter = 'name availability'
       var availabilitiesJSON = {
         months: helperFunction.getArrayOfCurrentAndNextThreeMonths(),
         members: []
       }
 
-      Member.find({role: request.query.role}, filter ).lean().
-      exec((err, result) => {
+      memberModel
+      .find({role: request.query.role}, filter)
+      .lean()
+      .exec((err, result) => {
         if (!err) {
           availabilitiesJSON.members = result
           response.send(availabilitiesJSON)
@@ -24,7 +25,6 @@ var AvailabilityController = {
 
 
     Update: (request, response) => {
-      // console.log(request.body);
 
       var query = { _id: request.body.driver_id };
 
