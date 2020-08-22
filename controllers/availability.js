@@ -5,22 +5,18 @@ var AvailabilityController = {
 
 
     Availability: (memberModel, helperFunctions) => (request, response) => {
-      var filter = 'name availability'
-      var availabilitiesJSON = {
-        months: helperFunctions.getArrayOfCurrentAndNextThreeMonths(),
-        members: []
-      }
-
       memberModel
-      .find({role: request.query.role}, filter)
+      .find({role: request.query.role}, 'name availability')
       .lean()
       .exec((err, result) => {
+        console.log(result);
         if (!err) {
-          availabilitiesJSON.members = result
-          response.send(availabilitiesJSON)
-        };
+          response.send({
+            months: helperFunctions.getArrayOfCurrentAndNextThreeMonths(),
+            members: result
+          });
+        }
       });
-
     },
 
 
