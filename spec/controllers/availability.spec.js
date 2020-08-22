@@ -2,7 +2,7 @@ const AvailabilityController = require('../../controllers/availability');
 
 describe("Availability Controller", () => {
   describe("Availability", () => {
-    it("executes a response", () => {
+    it("sends members data and current months", () => {
       /*
       // Previous implementation:
       const Member = {

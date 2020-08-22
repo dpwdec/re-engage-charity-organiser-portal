@@ -4,10 +4,10 @@ var Member = require('../models/member');
 var AvailabilityController = {
 
 
-    Availability: (memberModel) => (request, response) => {
+    Availability: (memberModel, helperFunctions) => (request, response) => {
       var filter = 'name availability'
       var availabilitiesJSON = {
-        months: helperFunction.getArrayOfCurrentAndNextThreeMonths(),
+        months: helperFunctions.getArrayOfCurrentAndNextThreeMonths(),
         members: []
       }
 
