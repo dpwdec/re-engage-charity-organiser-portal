@@ -20,6 +20,17 @@ describe("Homepage Controller", () => {
 
       expect(res.send).toHaveBeenCalledWith({});
     });
+
+    it("sends error if members query fails", async () => {
+      Member.find().lean.mockReturnValue({ exec: () => Promise.reject(new Error()) });
+      controller = HomepageController.Members(Member);
+      req = { query: { role: "Error" } };
+
+      await controller(req, res);
+
+      expect(res.send).toHaveBeenCalledWith({message: "Error"});
+      expect(res.send).not.toHaveBeenCalledWith({});
+    });
   });
 
   describe("Create Member", () => {
@@ -39,7 +50,7 @@ describe("Homepage Controller", () => {
       Member.deleteOne.mockImplementation((target, callback) => callback(false));
       req.body = { id: "1" };
       controller = HomepageController.DeleteMember(Member);
-      
+
       controller(req, res);
 
       expect(Member.deleteOne).toHaveBeenCalled();

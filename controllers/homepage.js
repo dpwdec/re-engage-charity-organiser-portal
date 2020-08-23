@@ -30,7 +30,7 @@ var HomepageController = {
   },
 
   Members:(memberModel) => async (request, response) => {
-    const result = await memberModel.find({role: request.query.role}).lean().exec();
+    const result = await memberModel.find({role: request.query.role}).lean().exec().catch(error => response.send({message: "Error" }));
     response.send(result);
   },
 
