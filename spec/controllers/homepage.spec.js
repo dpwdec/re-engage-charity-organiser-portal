@@ -4,14 +4,10 @@ const Member = require('../../models/member');
 var HomepageController = require("../../controllers/homepage");
 
 describe("Homepage Controller", () => {
-  var memberModelMock;
-  var res;
-  var req;
+  let res, req;
 
   beforeEach(() => {
-    res = {
-      send: jest.fn(),
-    };
+    res = { send: jest.fn() };
     req = {};
   });
 
@@ -27,9 +23,11 @@ describe("Homepage Controller", () => {
   describe("Create Member", () => {
     it("saves a new member to the database && returns OK", () => {
       req.body = { name: "Paula", role: "guest", address: "N8 2AA" };
-      controller = HomepageController.CreateMember(Member);
       Member._saveMock.mockImplementation((callback) => callback(false));
+
+      controller = HomepageController.CreateMember(Member);
       controller(req, res);
+
       expect(Member._saveMock).toHaveBeenCalled();
       expect(res.send).toHaveBeenCalledWith({ message: "ok" });
     });
@@ -37,14 +35,14 @@ describe("Homepage Controller", () => {
 
   describe("Delete Member", () => {
     it("deletes a member from the database", () => {
-      memberModelMock = {
-        deleteOne: jest.fn(),
-      };
+      Member.deleteOne.mockImplementation((target, callback) => callback(false));
       req.body = { id: "1" };
-      var res = { send: jest.fn() };
-      controller = HomepageController.DeleteMember(memberModelMock);
+
+      controller = HomepageController.DeleteMember(Member);
       controller(req, res);
-      expect(memberModelMock.deleteOne).toHaveBeenCalled();
+
+      expect(Member.deleteOne).toHaveBeenCalled();
+      expect(res.send).toHaveBeenCalledWith({ message: "success!" });
     });
   });
 
