@@ -17,18 +17,17 @@ describe("Homepage Controller", () => {
       req = { query: { role: "" } };
 
       await controller(req, res);
-      
+
       expect(res.send).toHaveBeenCalledWith({});
     });
   });
 
   describe("Create Member", () => {
-    it("saves a new member to the database && returns OK", () => {
+    it("saves a new member to the database && returns OK", async () => {
       req.body = { name: "Paula", role: "guest", address: "N8 2AA" };
-      Member._saveMock.mockImplementation((callback) => callback(false));
-
       controller = HomepageController.CreateMember(Member);
-      controller(req, res);
+
+      await controller(req, res);
 
       expect(Member._saveMock).toHaveBeenCalled();
       expect(res.send).toHaveBeenCalledWith({ message: "ok" });
@@ -39,8 +38,8 @@ describe("Homepage Controller", () => {
     it("deletes a member from the database", () => {
       Member.deleteOne.mockImplementation((target, callback) => callback(false));
       req.body = { id: "1" };
-
       controller = HomepageController.DeleteMember(Member);
+      
       controller(req, res);
 
       expect(Member.deleteOne).toHaveBeenCalled();

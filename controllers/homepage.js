@@ -1,6 +1,6 @@
 var HomepageController = {
-  CreateMember: (memberModel) => (request, response) => {
-    var member = new memberModel({
+  CreateMember: (memberModel) => async (request, response) => {
+    let member = new memberModel({
       name: request.body.name,
       role: request.body.role,
       address: request.body.address,
@@ -8,12 +8,15 @@ var HomepageController = {
       availability: {},
     });
 
-    member.save((err) => {
-      if (err) {
-        console.log(err);
-      }
-      response.send({ message: "ok" });
-    });
+    const result = await member.save();
+    response.send({ message: "ok" });
+
+    // member.save((err) => {
+    //   if (err) {
+    //     console.log(err);
+    //   }
+    //   response.send({ message: "ok" });
+    // });
   },
 
   DeleteMember: (memberModel) => (request, response) => {
@@ -27,13 +30,6 @@ var HomepageController = {
   },
 
   Members:(memberModel) => async (request, response) => {
-    // memberModel
-    // .find({role: request.query.role})
-    // .lean()
-    // .exec((err, result) => {
-    //   response.send(result);
-    // });
-
     const result = await memberModel.find({role: request.query.role}).lean().exec();
     response.send(result);
   },
