@@ -26,7 +26,6 @@ var HomepageController = {
     });
   },
 
-
   Members:(memberModel) => (request, response) => {
     memberModel
     .find({role: request.query.role})
@@ -34,9 +33,6 @@ var HomepageController = {
     .exec((err, result) => {
       response.send(result);
     });
-    // memberModel.find({role: request.query.role},(err, result) => {
-    //   response.send(result);
-    // });
   },
 
   Index: (req, res, next) => {
