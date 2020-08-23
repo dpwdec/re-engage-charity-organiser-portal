@@ -26,13 +26,16 @@ var HomepageController = {
     });
   },
 
-  Members:(memberModel) => (request, response) => {
-    memberModel
-    .find({role: request.query.role})
-    .lean()
-    .exec((err, result) => {
-      response.send(result);
-    });
+  Members:(memberModel) => async (request, response) => {
+    // memberModel
+    // .find({role: request.query.role})
+    // .lean()
+    // .exec((err, result) => {
+    //   response.send(result);
+    // });
+
+    const result = await memberModel.find({role: request.query.role}).lean().exec();
+    response.send(result);
   },
 
   Index: (req, res, next) => {

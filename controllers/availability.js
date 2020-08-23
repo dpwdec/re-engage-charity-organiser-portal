@@ -4,19 +4,29 @@ var Member = require('../models/member');
 var AvailabilityController = {
 
 
-    Availability: (memberModel, helperFunctions) => (request, response) => {
-      memberModel
+    Availability: (memberModel, helperFunctions) => async (request, response) => {
+      const result = await memberModel
       .find({role: request.query.role}, 'name availability')
       .lean()
-      .exec((err, result) => {
-        console.log(result);
-        if (!err) {
-          response.send({
-            months: helperFunctions.getArrayOfCurrentAndNextThreeMonths(),
-            members: result
-          });
-        }
+      .exec();
+
+      response.send({
+        months: helperFunctions.getArrayOfCurrentAndNextThreeMonths(),
+        members: result
       });
+
+      // memberModel
+      // .find({role: request.query.role}, 'name availability')
+      // .lean()
+      // .exec((err, result) => {
+      //   console.log(result);
+      //   if (!err) {
+      //     response.send({
+      //       months: helperFunctions.getArrayOfCurrentAndNextThreeMonths(),
+      //       members: result
+      //     });
+      //   }
+      // });
     },
 
 

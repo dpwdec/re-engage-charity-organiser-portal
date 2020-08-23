@@ -7,7 +7,7 @@ const Member = require('../../models/member');
 
 describe("Availability Controller", () => {
   describe("Availability", () => {
-    it("sends members data and current months", () => {
+    it("sends members data and current months", async () => {
       // Previous implementation:
       // const Member = { find: () => ({ lean: () => ({ exec: (callback) => callback(false, {}) }) }) }
 
@@ -23,7 +23,7 @@ describe("Availability Controller", () => {
       let req = { query: { role: 'driver' } }
       let res = { send: jest.fn() };
 
-      controller(req, res);
+      await controller(req, res);
 
       expect(Member.find).toHaveBeenCalledWith({role: 'driver'}, 'name availability');
       expect(res.send).toHaveBeenCalledWith({ members: {}, months: ["Aug 2020", "Sep 2020", "Oct 2020", "Nov 2020"] });

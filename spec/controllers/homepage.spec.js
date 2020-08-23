@@ -12,10 +12,12 @@ describe("Homepage Controller", () => {
   });
 
   describe("Members List", () => {
-    it("sends member data", () => {
+    it("sends member data", async () => {
       controller = HomepageController.Members(Member);
       req = { query: { role: "" } };
-      controller(req, res);
+
+      await controller(req, res);
+      
       expect(res.send).toHaveBeenCalledWith({});
     });
   });
