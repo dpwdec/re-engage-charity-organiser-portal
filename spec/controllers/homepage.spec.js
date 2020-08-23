@@ -1,3 +1,6 @@
+jest.mock('../../models/member');
+const Member = require('../../models/member');
+
 var HomepageController = require("../../controllers/homepage");
 
 describe("Homepage Controller", () => {
@@ -14,40 +17,21 @@ describe("Homepage Controller", () => {
 
   describe("Members List", () => {
     it("sends member data", () => {
-      memberModelMock = {
-        find: (query, callback) => {
-          var result = [
-            {
-              name: "Dec",
-              role: "driver",
-            },
-            {
-              name: "Cat",
-              role: "guest",
-            },
-          ];
-          var err = {};
-          callback(err, result);
-        },
-      };
-      controller = HomepageController.Members(memberModelMock);
-      req = {query:{role:""}}
+      controller = HomepageController.Members(Member);
+      req = { query: { role: "" } };
       controller(req, res);
-      expect(res.send).toHaveBeenCalled();
+      expect(res.send).toHaveBeenCalledWith({});
     });
   });
 
   describe("Create Member", () => {
-    it("saves a new member to the database", () => {
-      memberModelMock = jest.fn();
-      var saveMock = jest.fn();
-      memberModelMock.mockImplementation(() => {
-        return { save: saveMock };
-      });
+    it("saves a new member to the database && returns OK", () => {
       req.body = { name: "Paula", role: "guest", address: "N8 2AA" };
-      controller = HomepageController.CreateMember(memberModelMock);
+      controller = HomepageController.CreateMember(Member);
+      Member._saveMock.mockImplementation((callback) => callback(false));
       controller(req, res);
-      expect(saveMock).toHaveBeenCalled();
+      expect(Member._saveMock).toHaveBeenCalled();
+      expect(res.send).toHaveBeenCalledWith({ message: "ok" });
     });
   });
 

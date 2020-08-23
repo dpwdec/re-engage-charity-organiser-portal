@@ -28,9 +28,15 @@ var HomepageController = {
 
 
   Members:(memberModel) => (request, response) => {
-    memberModel.find({role: request.query.role},(err, result) => {
+    memberModel
+    .find({role: request.query.role})
+    .lean()
+    .exec((err, result) => {
       response.send(result);
     });
+    // memberModel.find({role: request.query.role},(err, result) => {
+    //   response.send(result);
+    // });
   },
 
   Index: (req, res, next) => {
