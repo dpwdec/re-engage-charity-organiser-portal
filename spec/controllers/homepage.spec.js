@@ -22,7 +22,8 @@ describe("Homepage Controller", () => {
 
       await controller(req, res);
 
-      expect(res.send).toHaveBeenCalledWith({});
+      expect(res.status).toHaveBeenCalledWith(200);
+      expect(res.status().send).toHaveBeenCalledWith({});
     });
 
     it("sends error if members query fails", async () => {
@@ -46,7 +47,20 @@ describe("Homepage Controller", () => {
       await controller(req, res);
 
       expect(Member._saveMock).toHaveBeenCalled();
-      expect(res.send).toHaveBeenCalledWith({ message: "ok" });
+      expect(res.status).toHaveBeenCalledWith(200);
+      expect(res.status().send).toHaveBeenCalledWith({ message: "ok" });
+    });
+
+    it("send an error && status code 500 if saving raises an error", async () => {
+      req.body = { name: "Paula", role: "guest", address: "N8 2AA" };
+      Member._saveMock.mockReturnValue(Promise.reject(new Error()));
+      controller = HomepageController.CreateMember(Member);
+
+      await controller(req, res);
+
+      expect(Member._saveMock).toHaveBeenCalled();
+      expect(res.status).toHaveBeenCalledWith(500);
+      expect(res.status().send).toHaveBeenCalledWith({ message: "Error" });
     });
   });
 
@@ -58,7 +72,20 @@ describe("Homepage Controller", () => {
       await controller(req, res);
 
       expect(Member.deleteOne).toHaveBeenCalledWith({ _id: "1" });
-      expect(res.send).toHaveBeenCalledWith({ message: "success!" });
+      expect(res.status).toHaveBeenCalledWith(200);
+      expect(res.status().send).toHaveBeenCalledWith({ message: "success!" });
+    });
+
+    it("sends an error && status code 500 if deletion fails", async () => {
+      req.body = { id: "1" };
+      Member.deleteOne.mockReturnValue(Promise.reject(new Error()));
+      controller = HomepageController.DeleteMember(Member);
+
+      await controller(req, res);
+
+      expect(Member.deleteOne).toHaveBeenCalledWith({ _id: "1" });
+      expect(res.status).toHaveBeenCalledWith(500);
+      expect(res.status().send).toHaveBeenCalledWith({ message: "Error" });
     });
   });
 
