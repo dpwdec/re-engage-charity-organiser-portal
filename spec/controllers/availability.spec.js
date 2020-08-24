@@ -16,7 +16,7 @@ describe("Availability Controller", () => {
 
   describe("Availability", () => {
     it("sends members data and current months", async () => {
-      controller = AvailabilityController.Availability(Member, HelperFunctions);
+      let controller = AvailabilityController.Availability(Member, HelperFunctions);
 
       await controller(req, res);
 
@@ -27,13 +27,29 @@ describe("Availability Controller", () => {
 
     it("sends error && status code 500 if retrieving availabilities fails", async () => {
       Member.find().lean.mockReturnValue({ exec: () => Promise.reject(new Error()) });
-      controller = AvailabilityController.Availability(Member, HelperFunctions);
+      let controller = AvailabilityController.Availability(Member, HelperFunctions);
 
       await controller(req, res);
 
       expect(Member.find).toHaveBeenCalledWith({role: 'driver'}, 'name availability');
       expect(res.status).toHaveBeenCalledWith(500);
       expect(res.status().send).toHaveBeenCalledWith({message: "Error" });
+    });
+  });
+
+  describe("Update", () => {
+    it("updates member availability data", async () => {
+      let controller = AvailabilityController.Update(Member);
+      req.body = { 
+        driver_id: "1",
+        month_name: "Aug2020",
+        month_status: 'true'
+      };
+
+      await controller(req, res);
+
+      expect(Member.findOne).toHaveBeenCalledWith({ _id: "1" });
+      expect(Member.findOneAndUpdate).toHaveBeenCalledWith({ _id: "1" }, { availability: { Aug2020: true }});
     });
   });
 });

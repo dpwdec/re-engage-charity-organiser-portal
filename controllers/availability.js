@@ -13,19 +13,16 @@ var AvailabilityController = {
       });
     },
 
-    Update: (request, response) => {
-      var query = { _id: request.body.driver_id };
+    Update: (Member) => async (request, response) => {
+      let query = { _id: request.body.driver_id };
 
-      Member.findOne(query, (err, result) => {
-        var update = { availability: result.availability };
-        update.availability[request.body.month_name] = (request.body.month_status == 'true');
-        console.log(update);
+      let current = await Member.findOne(query);
+      let updated = { availability: current.availability };
+      updated.availability[request.body.month_name] = (request.body.month_status == 'true');
 
-        Member.findOneAndUpdate(query, update).
-        then(() => {
-          response.send({message: 'success'});
-        })
-      })
+      await Member.findOneAndUpdate(query, updated);
+
+      response.status(200).send({message: 'success'});
     }
 }
 
