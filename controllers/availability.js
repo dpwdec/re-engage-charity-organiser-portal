@@ -4,11 +4,10 @@ var Member = require('../models/member');
 var AvailabilityController = {
     Availability: (memberModel, helperFunctions) => async (request, response) => {
       const result = await memberModel
-      .find({role: request.query.role}, 'name availability')
-      .lean()
-      .exec();
+      .find({role: request.query.role}, 'name availability').lean().exec()
+      .catch(() => response.status(500).send({message: "Error" }));
 
-      response.send({
+      response.status(200).send({
         months: helperFunctions.getArrayOfCurrentAndNextThreeMonths(),
         members: result
       });

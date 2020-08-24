@@ -7,10 +7,7 @@ describe("Homepage Controller", () => {
   let res, req;
 
   beforeEach(() => {
-    res = { 
-      send: jest.fn(),
-      status: jest.fn()
-    };
+    res = { status: jest.fn() }
     res.status.mockReturnValue({ send: jest.fn() })
     req = {};
   });
@@ -35,7 +32,7 @@ describe("Homepage Controller", () => {
 
       expect(res.status).toHaveBeenCalledWith(500);
       expect(res.status().send).toHaveBeenCalledWith({message: "Error"});
-      expect(res.send).not.toHaveBeenCalledWith({});
+      expect(res.status().send).not.toHaveBeenCalledWith({});
     });
   });
 
