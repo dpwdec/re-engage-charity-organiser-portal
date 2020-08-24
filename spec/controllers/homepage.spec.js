@@ -7,7 +7,11 @@ describe("Homepage Controller", () => {
   let res, req;
 
   beforeEach(() => {
-    res = { send: jest.fn() };
+    res = { 
+      send: jest.fn(),
+      status: jest.fn()
+    };
+    res.status.mockReturnValue({ send: jest.fn() })
     req = {};
   });
 
@@ -28,7 +32,8 @@ describe("Homepage Controller", () => {
 
       await controller(req, res);
 
-      expect(res.send).toHaveBeenCalledWith({message: "Error"});
+      expect(res.status).toHaveBeenCalledWith(500);
+      expect(res.status().send).toHaveBeenCalledWith({message: "Error"});
       expect(res.send).not.toHaveBeenCalledWith({});
     });
   });
@@ -46,14 +51,13 @@ describe("Homepage Controller", () => {
   });
 
   describe("Delete Member", () => {
-    it("deletes a member from the database", () => {
-      Member.deleteOne.mockImplementation((target, callback) => callback(false));
+    it("deletes a member from the database", async () => {
       req.body = { id: "1" };
       controller = HomepageController.DeleteMember(Member);
 
-      controller(req, res);
+      await controller(req, res);
 
-      expect(Member.deleteOne).toHaveBeenCalled();
+      expect(Member.deleteOne).toHaveBeenCalledWith({ _id: "1" });
       expect(res.send).toHaveBeenCalledWith({ message: "success!" });
     });
   });

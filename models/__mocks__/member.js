@@ -3,6 +3,8 @@ const Member = jest.genMockFromModule('../member');
 Member.find.mockReturnValue({ lean: jest.fn() });
 Member.find().lean.mockReturnValue({ exec: () => Promise.resolve(Object.create(null))});
 
+Member.deleteOne.mockReturnValue(Promise.resolve("sucess"));
+
 Member._saveMock = jest.fn()
 Member._saveMock.mockReturnValue(Promise.resolve("success"));
 
