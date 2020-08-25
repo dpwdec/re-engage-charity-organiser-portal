@@ -38,7 +38,7 @@ class Contact extends React.Component {
       telephone: this.state.telephone,
     };
 
-    fetch("/createMember", {
+    fetch("/members/createMember", {
       method: "post",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newMember),
@@ -53,7 +53,7 @@ class Contact extends React.Component {
       id: event.target.dataset.id,
     };
 
-    fetch("/deleteMember", {
+    fetch("/members/deleteMember", {
       method: "post",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(member),

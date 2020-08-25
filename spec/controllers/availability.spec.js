@@ -3,14 +3,15 @@ jest.mock('../../models/member');
 
 const AvailabilityController = require('../../controllers/availability');
 const HelperFunctions = require('../../controllers/helperFunctions');
-//const Member = require('../../models/member');
 
 describe("Availability Controller", () => {
   let res, req, Member;
 
   beforeEach(() => {
+    // reset Member mock persistence to remove mocked errors
     jest.resetModules();
     Member = require('../../models/member');
+
     res = { status: jest.fn() };
     res.status.mockReturnValue({ send: jest.fn() });
     req = { query: { role: 'driver' } }
@@ -18,7 +19,6 @@ describe("Availability Controller", () => {
 
   describe("Availability", () => {
     it("sends members data and current months", async () => {
-      // const Member = require('../../models/member');
       let controller = AvailabilityController.Availability(Member, HelperFunctions);
 
       await controller(req, res);
@@ -29,7 +29,6 @@ describe("Availability Controller", () => {
     });
 
     it("sends error && status code 500 if retrieving availabilities fails", async () => {
-      // const Member = require('../../models/member');
       Member.find().lean.mockReturnValue({ exec: () => Promise.reject(new Error()) });
       let controller = AvailabilityController.Availability(Member, HelperFunctions);
 
@@ -43,7 +42,6 @@ describe("Availability Controller", () => {
 
   describe("Update", () => {
     it("updates member availability data", async () => {
-      // const Member = require('../../models/member');
       let controller = AvailabilityController.Update(Member);
       req.body = { 
         driver_id: "1",
@@ -58,7 +56,6 @@ describe("Availability Controller", () => {
     });
 
     it("sends error && status code 500 if finding member fails", async () => {
-      // const Member = require('../../models/member');
       Member.findOne.mockReturnValue(Promise.reject(new Error()));
       let controller = AvailabilityController.Update(Member);
       req.body = { 
@@ -73,7 +70,6 @@ describe("Availability Controller", () => {
     });
 
     it("sends error && status code 500 if updating member fails", async () => {
-      // const Member = require('../../models/member');
       Member.findOneAndUpdate.mockReturnValue(Promise.reject(new Error()));
       let controller = AvailabilityController.Update(Member);
       req.body = { 
