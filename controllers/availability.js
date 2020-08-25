@@ -1,6 +1,3 @@
-var helperFunction = require('./helperFunctions'); 
-var Member = require('../models/member');
-
 var AvailabilityController = {
     Availability: (memberModel, helperFunctions) => async (request, response) => {
       const result = await memberModel
