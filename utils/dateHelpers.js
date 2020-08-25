@@ -13,10 +13,11 @@ let DateHelpers = {
     var yyyy3 = yyyy0; 
 
     // returns current month as a number
-    var mm = Number(String(today.getMonth() + 1).padStart(2, '0'));
+    //var mm = Number(String(today.getMonth() + 1).padStart(2, '0'));
+    var mm = today.getMonth() + 1;
 
     // returns months as a string, i.e "Jan"
-    var mm0 = monthsHash[Number(String(today.getMonth() + 1).padStart(2, '0'))]; 
+    var mm0 = monthsHash[mm]; 
     var mm1 = monthsHash[mm + 1]; 
     var mm2 = monthsHash[mm + 2];
     var mm3 = monthsHash[mm + 3];
