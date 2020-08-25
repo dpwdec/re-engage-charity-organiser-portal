@@ -6,6 +6,7 @@ Member.find().lean.mockReturnValue({ exec: () => Promise.resolve(Object.create(n
 Member.deleteOne.mockReturnValue(Promise.resolve("sucess"));
 
 Member.findOne.mockReturnValue(Promise.resolve({ availability: { Aug2020: false }}));
+Member.findOneAndUpdate.mockReturnValue(Promise.resolve("success"));
 
 Member._saveMock = jest.fn()
 Member._saveMock.mockReturnValue(Promise.resolve("success"));

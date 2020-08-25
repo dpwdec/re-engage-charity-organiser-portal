@@ -25,7 +25,7 @@ var AvailabilityController = {
       updated.availability[request.body.month_name] = (request.body.month_status == 'true');
 
       let result = await Member.findOneAndUpdate(query, updated)
-      .catch(() => response.status(500).send({message: "Error" }));
+      .catch(() => response.status(500).send({message: "Error updating record." }));
       if(!result) { return }
 
       response.status(200).send({message: 'success'});
