@@ -23,10 +23,6 @@ describe('PairingPopulation', () => {
     it('has a list of members after creation', () => {
       expect(population.members).toEqual(members);
     });
-
-    it('has a population size after creation', () => {
-      //expect(population.size).toEqual(populationSize);
-    });
   });
 
   describe('#generatePopulation', () => {

@@ -51,5 +51,19 @@ describe("Availability Controller", () => {
       expect(Member.findOne).toHaveBeenCalledWith({ _id: "1" });
       expect(Member.findOneAndUpdate).toHaveBeenCalledWith({ _id: "1" }, { availability: { Aug2020: true }});
     });
+
+    it("sends error && status code 500 if finding member fails", async () => {
+      Member.findOne.mockReturnValue(Promise.reject(new Error()));
+      let controller = AvailabilityController.Update(Member);
+      req.body = { 
+        driver_id: "1",
+      };
+
+      await controller(req, res);
+
+      expect(Member.findOne).toHaveBeenCalledWith({ _id: "1" });
+      expect(res.status).toHaveBeenCalledWith(500);
+      expect(res.status).not.toHaveBeenCalledWith(200);
+    });
   });
 });

@@ -8,15 +8,17 @@ var HomepageController = {
       availability: {},
     });
 
-    await member.save()
+    const result = await member.save()
     .catch(() => response.status(500).send({message: "Error" }));
+    if(!result) { return }
 
     response.status(200).send({ message: "ok" });
   },
 
   DeleteMember: (memberModel) => async (request, response) => {
-    await memberModel.deleteOne({ _id: request.body.id })
+    const result = await memberModel.deleteOne({ _id: request.body.id })
     .catch(() => response.status(500).send({message: "Error" }));
+    if(!result) { return }
 
     response.status(200).send({ message: "success!" });
   },
@@ -24,6 +26,7 @@ var HomepageController = {
   Members:(memberModel) => async (request, response) => {
     const result = await memberModel.find({role: request.query.role}).lean().exec()
     .catch(() => response.status(500).send({message: "Error" }));
+    if(!result) { return }
     
     response.status(200).send(result);
   },

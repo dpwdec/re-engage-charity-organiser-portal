@@ -32,7 +32,7 @@ describe("Homepage Controller", () => {
 
       expect(res.status).toHaveBeenCalledWith(500);
       expect(res.status().send).toHaveBeenCalledWith({message: "Error"});
-      expect(res.status().send).not.toHaveBeenCalledWith({});
+      expect(res.status).not.toHaveBeenCalledWith(200);
     });
   });
 
