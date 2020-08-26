@@ -1,7 +1,7 @@
 var express = require("express");
 var router = express.Router();
 
-var MemberController = require('../controllers/member');
+var MemberController = require('../controllers/members');
 var Member = require("../models/member");
 
 router.get('/', MemberController.Members(Member));

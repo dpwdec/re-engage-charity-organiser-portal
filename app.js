@@ -7,7 +7,7 @@ require("dotenv").config();
 // const API_KEY = process.env.REACT_APP_MAP_API_KEY;
 
 var indexRouter = require("./routes/index");
-let memberRouter = require("./routes/member");
+let membersRouter = require("./routes/members");
 var usersRouter = require("./routes/users");
 var pairsRouter = require("./routes/pairs");
 var adminRouter = require("./routes/admin");
@@ -27,7 +27,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
-app.use("/members", memberRouter);
+app.use("/members", membersRouter);
 app.use("/users", usersRouter);
 app.use("/pairs", pairsRouter);
 app.use("/admin", adminRouter);

@@ -1,7 +1,7 @@
 jest.mock('../../models/member');
 const Member = require('../../models/member');
 
-var MemberController = require("../../controllers/member");
+var MembersController = require("../../controllers/members");
 
 describe("Homepage Controller", () => {
   let res, req;
@@ -14,7 +14,7 @@ describe("Homepage Controller", () => {
 
   describe("Members List", () => {
     it("sends member data", async () => {
-      controller = MemberController.Members(Member);
+      controller = MembersController.Members(Member);
       req = { query: { role: "" } };
 
       await controller(req, res);
@@ -25,7 +25,7 @@ describe("Homepage Controller", () => {
 
     it("sends error if members query fails", async () => {
       Member.find().lean.mockReturnValue({ exec: () => Promise.reject(new Error()) });
-      controller = MemberController.Members(Member);
+      controller = MembersController.Members(Member);
       req = { query: { role: "Error" } };
 
       await controller(req, res);
@@ -39,7 +39,7 @@ describe("Homepage Controller", () => {
   describe("Create Member", () => {
     it("saves a new member to the database && returns OK", async () => {
       req.body = { name: "Paula", role: "guest", address: "N8 2AA" };
-      controller = MemberController.CreateMember(Member);
+      controller = MembersController.CreateMember(Member);
 
       await controller(req, res);
 
@@ -51,7 +51,7 @@ describe("Homepage Controller", () => {
     it("send an error && status code 500 if saving raises an error", async () => {
       req.body = { name: "Paula", role: "guest", address: "N8 2AA" };
       Member._saveMock.mockReturnValue(Promise.reject(new Error()));
-      controller = MemberController.CreateMember(Member);
+      controller = MembersController.CreateMember(Member);
 
       await controller(req, res);
 
@@ -64,7 +64,7 @@ describe("Homepage Controller", () => {
   describe("Delete Member", () => {
     it("deletes a member from the database", async () => {
       req.body = { id: "1" };
-      controller = MemberController.DeleteMember(Member);
+      controller = MembersController.DeleteMember(Member);
 
       await controller(req, res);
 
@@ -76,7 +76,7 @@ describe("Homepage Controller", () => {
     it("sends an error && status code 500 if deletion fails", async () => {
       req.body = { id: "1" };
       Member.deleteOne.mockReturnValue(Promise.reject(new Error()));
-      controller = MemberController.DeleteMember(Member);
+      controller = MembersController.DeleteMember(Member);
 
       await controller(req, res);
 
