@@ -2,7 +2,7 @@ jest.mock('../../utils/dateHelpers');
 jest.mock('../../models/member');
 
 const AvailabilityController = require('../../controllers/availability');
-const HelperFunctions = require('../../utils/DateHelpers');
+const HelperFunctions = require('../../utils/dateHelpers');
 
 describe("Availability Controller", () => {
   let res, req, Member;
