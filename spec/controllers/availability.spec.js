@@ -1,4 +1,4 @@
-jest.mock('../../utils/DateHelpers');
+jest.mock('../../utils/dateHelpers');
 jest.mock('../../models/member');
 
 const AvailabilityController = require('../../controllers/availability');
