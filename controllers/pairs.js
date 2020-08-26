@@ -15,7 +15,9 @@ var PairController = {
     let query = {};
     query[month] = true;
 
-    let availableMembers = PairController.availableMembers(Member, request.query.month);
+    let availableMembers = await PairController.availableMembers(Member, request.query.month);
+
+    console.log(availableMembers);
 
     let members = await PairController.calculatePairDistances(GoogleMaps, availableMembers);
 
@@ -30,65 +32,6 @@ var PairController = {
     }
 
     response.status(200).send({ pairs: pairings });
-
-    // Member.find({ role: "guest" }, (err, guests) => {
-    //   var availableGuests = [];
-    //   guests.forEach((guest) => {
-    //     if (guest.availability[month] !== undefined) {
-    //       if (guest.availability[month] === true) {
-    //         availableGuests.push(guest);
-    //       }
-    //     }
-    //   });
-    //   Member.find({ role: "driver" }, async (err, drivers) => {
-    //     var availableDrivers = [];
-    //     drivers.forEach((driver) => {
-    //       if (driver.availability[month] !== undefined) {
-    //         if (driver.availability[month] === true) {
-    //           availableDrivers.push(driver);
-    //         }
-    //       }
-    //     });
-
-    //     var members = [];
-    //     var allPromises = [];
-
-    //     availableGuests.forEach((guest) => {
-    //       var member = {
-    //         name: guest.name,
-    //         telephone: guest.telephone,
-    //         drivers: [],
-    //       };
-
-    //       var driverGuestPairPromises = availableDrivers.map((driver) => {
-    //         return makeGooglePairRouteApiRequest(member, guest, driver);
-    //       });
-
-    //       driverGuestPairPromises.forEach((APIpromise) => {
-    //         allPromises.push(APIpromise);
-    //       });
-
-    //       members.push(member);
-    //     });
-
-    //     await Promise.all(allPromises); // waits for all API calls to finish
-
-    //     // use different pairing alogirithm depending on user input
-    //     var pairings;
-    //     if (request.query.pairingType === "shortest") {
-    //       console.log("generating pairs with shortest heuristic");
-    //       pairings = ShortestDistancePairs.generate(members);
-    //     } else if (request.query.pairingType === "average") {
-    //       console.log("generating pairs with average heuristic");
-    //       pairings = AveragePairs.generate(members);
-    //     } else {
-    //       console.log("generating pairs with smart heuristic");
-    //       pairings = PairingPopulation.generate(members);
-    //     }
-
-    //     response.send({ pairs: pairings });
-    //   });
-    // });
   },
 
   // (Member, String) -> { drivers: [Member], guests: [Member] }
@@ -167,39 +110,4 @@ var PairController = {
   }
 };
 
-makeGooglePairRouteApiRequest = (member, guest, driver) => {
-  return new Promise(function (resolve) {
-    googleMapsClient
-      .directions({ origin: guest.address, destination: driver.address })
-      .asPromise()
-      .then((result) => {
-        //add the driver to the guest object
-        member.drivers.push({
-          name: driver.name,
-          distance: result.json.routes[0].legs[0].distance.value,
-          route: result.json,
-        });
-        resolve(result);
-      });
-  });
-};
-
-
 module.exports = PairController;
-
-  // Map: (request, response) => {
-  //   response.render("map");
-  // },
-  // Route: (request, response) => {
-  //   googleMapsClient
-  //     .directions({
-  //       origin: "SW129PH",
-  //       destination: "SE153XX",
-  //       mode: "driving",
-  //     })
-  //     .asPromise()
-  //     .then((result) => {
-  //       console.log(result);
-  //       response.send(result);
-  //     });
-  // },
