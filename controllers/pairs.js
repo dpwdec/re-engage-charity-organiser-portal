@@ -10,10 +10,12 @@ const googleMapsClient = require("@google/maps").createClient({
 });
 
 var PairController = {
-  Pairing: async (request, response) => {
+  Pairing: (Member, GoogleMapsClient) => async (request, response) => {
     let month = request.query.month;
     let query = {};
     query[month] = true;
+
+    let availableMembers = PairController.availableMembers(Member, request.query.month);
 
     Member.find({ role: "guest" }, (err, guests) => {
       var availableGuests = [];
@@ -74,22 +76,46 @@ var PairController = {
       });
     });
   },
-  Map: (request, response) => {
-    response.render("map");
-  },
-  Route: (request, response) => {
-    googleMapsClient
-      .directions({
-        origin: "SW129PH",
-        destination: "SE153XX",
-        mode: "driving",
-      })
-      .asPromise()
-      .then((result) => {
-        console.log(result);
-        response.send(result);
-      });
-  },
+  // Map: (request, response) => {
+  //   response.render("map");
+  // },
+  // Route: (request, response) => {
+  //   googleMapsClient
+  //     .directions({
+  //       origin: "SW129PH",
+  //       destination: "SE153XX",
+  //       mode: "driving",
+  //     })
+  //     .asPromise()
+  //     .then((result) => {
+  //       console.log(result);
+  //       response.send(result);
+  //     });
+  // },
+
+  // (Member, String) -> { drivers: [Member], guests: [Member] }
+  availableMembers: async (Member, month) => {
+    let available = {
+      guests: [],
+      drivers: []
+    }
+    
+    let members = await Member.find().lean().exec();
+    
+    members.forEach((member) => {
+      if (member.availability[month] !== undefined) {
+        if (member.availability[month] === true) {
+          if(member.role === "guest") {
+            available.guests.push(member);
+          } else {
+            available.drivers.push(member);
+          }
+        }
+      }
+    });
+
+    return available;
+  }
 };
 
 makeGooglePairRouteApiRequest = (member, guest, driver) => {
@@ -108,5 +134,6 @@ makeGooglePairRouteApiRequest = (member, guest, driver) => {
       });
   });
 };
+
 
 module.exports = PairController;

@@ -3,7 +3,7 @@ const Member = require('../../models/member');
 
 var MembersController = require("../../controllers/members");
 
-describe("Homepage Controller", () => {
+describe("Members Controller", () => {
   let res, req;
 
   beforeEach(() => {
