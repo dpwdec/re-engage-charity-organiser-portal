@@ -1,24 +1,7 @@
 describe("DriverAvailability", () => {
-  beforeEach(function () {
+  beforeEach(() => {
     cy.task("dropAdmins");
     cy.task("addAdmin", { adminName: "admin", password: "1234" });
-
-    // cy.task("dropMembers");
-    // cy.task("addMember", {
-    //   name: "Cat",
-    //   role: "driver",
-    //   availability: { 
-    //     "Jul 2020": false
-    //  },
-    // });
-    // cy.task("addMember", {
-    //   name: "Merija",
-    //   role: "guest",
-    //   availability: { 
-    //     "Jul 2020": true
-    //   },
-    // });
-
     cy.task("dropMembers");
     cy.task("addMember", {
       name: "Cat",
