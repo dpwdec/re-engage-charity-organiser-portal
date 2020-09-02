@@ -1,4 +1,4 @@
-![Build Status][1]
+[![Build Status][1]](https://travis-ci.com/github/dpwdec/re-engage-charity-organiser-portal)
 ## Re-Engage Portal
 ### [Live Demo](http://re-engage-organiser-portal.herokuapp.com/)
 
