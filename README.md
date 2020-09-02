@@ -153,7 +153,7 @@ So that I can visualise the pairing logistics
 I would like to see a map of the pairs in the table
 ```
 
-[1]: https://travis-ci.org/Tracht/charity-apr2020.svg?branch=master
+[1]: https://travis-ci.com/dpwdec/re-engage-charity-organiser-portal.svg?branch=master
 [2]: https://github.com/Tracht/charity-apr2020/wiki/Product-Spec
 
 ### Snapshots of the website
